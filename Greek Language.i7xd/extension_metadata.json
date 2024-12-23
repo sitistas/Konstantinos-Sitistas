@@ -1,0 +1,13 @@
+{
+    "is": {
+        "type": "extension",
+        "title": "Greek Language",
+        "author": "Graham Nelson",
+        "version": "10.2.0"
+    },
+    "rights": {
+        "licence": "Artistic-2.0",
+        "rights-owner": "Konstantinos Sitistas",
+        "date": 2024
+    }
+}
