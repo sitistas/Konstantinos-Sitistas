@@ -1,0 +1,13 @@
+{
+    "is": {
+        "type": "language",
+        "title": "Greek"
+    },
+    "language-details": {
+    	"supports": [ "played", "written", "indexed"],
+		"translated-name": "ελληνικά",
+		"iso-639-1-code": "el",
+		"flag": "🇬🇷",
+		"translated-syntax-cue": "στα ελληνικά"
+    }
+}

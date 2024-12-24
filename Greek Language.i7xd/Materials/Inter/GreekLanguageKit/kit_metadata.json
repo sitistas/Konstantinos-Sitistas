@@ -1,0 +1,14 @@
+{
+    "is": {
+        "type": "kit",
+        "title": "GreekLanguageKit",
+        "version": "10.2.0-beta+6X76"
+    },
+    "needs": [ {
+        "need": {
+            "type": "extension",
+            "title": "Greek Language",
+            "author": "Konstantinos Sitistas"
+        }
+    } ]
+}

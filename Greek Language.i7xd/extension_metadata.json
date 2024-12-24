@@ -2,9 +2,15 @@
     "is": {
         "type": "extension",
         "title": "Greek Language",
-        "author": "Graham Nelson",
+        "author": "Konstantinos Sitistas",
         "version": "10.2.0"
     },
+    "needs": [ {
+        "need": {
+            "type": "kit",
+            "title": "GreekLanguageKit"
+        }
+    } ],
     "rights": {
         "licence": "Artistic-2.0",
         "rights-owner": "Konstantinos Sitistas",
