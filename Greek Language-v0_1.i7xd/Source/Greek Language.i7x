@@ -1,4 +1,4 @@
-Version 10.2.0 of Greek Language by Konstantinos Sitistas begins here.
+Version 0.1 of Greek Language by Konstantinos Sitistas begins here.
 
 "To make Greek the language of play."
 
