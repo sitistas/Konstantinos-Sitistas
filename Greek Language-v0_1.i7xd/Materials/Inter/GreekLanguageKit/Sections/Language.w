@@ -19,7 +19,7 @@ Constant GREEKLANGUAGEKIT = 1;
 @h Vocabulary.
 
 =
-Constant AGAIN1__WD     = 'ξανά';
+Constant AGAIN1__WD     = 'ksana';
 Constant AGAIN2__WD     = 'πάλι';
 Constant AGAIN3__WD     = 'again';
 Constant OOPS1__WD      = 'λάθος';
@@ -56,7 +56,7 @@ Constant THEN2__WD      = 'μετά';
 Constant THEN3__WD      = 'τότε';
 
 Constant NO1__WD        = 'όχι';
-Constant NO2__WD        = 'ό//;
+Constant NO2__WD        = 'ό//';
 Constant NO3__WD        = 'οχι';
 Constant YES1__WD       = 'ναι';
 Constant YES2__WD       = 'ν//';
@@ -134,16 +134,7 @@ Array LanguageDescriptors table
     'μία'     $$010000010000    INDEFART_PK     NULL
     'μίας'    $$010000010000    INDEFART_PK     NULL
     'ένα'     $$001000001000    INDEFART_PK     NULL
-    'κάποιος' $$100000100000    INDEFART_PK     NULL
-    'κάποιου' $$101000101000    INDEFART_PK     NULL
-    'κάποιον' $$100000100000    INDEFART_PK     NULL
-    'κάποια'  $$010001010001    INDEFART_PK     NULL
-    'κάποιας' $$010000010000    INDEFART_PK     NULL
-    'κάποιο'  $$001000001000    INDEFART_PK     NULL
-    'κάποιοι' $$000100000100    INDEFART_PK     NULL
-    'κάποιων' $$000111000111    INDEFART_PK     NULL
-    'κάποιους'$$000100000100    INDEFART_PK     NULL
-    'κάποιες' $$000010000010    INDEFART_PK     NULL
+    ! Το κάποιος/α/ο... βγάζει complexity error οπότε το αγνοούμε προς το παρόν
     'lit'     $$111111111111    LIGHTED_PK      NULL
     'lighted' $$111111111111    LIGHTED_PK      NULL
     'unlit'   $$111111111111    UNLIGHTED_PK    NULL;
@@ -202,6 +193,7 @@ Constant LanguageInanimateGender = neuter;
 Constant LanguageContractionForms = 2;     ! English has two:
                                            ! 0 = starting with a consonant
                                            ! 1 = starting with a vowel
+! Πρέπει να αλλαχθεί και για τα ελληνικά αντίστοιχα
 
 [ LanguageContraction text
     ch;
@@ -220,7 +212,7 @@ Array LanguageArticles -->
  !   Contraction form 0:     Contraction form 1:
  !   Cdef   Def    Indef     Cdef   Def    Indef
 
-     "The " "the " "a "      "The " "the " "an "          ! Articles 0
+     "O "   "o "   "enas "   "O "   "o "   "enas "        ! Articles 0
      "The " "the " "some "   "The " "the " "some ";       ! Articles 1
 
                    !             a           i
