@@ -19,31 +19,31 @@ Constant GREEKLANGUAGEKIT = 1;
 @h Vocabulary.
 
 =
-Constant AGAIN1__WD     = 'ksana';
+Constant AGAIN1__WD     = 'ξανά';
 Constant AGAIN2__WD     = 'πάλι';
 Constant AGAIN3__WD     = 'again';
-Constant OOPS1__WD      = 'oops';
-Constant OOPS2__WD      = 'o//';
-Constant OOPS3__WD      = 'oops';
-Constant UNDO1__WD      = 'undo';
-Constant UNDO2__WD      = 'undo';
+Constant OOPS1__WD      = 'λάθος';
+Constant OOPS2__WD      = 'σφάλμα';
+Constant OOPS3__WD      = 'ουπς';
+Constant UNDO1__WD      = 'ακύρωση';
+Constant UNDO2__WD      = 'αναίρεση';
 Constant UNDO3__WD      = 'undo';
 
-Constant ALL1__WD       = 'all';
-Constant ALL2__WD       = 'each';
-Constant ALL3__WD       = 'every';
+Constant ALL1__WD       = 'όλοι';
+Constant ALL2__WD       = 'όλες';
+Constant ALL3__WD       = 'όλα';
 Constant ALL4__WD       = 'everything';
 Constant ALL5__WD       = 'both';
-Constant AND1__WD       = 'and';
-Constant AND2__WD       = 'and';
+Constant AND1__WD       = 'και';
+Constant AND2__WD       = 'κι';
 Constant AND3__WD       = 'and';
-Constant BUT1__WD       = 'but';
-Constant BUT2__WD       = 'except';
-Constant BUT3__WD       = 'but';
-Constant BY__WD         = 'by';
-Constant ME1__WD        = 'me';
-Constant ME2__WD        = 'myself';
-Constant ME3__WD        = 'self';
+Constant BUT1__WD       = 'αλλά';
+Constant BUT2__WD       = 'εκτός από';
+Constant BUT3__WD       = 'όμως';
+Constant BY__WD         = 'από';
+Constant ME1__WD        = 'εγώ';
+Constant ME2__WD        = 'εμένα';
+Constant ME3__WD        = 'με';
 Constant OF1__WD        = 'of';
 Constant OF2__WD        = 'of';
 Constant OF3__WD        = 'of';
@@ -51,9 +51,9 @@ Constant OF4__WD        = 'of';
 Constant OTHER1__WD     = 'another';
 Constant OTHER2__WD     = 'other';
 Constant OTHER3__WD     = 'other';
-Constant THEN1__WD      = 'then';
-Constant THEN2__WD      = 'then';
-Constant THEN3__WD      = 'then';
+Constant THEN1__WD      = 'έπειτα';
+Constant THEN2__WD      = 'μετά';
+Constant THEN3__WD      = 'τότε';
 
 Constant NO1__WD        = 'όχι';
 Constant NO2__WD        = 'ό//';
@@ -63,12 +63,12 @@ Constant YES2__WD       = 'ν//';
 Constant YES3__WD       = 'yes';
 
 Constant AMUSING__WD    = 'amusing';
-Constant FULLSCORE1__WD = 'fullscore';
-Constant FULLSCORE2__WD = 'full';
-Constant QUIT1__WD      = 'q//';
-Constant QUIT2__WD      = 'quit';
-Constant RESTART__WD    = 'restart';
-Constant RESTORE__WD    = 'restore';
+Constant FULLSCORE1__WD = 'αποτέλεσμα';
+Constant FULLSCORE2__WD = 'βαθμολογία';
+Constant QUIT1__WD      = 'τέλος';
+Constant QUIT2__WD      = 'ΤΕΛΟΣ';
+Constant RESTART__WD    = 'επανεκκίνηση';
+Constant RESTORE__WD    = 'επαναφορά';
 
 @h Pronouns.
 
@@ -81,10 +81,12 @@ Array LanguagePronouns table
   !             s  p  s  p
   !             mfnmfnmfnmfn
 
-    'it'      $$001000111000                    NULL
-    'him'     $$100000000000                    NULL
-    'her'     $$010000000000                    NULL
-    'them'    $$000111000111                    NULL;
+    'αυτός'     $$100000100000                    NULL
+    'αυτή'      $$010000010000                    NULL
+    'αυτό'      $$001000001000                    NULL
+    'αυτοί'     $$000100000100                    NULL
+    'αυτές'     $$000010000010                    NULL
+    'αυτά'      $$000001000001                    NULL;
 
 @h Descriptors.
 
@@ -97,7 +99,9 @@ Array LanguageDescriptors table
   !             s  p  s  p
   !             mfnmfnmfnmfn
 
-    'my'      $$111111111111    POSSESS_PK      0
+    'μου'     $$111111111111    POSSESS_PK      0
+    'this'    $$111111111111    POSSESS_PK      0
+    'this'    $$111111111111    POSSESS_PK      0
     'this'    $$111111111111    POSSESS_PK      0
     'these'   $$000111000111    POSSESS_PK      0
     'that'    $$111111111111    POSSESS_PK      1
@@ -139,13 +143,13 @@ Array LanguageDescriptors table
 
 =
 Array LanguageNumbers table
-    'one' 1 'two' 2 'three' 3 'four' 4 'five' 5
-    'six' 6 'seven' 7 'eight' 8 'nine' 9 'ten' 10
-    'eleven' 11 'twelve' 12 'thirteen' 13 'fourteen' 14 'fifteen' 15
-    'sixteen' 16 'seventeen' 17 'eighteen' 18 'nineteen' 19 'twenty' 20
-    'twenty-one' 21 'twenty-two' 22 'twenty-three' 23 'twenty-four' 24
-	'twenty-five' 25 'twenty-six' 26 'twenty-seven' 27 'twenty-eight' 28
-	'twenty-nine' 29 'thirty' 30
+    'ένα' 1 'δύο' 2 'τρία' 3 'τέσσερα' 4 'πέντε' 5
+    'έξι' 6 'επτά' 7 'οκτώ' 8 'εννέα' 9 'δέκα' 10
+    'έντεκα' 11 'δώδεκα' 12 'δεκατρία' 13 'δεκατέσσερα' 14 'δεκαπέντε' 15
+    'δεκαέξι' 16 'δεκαεπτά' 17 'δεκαοκτώ' 18 'δεκαεννέα' 19 'είκοσι' 20
+    'είκοσι ένα' 21 'είκοσι δύο' 22 'είκοσι τρία' 23 'είκοσι τέσσερα' 24
+	'είκοσι πέντε' 25 'είκοσι έξι' 26 'είκοσι επτά' 27 'είκοσι οκτώ' 28
+	'είκοσι εννέα' 29 'τριάντα' 30
 ;
 
 @h Time.
@@ -156,7 +160,7 @@ Array LanguageNumbers table
     if (i == 0) i = 12;
     if (i < 10) print " ";
     print i, ":", mins/10, mins%10;
-    if ((hours/12) > 0) print " pm"; else print " am";
+    if ((hours/12) > 0) print " μ.μ."; else print " π.μ.";
 ];
 
 @h Directions.
