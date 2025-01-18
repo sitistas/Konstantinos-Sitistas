@@ -16,60 +16,6 @@ a language kit: it's now compulsory, even when (as now) it does nothing.
 =
 Constant GREEKLANGUAGEKIT = 1;
 
-@h Vocabulary.
-
-=
-Constant AGAIN1__WD     = 'ξανά';
-Constant AGAIN2__WD     = 'πάλι';
-Constant AGAIN3__WD     = 'again';
-Constant OOPS1__WD      = 'λάθος';
-Constant OOPS2__WD      = 'σφάλμα';
-Constant OOPS3__WD      = 'ουπς';
-Constant UNDO1__WD      = 'ακύρωση';
-Constant UNDO2__WD      = 'αναίρεση';
-Constant UNDO3__WD      = 'undo';
-
-Constant ALL1__WD       = 'όλοι';
-Constant ALL2__WD       = 'όλες';
-Constant ALL3__WD       = 'όλα';
-Constant ALL4__WD       = 'everything';
-Constant ALL5__WD       = 'both';
-Constant AND1__WD       = 'και';
-Constant AND2__WD       = 'κι';
-Constant AND3__WD       = 'and';
-Constant BUT1__WD       = 'αλλά';
-Constant BUT2__WD       = 'εκτός από';
-Constant BUT3__WD       = 'όμως';
-Constant BY__WD         = 'από';
-Constant ME1__WD        = 'εγώ';
-Constant ME2__WD        = 'εμένα';
-Constant ME3__WD        = 'με';
-Constant OF1__WD        = 'of';
-Constant OF2__WD        = 'of';
-Constant OF3__WD        = 'of';
-Constant OF4__WD        = 'of';
-Constant OTHER1__WD     = 'another';
-Constant OTHER2__WD     = 'other';
-Constant OTHER3__WD     = 'other';
-Constant THEN1__WD      = 'έπειτα';
-Constant THEN2__WD      = 'μετά';
-Constant THEN3__WD      = 'τότε';
-
-Constant NO1__WD        = 'όχι';
-Constant NO2__WD        = 'ό//';
-Constant NO3__WD        = 'οχι';
-Constant YES1__WD       = 'ναι';
-Constant YES2__WD       = 'ν//';
-Constant YES3__WD       = 'yes';
-
-Constant AMUSING__WD    = 'amusing';
-Constant FULLSCORE1__WD = 'αποτέλεσμα';
-Constant FULLSCORE2__WD = 'βαθμολογία';
-Constant QUIT1__WD      = 'τέλος';
-Constant QUIT2__WD      = 'ΤΕΛΟΣ';
-Constant RESTART__WD    = 'επανεκκίνηση';
-Constant RESTORE__WD    = 'επαναφορά';
-
 @h Pronouns.
 
 =
@@ -139,18 +85,7 @@ Array LanguageDescriptors table
     'lighted' $$111111111111    LIGHTED_PK      NULL
     'unlit'   $$111111111111    UNLIGHTED_PK    NULL;
 
-@h Numbers.
 
-=
-Array LanguageNumbers table
-    'ένα' 1 'δύο' 2 'τρία' 3 'τέσσερα' 4 'πέντε' 5
-    'έξι' 6 'επτά' 7 'οκτώ' 8 'εννέα' 9 'δέκα' 10
-    'έντεκα' 11 'δώδεκα' 12 'δεκατρία' 13 'δεκατέσσερα' 14 'δεκαπέντε' 15
-    'δεκαέξι' 16 'δεκαεπτά' 17 'δεκαοκτώ' 18 'δεκαεννέα' 19 'είκοσι' 20
-    'είκοσι ένα' 21 'είκοσι δύο' 22 'είκοσι τρία' 23 'είκοσι τέσσερα' 24
-	'είκοσι πέντε' 25 'είκοσι έξι' 26 'είκοσι επτά' 27 'είκοσι οκτώ' 28
-	'είκοσι εννέα' 29 'τριάντα' 30
-;
 
 @h Time.
 
