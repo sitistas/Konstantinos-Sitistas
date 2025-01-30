@@ -28,7 +28,8 @@ it will use neuter.]
 
 The grammatical gender of a woman is usually feminine gender.
 The grammatical gender of an object is usually neuter gender.
-
+A grammatical case is a kind of value. The grammatical cases are ονομαστική
+and αιτιατική.
 
 [TODO: Now we define any unusual tenses we want to support. Inform allows up to 7
 tenses, and it requires tenses 1 to 5 to be present, past, perfect, past
@@ -82,7 +83,7 @@ To say Ένας/Μία/Ένα (O - object):
 [ Include [preform](-
 language Greek)
 
-<definite-article> ::=
+<indefinite-article> ::=
     /b/ un |				[singular, masculine]
 	/c/ une |				[singular, feminine]
 	/e/ des					[plural, masculine (by default)]
@@ -194,7 +195,7 @@ Chapter 2.2.1 - Pronouns and possessives for the player
 The adaptive text viewpoint of the Greek language is second person singular.
 
 When play begins (this is the initialise the story viewpoint rule):
-	now the story viewpoint is the second person plural.
+	now the story viewpoint is the second person singular.
 
 To say εσύ:
 	now the prior named object is the player;
@@ -246,8 +247,124 @@ To say Εσύ:
 		otherwise:
 			say "Αυτά".
 
-[ TODO: Continue from here ]
+To say εσάς:
+	now the prior named object is the player;
+	if the story viewpoint is first person singular:
+		say "εμένα";
+	else if the story viewpoint is second person singular:
+		say "εσένα";
+	else if the story viewpoint is third person singular:
+		if the player is male:
+			say "αυτόν";
+		else if the player is female:
+			say "αυτή";
+		otherwise:
+			say "αυτό";
+	else if the story viewpoint is first person plural:
+		say "εμάς";
+	else if the story viewpoint is second person plural:
+		say "εσάς";
+	else if the story viewpoint is third person plural:
+		if the player is male:
+			say "αυτούς";
+		else if the player is female:
+			say "αυτές";
+		otherwise:
+			say "αυτά".
+
+To say Εσάς:
+	now the prior named object is the player;
+	if the story viewpoint is first person singular:
+		say "Εμένα";
+	else if the story viewpoint is second person singular:
+		say "Εσένα";
+	else if the story viewpoint is third person singular:
+		if the player is male:
+			say "Αυτόν";
+		else if the player is female:
+			say "Αυτή";
+		otherwise:
+			say "Αυτό";
+	else if the story viewpoint is first person plural:
+		say "Εμάς";
+	else if the story viewpoint is second person plural:
+		say "Εσάς";
+	else if the story viewpoint is third person plural:
+		if the player is male:
+			say "Αυτούς";
+		else if the player is female:
+			say "Αυτές";
+		otherwise:
+			say "Αυτά".
+
+To say δικό σου:
+	now the prior named object is the player;
+	if the story viewpoint is first person singular:
+		say "δικό μου";
+	else if the story viewpoint is second person singular:
+		say "δικό σου";
+	else if the story viewpoint is third person singular:
+		if the player is male:
+			say "δικό του";
+		else if the player is female:
+			say "δικό της";
+		otherwise:
+			say "δικό του";
+	else if the story viewpoint is first person plural:
+		say "δικό μας";
+	else if the story viewpoint is second person plural:
+		say "δικό σας";
+	else if the story viewpoint is third person plural:
+		say "δικό τους".
+
+To say Δικό σου:
+	now the prior named object is the player;
+	if the story viewpoint is first person singular:
+		say "Δικό μου";
+	else if the story viewpoint is second person singular:
+		say "Δικό σου";
+	else if the story viewpoint is third person singular:
+		if the player is male:
+			say "Δικό του";
+		else if the player is female:
+			say "Δικό της";
+		otherwise:
+			say "Δικό του";
+	else if the story viewpoint is first person plural:
+		say "Δικό μας";
+	else if the story viewpoint is second person plural:
+		say "Δικό σας";
+	else if the story viewpoint is third person plural:
+		say "Δικό τους".
+
+[ TODO: Add yourself? ]
+
+[ TODO: Continue from here based on French]
 Chapter 2.2.2 - Pronouns and possessives for other objects
+
+[ TODO: Change the following to Greek ]
+
+To say those:
+	say those in the αιτιατική.
+
+To say Those:
+	say Those in the ονομαστική.
+
+[ TODO: Translate and continue the following, based on English ]
+
+To say those in (case - grammatical case):
+	if the case is nominative:
+		let the item be the prior named object;
+		if the prior naming context is plural:
+			say "those";
+		otherwise if the item is the player:
+			say "[εσύ]";
+		otherwise if the item is a male person and item is not neuter:
+			say "he";
+		otherwise if the item is a female person and item is not neuter:
+			say "she";
+		otherwise:
+			say "that";
 
 Chapter 2.2.3 - Directions
 
@@ -373,15 +490,21 @@ This produces text which can be pasted in here before being translated.]
 
 Section 3.1.1.1 - The final question
 
-Section 3.1.1.2 - Standard actions which move the actor
+Section 3.1.1.2 - Printing the locale description
+
+Section 3.1.1.3 - Printing a locale paragraph about a thing
+
+Section 3.1.1.4 - Standard actions concerning the actor's possessions
+
+Section 3.1.1.5 - Standard actions which move the actor
 
 [Going , Entering , Exiting , Getting off]
 
 [ Going ]
 
-    can't go that way rule response (A) is "Δεν μπορείς να πας προς αυτή την κατεύθυνση".
+can't go that way rule response (A) is "[Εσύ] δεν μπορείς να πας προς αυτή την κατεύθυνση".
 
-    can't go that way rule response (B) is "Δεν μπορείς να πας τα εκεί".
+can't go that way rule response (B) is "[Εσύ] δεν μπορείς να πας τα εκεί".
 
 Part 3.2 - The Final Question
 
