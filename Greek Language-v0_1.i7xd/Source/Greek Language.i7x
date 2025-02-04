@@ -80,17 +80,6 @@ To say Ο/Η/Το/Οι/Τα (O - object):
 To say Ένας/Μία/Ένα (O - object):
 	say "[A O]".
 
-[ Include [preform](-
-language Greek)
-
-<indefinite-article> ::=
-    /b/ un |				[singular, masculine]
-	/c/ une |				[singular, feminine]
-	/e/ des					[plural, masculine (by default)]
-
--) in the Preform grammar. ]
-
-
 
 Include (-
 Constant LanguageAnimateGender   = male;
@@ -147,6 +136,20 @@ language Greek
 	έντεκα |
 	δώδεκα
 
+<ordinal-number-in-words> ::=
+	μηδενικός/μηδενική/μηδενικό |
+	πρώτος/πρώτη/πρώτο |
+	δεύτερος/δεύτερη/δεύτερο |
+	τρίτος/τρίτη/τρίτο |
+	τέταρτος/τέταρτη/τέταρτο |
+	πέμπτος/πέμπτη/πέμπτο |
+	έκτος/έκτη/έκτο |
+	έβδομος/έβδομη/έβδομο |
+	όγδοος/όγδοη/όγδοο |
+	ένατος/ένατη/ένατο |
+	δέκατος/δέκατη/δέκατο |
+	ενδέκατος/ενδέκατη/ενδέκατο |
+	δωδέκατος/δωδέκατη/δωδέκατο
 -) in the Preform grammar.
 
 Include (-
@@ -368,29 +371,121 @@ To say those in (case - grammatical case):
 
 Chapter 2.2.3 - Directions
 
-[ North translates into Greek as ο βοράς. ]
-[ South translates into Greek as νότια.
-East translates into Greek as ανατολικά.
-West translates into Greek as δυτικά.
+North translates into Greek as ο βοράς.
+South translates into Greek as η νότος.
+East translates into Greek as η ανατολή.
+West translates into Greek as η δύση.
 Northeast translates into Greek as βορειοανατολικά.
 Southwest translates into Greek as νοτιοδυτικά.
-Southeast translates into Greek as νοτιοανατολικά
+Southeast translates into Greek as νοτιοανατολικά.
 Northwest translates into Greek as βορειοδυτικά.
 Inside translates into Greek as μέσα.
 Outside translates into Greek as έξω.
 Up translates into Greek as πάνω.
-Down translates into Greek as κάτω. ]
+Down translates into Greek as κάτω.
 
-[ The indefinite article of ο βοράς is "ο". ]
+Understand "ανατολικά" or "ανατολικα" or "α" as ανατολή.
+Understand "βόρεια" or "βορεια" or "β" as βοράς.
+Understand "δυτικά" or "δυτικα" or "δ" as δύση.
+Understand "νότια" or "νοτια" or "νό" as νότος.
+Understand "να" as νοτιοανατολικά.
+Understand "νδ" as νοτιοδυτικά.
+Understand "βα" as βορειοανατολικά.
+Understand "βδ" as βορειοδυτικά.
+Understand "μ" or "μεσα" or "εσωτερικά" or "εσωτερικα" as μέσα.
+Understand "εξωτερικά" as έξω.
 
 Chapter 2.2.4 - Kinds
 
 Section 2.2.4.1 - In the Standard Rules
 
-[ An object translates into Greek as ένα αντικείμενο.
-Αυτό απαιτεί preform syntax ]
+An object translates into Greek as ένα αντικείμενο.
+A room translates into Greek as ένα δωμάτιο.
+A thing translates into Greek as ένα πράγμα.
+A door translates into Greek as μια πόρτα.
+A container translates into Greek as ένα δοχείο.
+A vehicle translates into Greek as ένα όχημα.
+A player's holdall translates into Greek as μια τσάντα του παίκτη.
+A supporter translates into Greek as ένας υποστηρικτής.
+A backdrop translates into Greek as μια παρασκήνιο. The plural of παρασκήνιο is παρασκήνια. [TODO: check translation]
+A person translates into Greek as ένα άτομο.
+A man translates into Greek as ένας άντρας.
+A woman translates into Greek as μια γυναίκα.
+An animal translates into Greek as ένα ζώο.
+A device translates into Greek as μια συσκευή.
+A direction translates into Greek as μια κατεύθυνση.
+A region translates into Greek as μια περιοχή.
+
+A number translates into Greek as ένας αριθμός.
+A real number translates into Greek as ένας πραγματικός αριθμός.
+A time translates into Greek as μια ώρα.
+A truth state translates into Greek as μια αλήθεια.
+A text translates into Greek as ένα κείμενο.
+A unicode character translates into Greek as ένας χαρακτήρας unicode.
+A snippet translates into Greek as ένα απόσπασμα.
+A stored action translates into Greek as μια αποθηκευμένη ενέργεια.
+A scene translates into Greek as μια σκηνή.
+A command parser error translates into Greek as ένα σφάλμα αναλυτή εντολών.
+A use option translates into Greek as μια επιλογή χρήσης.
+A response translates into Greek as μια απάντηση.
+A verb translates into Greek as ένα ρήμα.
+A table name translates into Greek as ένα όνομα πίνακα.
+An equation name translates into Greek as ένα όνομα εξίσωσης.
+A rulebook outcome translates into Greek as ένα αποτέλεσμα κανόνων.
+An action name translates into Greek as ένα όνομα ενέργειας.
+A figure name translates into Greek as ένα όνομα μορφής.
+A sound name translates into Greek as ένα όνομα ήχου.
+An external file translates into Greek as ένα εξωτερικό αρχείο.
+
+[ TODO: Test and check the following tenses ]
+Grammatical tense translates into Greek as γραμματικός χρόνος.
+Present tense translates into Greek as ο ενεστώτας.
+Future tense translates into Greek as ο μέλλοντας.
+Past tense translates into Greek as ο παρελθοντικός.
+Perfect tense translates into Greek as ο αόριστος.
+Past perfect tense translates into Greek as ο υπερσυντέλικος.
+
+Narrative viewpoint translates into Greek as αφηγηματική σκοπιά.
+First person singular translates into Greek as το πρώτο πρόσωπο του ενικού.
+Second person singular translates into Greek as το δεύτερο πρόσωπο του ενικού.
+Third person singular translates into Greek as το τρίτο πρόσωπο του ενικού.
+First person plural translates into Greek as το πρώτο πρόσωπο του πληθυντικού.
+Second person plural translates into Greek as το δεύτερο πρόσωπο του πληθυντικού.
+Third person plural translates into Greek as το τρίτο πρόσωπο του πληθυντικού.
+
+Grammatical gender translates into Greek as γραμματικό γένος.
+Masculine gender translates into Greek as το αρσενικό γένος.
+Feminine gender translates into Greek as το θηλυκό γένος.
+Neuter gender translates into Greek as το ουδέτερο γένος.
+
+[ TODO: Add index descriptions ]
 
 Chapter 2.2.5 - Plurals
+
+[ TODO: Can't make the following work ]
+
+Include [preform](-
+language Greek
+<singular-noun-to-its-plural> ::=
+	<gr-plural-exceptions> |
+	... <gr-plural-by-ending> |
+	... <gr-plural-default>
+
+<gr-plural-exceptions> ::=
+	μυς			μυς |
+	πρέσβης		πρέσβεις |
+	πρύτανης	πρυτάνεις |
+
+<gr-plural-by-ending> ::=
+	*ας			1ες |			[χάρακας --> χάρακες] [TODO: Add ψαράς --> ψαράδες]
+	*ης			1ες	|		[επιβάτης --> επιβάτες]
+	*ΗΣ			1ΕΣ	|		[επιβάτης --> επιβάτες]
+	*ής			1ές			[μαθητής --> μαθητές]
+
+<gr-plural-default> ::=
+	*			0ς
+
+-) in the Preform grammar.
 
 Chapter 2.2.6 - Cases
 
@@ -405,18 +500,6 @@ Include (-
     if ((hours/12) > 0) print " μ.μ."; else print " π.μ.";
 ];
 -) replacing "Time".
-
-[ Include (-
-[ PrintTimeOfDay t h;
-	if (t < 0) {
-		print "<pas d'heure>";
-		return;
-	}
-	h = t / ONE_HOUR;
-	print h, "@{A0}h";
-	if (t % ONE_HOUR) print "@{A0}", t % ONE_HOUR;
-];
--) replacing "Digital Printing". ]
 
 Part 2.3 - Adjectives
 
@@ -434,6 +517,54 @@ using tries:
 	f.s.		base modified by <adjective-to-feminine-singular>
 	f.p.		base modified by <adjective-to-feminine-singular>
 				then further by <adjective-to-feminine-plural>]
+
+Include [preform](-
+language Greek
+
+[ TODO: Change all the following cases to greek, similar to nouns, and add neuter ]
+
+<adjective-to-plural> ::=
+	*                0
+
+<adjective-to-masculine-singular> ::=
+	*                0
+
+<adjective-to-feminine-singular> ::=
+	*                0
+
+<adjective-to-masculine-plural> ::=
+	*                0
+
+<adjective-to-feminine-plural> ::=
+	*                0
+
+<adjective-to-comparative> ::=
+	καλός                                 καλύτερος |
+	well                                  better |
+	bad                                   worse |
+	far                                   farther |
+	*e                                    1er |
+	*<bcdfghkmlnprstvwxyz>y               1ier |
+	*<aeiou><aeiou><bcdfghkmlnprstvxyz>   0er |
+	*<aeiou><bcdfghkmlnprstvxyz>          0+er |
+	*                                     0er
+
+<adjective-to-superlative> ::=
+	good                                  best |
+	well                                  best |
+	bad                                   worst |
+	far                                   farthest |
+	*e                                    1est |
+	*<bcdfghkmlnprstvwxyz>y               1iest |
+	*<aeiou><aeiou><bcdfghkmlnprstvxyz>   0est |
+	*<aeiou><bcdfghkmlnprstvxyz>          0+est |
+	*                                     0est
+
+<adjective-to-quiddity> ::=
+	*ong                            3ength |
+	*<bcdfghkmlnprstvwxyz>y         1iness |
+	*                               0ness
+-) in the Preform grammar.
 
 Chapter 2.3.2 - New adjectives
 
@@ -594,9 +725,54 @@ Chapter 4.2.1 - New Grammar Tokens
 
 Chapter 4.2.2 - Standard actions concerning the actor's possessions
 
+Understand "ευρετήριο" as taking inventory.
+Understand the command "ε", "ευρ", "ευρετηριο" as "ευρετήριο".
+
+Understand "πάρε [things]" as taking.
+Understand the command "π", "παρε", "κράτησε", "σήκωσε", "άρπαξε", "μάζεψε", "πιάσε" and "βούτα" as "πάρε".
+
+Understand "αφαίρεσε [things inside] από [something]", "αφαιρεσε [things inside] από [something]", "πάρε [things inside] από [something]", "παρε [things inside] από [something]", "βγάλε [things inside] από [something]", "βγαλε [things inside] από [something]" as removing it from.
+
+Understand "ρίξε [things preferably held]", "ριξε [things preferably held]", "άφησε [things preferably held]", "άσε [things preferably held]", "αφησε [things preferably held]", "ασε [things preferably held]" as dropping.
+
+[ TODO: Add στον, στην, στο... ]
+Understand "βάλε [other things] πάνω σε [something]" as putting it on.
+
+[ TODO: Find a way for:  Understand the command "πανω" as "πάνω" ]
+
+Understand "βάλε [other things] μέσα σε [something]" as inserting it into.
+
+Understand the command "τοποθέτησε", "τοποθετησε", "βαλε" as "βάλε".
+
+Understand "φάε [something preferably held]" as eating.
+Understand the command "φαε" as "φάε".
+
 Chapter 4.2.3 - Standard actions which move the actor
 
+[ TODO: Add synonyms in this chapter ]
+
+Understand "πήγαινε" as going.
+Understand "πήγαινε προς [direction]" or "πήγαινε [direction]" as going.
+Understand the command "πηγαινε" as "πήγαινε".
+
+Understand "μπες σε [something]" as entering.
+Understand the command "μπεσ" as "μπες".
+
+Understand "βγες" as exiting.
+Understand the command "βγεσ" as "βγες".
+
+Understand "βγες από [something]" as getting off.
+Understand the command "κατέβα" and "κατεβα" as "βγες".
+
 Chapter 4.2.4 - Standard actions concerning the actor's vision
+
+Understand "κοίτα" as looking.
+Understand the command "κοιτα", "δες", "δεσ" as "κοίτα".
+
+Understand "εξέτασε [something]" as examining.
+Understand the command "εξετασε", "τσέκαρε", "τσεκαρε" as "εξέτασε".
+
+Understand "δες κάτω από [something]" and "εξέτασε κάτω από [something]" as looking under.
 
 Chapter 4.2.5 - Standard actions which change the state of things
 
@@ -724,6 +900,37 @@ Include (-
 	return false;
 ];
 -)
+
+Include [preform](-
+language Greek
+<grammatical-case-names> ::=
+	nominative | accusative [ TODO: Προσθήκη γενικής ]
+
+<noun-declension> ::=
+	*    <gr-noun-declension-group> <gr-noun-declension-tables>
+
+<gr-noun-declension-group> ::=
+	*            1
+
+<gr-noun-declension-tables> ::=
+	<gr-noun-declension-uninflected>
+
+<gr-noun-declension-uninflected> ::=
+	0 | 0 |   [Singular | Plural]
+	0 | 0
+
+
+<article-declension> ::=
+	*           <gr-article-declension>
+
+<gr-article-declension> ::=
+	the         ο    η    το  |  [Singular]
+	            τον  την  το  |
+	            του  της  του  |
+	the         οι   οι   τα  |  [Plural]
+	            τους τις τα  |
+	            των  των  των
+-) in the Preform grammar.
 
 Greek Language ends here.
 
