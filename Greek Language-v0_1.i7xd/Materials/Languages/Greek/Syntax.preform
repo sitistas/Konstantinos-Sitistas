@@ -1,0 +1,57 @@
+[ language Greek
+
+[ TODO: The following might not work as expected. ]
+
+<indefinite-article> ::=
+	/a/ ένας |				[singular, masculine, nominative]
+	/a/ ενός |				[singular, masculine, genitive]
+	/a/ έναν |				[singular, masculine, accusative]
+	/b/ μία |				[singular, feminine]
+	/b/ μια |				[singular, feminine]
+	/b/ μίας |				[singular, feminine, genitive]
+	/b/ μιας |				[singular, feminine, genitive]
+	/c/ ένα	 |				[singular, neuter]
+	/c/ ενός				[singular, neuter, genitive]
+
+<definite-article> ::=
+    /a/ ο   | [singular, masculine, nominative]
+    /a/ του | [singular, masculine, genitive]
+    /a/ τον | [singular, masculine, accusative]
+
+    /b/ η   | [singular, feminine, nominative]
+    /b/ της | [singular, feminine, genitive]
+    /b/ την | [singular, feminine, accusative]
+    /b/ τη | [singular, feminine, accusative]
+
+    /c/ το  | [singular, neuter, nominative]
+    /c/ του | [singular, neuter, genitive]
+    /c/ το  | [singular, neuter, accusative]
+
+    /d/ οι  | [plural, masculine, nominative]
+    /d/ των | [plural, masculine, genitive]
+    /d/ τους | [plural, masculine, accusative]
+
+    /e/ οι  | [plural, feminine, nominative]
+    /e/ των | [plural, feminine, genitive]
+    /e/ τις | [plural, feminine, accusative]
+
+    /f/ τα  | [plural, neuter, nominative]
+    /f/ των | [plural, neuter, genitive]
+    /f/ τα    [plural, neuter, accusative]
+
+<np-relative-phrase-implicit> ::=
+	/a/ φθαρμένος/φθαρμένη/φθαρμένο/φθαρμένοι/φθαρμένες/φθαρμένα | [replacing "worn" in English]
+	/b/ μεταφερμένος/μεταφερμένη/μεταφερμένο/μεταφερμένοι/μεταφερμένες/μεταφερμένα|			["carried"]
+	/d/ εδώ					                ["here"]
+
+<implicit-player-relationship> ::=
+	/a/ φθαρμένος/φθαρμένη/φθαρμένο/φθαρμένοι/φθαρμένες/φθαρμένα |
+	/b/ μεταφερμένος/μεταφερμένη/μεταφερμένο/μεταφερμένοι/μεταφερμένες/μεταφερμένα|
+
+<certainty> ::=
+	πάντα/σίγουρα |
+	συνήθως/κανονικά |
+	σπάνια/αραιά |
+	ποτέ |
+	αρχικά
+ ]
