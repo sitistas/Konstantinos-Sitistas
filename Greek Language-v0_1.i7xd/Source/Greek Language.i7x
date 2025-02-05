@@ -27,9 +27,13 @@ By default, if Inform can't see any reason to choose a particular gender,
 it will use neuter.]
 
 The grammatical gender of a woman is usually feminine gender.
-The grammatical gender of an object is usually neuter gender.
-A grammatical case is a kind of value. The grammatical cases are ονομαστική
-and αιτιατική.
+[ The grammatical gender of an object is usually neuter gender. ]
+
+A thing can be female.
+A room can be female.
+A room can be plural-named or singular-named.
+
+A grammatical case is a kind of value. The grammatical cases are ονομαστική and αιτιατική.
 
 [TODO: Now we define any unusual tenses we want to support. Inform allows up to 7
 tenses, and it requires tenses 1 to 5 to be present, past, perfect, past
@@ -61,6 +65,78 @@ Include (-
 
 To decide whether (T - a text) starts with a vowel:
 	(- (TextStartsWithAVowel({-by-reference:T})) -)
+
+
+Part 1.1 SR Hack - Greek Bibliographical Data (in place of Section 7 - Unindexed Standard Rules variables in Standard Rules)
+
+[ TODO: Does it work? ]
+
+The story title, the story author, the story headline, the story genre and the story description are text variables. [*****]
+The release number and the story creation year are number variables. [**]
+
+The release number is usually 1.
+The story headline is usually "Ένα διαδραστικό μυθιστόρημα".
+The story genre is usually "Ιστορία".
+
+Part 1.2 - Other Tricks
+
+Carry out looking (this is the greek room description heading rule):
+	say bold type;
+	if the visibility level count is 0:
+		begin the printing the name of a dark room activity;
+		if handling the printing the name of a dark room activity:
+			say "Σκότος" (A);
+		end the printing the name of a dark room activity;
+	otherwise if the visibility ceiling is the location:
+		johan mode "[visibility ceiling]";
+	otherwise:
+		say "[The visibility ceiling]";
+	say roman type;
+	let intermediate level be the visibility-holder of the actor;
+	repeat with intermediate level count running from 2 to the visibility level count:
+		if the intermediate level is a supporter or the intermediate level is an animal:
+			say " (σχετικά με το [the intermediate level])" (B);
+			[ TODO: Check translation from Spanish ]
+		otherwise:
+			say " (στο [the intermediate level])" (C);
+		let the intermediate level be the visibility-holder of the intermediate level;
+	say line break;
+	say run paragraph on with special look spacing.
+
+The greek room description heading rule is listed instead of the room description heading rule in the carry out looking rules.
+
+To johan mode (T - text):
+	let X be the number of words in T;
+	say word number 1 in T in sentence case;
+	repeat with counter running from 2 to X:
+		say " [word number counter in T]".
+
+Section 3 - Greek People (in place of Section 11 - People in Standard Rules by Graham Nelson)
+
+The specification of person is "Παρά το όνομά του, δεν είναι απαραίτητα άνθρωπος, αλλά οποιαδήποτε οντότητα με τις απαραίτητες λειτουργίες για να αλληλεπιδράσει μαζί του".
+
+A person can be female or male. A person is usually male.
+A person can be neuter. A person is usually not neuter.
+
+A person has a number called carrying capacity.
+The carrying capacity of a person is usually 100.
+
+A person can be transparent. A person is always transparent.
+
+The yourself is an undescribed person. The yourself is proper-named.
+
+The yourself is privately-named.
+
+Understand "your former self" or "my former self" or "former self" or
+	"former" as yourself when the player is not yourself.
+
+Understand "ο πρώην εαυτός σου" or "ο πρώην εαυτός μου" or "πρώην εαυτός" or "πρώην" as yourself when the player is not yourself.
+
+[The description of yourself is usually "As good-looking as ever."]
+
+The description of yourself is usually "Στις ομορφιές σου όπως πάντα"
+
+The yourself object is accessible to Inter as "selfobj".
 
 Volume 2 - Language
 
@@ -194,6 +270,36 @@ Array LanguageNumbers table
 Part 2.2 - Nouns
 
 Chapter 2.2.1 - Pronouns and possessives for the player
+
+[The adaptive text viewpoint is the viewpoint of the player when we are
+writing response texts which need to work in any tense, person or number.
+For example, English uses first person plural, so we write "[We] [look] up."
+as a message which could come out as "I look up", "you look up", "he looks up",
+and so on. It's "[We]" not "[You]" because the adaptive text viewpoint is
+first person plural, not second person singular.
+
+The reason for choosing this in English was that all the pronouns and
+possessive adjectives we needed happened to be different for first person
+plural: we, us, ours, ourselves, our. We also need these pronouns to be
+other than third-person, so that we can define [they], [them] and so on
+to refer to objects and not the player. So in practice there are only four
+possible choices a language extension can make:
+
+	first person singular (in English: I, me, mine, myself, my)
+	second person plural (in English: you, you, yours, yourself, your)
+	first person singular (in English: we, us, ours, ourselves, our)
+	second person plural (in English: you, you, yours, yourself, your)
+
+What shall we choose for French? We may as well use second person singular,
+giving us tu, te, le tien/la tienne, te, ton. There are two complications.
+Firstly we need indirect objects as well as direct objects, and although these
+are the same in second person (te and te), they're different in third person
+(le and lui). We'll call this "[te-lui]" for the same of this demonstration,
+which is a bit awkward, but it'll do. Secondly, the reflexive pronoun is also
+te, so we'll write that one "[te-se]".
+
+In Greek, we will use second person singular as well.
+]
 
 The adaptive text viewpoint of the Greek language is second person singular.
 
@@ -340,7 +446,45 @@ To say Δικό σου:
 	else if the story viewpoint is third person plural:
 		say "Δικό τους".
 
-[ TODO: Add yourself? ]
+To say τον εαυτό σου:
+	now the prior named object is the player;
+	if the story viewpoint is first person singular:
+		say "τον εαυτό μου";
+	else if the story viewpoint is second person singular:
+		say "τον εαυτό σου";
+	else if the story viewpoint is third person singular:
+		if the player is male:
+			say "τον εαυτό του";
+		else if the player is female:
+			say "τον εαυτό της";
+		otherwise:
+			say "τον εαυτό του";
+	else if the story viewpoint is first person plural:
+		say "τους εαυτούς μας";
+	else if the story viewpoint is second person plural:
+		say "τους εαυτούς σας";
+	else if the story viewpoint is third person plural:
+		say "τους εαυτούς τους".
+
+To say τον εαυτό σου:
+	now the prior named object is the player;
+	if the story viewpoint is first person singular:
+		say "Τον εαυτό μου";
+	else if the story viewpoint is second person singular:
+		say "Τον εαυτό σου";
+	else if the story viewpoint is third person singular:
+		if the player is male:
+			say "Τον εαυτό του";
+		else if the player is female:
+			say "Τον εαυτό της";
+		otherwise:
+			say "Τον εαυτό του";
+	else if the story viewpoint is first person plural:
+		say "Τους εαυτούς μας";
+	else if the story viewpoint is second person plural:
+		say "Τους εαυτούς σας";
+	else if the story viewpoint is third person plural:
+		say "Τους εαυτούς τους".
 
 [ TODO: Continue from here based on French]
 Chapter 2.2.2 - Pronouns and possessives for other objects
@@ -574,7 +718,234 @@ Part 2.4 - Verbs
 
 Chapter 2.4.1 - Verb conjugations
 
+[Most French verbs "conjugate with avoir": that is, they form tenses like
+the perfect using "avoir" as an auxiliary -- "il a donné", he has given. But
+a few exceptions "conjugate with être" instead. The cleanest way to handle
+this is to give two conjugations: one for the avoir verbs, one for the être
+verbs, even those the rules are identical except for two of our tenses.
+
+>--> A small set of verbs conjugates with avoir when used transitively, but
+with être when used intransitively:
+
+	entrer, sortir, retourner, rentrer, monter, descendre, passer
+
+Inform doesn't know when it prints a verb whether it's being used transitively
+or not, so it has to make a decision: and we're going to conjugate all of these
+cases with "avoir". So our present perfect and past perfect forms of these
+verbs will be wrong when they're used intransitively. (But of course if they
+are being used in Inform source text then they must be transitive anyway; so
+this will only affect printed output in games told in the perfect tenses, which
+I can't imagine many people will want to do.)]
+
+[>--> Similarly we're going to ignore conjugation with être for verbs when used
+reciprocally, e.g., "ils se regardent" (which in some contexts means "they look
+at each other").]
+
+[>--> In some cases modern French offers a choice of whether to give verbs
+an irregular conjugation or not:
+
+(a) There are two verbs with the infinitive "ressortir": one regular, meaning
+	"to come with the jurisdiction of", and one irregular, meaning "to come out
+	again" or "to stand out". I think the latter is more likely in IF.
+
+(b) The mostly obsolete verb "vêtir" (to clothe, but "habiller" is far more
+	common now) is sometimes irregular, sometimes not. Inform treats it as a
+	regular -IR verb.]
+
+
+Include [preform](-
+language Greek
+
+<verb-conjugation-instructions> ::=
+	-είμαι <gr-be-conjugation> |
+	-έχω <gr-have-conjugation> |
+	-μπορώ <gr-can-conjugation> |
+	-λύνω <gr-lyno-conjugation> |
+	-βλέπω <gr-vlepo-conjugation>
+
+[ "Είμαι" ]
+
+<gr-be-conjugation> ::=
+    <gr-be-tabulation>
+
+<gr-be-tabulation> ::=
+    a1+ <gr-be-present> |
+    a1- δεν <gr-be-present> |
+    a2+ <gr-be-past> |
+    a2- δεν <gr-be-past> |
+    a3+ <gr-be-future> |
+    a3- δεν <gr-be-future>
+
+<gr-be-present> ::=
+    είμαι | είσαι | είναι | είμαστε | είστε | είναι
+
+<gr-be-past> ::=
+    ήμουν | ήσουν | ήταν | ήμασταν | ήσασταν | ήταν
+
+<gr-be-future> ::=
+    θα είμαι | θα είσαι | θα είναι | θα είμαστε | θα είστε | θα είναι
+
+
+[ "Έχω" ]
+
+<gr-have-conjugation> ::=
+    <gr-have-tabulation>
+
+<gr-have-tabulation> ::=
+    a1+ <gr-have-present> |
+    a1- δεν <gr-have-present> |
+    a2+ <gr-have-past> |
+    a2- δεν <gr-have-past> |
+    a3+ <gr-have-future> |
+    a3- δεν <gr-have-future>
+
+<gr-have-present> ::=
+    έχω | έχεις | έχει | έχουμε | έχετε | έχουν
+
+<gr-have-past> ::=
+    είχα | είχες | είχε | είχαμε | είχατε | είχαν
+
+<gr-have-future> ::=
+    θα έχω | θα έχεις | θα έχει | θα έχουμε | θα έχετε | θα έχουν
+
+
+[ "Μπορώ" ]
+
+<gr-can-conjugation> ::=
+    5       μπορ |
+    6       5 |
+    <gr-can-tabulation>
+
+<gr-can-tabulation> ::=
+    a1+ <gr-can-present> |
+    a1- δεν <gr-can-present> |
+    a2+ <gr-can-past> |
+    a2- δεν <gr-can-past> |
+    a3+ <gr-can-future> |
+    a3- δεν <gr-can-future> |
+    a4+ <gr-can-imperfect> |
+    a4- δεν <gr-can-imperfect>
+
+<gr-can-present> ::=
+    μπορώ | μπορείς | μπορεί | μπορούμε | μπορείτε | μπορούν
+
+<gr-can-past> ::=
+    μπορούσα | μπορούσες | μπορούσε | μπορούσαμε | μπορούσατε | μπορούσαν
+
+<gr-can-future> ::=
+    θα μπορώ | θα μπορείς | θα μπορεί | θα μπορούμε | θα μπορείτε | θα μπορούν
+
+<gr-can-imperfect> ::=
+    μπορούσα | μπορούσες | μπορούσε | μπορούσαμε | μπορούσατε | μπορούσαν
+
+
+[ "Λύνω" - 'Α Συζυγία. Παρόμοια κλίνονται τα "κάνω", "βάφω", ... ]
+
+<gr-lyno-conjugation> ::=
+    5       λυν |
+    6       λυσ |
+    <gr-lyno-tabulation>
+
+<gr-lyno-tabulation> ::=
+    a1+ <gr-lyno-present> |
+    a1- δεν <gr-lyno-present> |
+    a2+ <gr-lyno-past> |
+    a2- δεν <gr-lyno-past> |
+    a3+ <gr-lyno-future> |
+    a3- δεν <gr-lyno-future> |
+    a4+ <gr-lyno-subjunctive> |
+    a4- να μην <gr-lyno-subjunctive> |
+    a5+ <gr-lyno-imperative> |
+    a5- μην <gr-lyno-imperative> |
+    a6+ <gr-lyno-aorist> |
+    a6- δεν <gr-lyno-aorist> |
+	a7+ θα <gr-lyno-present> |
+	a7- δεν θα <gr-lyno-present> |
+    a8+ <gr-lyno-infinitive>
+
+<gr-lyno-present> ::=
+    λύνω | λύνεις | λύνει | λύνουμε | λύνουν
+
+<gr-lyno-past> ::=
+    έλυνα | έλυνες | έλυνε | λύναμε | λύνατε | έλυναν
+
+<gr-lyno-future> ::=
+    θα λύσω | θα λύσεις | θα λύσει | θα λύσουμε | θα λύσετε | θα λύσουν
+
+<gr-lyno-subjunctive> ::=
+    να λύσω | να λύσεις | να λύσει | να λύσουμε | να λύσετε | να λύσουν
+
+<gr-lyno-imperative> ::=
+    λύσε | λύστε
+
+<gr-lyno-aorist> ::=
+    έλυσα | έλυσες | έλυσε | λύσαμε | λύσατε | έλυσαν
+
+<gr-lyno-infinitive> ::=
+    λύσει
+
+[ "Βλέπω" ]
+
+<gr-vlepo-conjugation> ::=
+    5       βλέπ |
+    6       5 |
+    7       είδ |
+    8       5 |
+    <gr-vlepo-tabulation>
+
+<gr-vlepo-tabulation> ::=
+    a1+  	<gr-vlepo-present> |
+    a1-  	δεν <gr-vlepo-present> |
+    a2+  	<gr-vlepo-past> |
+    a2-  	δεν <gr-vlepo-past> |
+    a3+  	<gr-vlepo-future> |
+    a3-  	δεν <gr-vlepo-future> |
+    a4+  	<gr-vlepo-aorist> |
+    a4-  	δεν <gr-vlepo-aorist> |
+    a5+  	θα <gr-vlepo-present> |
+    a5-  	δεν θα <gr-vlepo-present> |
+    a6+  	να <gr-vlepo-present> |
+    a6-  	να μην <gr-vlepo-present> |
+    a7+  	<gr-vlepo-imperative> |
+    a7-  	δεν <gr-vlepo-imperative> |
+    a8+  	<gr-vlepo-infinitive> |
+	a9+  	<gr-vlepo-subjunctive-aorist>
+
+<gr-vlepo-present> ::=
+    βλέπω | βλέπεις | βλέπει | βλέπουμε | βλέπετε | βλέπουν
+
+<gr-vlepo-past> ::=
+    έβλεπα | έβλεπες | έβλεπε | βλέπαμε | βλέπατε | έβλεπαν
+
+<gr-vlepo-future> ::=
+    θα δω | θα δεις | θα δει | θα δούμε | θα δείτε | θα δουν
+
+<gr-vlepo-aorist> ::=
+    είδα | είδες | είδε | είδαμε | είδατε | είδαν
+
+<gr-vlepo-imperative> ::=
+    βλέπε | να βλέπετε
+
+<gr-vlepo-infinitive> ::=
+     -- | -- | δει | -- | -- | --
+
+<gr-vlepo-subjunctive-aorist> ::=
+    να δω | να δεις | να δει | να δούμε | να δείτε | να δουν
+
+
+-) in the Preform grammar.
+
+
 Chapter 2.4.2 - Verb substitutions
+
+
+[ TODO: Complete the chapter ]
+
+To say adapt (V - a verb) for background/bg:
+	say "[adapt V]".
+
+To say negate (V - a verb) for background/bg:
+	say "[negate V]".
 
 Chapter 2.4.3 - Meaningful verbs
 
@@ -583,6 +954,11 @@ Section 2.4.3.1 - In the Standard Rules
 Chapter 2.4.4 - Prepositions
 
 Chapter 2.4.5 - Meaningless verbs
+
+In Greek είμαι is a verb.
+In Greek έχω is a verb.
+In Greek μπορώ is a verb.
+In Greek βλέπω is a verb.
 
 Part 2.5 - Miscellaneous substitutions
 
@@ -621,9 +997,25 @@ This produces text which can be pasted in here before being translated.]
 
 Section 3.1.1.1 - The final question
 
+print the final prompt rule response (A) is ">[run paragraph on]".
+print the final question rule response (A) is "Θα ήθελες να ".
+print the final question rule response (B) is " ή ".
+standard respond to final question rule response (A) is "Παρακαλώ επίλεξε μία από τις παραπάνω επιλογές.".
+
 Section 3.1.1.2 - Printing the locale description
 
+you-can-also-see rule response (A) is "[Εσύ] ".
+you-can-also-see rule response (B) is "Πάνω σε [the domain], [εσύ] ".
+you-can-also-see rule response (C) is "Μέσα σε [the domain], [εσύ] ".
+you-can-also-see rule response (D) is "[regarding the player][adapt the verb μπορώ] επίσης να δεις ".
+[ TODO: Adapt the verb μπορώ ]
+you-can-also-see rule response (E) is "[regarding the player][adapt the verb μπορώ] να δεις ".
+you-can-also-see rule response (F) is "".
+
 Section 3.1.1.3 - Printing a locale paragraph about a thing
+
+use initial appearance in room descriptions rule response (A) is "Πάνω σε [the item], ".
+describe what's on scenery supporters in room descriptions rule response (A) is "Πάνω σε [the item], ".
 
 Section 3.1.1.4 - Standard actions concerning the actor's possessions
 
@@ -633,9 +1025,10 @@ Section 3.1.1.5 - Standard actions which move the actor
 
 [ Going ]
 
-can't go that way rule response (A) is "[Εσύ] δεν μπορείς να πας προς αυτή την κατεύθυνση".
+can't go that way rule response (A) is "[Εσύ] [negate the verb μπορώ for bg] [adapt the verb βλέπω for bg] προς αυτή την κατεύθυνση".
+[ TODO: Change to πηγαίνω ]
 
-can't go that way rule response (B) is "[Εσύ] δεν μπορείς να πας τα εκεί".
+can't go that way rule response (B) is "[Εσύ] [negate the verb μπορώ for bg] να πας προς τα εκεί".
 
 Part 3.2 - The Final Question
 
@@ -943,6 +1336,9 @@ Part 4.3 - Additional language-specific actions
 
 Chapter 4.3.1 - InGoing
 
+InGoing is an action applying to nothing.
+Understand "entrer" as InGoing.
+
 Chapter 4.3.2 - OutGoing
 
 Chapter 4.3.3 - DownGoing
@@ -953,9 +1349,9 @@ Chapter 4.3.5 - UpStanding
 
 Part 4.4 - Clarifying the parser's choice of something
 
-Chapter 4.4.1 - Standard actions concerning the actor's possessions
-
 Part 4.5 - Actions specifications
+
+[ TODO: Add specifications ]
 
 Chapter 4.5.1 - Standard actions concerning the actor's possessions
 
