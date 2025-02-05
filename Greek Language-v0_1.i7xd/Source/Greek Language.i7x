@@ -731,7 +731,7 @@ Understand the command "ε", "ευρ", "ευρετηριο" as "ευρετήρι
 Understand "πάρε [things]" as taking.
 Understand the command "π", "παρε", "κράτησε", "σήκωσε", "άρπαξε", "μάζεψε", "πιάσε" and "βούτα" as "πάρε".
 
-Understand "αφαίρεσε [things inside] από [something]", "αφαιρεσε [things inside] από [something]", "πάρε [things inside] από [something]", "παρε [things inside] από [something]", "βγάλε [things inside] από [something]", "βγαλε [things inside] από [something]" as removing it from.
+Understand "αφαίρεσε [things inside] από [something]", "αφαιρεσε [things inside] από [something]", "πάρε [things inside] από [something]", "παρε [things inside] από [something]" as removing it from.
 
 Understand "ρίξε [things preferably held]", "ριξε [things preferably held]", "άφησε [things preferably held]", "άσε [things preferably held]", "αφησε [things preferably held]", "ασε [things preferably held]" as dropping.
 
@@ -741,6 +741,8 @@ Understand "βάλε [other things] πάνω σε [something]" as putting it on.
 [ TODO: Find a way for:  Understand the command "πανω" as "πάνω" ]
 
 Understand "βάλε [other things] μέσα σε [something]" as inserting it into.
+
+Understand "πέταξε [something preferably held] σε/προς [something]" as throwing it at.
 
 Understand the command "τοποθέτησε", "τοποθετησε", "βαλε" as "βάλε".
 
@@ -774,15 +776,166 @@ Understand the command "εξετασε", "τσέκαρε", "τσεκαρε" as "
 
 Understand "δες κάτω από [something]" and "εξέτασε κάτω από [something]" as looking under.
 
+Understand "δες μέσα/γύρω/πίσω από [something]" and "εξέτασε μέσα/γύρω/πίσω από [something]" as searching.
+
+Understand "συμβουλεύσου [text] σε [something]" as consulting it about (with nouns reversed).
+
+Understand "διάβασε σχετικά με [text] σε [something]" as consulting it about (with nouns reversed).
+
 Chapter 4.2.5 - Standard actions which change the state of things
+
+Understand "κλείδωσε [something] με [something preferably held]" as locking it with.
+Understand the command "κλειδωσε" as "κλείδωσε".
+
+Understand "ξεκλείδωσε [something] με [something preferably held]" as unlocking it with.
+Understand the command "ξεκλειδωσε", as "ξεκλείδωσε".
+
+Understand "γύρισε [something]" as turning.
+Understand the command "γυρισε" as "γύρισε".
+
+Understand "άναψε [something]" as switching on.
+Understand the command "αναψε" as "άναψε".
+Understand "σβήσε [something]" as switching off.
+Understand the command "σβησε" as "σβήσε".
+
+Understand the commands "περίστρεψε", "περιστρεψε", "στρίψε", "στριψε", "ξεβίδωσε", "ξεβιδωσε", "βίδωσε" and "βιδωσε" as "γύρισε".
+
+Understand "άνοιξε [something]" as opening.
+Understand the command "ανοιξε" as "άνοιξε".
+
+Understand "κλείσε [something]" as closing.
+Understand the command "κλεισε" as "κλείσε".
+
+Understand "φόρεσε [something preferably held]" as wearing.
+Understand the command "φορεσε", "φόρα", "φορα" as "φόρεσε".
+
+Understand "βγάλε [something preferably held]" as taking off.
+Understand the command "βγαλε" as "βγάλε".
 
 Chapter 4.2.6 - Standard actions concerning other people
 
+Understand "δώσε [something preferably held] σε [someone]" as giving it to.
+Understand "δώσε [someone] [something preferably held]" as giving it to (with nouns reversed).
+Understand the commands "πλήρωσε" and "πρόσφερε" and "τάισε" as "δώσε".
+
+Understand "δείξε σε [someone] [something preferably held]" as showing it to (with nouns reversed).
+Understand "δείξε [something preferably held] σε [someone]" as showing it to.
+Understand the commands "παρουσίασε" as "δείξε".
+
+Understand "ξύπνα" or "σήκω" as waking up.
+Understand "ξύπνα [someone]" or "σήκωσε [someone] " as waking.
+
+Understand "επιθέσου σε [something]" as attacking.
+Understand "χτύπα [something]" as attacking.
+Understand the commands "χτύπησε", "πολέμησε", "βασάνισε", "κατάστρεψε", "σπάσε", "ράγισε", "δολοφόνησε", "σκότωσε", "γρονθοκόπησε" as "χτύπα".
+
+Understand "φίλησε [someone]" as kissing.
+Understand the commands "φίλα" and "αγκάλιασε" as "φίλησε".
+
+Understand "απάντησε [text] σε [someone]" as answering it that (with nouns reversed).
+Understand the commands "απάντα", "φώναξε", "πες" and "μίλα" as "απάντησε".
+
+Understand "πες σε [someone] σχετικά με [text]" as telling it about.
+
+Understand "ρώτησε [someone] σχετικά με [text]" as asking it about.
+Understand "ρώτησε [someone] για [something]" as asking it for.
+
 Chapter 4.2.7 - Standard actions which are checked but then do nothing unless rules intervene
+
+Understand "περίμενε" as waiting.
+Understand the command "ζ" as "περίμενε".
+
+Understand "ακούμπησε [something]" as touching.
+Understand the command "ακούμπα", "πίεσε", "πάτα", "νιώσε" as "ακούμπησε".
+
+Understand "κυμάτισε [something]" as waving.
+
+Understand "τράβηξε [something]" as pulling.
+Understand the command "τράβα", "σύρε" as "τράβηξε".
+
+Understand "σπρώξε [something]" as pushing.
+Understand "σπρώξε [something] [direction]" or "σπρώξε [something] προς [direction]" as pushing it to.
+Understand the commands "μετακίνησε", "διώξε" as "σπρώξε".
+
+Understand "συμπίεσε [something]" as squeezing.
+Understand the command "συμπιεσε" as "συμπίεσε".
 
 Chapter 4.2.8 - Standard actions which always do nothing unless rules intervene
 
+Understand "ναι" as saying yes.
+Understand the command "οκ" as "ναι".
+
+Understand "όχι" as saying no.
+
+Understand "κάψε [something]" as burning.
+Understand the command "καψε" as "κάψε".
+
+Understand "σκέψου" as thinking.
+
+Understand "μύρισε" as smelling.
+Understand "μύρισε [something]" as smelling.
+Understand the command "οσμίσου" and "σνίφαρε" as "smell".
+
+Understand "άκουσε" as listening to.
+Understand "άκουσε [something]" as listening to.
+Understand "άκουσε σε [something]" as listening to.
+Understand the command "άκου" as "άκουσε".
+
+Understand "γεύσου [something]" as tasting.
+Understand the command "δοκίμασε" as "γεύσου".
+
+Understand "κόψε [something]" as cutting.
+Understand the commands "τεμάχισε", "κομμάτιασε" and "ψιλόκοψε" as "κόψε".
+
+Understand "πήδησε" as jumping.
+Understand the command "χοροπήδησε", "πήδα" as "πήδησε".
+
+Understand "δέσε [something] σε [something]" as tying it to.
+Understand the commands "προσκόλλησε" and "σύνδεσε" as "δέσε".
+
+Understand "πιες [something]" as drinking.
+Understand the command "καταπιές" as "πιες".
+
+Understand "συγγνώμη" or "συγνώμη" as saying sorry.
+
+Understand "ισορρόπησε [something]" or "ισορρόπησε πάνω στον/στη/στο [something]" as swinging.
+
+Understand "τρίψε [something]" as rubbing.
+Understand the commands "γυάλισε", "καθάρισε", "ξεσκόνισε", "σκούπισε", "σφουγγάρισε" as "τρίψε".
+
+Understand "σέταρε [something] σε [text]" as setting it to.
+Understand the command "προσάρμοσε"and "ρύθμισε" as "σέταρε".
+
+Understand "αγόρασε [something]" as buying.
+Understand the command "απόκτησε" as "αγόρασε".
+
+Understand "σκαρφάλωσε [something]" or "σκαρφάλωσε πάνω σε/από [something]" as climbing.
+Understand the command "ανέβα" as "σκαρφάλωσε".
+
+Understand "κοιμήσου" as sleeping.
+Understand the command "αποκοιμήσου" as "κοιμήσου".
+
 Chapter 4.2.9 - Standard actions which happen out of world
+
+Understand "τέλος" as quitting the game.
+
+Understand "αποθήκευση" as saving the game.
+
+Understand "επαναφορά" as restoring the game.
+
+Understand "επανεκκίνηση" as restarting the game.
+
+Understand "σύντομο" as preferring abbreviated room descriptions.
+
+Understand "αναλυτικό"  as preferring unabbreviated room descriptions.
+
+Understand "κανονικό" as preferring sometimes abbreviated room descriptions.
+
+Understand "ειδοποίηση σκορ" or "ειδοποίηση σκορ ενεργή" as switching score notification on.
+
+Understand "ειδοποίηση σκορ ανενεργή" as switching score notification off.
+
+Understand "αντωνυμίες" as requesting the pronoun meanings.
 
 Chapter 4.2.10 - Miscellaneous
 
@@ -799,6 +952,8 @@ Chapter 4.3.4 - UpGoing
 Chapter 4.3.5 - UpStanding
 
 Part 4.4 - Clarifying the parser's choice of something
+
+Chapter 4.4.1 - Standard actions concerning the actor's possessions
 
 Part 4.5 - Actions specifications
 
