@@ -750,18 +750,73 @@ an irregular conjugation or not:
 
 (b) The mostly obsolete verb "vêtir" (to clothe, but "habiller" is far more
 	common now) is sometimes irregular, sometimes not. Inform treats it as a
-	regular -IR verb.]
+	regular -IR verb.
+
+
+In Greek, we also need to define "Subjunctive" (υποτακτική) grammatical mood, because of its use with many verbs, such as can, be, could, etc.
+
+However, in most cases, the verb conjugation is the same as the future tense, so we can just replace the word "θα" (will) with the word "να" (to).
+
+]
 
 
 Include [preform](-
 language Greek
 
+[
+
+[ TODO: Change the position of the following ]
+Guide on how to use Preform: https://ganelson.github.io/inform/words-module/4-ap.html
+
+Wildcards στην Preform:
+ - ...: Non-empty-text
+ - ***: Any text
+ - ......: matches any non-empty text in which brackets are used in a balanced way — thus they would match "alpha beta gamma" or "alpha (the Greek letter)", but not "alpha (the" or "Greek letter)".
+ - ###: Any single word
+
+Πώς λειτουργεί η δομή Preform για τα ρήματα στα ελληνικά:
+
+<verb-conjugation-instructions>: Ορίζουμε την κατηγορία κλίσης στην οποία ανήκει κάθε ρήμα. Για παράδειγμα, τα ρήματα λύνω, βάφω, κάνω έχουν την ίδια κλίση, ενώ το ρήμα "είμαι" είναι ανώμαλο ρήμα.
+
+Σημείωση: Όπου παρακάτω αναφέρεται μέλλοντας, αναφερόμαστε στον συνοπτικό μέλλοντα.
+
+<gr-"ρήμα ή κατηγορία"-conjugation> ::=
+	2	<μετοχή ενεστώτα> |
+	3	<απαρέμφατο αορίστου>????
+	<gr-"ρήμα ή κατηγορία"-tabulation>
+
+[slot 5 we use for the stem of the verb]
+
+Κλίση ρήματος ή κατηγορίας:
+<gr-"ρήμα ή κατηγορία"-tabulation> ::=
+	a1+		<gr-ρήμα-ενεστώτας> |
+	a1-		άρνηση <gr-ρήμα-ενεστώτας> |
+	a2+		<gr-ρήμα-παρατατικός> |
+	a2-		άρνηση <gr-ρήμα-παρατατικός> |
+	a3+		<gr-ρήμα-παρακείμενος> 3 |
+	a3- 	άρνηση <gr-ρήμα-παρακείμενος> 3 |
+	a4+		<gr-ρήμα-υπερσυντέλικος> 3 |
+	a4-		άρνηση <gr-ρήμα-υπερσυντέλικος> 3 |
+	a5+		<gr-ρήμα-μέλλοντας> |
+	a5-		άρνηση <gr-ρήμα-μέλλοντας> |
+	a6+		 <gr-ρήμα-αόριστος> |
+	a6-		άρνηση <gr-ρήμα-αόριστος> |
+	[ p* TODO: Figure out what is its purpose ]
+
+
+Τέλος, ακολουθεί η κλίση για κάθε χρόνο, π.χ.:
+
+<gr-be-present> ::=
+    είμαι | είσαι | είναι | είμαστε | είστε | είναι
+
+]
 <verb-conjugation-instructions> ::=
 	-είμαι <gr-be-conjugation> |
 	-έχω <gr-have-conjugation> |
 	-μπορώ <gr-can-conjugation> |
 	-λύνω <gr-lyno-conjugation> |
-	-βλέπω <gr-vlepo-conjugation>
+	-βλέπω <gr-vlepo-conjugation> |
+	-δω <gr-na-do-conjugation>
 
 [ "Είμαι" ]
 
@@ -817,14 +872,14 @@ language Greek
     <gr-can-tabulation>
 
 <gr-can-tabulation> ::=
-    a1+ <gr-can-present> |
-    a1- δεν <gr-can-present> |
-    a2+ <gr-can-past> |
-    a2- δεν <gr-can-past> |
-    a3+ <gr-can-future> |
-    a3- δεν <gr-can-future> |
-    a4+ <gr-can-imperfect> |
-    a4- δεν <gr-can-imperfect>
+    a1+ 	<gr-can-present> |
+    a1- 	δεν <gr-can-present> |
+    a2+ 	<gr-can-past> |
+    a2- 	δεν <gr-can-past> |
+    a4+ 	<gr-can-imperfect> |
+    a4- 	δεν <gr-can-imperfect> |
+	a5+ 	θα <gr-can-future> |
+    a5- 	δεν θα <gr-can-future>
 
 <gr-can-present> ::=
     μπορώ | μπορείς | μπορεί | μπορούμε | μπορείτε | μπορούν
@@ -833,7 +888,7 @@ language Greek
     μπορούσα | μπορούσες | μπορούσε | μπορούσαμε | μπορούσατε | μπορούσαν
 
 <gr-can-future> ::=
-    θα μπορώ | θα μπορείς | θα μπορεί | θα μπορούμε | θα μπορείτε | θα μπορούν
+    μπορώ | μπορείς | μπορεί | μπορούμε | μπορείτε | μπορούν
 
 <gr-can-imperfect> ::=
     μπορούσα | μπορούσες | μπορούσε | μπορούσαμε | μπορούσατε | μπορούσαν
@@ -894,44 +949,36 @@ language Greek
     <gr-vlepo-tabulation>
 
 <gr-vlepo-tabulation> ::=
-    a1+  	<gr-vlepo-present> |
-    a1-  	δεν <gr-vlepo-present> |
-    a2+  	<gr-vlepo-past> |
-    a2-  	δεν <gr-vlepo-past> |
-    a3+  	<gr-vlepo-future> |
-    a3-  	δεν <gr-vlepo-future> |
-    a4+  	<gr-vlepo-aorist> |
-    a4-  	δεν <gr-vlepo-aorist> |
-    a5+  	θα <gr-vlepo-present> |
-    a5-  	δεν θα <gr-vlepo-present> |
-    a6+  	να <gr-vlepo-present> |
-    a6-  	να μην <gr-vlepo-present> |
-    a7+  	<gr-vlepo-imperative> |
-    a7-  	δεν <gr-vlepo-imperative> |
-    a8+  	<gr-vlepo-infinitive> |
-	a9+  	<gr-vlepo-subjunctive-aorist>
+    a1+      <gr-vlepo-present> |
+    a1-      δεν <gr-vlepo-present> |
+    a2+      <gr-vlepo-past> |
+    a2-      δεν <gr-vlepo-past> |
+	[ TODO: Λείπουν a4, a3 ]
+    a5+      <gr-vlepo-future> |
+    a5-      δεν <gr-vlepo-future> |
+    a6+      <gr-vlepo-imperfect> |
+    a6-      δεν <gr-vlepo-imperfect> |
 
 <gr-vlepo-present> ::=
     βλέπω | βλέπεις | βλέπει | βλέπουμε | βλέπετε | βλέπουν
 
 <gr-vlepo-past> ::=
-    έβλεπα | έβλεπες | έβλεπε | βλέπαμε | βλέπατε | έβλεπαν
+    είδα | είδες | είδε | είδαμε | είδατε | είδαν
 
 <gr-vlepo-future> ::=
     θα δω | θα δεις | θα δει | θα δούμε | θα δείτε | θα δουν
 
-<gr-vlepo-aorist> ::=
-    είδα | είδες | είδε | είδαμε | είδατε | είδαν
+<gr-vlepo-imperfect> ::=
+    έβλεπα | έβλεπες | έβλεπε | βλέπαμε | βλέπατε | έβλεπαν
 
-<gr-vlepo-imperative> ::=
-    βλέπε | να βλέπετε
+<gr-na-do-conjugation> ::=
+	<gr-na-do-tabulation>
 
-<gr-vlepo-infinitive> ::=
-     -- | -- | δει | -- | -- | --
+<gr-na-do-tabulation> ::=
+	a1+      <gr-na-do-present>
 
-<gr-vlepo-subjunctive-aorist> ::=
-    να δω | να δεις | να δει | να δούμε | να δείτε | να δουν
-
+<gr-na-do-present> ::=
+	δω | δεις | δει | δούμε | δείτε | δουν
 
 -) in the Preform grammar.
 
@@ -959,6 +1006,7 @@ In Greek είμαι is a verb.
 In Greek έχω is a verb.
 In Greek μπορώ is a verb.
 In Greek βλέπω is a verb.
+In Greek δω is a verb.
 
 Part 2.5 - Miscellaneous substitutions
 
@@ -1009,7 +1057,7 @@ you-can-also-see rule response (B) is "Πάνω σε [the domain], [εσύ] ".
 you-can-also-see rule response (C) is "Μέσα σε [the domain], [εσύ] ".
 you-can-also-see rule response (D) is "[regarding the player][adapt the verb μπορώ] επίσης να δεις ".
 [ TODO: Adapt the verb μπορώ ]
-you-can-also-see rule response (E) is "[regarding the player][adapt the verb μπορώ] να δεις ".
+you-can-also-see rule response (E) is "[regarding the player][adapt the verb μπορώ] να [adapt the verb δω in present tense] ".
 you-can-also-see rule response (F) is "".
 
 Section 3.1.1.3 - Printing a locale paragraph about a thing
