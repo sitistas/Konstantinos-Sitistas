@@ -70,7 +70,8 @@ To decide whether (T - a text) starts with a vowel:
 Part 1.1 SR Hack - Greek Bibliographical Data (in place of Section 7 - Unindexed Standard Rules variables in Standard Rules)
 
 [ TODO: Does it work? ]
-
+[ Check with:
+Section 3.5.1 - The bibliographical data - Unindexed (in place of Section SR2/6a - Unindexed Standard Rules variables - Unindexed in Standard Rules by Graham Nelson) ]
 The story title, the story author, the story headline, the story genre and the story description are text variables. [*****]
 The release number and the story creation year are number variables. [**]
 
@@ -486,6 +487,46 @@ To say τον εαυτό σου:
 	else if the story viewpoint is third person plural:
 		say "Τους εαυτούς τους".
 
+To say σου:
+	now the prior named object is the player;
+	if the story viewpoint is first person singular:
+		say "μου";
+	else if the story viewpoint is second person singular:
+		say "σου";
+	else if the story viewpoint is third person singular:
+		if the player is male:
+			say "του";
+		else if the player is female:
+			say "της";
+		otherwise:
+			say "του";
+	else if the story viewpoint is first person plural:
+		say "μας";
+	else if the story viewpoint is second person plural:
+		say "σας";
+	else if the story viewpoint is third person plural:
+		say "τους".
+
+To say Σου:
+	now the prior named object is the player;
+	if the story viewpoint is first person singular:
+		say "Μου";
+	else if the story viewpoint is second person singular:
+		say "Σου";
+	else if the story viewpoint is third person singular:
+		if the player is male:
+			say "Του";
+		else if the player is female:
+			say "Της";
+		otherwise:
+			say "Του";
+	else if the story viewpoint is first person plural:
+		say "Μας";
+	else if the story viewpoint is second person plural:
+		say "Σας";
+	else if the story viewpoint is third person plural:
+		say "Τους".
+
 [ TODO: Continue from here based on French]
 Chapter 2.2.2 - Pronouns and possessives for other objects
 
@@ -810,13 +851,23 @@ Wildcards στην Preform:
     είμαι | είσαι | είναι | είμαστε | είστε | είναι
 
 ]
+
+[ TODO: Change from imperative to imperfect... ]
+
 <verb-conjugation-instructions> ::=
 	-είμαι <gr-be-conjugation> |
 	-έχω <gr-have-conjugation> |
 	-μπορώ <gr-can-conjugation> |
 	-λύνω <gr-lyno-conjugation> |
 	-βλέπω <gr-vlepo-conjugation> |
-	-δω <gr-na-do-conjugation>
+	-δω <gr-na-do-conjugation> |
+	-πάω <gr-na-paw-conjugation> |
+	-κρατάω <gr-kratao-conjugation> |
+	-χτυπάω <gr-xtypao-conjugation> |
+	-παίρνω <gr-pairno-conjugation> |
+	-πάρω <gr-na-paro-conjugation> |
+
+	[ TODO: αφήνω ή βάζω,  ]
 
 [ "Είμαι" ]
 
@@ -828,8 +879,8 @@ Wildcards στην Preform:
     a1- δεν <gr-be-present> |
     a2+ <gr-be-past> |
     a2- δεν <gr-be-past> |
-    a3+ <gr-be-future> |
-    a3- δεν <gr-be-future>
+    a5+ <gr-be-future> |
+    a5- δεν <gr-be-future>
 
 <gr-be-present> ::=
     είμαι | είσαι | είναι | είμαστε | είστε | είναι
@@ -851,8 +902,8 @@ Wildcards στην Preform:
     a1- δεν <gr-have-present> |
     a2+ <gr-have-past> |
     a2- δεν <gr-have-past> |
-    a3+ <gr-have-future> |
-    a3- δεν <gr-have-future>
+    a5+ <gr-have-future> |
+    a5- δεν <gr-have-future>
 
 <gr-have-present> ::=
     έχω | έχεις | έχει | έχουμε | έχετε | έχουν
@@ -897,7 +948,7 @@ Wildcards στην Preform:
 [ "Λύνω" - 'Α Συζυγία. Παρόμοια κλίνονται τα "κάνω", "βάφω", ... ]
 
 <gr-lyno-conjugation> ::=
-    5       λυν |
+    5       λύν |
     6       λυσ |
     <gr-lyno-tabulation>
 
@@ -919,7 +970,7 @@ Wildcards στην Preform:
     a8+ <gr-lyno-infinitive>
 
 <gr-lyno-present> ::=
-    λύνω | λύνεις | λύνει | λύνουμε | λύνουν
+	5+ω | 5+εις | 5+ει | 5+ουμε | 5+ετε | 5+ουν
 
 <gr-lyno-past> ::=
     έλυνα | έλυνες | έλυνε | λύναμε | λύνατε | έλυναν
@@ -969,7 +1020,79 @@ Wildcards στην Preform:
     θα δω | θα δεις | θα δει | θα δούμε | θα δείτε | θα δουν
 
 <gr-vlepo-imperfect> ::=
-    έβλεπα | έβλεπες | έβλεπε | βλέπαμε | βλέπατε | έβλεπαν
+	έβλεπα | έβλεπες | έβλεπε | βλέπαμε | βλέπατε | έβλεπαν
+
+[ Κρατάω - Α' Τάξη, Β' Συζυγία, ρήματα σε -άω/-ω. Προς το παρόν θα κρατήσουμε μόνο την κατάληξη σε -άω]
+
+<gr-kratao-conjugation> ::=
+    5       κρατ |
+    7       κράτ |
+    <gr-kratao-tabulation>
+
+<gr-kratao-tabulation> ::=
+    a1+      <gr-kratao-present> |
+    a1-      δεν <gr-kratao-present> |
+    a2+      <gr-kratao-past> |
+    a2-      δεν <gr-kratao-past> |
+	[ TODO: Λείπουν a4, a3 ]
+    a5+      <gr-kratao-future> |
+    a5-      δεν <gr-kratao-future> |
+    a6+      <gr-kratao-imperfect> |
+    a6-      δεν <gr-kratao-imperfect> |
+
+<gr-kratao-present> ::=
+     5+άω | 5+άς | 5+άει | 5+άμε | 5+άτε | 5+ούν |
+
+<gr-kratao-past> ::=
+    7+ησα | 7+ησες | 7+ησε | 5+ήσαμε | 5+ήσατε | 7+ησαν |
+
+<gr-kratao-future> ::=
+    θα 5+ήσω | θα 5+ήσεις | θα 5+ήσει | θα 5+ήσουμε | θα 5+ήσετε | θα 5+ήσουν
+
+<gr-kratao-imperfect> ::=
+	δει
+
+<gr-xtypao-conjugation> ::=
+    5       χτυπ |
+    7       χτύπ |
+    <gr-kratao-tabulation>
+
+
+[ "Παίρνω" ]
+
+<gr-pairno-conjugation> ::=
+    5       παίρν |
+    6		πάρ |
+    7       πήρ |
+	8		έπαιρν |
+    <gr-pairno-tabulation>
+
+<gr-pairno-tabulation> ::=
+    a1+      <gr-lyno-present> |
+    a1-      δεν <gr-lyno-present> |
+    a2+      <gr-pairno-past> |
+    a2-      δεν <gr-pairno-past> |
+	[ TODO: Λείπουν a4, a3 ]
+    a5+      <gr-pairno-future> |
+    a5-      δεν <gr-pairno-future> |
+    a6+      <gr-pairno-imperfect> |
+    a6-      δεν <gr-pairno-imperfect> |
+
+<gr-pairno-past> ::=
+    πήρα | πήρες | πήρε | πήραμε | πήρατε | πήραν
+
+<gr-pairno-future> ::=
+    θα πάρω | θα πάρεις | θα πάρει | θα πάρουμε | θα πάρετε | θα πάρουν
+
+<gr-pairno-imperfect> ::=
+	έπαιρνα | έπαιρνες | έπαιρνε | παίρναμε | παίρνατε | έπαιρναν
+
+
+[ Υποτακτική Έγκλιση ]
+
+[ Δυστυχώς, το Inform δεν υποστηρίζει με κάποιον τρόπο όσο έχω ψάξει την υποτακτική έγκλιση, οπότε για τα ρήματα που αυτή απαιτείται, θα την ορίσουμε ως νέο ρήμα, και θα χρησιμοποιήσουμε αποκλειστικά τον ενεστώτα (present tense) ]
+
+[ "Να δω" ]
 
 <gr-na-do-conjugation> ::=
 	<gr-na-do-tabulation>
@@ -979,6 +1102,28 @@ Wildcards στην Preform:
 
 <gr-na-do-present> ::=
 	δω | δεις | δει | δούμε | δείτε | δουν
+
+[ "Να πάω" ]
+
+<gr-na-paw-conjugation> ::=
+	<gr-na-paw-tabulation>
+
+<gr-na-paw-tabulation> ::=
+	a1+      <gr-na-paw-present>
+
+<gr-na-paw-present> ::=
+	πάω | πας | πάει | πάμε | πάτε | πάνε
+
+
+<gr-na-paro-conjugation> ::=
+	<gr-na-paro-tabulation>
+
+<gr-na-paro-tabulation> ::=
+	a1+      <gr-na-paro-present>
+
+<gr-na-paro-present> ::=
+	πάρω | πάρεις | πάρει | πάρουμε | πάρετε | πάρουν
+
 
 -) in the Preform grammar.
 
@@ -1007,6 +1152,10 @@ In Greek έχω is a verb.
 In Greek μπορώ is a verb.
 In Greek βλέπω is a verb.
 In Greek δω is a verb.
+In Greek πάω is a verb.
+In Greek κρατάω is a verb.
+In Greek παίρνω is a verb.
+In Greek πάρω is a verb.
 
 Part 2.5 - Miscellaneous substitutions
 
@@ -1018,11 +1167,11 @@ To say εδώ:
 	if the story tense is present tense, say "εδώ";
 	else say "σε αυτό το μέρος".
 
-To say τώρα:
+To say Τώρα:
 	if the story tense is present tense, say "Τώρα";
 	else say "Εκείνη την εποχή".
 
-To say εδώ:
+To say Εδώ:
 	if the story tense is present tense, say "Εδώ";
 	else say "Σε αυτό το μέρος".
 
@@ -1055,7 +1204,7 @@ Section 3.1.1.2 - Printing the locale description
 you-can-also-see rule response (A) is "[Εσύ] ".
 you-can-also-see rule response (B) is "Πάνω σε [the domain], [εσύ] ".
 you-can-also-see rule response (C) is "Μέσα σε [the domain], [εσύ] ".
-you-can-also-see rule response (D) is "[regarding the player][adapt the verb μπορώ] επίσης να δεις ".
+you-can-also-see rule response (D) is "[regarding the player][adapt the verb μπορώ] επίσης να [adapt the verb δω in present tense] ".
 [ TODO: Adapt the verb μπορώ ]
 you-can-also-see rule response (E) is "[regarding the player][adapt the verb μπορώ] να [adapt the verb δω in present tense] ".
 you-can-also-see rule response (F) is "".
@@ -1067,16 +1216,206 @@ describe what's on scenery supporters in room descriptions rule response (A) is 
 
 Section 3.1.1.4 - Standard actions concerning the actor's possessions
 
+[Taking inventory]
+print empty inventory rule response (A) is "[Εσύ] δεν [adapt the verb κρατάω] τίποτα.".
+print standard inventory rule response (A) is "[Εσύ] [adapt the verb κρατάω] :[line break]".
+report other people taking inventory rule response (A) is "[The actor] [adapt the verb βλέπω in present tense] τα υπάρχοντά [σου].".
+
+[Taking]
+
+[ TODO: Test the following, see French example ]
+can't take yourself rule response (A) is "Δεν [adapt the verb μπορώ in present tense] να [adapt the verb πάρω in present tense] [τον εαυτό σου]".
+[ TODO: Change the following ]
+can't take other people rule response (A) is "[We] [don't] suppose [the noun] [would care] for that.".
+[ TODO: Continue from here ]
+
+
+standard report taking rule response (A) is "Πάρθηκε.".
+standard report taking rule response (B) is "[The actor] [adapt the verb παίρνω] [the noun].".
+[ TODO: Continue from here ]
+
+[Removing it from]
+
+[Dropping]
+can't drop what's already dropped rule response (A) is "[The noun] [adapt the verb είμαι] ήδη [εδώ].".
+[ TODO: Fix the following ]
+can't drop what's not held rule response (A) is "[Εσύ] δεν [adapt the verb έχω] [regarding the noun][those].".
+
+standard report dropping rule response (A) is "Αφέθηκε.".
+standard report dropping rule response (B) is "[The actor] [put] down [the noun].".
+
+[Putting it on]
+can't put something on itself rule response (A) is "[We] [can't put] something on top of itself.".
+
+[Inserting it into]
+
+[Eating]
+
 Section 3.1.1.5 - Standard actions which move the actor
 
 [Going , Entering , Exiting , Getting off]
 
 [ Going ]
 
-can't go that way rule response (A) is "[Εσύ] [negate the verb μπορώ for bg] [adapt the verb βλέπω for bg] προς αυτή την κατεύθυνση".
-[ TODO: Change to πηγαίνω ]
+can't go that way rule response (A) is "[Εσύ] [negate the verb μπορώ for bg] να [adapt the verb πάω in present tense] προς αυτή την κατεύθυνση".
 
-can't go that way rule response (B) is "[Εσύ] [negate the verb μπορώ for bg] να πας προς τα εκεί".
+can't go that way rule response (B) is "[Εσύ] [negate the verb μπορώ for bg] να [adapt the verb πάω in present tense] προς τα εκεί".
+
+[Entering]
+
+[Getting off]
+
+Section 3.1.1.6 - Standard actions concerning the actor's vision
+
+[Looking]
+
+[Examining]
+
+[Looking under]
+
+[Searching]
+
+[Consulting it about]
+
+Section 3.1.1.7 - Standard actions which change the state of things
+
+[Locking it with]
+
+[Unlocking it with]
+
+[Switching on]
+
+[Switching off]
+
+[Opening]
+
+[Closing]
+
+[Wearing]
+
+[Taking off]
+
+Section 3.1.1.8 - Standard actions concerning other people
+
+[Giving it to]
+
+[Showing it to]
+
+[Waking]
+
+[Throwing it at]
+
+[Attacking]
+
+[Kissing]
+
+Section 3.1.1.9 - Standard actions which are checked but then do nothing unless rules intervene
+
+[Waiting]
+
+[Touching]
+
+[Waving]
+
+[Pulling]
+
+[Pushing]
+
+[Turning]
+
+[Pushing it to]
+
+[Squeezing]
+
+Section 3.1.1.10 - Standard actions which always do nothing unless rules intervene
+
+[Saying yes, saying no]
+
+[Burning]
+
+[Waking up]
+
+[Thinking]
+
+[Smelling]
+
+[Listening to]
+
+[Tasting]
+
+[Cutting]
+
+[Jumping]
+
+[Tying it to]
+
+[Drinking]
+
+[Saying sorry]
+
+[Swinging]
+
+[Rubbing]
+
+[Setting it to]
+
+[Waving hands]
+
+[Buying]
+
+[Climbing]
+
+[Sleeping]
+
+Section 3.1.1.11 - Accessibility and visibility
+
+Section 3.1.1.12 - List writer internal rule
+
+Section 3.1.1.13 - Action processing internal rule
+
+Section 3.1.1.14 - Parser
+
+parser error internal rule response (N) is "Αυτό δεν είναι ένα από τα ρήματα που καταλαβαίνω.".
+parser error internal rule response (T) is "Δεν μπορείς να ξεκινήσεις την πρόταση με κόμμα.".
+parser error internal rule response (U) is "Φαίνεται ότι θες να μιλήσεις σε κάποιον, αλλά δε μπορώ να καταλάβω σε ποιον.".
+
+
+parser error internal rule response (X) is "Συγγνώμη;".
+
+darkness name internal rule response (A) is "Σκοτάδι".
+
+Section 3.1.1.15 - Yes or no question internal rule
+
+yes or no question internal rule response (A) is "Παρακαλώ απάντησε με ναι ή όχι.".
+
+Section 3.1.1.16 - Print protagonist internal rule
+
+Section 3.1.1.17 - Standard implicit taking rule
+
+Section 3.1.1.18 - Player's obituary
+
+Section 3.1.1.19 - Standard actions which happen out of world
+
+[Undoing (though not technically an action)]
+
+[Quitting the game]
+quit the game rule response (A) is "Σίγουρα θες να φύγεις από το παιχνίδι; ".
+
+[Saving the game]
+
+[Restoring the game]
+
+[Restarting the game]
+
+[Verifying the story file]
+
+[Switching the story transcript on]
+
+[Switching the story transcript off]
+
+[Requesting the score]
+
+[Switching score notification on/off]
 
 Part 3.2 - The Final Question
 
