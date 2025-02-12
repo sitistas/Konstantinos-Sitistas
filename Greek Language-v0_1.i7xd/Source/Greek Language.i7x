@@ -870,7 +870,7 @@ Wildcards στην Preform:
 	-παίρνω <gr-pairno-conjugation> |
 	-πάρω <gr-na-paro-conjugation> |
 
-	[ TODO: αφήνω ή βάζω, στηρίζω ]
+	[ TODO: αφήνω ή βάζω, στηρίζω, περιέχω  ]
 
 [ "Είμαι" ]
 
@@ -1258,7 +1258,6 @@ you-can-also-see rule response (A) is "[Εσύ] ".
 you-can-also-see rule response (B) is "Πάνω σε [the domain], [εσύ] ".
 you-can-also-see rule response (C) is "Μέσα σε [the domain], [εσύ] ".
 you-can-also-see rule response (D) is "[regarding the player][adapt the verb μπορώ] επίσης να [adapt the verb δω in present tense] ".
-[ TODO: Adapt the verb μπορώ ]
 you-can-also-see rule response (E) is "[regarding the player][adapt the verb μπορώ] να [adapt the verb δω in present tense] ".
 you-can-also-see rule response (F) is "".
 
@@ -1428,14 +1427,46 @@ Section 3.1.1.13 - Action processing internal rule
 
 Section 3.1.1.14 - Parser
 
+parser error internal rule response (A) is "Δεν κατάλαβα αυτή την πρόταση.".
+parser error internal rule response (B) is "Κατάλαβα μόνο μέχρι το σημείο που ήθελες να".
+parser error internal rule response (C) is "Κατάλαβα μόνο μέχρι το σημείο που ήθελες να (πας)".
+parser error internal rule response (D) is "Δεν κατάλαβα αυτόν τον αριθμό.".
+parser error internal rule response (E) is "[negate the verb βλέπω] κάτι τέτοιο.".
+parser error internal rule response (F) is "Φαίνεται πως είπες πολύ λίγα!".
+parser error internal rule response (G) is "[negate the verb κρατάω] αυτό!".
+parser error internal rule response (H) is "Δεν μπορείς να χρησιμοποιήσεις πολλαπλά αντικείμενα με αυτό το ρήμα.".
+parser error internal rule response (I) is "Μπορείς να χρησιμοποιήσεις πολλαπλά αντικείμενα μόνο μία φορά σε μία γραμμή.".
+parser error internal rule response (J) is "Δεν είμαι σίγουρος σε τι αναφέρεται το ['][pronoun i6 dictionary word]['].".
+parser error internal rule response (K) is "[negate the verb μπορώ] να [adapt the verb δω in present tense] το ['][pronoun i6 dictionary word]['] ([the noun]) αυτή τη στιγμή.".
+parser error internal rule response (L) is "Εξαίρεσες κάτι που δεν περιλαμβανόταν έτσι κι αλλιώς!".
+parser error internal rule response (M) is "Μπορείς να το κάνεις αυτό μόνο σε κάτι που είναι έμψυχο.".
 parser error internal rule response (N) is "Αυτό δεν είναι ένα από τα ρήματα που καταλαβαίνω.".
+parser error internal rule response (O) is "Αυτό δεν είναι κάτι που χρειάζεται να αναφερθείς κατά τη διάρκεια αυτού του παιχνιδιού.".
+parser error internal rule response (P) is "Δεν κατάλαβα τον τρόπο που ολοκληρώθηκε αυτό.".
+parser error internal rule response (Q) is "[if number understood is 0]Κανένα[otherwise]Μόνο [number understood in words][end if] από αυτά [regarding the number understood][adapt the verb είμαι] διαθέσιμα.".
+parser error internal rule response (R) is "Αυτό το αντικείμενο δεν είχε νόημα σε αυτό το πλαίσιο.".
+parser error internal rule response (S) is "Για να επαναλάβεις μια εντολή όπως 'βάτραχε, πήδα', απλά πες 'ξανά', όχι 'βάτραχε, ξανά'.".
 parser error internal rule response (T) is "Δεν μπορείς να ξεκινήσεις την πρόταση με κόμμα.".
 parser error internal rule response (U) is "Φαίνεται ότι θες να μιλήσεις σε κάποιον, αλλά δε μπορώ να καταλάβω σε ποιον.".
-
-
+parser error internal rule response (V) is "Δεν μπορείς να μιλήσεις στον/στην/στο [the noun].".
+parser error internal rule response (W) is "Για να μιλήσεις σε κάποιον, δοκίμασε 'κάποιες, γεια σου' ή κάτι παρόμοιο.".
 parser error internal rule response (X) is "Συγγνώμη;".
 
+parser nothing error internal rule response (A) is "Δεν υπάρχει κάτι να κάνεις!".
+parser nothing error internal rule response (B) is "[negate the verb είμαι from the third person plural] καθόλου διαθέσιμα!".
+parser nothing error internal rule response (C) is "[The noun] [negate the verb έχω] τίποτα.".
+[ TODO: adapt the verb περιέχω in present tense - change those]
+parser nothing error internal rule response (D) is "[regarding the noun][Those] [negate the verb μπορώ] να περιέχουν πράγματα.".
+[ TODO: Adapt ανοιχτό και άδειο ]
+parser nothing error internal rule response (E) is "[The noun] [negate the verb είμαι] ανοιχτό.".
+parser nothing error internal rule response (F) is "[The noun] [adapt the verb είμαι] άδειο.".
+
 darkness name internal rule response (A) is "Σκοτάδι".
+
+parser command internal rule response (A) is "Συγνώμη, αυτό δεν μπορεί να διορθωθεί.".
+parser command internal rule response (B) is "Μην το σκέφτεσαι καθόλου.".
+parser command internal rule response (C) is "Το 'Ουπς' μπορεί να διορθώσει μόνο μία λέξη.".
+parser command internal rule response (D) is "Δύσκολα μπορείς να το επαναλάβεις.".
 
 Section 3.1.1.15 - Yes or no question internal rule
 
