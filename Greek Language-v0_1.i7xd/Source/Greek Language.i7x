@@ -299,8 +299,11 @@ are the same in second person (te and te), they're different in third person
 which is a bit awkward, but it'll do. Secondly, the reflexive pronoun is also
 te, so we'll write that one "[te-se]".
 
-In Greek, we will use second person singular as well.
+In Greek, we will use first person singular.
 ]
+
+
+[ TODO: Change second first person singular to first person ]
 
 The adaptive text viewpoint of the Greek language is second person singular.
 
@@ -867,7 +870,7 @@ Wildcards στην Preform:
 	-παίρνω <gr-pairno-conjugation> |
 	-πάρω <gr-na-paro-conjugation> |
 
-	[ TODO: αφήνω ή βάζω,  ]
+	[ TODO: αφήνω ή βάζω, στηρίζω ]
 
 [ "Είμαι" ]
 
@@ -1143,19 +1146,69 @@ Chapter 2.4.3 - Meaningful verbs
 
 Section 2.4.3.1 - In the Standard Rules
 
-Chapter 2.4.4 - Prepositions
+In Greek είμαι is a verb meaning to be.
+In Greek έχω is a verb meaning to have.
+In Greek μπορώ is a verb meaning to be able to.
+In Greek παρέχω is a verb meaning to provide.
+In Greek περιέχω is a verb meaning to contain.
+[ TODO: Add conjugation for the following:
+στηρίζω, ενσωματώνω, περικλείω, μεταφέρω, κρύβω, ξεκλειδώνω]
+[ In Greek στηρίζω is a verb meaning to support. ]
+[ In Greek ενσωματώνω is a verb meaning to incorporate. ]
+[ In Greek περικλείω is a verb meaning to enclose. ]
+[ In Greek μεταφέρω is a verb meaning to carry. ]
+In Greek κρατάω is a verb meaning to hold.
+[ In Greek κρύβω is a verb meaning to conceal. ]
+[ In Greek ξεκλειδώνω is a verb meaning to unlock. ]
 
-Chapter 2.4.5 - Meaningless verbs
-
-In Greek είμαι is a verb.
-In Greek έχω is a verb.
-In Greek μπορώ is a verb.
 In Greek βλέπω is a verb.
 In Greek δω is a verb.
 In Greek πάω is a verb.
 In Greek κρατάω is a verb.
 In Greek παίρνω is a verb.
 In Greek πάρω is a verb.
+
+Section 2.4.3.2 - In Rideable Vehicles (for use with Rideable Vehicles by Graham Nelson)
+
+Section 2.4.3.3 - In Locksmith (for use with Locksmith by Emily Short)
+
+Chapter 2.4.4 - Prepositions
+
+[ Στο σημείο αυτό, περιλαμβάνονται επιρρήματα και προθέσεις]
+
+[We need the following in order to make definitions of "prepositions" work
+properly.]
+
+
+Include [preform](-
+language Greek
+
+<infinitive-usage-exceptional> ::=
+	/c/ είμαι ...
+
+-) in the Preform grammar.
+
+[ Τοπικά επιρρήματα: αλλού, αυτού, βόρεια, δίπλα, εδώ, εκεί, εμπρός, εντός, έξω, κάτω, νότια, μέσα, παντού, πάνω, πίσω, πουθενά ]
+
+In Greek είμαι μέσα is a verb meaning to be in.
+In Greek είμαι εντός is a verb meaning to be in.
+[ In Greek είμαι γεωγραφικά μέσα is a verb meaning to be regionally in. ]
+[ Προκαλεί το ακόλουθο error:
+line 9197: Error:  No such constant as "call_U27"]
+In Greek είμαι πάνω is a is a verb meaning to be on.
+
+In Greek είμαι μέρος του is a verb meaning to be part of.
+In Greek είμαι μέρος της is a verb meaning to be part of.
+In Greek είμαι μέρος των is a verb meaning to be part of.
+[ TODO: Add wear? (In French être vêtu de is a verb meaning to wear.) ]
+
+[ Παραθετικά επιρρημάτων ]
+
+[ In Greek είμαι μεγαλύτερος is a verb meaning to be greater than. ]
+
+
+
+Chapter 2.4.5 - Meaningless verbs
 
 Part 2.5 - Miscellaneous substitutions
 
