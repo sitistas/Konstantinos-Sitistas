@@ -145,26 +145,85 @@ Part 2.1 - Determiners
 
 Chapter 2.1.1 - Articles
 
-To say ο/η/το/οι/τα (O - object):
+To say ο/του/τον/οι/των/τους/η/της/την/τη/τις/το/τα (O - object):
 	say "[the O]".
 
-To say ένας/μία/ένα (O - object):[Το αόριστο άρθρο δεν έχει πληθυντικό στα ελληνικά]
+To say ένας/μία/ένα/ενός/έναν/μίας (O - object):[Το αόριστο άρθρο δεν έχει πληθυντικό στα ελληνικά]
 	say "[a O]".
 
-To say Ο/Η/Το/Οι/Τα (O - object):
+To say Ο/Του/Τον/Οι/Των/Τους/Η/Της/Την/Τη/Τις/Το/Τα (O - object):
 	say "[The O]".
 
-To say Ένας/Μία/Ένα (O - object):
+To say Ένας/Μία/Ένα/Ενός/Έναν/Μίας (O - object):
 	say "[A O]".
+
+To say στον/στο/στην/στη/στο/στους/στις/στα (O - object):
+	if O is plural-named:
+		if O is male:
+			say "στους [O]";
+		else if O is female:
+			say "στις [O]";
+		else:
+			say "στα [O]";
+	else if O is male:
+		if "[O]" starts with a vowel:
+			say "στον [O]";
+		else:
+			say "στο [O]";
+	else if O is female:
+		if "[O]" starts with a vowel:
+			say "στην [O]";
+		else:
+			say "στη [O]";
+	else:
+		say "στο [O]".
+
+
+[ TODO (for French template):   >--> There's a problem in Inform's linguistic grammar, which is probably set
+    by a translation extension. The problem occurs in the definition of
+    'indefinite-article': nonterminal internal in one definition and regular in
+    another.
+    Because of this problem, the source could not be translated into a working
+    game. (Correct the source text to remove the difficulty and click on Go
+    once again.) ]
+
+[ TODO: Ask Graham about this one ]
+Include [preform](-
+language Greek
+
+<indefinite-article-table> ::=
+	ο η το οι οι τα			|
+	τον την το τους τις τα
+
+[ <definite-article> ::=
+	/b/ le/l' |				[singular, masculine]
+	/c/ la/l' |				[singular, feminine]
+	/e/ les					[plural, masculine (by default)]
+
+<np-relative-phrase-implicit> ::=
+	/a/ porté/portée/portés/portées |				[replacing "worn" in English]
+	/b/ tenu/tenue/tenus/tenues |			["carried"]
+	/d/ ici					["here"]
+
+<implicit-player-relationship> ::=
+	/a/ porté/portée/portés/portées |
+	/b/ tenu/tenue/tenus/tenues ]
+
+-) in the Preform grammar.
 
 
 Include (-
 Constant LanguageAnimateGender   = male;
 Constant LanguageInanimateGender = neuter;
 
-Constant LanguageContractionForms = 2;     ! English has two:
-                                           ! 0 = starting with a consonant
-                                           ! 1 = starting with a vowel
+Constant LanguageContractionForms = 2;
+! English has two:
+! 0 = starting with a consonant
+! 1 = starting with a vowel
+
+! Greek has also two:
+! 0 = starting with a consonant, except κ,π,τ,ξ,ψ or dipthongs γκ, μπ, ντ, τσ, τζ
+! 1 = starting with a vowel, or the exceptions above
 
 [ LanguageContraction text;
 	if (IsAnA(text->0) || IsAnE(text->0) || IsAnI(text->0) || IsAnO(text->0) || IsAnU(text->0) || text->0 == 'h' or 'H' or 'η' or 'Η' or 'ή' or 'Ή' or 'ω' or 'Ω' or 'ώ' or 'Ώ' or 'κ' or 'Κ' or 'π' or 'Π' or 'τ' or 'Τ' or 'ξ' or 'Ξ' or 'ψ' or 'Ψ') return 1;
@@ -245,7 +304,7 @@ Array LanguageNumbers table
 ! 		print "μηδέν";
 ! 		rfalse;
 ! 	}
-! ];
+
 !     if (n < 0) {
 !         print "μείον ";
 !         n = -n;
@@ -305,12 +364,12 @@ In Greek, we will use first person singular.
 
 [ TODO: Change second first person singular to first person ]
 
-The adaptive text viewpoint of the Greek language is second person singular.
+The adaptive text viewpoint of the Greek language is first person singular.
 
 When play begins (this is the initialise the story viewpoint rule):
 	now the story viewpoint is the second person singular.
 
-To say εσύ:
+To say εγώ:
 	now the prior named object is the player;
 	if the story viewpoint is first person singular:
 		say "εγώ";
@@ -335,7 +394,7 @@ To say εσύ:
 		otherwise:
 			say "αυτά".
 
-To say Εσύ:
+To say Εγώ:
 	now the prior named object is the player;
 	if the story viewpoint is first person singular:
 		say "Εγώ";
@@ -360,7 +419,7 @@ To say Εσύ:
 		otherwise:
 			say "Αυτά".
 
-To say εσάς:
+To say εμένα:
 	now the prior named object is the player;
 	if the story viewpoint is first person singular:
 		say "εμένα";
@@ -385,7 +444,7 @@ To say εσάς:
 		otherwise:
 			say "αυτά".
 
-To say Εσάς:
+To say Εμένα:
 	now the prior named object is the player;
 	if the story viewpoint is first person singular:
 		say "Εμένα";
@@ -410,7 +469,7 @@ To say Εσάς:
 		otherwise:
 			say "Αυτά".
 
-To say δικό σου:
+To say δικό μου:
 	now the prior named object is the player;
 	if the story viewpoint is first person singular:
 		say "δικό μου";
@@ -430,7 +489,7 @@ To say δικό σου:
 	else if the story viewpoint is third person plural:
 		say "δικό τους".
 
-To say Δικό σου:
+To say Δικό μου:
 	now the prior named object is the player;
 	if the story viewpoint is first person singular:
 		say "Δικό μου";
@@ -450,7 +509,7 @@ To say Δικό σου:
 	else if the story viewpoint is third person plural:
 		say "Δικό τους".
 
-To say τον εαυτό σου:
+To say τον εαυτό μου:
 	now the prior named object is the player;
 	if the story viewpoint is first person singular:
 		say "τον εαυτό μου";
@@ -470,7 +529,7 @@ To say τον εαυτό σου:
 	else if the story viewpoint is third person plural:
 		say "τους εαυτούς τους".
 
-To say τον εαυτό σου:
+To say τον εαυτό μου:
 	now the prior named object is the player;
 	if the story viewpoint is first person singular:
 		say "Τον εαυτό μου";
@@ -490,7 +549,7 @@ To say τον εαυτό σου:
 	else if the story viewpoint is third person plural:
 		say "Τους εαυτούς τους".
 
-To say σου:
+To say μου:
 	now the prior named object is the player;
 	if the story viewpoint is first person singular:
 		say "μου";
@@ -549,7 +608,7 @@ To say those in (case - grammatical case):
 		if the prior naming context is plural:
 			say "those";
 		otherwise if the item is the player:
-			say "[εσύ]";
+			say "[εγώ]";
 		otherwise if the item is a male person and item is not neuter:
 			say "he";
 		otherwise if the item is a female person and item is not neuter:
@@ -1133,6 +1192,50 @@ Wildcards στην Preform:
 
 Chapter 2.4.2 - Verb substitutions
 
+[ TODO: Figure out tenses ]
+
+[ To say είμαι:
+	if the story viewpoint is the first person singular:
+		now the prior named object is the player;
+		if the story tense is the perfect tense:
+			say "ήμουν";
+		else if the story tense is the past tense:
+			say "ήμουν";
+		else if the story tense is the past perfect tense:
+			say "ήμουν";
+		else:
+			say "[είμαι]";
+	else:
+		say "[είμαι]".
+
+To say Είμαι:
+	if the story viewpoint is the first person singular:
+		now the prior named object is the player;
+		if the story tense is the perfect tense:
+			say "Ήμουν";
+		else if the story tense is the past tense:
+			say "Ήμουν";
+		else if the story tense is the past perfect tense:
+			say "Ήμουν";
+		else:
+			say "[Είμαι]";
+	else:
+		say "[Είμαι]".
+
+To say ήμουν:
+	if the story viewpoint is the first person singular and (the story tense is past historic tense or the story tense is perfect tense or the story tense is past tense):
+		now the prior named object is the player;
+		say "ήμουν";
+	else:
+		say "ήμουν".
+
+
+To say Ήμουν:
+	if the story viewpoint is the first person singular and (the story tense is past historic tense or the story tense is perfect tense or the story tense is past tense):
+		now the prior named object is the player;
+		say "Ήμουν";
+	else:
+		say "Ήμουν". ]
 
 [ TODO: Complete the chapter ]
 
@@ -1194,18 +1297,37 @@ In Greek είμαι μέσα is a verb meaning to be in.
 In Greek είμαι εντός is a verb meaning to be in.
 [ In Greek είμαι γεωγραφικά μέσα is a verb meaning to be regionally in. ]
 [ Προκαλεί το ακόλουθο error:
-line 9197: Error:  No such constant as "call_U27"]
+line 9197/9201: Error:  No such constant as "call_U27/28"]
 In Greek είμαι πάνω is a is a verb meaning to be on.
 
 In Greek είμαι μέρος του is a verb meaning to be part of.
 In Greek είμαι μέρος της is a verb meaning to be part of.
 In Greek είμαι μέρος των is a verb meaning to be part of.
 [ TODO: Add wear? (In French être vêtu de is a verb meaning to wear.) ]
+[ In Greek είμαι δίπλα σε is a verb meaning to be adjacent to. ]
+[ TODO: Resolve error for the above: line 9311: Error:  No such constant as "call_U31" ]
+In Greek είμαι πάνω από is a verb meaning to be above.
+In Greek είμαι κάτω από is a verb meaning to be below.
+In Greek είμαι μέσα από is a verb meanign to be through.
+
+[ TODO: Fix these for the following: new verbs can only be defined in terms of existing relations, all of
+    which have names ending 'relation': thus '...implies the possession
+    relation' is an example of a valid definition, this being one of the
+    relations built into Inform. ]
+[ In Greek είμαι βόρεια του is a verb meaning the mapping north relation.
+In Greek είμαι βόρεια της is a verb meaning the mapping north relation.
+In Greek είμαι βόρεια των is a verb meaning the mapping north relation. ]
 
 [ Παραθετικά επιρρημάτων ]
 
-[ In Greek είμαι μεγαλύτερος is a verb meaning to be greater than. ]
-
+[ TODO: Check if the following works correctly. ]
+In Greek είμαι μεγαλύτερος/μεγαλύτερη/μεγαλύτερο από is a verb meaning to be greater than.
+[ In Greek είμαι μεγαλύτερη από is a verb meaning to be greater than.
+In Greek είμαι μεγαλύτερο από is a verb meaning to be greater than. ]
+In Greek είμαι μικρότερος/μικρότερη/μικρότερο από is a verb meaning to be less than.
+In Greek είμαι το πολύ is a verb meaning to be at most.
+In Greek είμαι το λιγότερο is a verb meaning to be at least.
+In Greek είμαι τουλάχιστον is a verb meaning to be at least.
 
 
 Chapter 2.4.5 - Meaningless verbs
@@ -1254,9 +1376,9 @@ standard respond to final question rule response (A) is "Παρακαλώ επί
 
 Section 3.1.1.2 - Printing the locale description
 
-you-can-also-see rule response (A) is "[Εσύ] ".
-you-can-also-see rule response (B) is "Πάνω σε [the domain], [εσύ] ".
-you-can-also-see rule response (C) is "Μέσα σε [the domain], [εσύ] ".
+you-can-also-see rule response (A) is "[Εγώ] ".
+you-can-also-see rule response (B) is "Πάνω σε [the domain], [εγώ] ".
+you-can-also-see rule response (C) is "Μέσα σε [the domain], [εγώ] ".
 you-can-also-see rule response (D) is "[regarding the player][adapt the verb μπορώ] επίσης να [adapt the verb δω in present tense] ".
 you-can-also-see rule response (E) is "[regarding the player][adapt the verb μπορώ] να [adapt the verb δω in present tense] ".
 you-can-also-see rule response (F) is "".
@@ -1269,14 +1391,14 @@ describe what's on scenery supporters in room descriptions rule response (A) is 
 Section 3.1.1.4 - Standard actions concerning the actor's possessions
 
 [Taking inventory]
-print empty inventory rule response (A) is "[Εσύ] δεν [adapt the verb κρατάω] τίποτα.".
-print standard inventory rule response (A) is "[Εσύ] [adapt the verb κρατάω] :[line break]".
-report other people taking inventory rule response (A) is "[The actor] [adapt the verb βλέπω in present tense] τα υπάρχοντά [σου].".
+print empty inventory rule response (A) is "[Εγώ] δεν [adapt the verb κρατάω] τίποτα.".
+print standard inventory rule response (A) is "[Εγώ] [adapt the verb κρατάω] :[line break]".
+report other people taking inventory rule response (A) is "[The actor] [adapt the verb βλέπω in present tense] τα υπάρχοντά [μου].".
 
 [Taking]
 
 [ TODO: Test the following, see French example ]
-can't take yourself rule response (A) is "Δεν [adapt the verb μπορώ in present tense] να [adapt the verb πάρω in present tense] [τον εαυτό σου]".
+can't take yourself rule response (A) is "Δεν [adapt the verb μπορώ in present tense] να [adapt the verb πάρω in present tense] [τον εαυτό μου]".
 [ TODO: Change the following ]
 can't take other people rule response (A) is "[We] [don't] suppose [the noun] [would care] for that.".
 [ TODO: Continue from here ]
@@ -1291,7 +1413,7 @@ standard report taking rule response (B) is "[The actor] [adapt the verb παί�
 [Dropping]
 can't drop what's already dropped rule response (A) is "[The noun] [adapt the verb είμαι] ήδη [εδώ].".
 [ TODO: Fix the following ]
-can't drop what's not held rule response (A) is "[Εσύ] δεν [adapt the verb έχω] [regarding the noun][those].".
+can't drop what's not held rule response (A) is "[Εγώ] δεν [adapt the verb έχω] [regarding the noun][those].".
 
 standard report dropping rule response (A) is "Αφέθηκε.".
 standard report dropping rule response (B) is "[The actor] [put] down [the noun].".
@@ -1309,9 +1431,9 @@ Section 3.1.1.5 - Standard actions which move the actor
 
 [ Going ]
 
-can't go that way rule response (A) is "[Εσύ] [negate the verb μπορώ for bg] να [adapt the verb πάω in present tense] προς αυτή την κατεύθυνση".
+can't go that way rule response (A) is "[Εγώ] [negate the verb μπορώ for bg] να [adapt the verb πάω in present tense] προς αυτή την κατεύθυνση".
 
-can't go that way rule response (B) is "[Εσύ] [negate the verb μπορώ for bg] να [adapt the verb πάω in present tense] προς τα εκεί".
+can't go that way rule response (B) is "[Εγώ] [negate the verb μπορώ for bg] να [adapt the verb πάω in present tense] προς τα εκεί".
 
 [Entering]
 
