@@ -1,2 +1,5 @@
 *.interb
 *.old
+*.ni
+*.i6
+*.ulx
