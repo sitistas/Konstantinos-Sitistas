@@ -114,8 +114,6 @@ To johan mode (T - text):
 
 Section 3 - Greek People (in place of Section 11 - People in Standard Rules by Graham Nelson)
 
-The specification of person is "Παρά το όνομά του, δεν είναι απαραίτητα άνθρωπος, αλλά οποιαδήποτε οντότητα με τις απαραίτητες λειτουργίες για να αλληλεπιδράσει μαζί του".
-
 A person can be female or male. A person is usually male.
 A person can be neuter. A person is usually not neuter.
 
@@ -191,9 +189,14 @@ To say στον/στο/στην/στη/στο/στους/στις/στα (O - ob
 Include [preform](-
 language Greek
 
-<indefinite-article-table> ::=
+<definite-article-table> ::=
 	ο η το οι οι τα			|
-	τον την το τους τις τα
+	τον/το την/τη το τους τις τα
+
+
+<indefinite-article-table> ::=
+	ένας μία/μια ένα κάποιοι κάποιες κάποια		|
+	έναν/ένα μία/μια ένα κάποιους κάποιες κάποια
 
 [ <definite-article> ::=
 	/b/ le/l' |				[singular, masculine]
@@ -364,6 +367,8 @@ In Greek, we will use first person singular.
 
 [ TODO: Change second first person singular to first person ]
 
+[ TODO: Check if other pronouns are needed (ο ίδιος, μόνος, τόσος, τέτοιος, όσος, οποιοσδήποτε, ποιος, πόσος, + αόριστες) ]
+
 The adaptive text viewpoint of the Greek language is first person singular.
 
 When play begins (this is the initialise the story viewpoint rule):
@@ -529,7 +534,7 @@ To say τον εαυτό μου:
 	else if the story viewpoint is third person plural:
 		say "τους εαυτούς τους".
 
-To say τον εαυτό μου:
+To say Τον εαυτό μου:
 	now the prior named object is the player;
 	if the story viewpoint is first person singular:
 		say "Τον εαυτό μου";
@@ -569,7 +574,7 @@ To say μου:
 	else if the story viewpoint is third person plural:
 		say "τους".
 
-To say Σου:
+To say Μου:
 	now the prior named object is the player;
 	if the story viewpoint is first person singular:
 		say "Μου";
@@ -589,10 +594,23 @@ To say Σου:
 	else if the story viewpoint is third person plural:
 		say "Τους".
 
+
+[ TODO: figure this out ]
+[ To say μου/σου/του/της/τους (O - an object):
+	if O is plural-named:
+		say "[O] τους";
+	otherwise:
+		if O is male:
+			say "[O] " ]
+
 [ TODO: Continue from here based on French]
 Chapter 2.2.2 - Pronouns and possessives for other objects
 
 [ TODO: Change the following to Greek ]
+
+[These are similar, but easier. They are named from the third-person viewpoint with the same number as the adaptive text viewpoint; so in the case of French, we'll go with third person singular. We define:]
+
+[]
 
 To say those:
 	say those in the αιτιατική.
@@ -654,7 +672,7 @@ A container translates into Greek as ένα δοχείο.
 A vehicle translates into Greek as ένα όχημα.
 A player's holdall translates into Greek as μια τσάντα του παίκτη.
 A supporter translates into Greek as ένας υποστηρικτής.
-A backdrop translates into Greek as μια παρασκήνιο. The plural of παρασκήνιο is παρασκήνια. [TODO: check translation]
+A backdrop translates into Greek as ένα παρασκήνιο. The plural of παρασκήνιο is παρασκήνια. [TODO: check translation]
 A person translates into Greek as ένα άτομο.
 A man translates into Greek as ένας άντρας.
 A woman translates into Greek as μια γυναίκα.
@@ -693,30 +711,68 @@ Perfect tense translates into Greek as ο αόριστος.
 Past perfect tense translates into Greek as ο υπερσυντέλικος.
 
 Narrative viewpoint translates into Greek as αφηγηματική σκοπιά.
-First person singular translates into Greek as το πρώτο πρόσωπο του ενικού.
-Second person singular translates into Greek as το δεύτερο πρόσωπο του ενικού.
-Third person singular translates into Greek as το τρίτο πρόσωπο του ενικού.
-First person plural translates into Greek as το πρώτο πρόσωπο του πληθυντικού.
-Second person plural translates into Greek as το δεύτερο πρόσωπο του πληθυντικού.
-Third person plural translates into Greek as το τρίτο πρόσωπο του πληθυντικού.
+First person singular translates into Greek as το πρώτο ενικό πρόσωπο.
+Second person singular translates into Greek as το δεύτερο ενικό πρόσωπο.
+Third person singular translates into Greek as το τρίτο ενικό πρόσωπο.
+First person plural translates into Greek as το πρώτο πληθυντικό πρόσωπο.
+Second person plural translates into Greek as το δεύτερο πληθυντικό πρόσωπο.
+Third person plural translates into Greek as το τρίτο πληθυντικό πρόσωπο.
 
 Grammatical gender translates into Greek as γραμματικό γένος.
 Masculine gender translates into Greek as το αρσενικό γένος.
 Feminine gender translates into Greek as το θηλυκό γένος.
 Neuter gender translates into Greek as το ουδέτερο γένος.
 
-[ TODO: Add index descriptions ]
+
+[ Translation of the index descriptions ]
+[ TODO: Test the examples given in the specifications. ]
+
+The specification of δωμάτιο is "Αντιπροσωπεύει γεωγραφικές τοποθεσίες, τόσο εσωτερικές όσο και εξωτερικές, οι οποίες δεν είναι απαραίτητα χώροι μέσα σε ένα κτίριο. Ένας παίκτης που βρίσκεται σε ένα δωμάτιο δεν μπορεί, κατά κανόνα, να αντιληφθεί ή να αλληλεπιδράσει με οτιδήποτε σε διαφορετικό δωμάτιο. Τα δωμάτια είναι διατεταγμένα σε έναν χάρτη.".
+
+The specification of περιοχή is "Αντιπροσωπεύει μια ευρύτερη περιοχή από ένα μόνο δωμάτιο και επιτρέπει την εφαρμογή κανόνων σε ολόκληρη μια γεωγραφική περιοχή. Κάθε περιοχή μπορεί να περιέχει πολλά δωμάτια, και οι περιοχές μπορούν ακόμη και να βρίσκονται η μία μέσα στην άλλη, αν και δεν μπορούν να αλληλεπικαλύπτονται με άλλον τρόπο. Για παράδειγμα, το δωμάτιο 'Ιταλικό Παλάτι' μπορεί να βρίσκεται μέσα στην περιοχή '13ος Δήμος', η οποία με τη σειρά της βρίσκεται μέσα στην περιοχή Παρίσι. Οι περιοχές είναι χρήσιμες κυρίως όταν ο κόσμος είναι μεγάλος και είναι προαιρετικές.".
+
+The specification of πράγμα is "Αντιπροσωπεύει οτιδήποτε διαδραστικό στον  κόσμο που δεν είναι δωμάτιο. Άνθρωποι, στοιχεία του τοπίου, έπιπλα, πόρτες και ξεχασμένες ομπρέλες μπορεί να είναι παραδείγματα, όπως και πιο απρόσμενα πράγματα, όπως ο ήχος του κελαηδίσματος των πουλιών ή μια δέσμη ηλιακού φωτός.".
+
+The specification of κατεύθυνση is "Αντιπροσωπεύει μια κατεύθυνση κίνησης, όπως βορειοανατολικά ή κάτω. Εμφανίζονται πάντα σε αντίθετα, ταιριαστά ζεύγη: για παράδειγμα, βορειοανατολικά και νοτιοδυτικά, κάτω και πάνω."
+
+The specification of πόρτα is "Αντιπροσωπεύει ένα πέρασμα που ενώνει δύο δωμάτια, συνήθως μια πόρτα ή μια πύλη, αλλά μερικές φορές μια σανίδα-γέφυρα, μια τσουλήθρα ή ένα άνοιγμα καταπακτής. Συνήθως είναι ορατή και λειτουργική και από τις δύο πλευρές (για παράδειγμα, αν γράψετε 'Η μπλε πόρτα είναι ανατολικά της Αίθουσας Χορού και δυτικά του Κήπου.'), αλλά μερικές φορές είναι μονόδρομη (για παράδειγμα, αν γράψετε 'Ανατολικά της Αίθουσας Χορού βρίσκεται η μεγάλη τσουλήθρα. Μέσα από τη μεγάλη τσουλήθρα είναι το κελάρι.').".
+
+The specification of δοχείο is "Αντιπροσωπεύει κάτι μέσα στο οποίο μπορούν να τοποθετηθούν φορητά αντικείμενα, όπως ένα ξύλινο σεντούκι ή μια τσάντα. Κάτι με πραγματικά μεγάλο και ακίνητο εσωτερικό χώρο, όπως η Αίθουσα Άλμπερτ, είναι προτιμότερο να θεωρηθεί δωμάτιο αντί για δοχείο.".
+
+The specification of υποστηρικτής is "Αντιπροσωπεύει μια επιφάνεια πάνω στην οποία μπορούν να τοποθετηθούν αντικείμενα, όπως ένα τραπέζι.".
+
+The specification of παρασκήνιο is "Αντιπροσωπεύει μια πτυχή του τοπίου ή της αρχιτεκτονικής που εκτείνεται σε περισσότερα από ένα δωμάτια: για παράδειγμα, ένα ρέμα, ο ουρανός ή ένα μακρύ χαλί.".
+
+The specification of άτομο is "Παρά το όνομά του, δεν είναι απαραίτητα άνθρωπος, αλλά οποιαδήποτε οντότητα με τις απαραίτητες λειτουργίες για να αλληλεπιδράσει μαζί του".
+
+The specification of άντρας is "Αντιπροσωπεύει έναν άντρα ή αγόρι.".
+The specification of γυναίκα is "Αντιπροσωπεύει μια γυναίκα ή κορίτσι.".
+The specification of ζώο is "Αντιπροσωπεύει ένα ζώο, ή τουλάχιστον ένα μη ανθρώπινο ζωντανό πλάσμα αρκετά μεγάλο και δυνατό να αλληλεπιδράσει: μια γιγαντιαία παγίδα της Αφροδίτης θα μπορούσε να πληροί τις προϋποθέσεις, αλλά όχι μια περιοχή από λειχήνες.".
+
+The specification of συσκευή is "Αντιπροσωπεύει μια μηχανή ή συσκευή κάποιου είδους που μπορεί να ενεργοποιηθεί ή να απενεργοποιηθεί.".
+
+The specification of όχημα is "Αντιπροσωπεύει ένα δοχείο αρκετά μεγάλο για να εισέλθει ένα άτομο, το οποίο μπορεί στη συνέχεια να μετακινείται μεταξύ των δωματίων με την οδηγία του οδηγού. (Αν χρειάζεται μια επιφάνεια στήριξης, δοκιμάστε την επέκταση Rideable Vehicles του Graham Nelson.)".
+
+The specification of τσάντα του παίκτη is "Αντιπροσωπεύει ένα δοχείο που μπορεί ο παίκτης να κουβαλάει γύρω του σαν μια τσάντα, μέσα στο οποίο τα περιττά αντικείμενα αποθηκεύονται αυτόματα."
+
+[ TODO: Continue from here with French extension examples ]
 
 Chapter 2.2.5 - Plurals
 
-[ TODO: Can't make the following work ]
+[ TODO: Continue working on Plurals for Greek. ]
+
+[ Σε αυτό το σημείο, αξίζει να σημειωθεί ότι στα ελληνικά, ο πληθυντικός αριθμός είναι αρκετά πιο πολύπλοκος από τα αγγλικά και τα γαλλικά. Υπάρχουν πολλές κατηγορίες, για αρσενικά, θηλυκά και ουδέτερα, ενώ η κλίση τους κάνει την διαδικασία ακόμα πιο δύσκολη. Ο τονισμός δημιουργεί εκ νέου υποκατηγορίες, δημιουργώντας τα οξύτονα, παροξύτονα & προπαραξότυνα ουστιαστικά. ]
 
 Include [preform](-
 language Greek
 <singular-noun-to-its-plural> ::=
-	<gr-plural-exceptions> |
+	... <en-trie-plural-uninflected> |
+	... <gr-plural-exceptions> |
 	... <gr-plural-by-ending> |
 	... <gr-plural-default>
+
+<en-trie-plural-uninflected> ::=
+
 
 <gr-plural-exceptions> ::=
 	μυς			μυς |
@@ -737,8 +793,8 @@ language Greek
 Chapter 2.2.6 - Cases
 
 Chapter 2.2.7 - Times of day
-
-Include (-
+[ TODO: Understand if the following is still relevant ]
+[ Include (-
 [ LanguageTimeOfDay hours mins i;
     i = hours%12;
     if (i == 0) i = 12;
@@ -746,7 +802,21 @@ Include (-
     print i, ":", mins/10, mins%10;
     if ((hours/12) > 0) print " μ.μ."; else print " π.μ.";
 ];
--) replacing "Time".
+-) replacing "Time". ]
+
+Include [preform](-
+language Greek
+
+<am-pm> ::=
+	π.μ. |
+	μ.μ.
+
+<elapsed-time> ::=
+	<cardinal-number> ώρα/ώρες |
+	<cardinal-number> λεπτό/λεπτά |
+	<cardinal-number> ώρα/ώρες <cardinal-number> λεπτό/λεπτά
+
+-) in the Preform grammar.
 
 Part 2.3 - Adjectives
 
@@ -1314,9 +1384,11 @@ In Greek είμαι μέσα από is a verb meanign to be through.
     which have names ending 'relation': thus '...implies the possession
     relation' is an example of a valid definition, this being one of the
     relations built into Inform. ]
-[ In Greek είμαι βόρεια του is a verb meaning the mapping north relation.
-In Greek είμαι βόρεια της is a verb meaning the mapping north relation.
-In Greek είμαι βόρεια των is a verb meaning the mapping north relation. ]
+[ In Greek είμαι βόρεια από τον is a verb meaning the mapping north relation. ]
+[ In Greek είμαι βόρεια από την is a verb meaning the mapping north relation.
+In Greek είμαι βόρεια από το is a verb meaning the mapping north relation. ]
+
+In Greek είμαι ανατολικά από τον is a verb mapping east relation.
 
 [ Παραθετικά επιρρημάτων ]
 
@@ -1759,6 +1831,7 @@ Understand the command "κοιτα", "δες", "δεσ" as "κοίτα".
 
 Understand "εξέτασε [something]" as examining.
 Understand the command "εξετασε", "τσέκαρε", "τσεκαρε" as "εξέτασε".
+Understand the command "ξ" as "εξέτασε".
 
 Understand "δες κάτω από [something]" and "εξέτασε κάτω από [something]" as looking under.
 
@@ -1948,9 +2021,40 @@ Part 4.5 - Actions specifications
 
 Chapter 4.5.1 - Standard actions concerning the actor's possessions
 
+The specification of the taking inventory action is "Απογραφή του ευρετηρίου των άμεσων αντικειμένων κάποιου: τα πράγματα που φέρει μαζί του, είτε άμεσα είτε σε οποιοδήποτε δοχείο που έχει. Όταν ο παίκτης εκτελεί αυτήν την ενέργεια, εμφανίζεται είτε η λίστα των αντικειμένων του, είτε ένα ειδικό μήνυμα αν δεν φέρει ή φορά τίποτα, κατά τη διάρκεια των κανόνων εκτέλεσης: δεν συμβαίνει τίποτα στο στάδιο της αναφοράς. Το αντίθετο συμβαίνει για άλλους χαρακτήρες που εκτελούν την ενέργεια: δεν συμβαίνει τίποτα κατά την εκτέλεση, αλλά παράγεται μια αναφορά, όπως 'Ο κ. Χ κοιτάζει τα αντικείμενά του.' (εφόσον ο κ. Χ είναι ορατός)."
+
+The specification of the taking action is "Η ανάληψη δράσης είναι ο μόνος τρόπος σύμφωνα με τους 'Βασικούς Κανόνες (Standard Rules)' για να προκληθεί μεταφορά σε κάτι από έναν ηθοποιό. Είναι μια πολύ απλή διαδικασία (το στάδιο εκτέλεσης περιλαμβάνει μόνο τη φράση 'τώρα ο ηθοποιός μεταφέρει το αντικείμενο'), αλλά πολλές επαληθεύσεις πρέπει να γίνουν (σύμφωνα με τους κανόνες 'check') πριν επιτραπεί να πραγματοποιηθεί η δράση αυτή."
+
+The specification of the removing it from action is "Η αφαίρεση δεν είναι πραγματικά μια ενέργεια από μόνη της. Ενώ υπάρχουν πολλοί τρόποι να βάλει κανείς κάτι κάπου (στο πάτωμα, πάνω σε κάτι άλλο, μέσα σε κάτι άλλο, να το δώσει σε κάποιον, κ.λπ.), στο Inform υπάρχει μόνο ένας τρόπος για να πάρει κάποιος κάτι: 'taking action'. Η αφαίρεση υπάρχει μόνο για να παρέχει κατάλληλες απαντήσεις σε αδύνατες αιτήσεις και, σε όλες τις λογικές περιπτώσεις, μετατρέπεται σε πάρσιμο. Για το λόγο αυτό, συνήθως είναι κακή ιδέα να γράφετε κανόνες για την αφαίρεση: αν γράψετε έναν κανόνα όπως 'Αντί να αφαιρέσετε το κλειδί, ...', τότε δεν θα εφαρμοστεί αν ο παίκτης απλά πληκτρολογήσει 'ΠΑΡΕ το κλειδί'. Ο ασφαλής τρόπος να το κάνετε αυτό είναι να γράψετε έναν κανόνα για την ενέργεια 'πάρε', ο οποίος καλύπτει όλες τις δυνατότητες."
+
+[ TODO: Change rule can't drop clothes being worn after translating it ]
+The specification of the dropping action is "Η ενέργεια 'ρίξε' είναι μία από τις πέντε ενέργειες με τις οποίες ο ηθοποιός μπορεί να απαλλαγεί από κάτι που μεταφέρει: οι άλλες είναι η εισαγωγή (σε έναν αποθηκευτικό χώρο), η τοποθέτηση (σε ένα δοχείο), η δωρεά (σε κάποιον άλλον) και η κατανάλωση. Η ρίψη σημαίνει την τοποθέτηση στο πάτωμα του ηθοποιού, το οποίο είναι συνήθως το πάτωμα ενός δωματίου, αλλά μπορεί να είναι και το εσωτερικό ενός κουτιού αν ο ηθοποιός είναι μέσα σε αυτό το κουτί, κ.λπ.
+
+Ο κανόνας 'can't drop clothes being worn' προσπαθεί σιωπηρά να εκτελέσει την ενέργεια 'αφαίρεση' σε οποιοδήποτε ρούχο ρίπτεται: η αφαίρεση αυτού του κανόνα αφαιρεί τόσο αυτήν τη συμπεριφορά όσο και την απαίτηση ότι τα ρούχα δεν μπορούν απλά να ριχτούν.".
+
+The specification of the putting it on action is "Με αυτήν την ενέργεια, ο ηθοποιός τοποθετεί κάτι που κρατάει πάνω σε έναν υποστηρικτή: για παράδειγμα, τοποθετώντας ένα μήλο πάνω σε ένα τραπέζι.".
+
+The specification of the inserting it into action is "Με αυτήν την ενέργεια, ο ηθοποιός τοποθετεί κάτι που κρατάει σε ένα δοχείο: για παράδειγμα, τοποθετώντας ένα νόμισμα σε ένα κουτί συλλογής."
+
+[ TODO: Translate carry out ]
+The specification of the eating action is "Η ενέργεια 'φάε' είναι η μοναδική από τις ενέργειες που ενσωματώνονται από προεπιλογή που μπορεί, ουσιαστικά, να καταστρέψει κάτι: ο κανόνας 'carry out' αφαιρεί το αντικείμενο που τρώγεται από το παιχνίδι, και τίποτα στους 'Standard Rules' δεν μπορεί να το ανακτήσει ξανά."
+
 Chapter 4.5.2 - Standard actions which move the actor
 
+The specification of the going action is "Αυτή είναι η ενέργεια που επιτρέπει στους ανθρώπους να μετακινηθούν από ένα δωμάτιο σε ένα άλλο, χρησιμοποιώντας όποιες συνδέσεις και πόρτες στο χάρτη είναι διαθέσιμες. Οι 'Standard Rules' είναι γραμμένοι έτσι ώστε το όνομα αυτής της ενέργειας να μπορεί να είναι είτε κατεύθυνση είτε πόρτα στο σημείο όπου βρίσκεται ο ηθοποιός: ενώ οι εντολές του παίκτη οδηγούν μόνο σε ενέργειες με κατευθύνσεις ως ονόματα, οι ενέργειες 'going' μπορούν επίσης να συμβούν ως αποτέλεσμα ενεργειών 'entering', και τότε το ουσιαστικό μπορεί πράγματι να είναι μια πόρτα."
+
+[ TODO: Translate the rule ]
+The specification of the entering action is "Ενώ η ενέργεια 'going' επιτρέπει σε ένα άτομο να μετακινηθεί από ένα μέρος σε ένα άλλο, η ενέργεια αυτή αφορά την κίνηση μέσα σε έναν ίδιο χώρο: για παράδειγμα, το να ανέβει κάποιος σε ένα κλουβί ή να καθίσει σε έναν καναπέ (η ενέργεια 'entering' δεν επιτρέπεται να αλλάξει το χώρο, οπότε οποιαδήποτε προσπάθεια να μπεις σε μια πόρτα μετατρέπεται σε ενέργεια 'going'). Αυτό που κάνει την ενέργεια 'entering' πιο δύσκολη από ό,τι φαίνεται είναι ότι ο παίκτης μπορεί να προσπαθήσει να μπει σε ένα αντικείμενο που είναι και το ίδιο μέσα ή μέρος ενός άλλου αντικειμένου, το οποίο με τη σειρά του μπορεί να είναι... και ούτω καθεξής. Για να διατηρηθεί ο ρεαλισμός, ο κανόνας 'implicitly pass through other barriers' δημιουργεί αυτόματα τις ενέργειες 'entering' και 'exiting' που απαιτούνται για να περάσει οποιοδήποτε εμπόδιο βρίσκεται στο δρόμο του ηθοποιού: για παράδειγμα, σε έναν χώρο με δύο ανοιχτά κλουβιά, ένας ηθοποιός που βρίσκεται στο κλουβί A και προσπαθεί να μπει στο κλουβί B, πρέπει πρώτα να βγει από το A πριν μπορέσει να μπει στο B."
+
+[ TODO: Translate the actions ]
+The specification of the exiting action is "Ενώ η ενέργεια 'going' επιτρέπει σε ένα άτομο να μετακινηθεί από ένα μέρος σε ένα άλλο και η ενέργεια 'entering' επιτρέπει την κίνηση σε πιο βαθιά μέρη άλλων αντικειμένων, η ενέργεια 'exiting' αφορά την επιστροφή προς την κύρια επιφάνεια του χώρου. Για παράδειγμα, το να βγει κάποιος από μια ντουλάπα είναι μια ενέργεια 'exiting'. Αν ο ηθοποιός βρίσκεται ήδη στο κύριο δάπεδο ενός χώρου με σύνδεση στο εξωτερικό, η ενέργεια 'exiting' μετατρέπεται σε ενέργεια 'going'. Τέλος, σημειώστε ότι, σε αντίθεση με την ενέργεια 'entering', η ενέργεια 'exiting' αφορά μόνο την έξοδο από περιέκτες: αν ο ηθοποιός βρίσκεται πάνω σε έναν υποστηρικτή, η ενέργεια 'exiting' μετατρέπεται σε ενέργεια 'getting off'."
+
+[ TODO: Translate the actions ]
+The specification of the getting off action is "Η ενέργεια 'getting off' χρησιμοποιείται όταν ο ηθοποιός βρίσκεται πάνω σε έναν υποστηρικτή: ίσως στέκεται σε μια πλατφόρμα, κάθεται σε μια καρέκλα ή ακόμα και ξαπλώνει σε ένα κρεβάτι. Σε αντίθεση με την παρόμοια ενέργεια 'exiting', η ενέργεια 'getting off' απαιτεί ένα όνομα: την πλατφόρμα, την καρέκλα ή το κρεβάτι, για παράδειγμα."
+
 Chapter 4.5.3 - Standard actions concerning the actor's vision
+
+[ TODO: Continue from here ]
 
 Chapter 4.5.4 - Standard actions which change the state of things
 
