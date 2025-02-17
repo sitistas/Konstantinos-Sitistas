@@ -67,7 +67,7 @@ To decide whether (T - a text) starts with a vowel:
 	(- (TextStartsWithAVowel({-by-reference:T})) -)
 
 
-Part 1.1 SR Hack - Greek Bibliographical Data (in place of Section 7 - Unindexed Standard Rules variables in Standard Rules)
+[ Part 1.1 SR Hack - Greek Bibliographical Data (in place of Section 7 - Unindexed Standard Rules variables in Standard Rules)
 
 [ TODO: Does it work? ]
 [ Check with:
@@ -77,7 +77,7 @@ The release number and the story creation year are number variables. [**]
 
 The release number is usually 1.
 The story headline is usually "Ένα διαδραστικό μυθιστόρημα".
-The story genre is usually "Ιστορία".
+The story genre is usually "Ιστορία". ]
 
 Part 1.2 - Other Tricks
 
@@ -96,7 +96,7 @@ Carry out looking (this is the greek room description heading rule):
 	let intermediate level be the visibility-holder of the actor;
 	repeat with intermediate level count running from 2 to the visibility level count:
 		if the intermediate level is a supporter or the intermediate level is an animal:
-			say " (σχετικά με το [the intermediate level])" (B);
+			say " (σχετικά με [the intermediate level])" (B);
 			[ TODO: Check translation from Spanish ]
 		otherwise:
 			say " (στο [the intermediate level])" (C);
@@ -177,15 +177,6 @@ To say στον/στο/στην/στη/στο/στους/στις/στα (O - ob
 		say "στο [O]".
 
 
-[ TODO (for French template):   >--> There's a problem in Inform's linguistic grammar, which is probably set
-    by a translation extension. The problem occurs in the definition of
-    'indefinite-article': nonterminal internal in one definition and regular in
-    another.
-    Because of this problem, the source could not be translated into a working
-    game. (Correct the source text to remove the difficulty and click on Go
-    once again.) ]
-
-[ TODO: Ask Graham about this one ]
 Include [preform](-
 language Greek
 
@@ -364,8 +355,6 @@ te, so we'll write that one "[te-se]".
 In Greek, we will use first person singular.
 ]
 
-
-[ TODO: Change second first person singular to first person ]
 
 [ TODO: Check if other pronouns are needed (ο ίδιος, μόνος, τόσος, τέτοιος, όσος, οποιοσδήποτε, ποιος, πόσος, + αόριστες) ]
 
@@ -606,11 +595,10 @@ To say Μου:
 [ TODO: Continue from here based on French]
 Chapter 2.2.2 - Pronouns and possessives for other objects
 
-[ TODO: Change the following to Greek ]
 
 [These are similar, but easier. They are named from the third-person viewpoint with the same number as the adaptive text viewpoint; so in the case of French, we'll go with third person singular. We define:]
 
-[]
+[ TODO: Translate and continue the following, based on English ]
 
 To say those:
 	say those in the αιτιατική.
@@ -618,7 +606,6 @@ To say those:
 To say Those:
 	say Those in the ονομαστική.
 
-[ TODO: Translate and continue the following, based on English ]
 
 To say those in (case - grammatical case):
 	if the case is nominative:
@@ -636,6 +623,13 @@ To say those in (case - grammatical case):
 
 Chapter 2.2.3 - Directions
 
+
+[ Understand "βοράς" as North.
+Understand "νότος" as South.
+Understand "ανατολή" as East.
+Understand "δύση" as West. ]
+
+
 North translates into Greek as ο βοράς.
 South translates into Greek as η νότος.
 East translates into Greek as η ανατολή.
@@ -649,7 +643,7 @@ Outside translates into Greek as έξω.
 Up translates into Greek as πάνω.
 Down translates into Greek as κάτω.
 
-Understand "ανατολικά" or "ανατολικα" or "α" as ανατολή.
+Understand "ανατολικά" or "ανατολικα" or "α" or "ανατολική" as ανατολή.
 Understand "βόρεια" or "βορεια" or "β" as βοράς.
 Understand "δυτικά" or "δυτικα" or "δ" as δύση.
 Understand "νότια" or "νοτια" or "νό" as νότος.
@@ -660,6 +654,9 @@ Understand "βδ" as βορειοδυτικά.
 Understand "μ" or "μεσα" or "εσωτερικά" or "εσωτερικα" as μέσα.
 Understand "εξωτερικά" as έξω.
 
+[TODO: Figure that out
+Understand "Η περιγραφή [του]" as The description of.]
+
 Chapter 2.2.4 - Kinds
 
 Section 2.2.4.1 - In the Standard Rules
@@ -668,13 +665,17 @@ An object translates into Greek as ένα αντικείμενο.
 A room translates into Greek as ένα δωμάτιο.
 A thing translates into Greek as ένα πράγμα.
 A door translates into Greek as μια πόρτα.
-A container translates into Greek as ένα δοχείο.
+A container translates into Greek as ένα κιβώτιο.
 A vehicle translates into Greek as ένα όχημα.
 A player's holdall translates into Greek as μια τσάντα του παίκτη.
 A supporter translates into Greek as ένας υποστηρικτής.
 A backdrop translates into Greek as ένα παρασκήνιο. The plural of παρασκήνιο is παρασκήνια. [TODO: check translation]
 A person translates into Greek as ένα άτομο.
-A man translates into Greek as ένας άντρας.
+A man translates into Greek as άντρας. The plural of άντρας is άντρες.
+[ TODO: Ask Graham if the indefinite article is needed. If I use it as:  A man translates into Greek as άντρας. I receive: printed plural name: "άντρες"
+
+If I use it as: A man translates into Greek as **ένας** άντρας. then I receive: printed plural name: "ένας άντρες" (which is incorrect)]
+
 A woman translates into Greek as μια γυναίκα.
 An animal translates into Greek as ένα ζώο.
 A device translates into Greek as μια συσκευή.
@@ -703,6 +704,7 @@ A sound name translates into Greek as ένα όνομα ήχου.
 An external file translates into Greek as ένα εξωτερικό αρχείο.
 
 [ TODO: Test and check the following tenses ]
+[ TODO: Ask Graham about the tenses ]
 Grammatical tense translates into Greek as γραμματικός χρόνος.
 Present tense translates into Greek as ο ενεστώτας.
 Future tense translates into Greek as ο μέλλοντας.
@@ -737,7 +739,7 @@ The specification of κατεύθυνση is "Αντιπροσωπεύει μι�
 
 The specification of πόρτα is "Αντιπροσωπεύει ένα πέρασμα που ενώνει δύο δωμάτια, συνήθως μια πόρτα ή μια πύλη, αλλά μερικές φορές μια σανίδα-γέφυρα, μια τσουλήθρα ή ένα άνοιγμα καταπακτής. Συνήθως είναι ορατή και λειτουργική και από τις δύο πλευρές (για παράδειγμα, αν γράψετε 'Η μπλε πόρτα είναι ανατολικά της Αίθουσας Χορού και δυτικά του Κήπου.'), αλλά μερικές φορές είναι μονόδρομη (για παράδειγμα, αν γράψετε 'Ανατολικά της Αίθουσας Χορού βρίσκεται η μεγάλη τσουλήθρα. Μέσα από τη μεγάλη τσουλήθρα είναι το κελάρι.').".
 
-The specification of δοχείο is "Αντιπροσωπεύει κάτι μέσα στο οποίο μπορούν να τοποθετηθούν φορητά αντικείμενα, όπως ένα ξύλινο σεντούκι ή μια τσάντα. Κάτι με πραγματικά μεγάλο και ακίνητο εσωτερικό χώρο, όπως η Αίθουσα Άλμπερτ, είναι προτιμότερο να θεωρηθεί δωμάτιο αντί για δοχείο.".
+The specification of κιβώτιο is "Αντιπροσωπεύει κάτι μέσα στο οποίο μπορούν να τοποθετηθούν φορητά αντικείμενα, όπως ένα ξύλινο σεντούκι ή μια τσάντα. Κάτι με πραγματικά μεγάλο και ακίνητο εσωτερικό χώρο, όπως η Αίθουσα Άλμπερτ, είναι προτιμότερο να θεωρηθεί δωμάτιο αντί για κιβώτιο.".
 
 The specification of υποστηρικτής is "Αντιπροσωπεύει μια επιφάνεια πάνω στην οποία μπορούν να τοποθετηθούν αντικείμενα, όπως ένα τραπέζι.".
 
@@ -751,9 +753,9 @@ The specification of ζώο is "Αντιπροσωπεύει ένα ζώο, ή �
 
 The specification of συσκευή is "Αντιπροσωπεύει μια μηχανή ή συσκευή κάποιου είδους που μπορεί να ενεργοποιηθεί ή να απενεργοποιηθεί.".
 
-The specification of όχημα is "Αντιπροσωπεύει ένα δοχείο αρκετά μεγάλο για να εισέλθει ένα άτομο, το οποίο μπορεί στη συνέχεια να μετακινείται μεταξύ των δωματίων με την οδηγία του οδηγού. (Αν χρειάζεται μια επιφάνεια στήριξης, δοκιμάστε την επέκταση Rideable Vehicles του Graham Nelson.)".
+The specification of όχημα is "Αντιπροσωπεύει ένα κιβώτιο αρκετά μεγάλο για να εισέλθει ένα άτομο, το οποίο μπορεί στη συνέχεια να μετακινείται μεταξύ των δωματίων με την οδηγία του οδηγού. (Αν χρειάζεται μια επιφάνεια στήριξης, δοκιμάστε την επέκταση Rideable Vehicles του Graham Nelson.)".
 
-The specification of τσάντα του παίκτη is "Αντιπροσωπεύει ένα δοχείο που μπορεί ο παίκτης να κουβαλάει γύρω του σαν μια τσάντα, μέσα στο οποίο τα περιττά αντικείμενα αποθηκεύονται αυτόματα."
+The specification of τσάντα του παίκτη is "Αντιπροσωπεύει ένα κιβώτιο που μπορεί ο παίκτης να κουβαλάει γύρω του σαν μια τσάντα, μέσα στο οποίο τα περιττά αντικείμενα αποθηκεύονται αυτόματα."
 
 [ TODO: Continue from here with French extension examples ]
 
@@ -780,7 +782,7 @@ language Greek
 	πρύτανης	πρυτάνεις |
 
 <gr-plural-by-ending> ::=
-	*ας			1ες |			[χάρακας --> χάρακες] [TODO: Add ψαράς --> ψαράδες]
+	*ας			2ες |			[χάρακας --> χάρακες] [TODO: Add ψαράς --> ψαράδες]
 	*ης			1ες	|		[επιβάτης --> επιβάτες]
 	*ΗΣ			1ΕΣ	|		[επιβάτης --> επιβάτες]
 	*ής			1ές			[μαθητής --> μαθητές]
@@ -999,7 +1001,7 @@ Wildcards στην Preform:
 	-παίρνω <gr-pairno-conjugation> |
 	-πάρω <gr-na-paro-conjugation> |
 
-	[ TODO: αφήνω ή βάζω, στηρίζω, περιέχω  ]
+	[ TODO: αφήνω ή βάζω, στηρίζω, περιέχω, ανοίγω, κλείνω ]
 
 [ "Είμαι" ]
 
@@ -1368,7 +1370,7 @@ In Greek είμαι εντός is a verb meaning to be in.
 [ In Greek είμαι γεωγραφικά μέσα is a verb meaning to be regionally in. ]
 [ Προκαλεί το ακόλουθο error:
 line 9197/9201: Error:  No such constant as "call_U27/28"]
-In Greek είμαι πάνω is a is a verb meaning to be on.
+[ In Greek είμαι πάνω στον/στη/στο is a is a verb meaning to be on. ]
 
 In Greek είμαι μέρος του is a verb meaning to be part of.
 In Greek είμαι μέρος της is a verb meaning to be part of.
@@ -1378,7 +1380,7 @@ In Greek είμαι μέρος των is a verb meaning to be part of.
 [ TODO: Resolve error for the above: line 9311: Error:  No such constant as "call_U31" ]
 In Greek είμαι πάνω από is a verb meaning to be above.
 In Greek είμαι κάτω από is a verb meaning to be below.
-In Greek είμαι μέσα από is a verb meanign to be through.
+In Greek είμαι μέσα από is a verb meaning to be through.
 
 [ TODO: Fix these for the following: new verbs can only be defined in terms of existing relations, all of
     which have names ending 'relation': thus '...implies the possession
@@ -1388,7 +1390,8 @@ In Greek είμαι μέσα από is a verb meanign to be through.
 [ In Greek είμαι βόρεια από την is a verb meaning the mapping north relation.
 In Greek είμαι βόρεια από το is a verb meaning the mapping north relation. ]
 
-In Greek είμαι ανατολικά από τον is a verb mapping east relation.
+In Greek είμαι ανατολικά από is a verb mapping την ανατολή relation.
+In Greek είμαι δυτικά από is a verb mapping την δύση relation.
 
 [ Παραθετικά επιρρημάτων ]
 
@@ -1535,7 +1538,20 @@ Section 3.1.1.7 - Standard actions which change the state of things
 
 [Opening]
 
+[ TODO: add conjugation for ανοίγω ]
+reveal any newly visible interior rule response (A) is "[Εγώ] ανοίγεις [the noun], αποκαλύπτοντας ".
+standard report opening rule response (A) is "[Εγώ] ανοίγεις [the noun].".
+standard report opening rule response (B) is "[The actor] ανοίγεις [the noun].".
+standard report opening rule response (C) is "[The noun] ανοίγει.".
+
 [Closing]
+
+[ TODO: add conjugation for κλείνω]
+standard report closing rule response (A) is "[Εγώ] κλείνεις [the noun].".
+standard report closing rule response (B) is "[The actor] κλείνει [the noun].".
+standard report closing rule response (C) is "[The noun] κλείνει.".
+
+
 
 [Wearing]
 
@@ -1703,6 +1719,17 @@ Part 3.4 - The banner
 
 Part 3.5 - The bibliographical data
 
+[ TODO: Ask Graham about this one ]
+[ Section 3.5.1 - The bibliographical data - Unindexed (in place of Section 7 - Unindexed Standard Rules variables - Unindexed in Standard Rules by Graham Nelson) ]
+
+The release number is usually 1.
+The story title is usually "Χωρίς Τίτλο".
+The story author is usually "Ανώνυμος/η".
+The story headline is usually "Ένα Διαδραστικό Μυθιστόρημα". [TODO: Doesn't translate]
+The story genre is usually "Ιστορία".
+
+[ The story title variable translates into I6 as "Story". ]
+
 Part 3.6 - Rule replacements
 
 Volume 4 - Command parsing
@@ -1815,11 +1842,18 @@ Understand "πήγαινε" as going.
 Understand "πήγαινε προς [direction]" or "πήγαινε [direction]" as going.
 Understand the command "πηγαινε" as "πήγαινε".
 
-Understand "μπες σε [something]" as entering.
+[ TODO: Replace σε with στον/στην/στη/στο + πληθ. in all occurences ]
+Understand "μπες στον/στην/στη/στο [something]" as entering.
 Understand the command "μπεσ" as "μπες".
+
+Understand "ανέβα στον/στην/στη/στο [something]" as entering.
+Understand "κάθισε στον/στην/στη/στο [something]" as entering.
+Understand "κάθισε στην κορυφή του/της [something]" as entering.
+Understand the command "κάτσε" as "κάθισε".
 
 Understand "βγες" as exiting.
 Understand the command "βγεσ" as "βγες".
+Understand "σήκω" as exiting.
 
 Understand "βγες από [something]" as getting off.
 Understand the command "κατέβα" and "κατεβα" as "βγες".
@@ -1881,7 +1915,7 @@ Understand "δείξε σε [someone] [something preferably held]" as showing it
 Understand "δείξε [something preferably held] σε [someone]" as showing it to.
 Understand the commands "παρουσίασε" as "δείξε".
 
-Understand "ξύπνα" or "σήκω" as waking up.
+Understand "ξύπνα" as waking up.
 Understand "ξύπνα [someone]" or "σήκωσε [someone] " as waking.
 
 Understand "επιθέσου σε [something]" as attacking.
@@ -1969,7 +2003,6 @@ Understand "αγόρασε [something]" as buying.
 Understand the command "απόκτησε" as "αγόρασε".
 
 Understand "σκαρφάλωσε [something]" or "σκαρφάλωσε πάνω σε/από [something]" as climbing.
-Understand the command "ανέβα" as "σκαρφάλωσε".
 
 Understand "κοιμήσου" as sleeping.
 Understand the command "αποκοιμήσου" as "κοιμήσου".
@@ -2021,20 +2054,20 @@ Part 4.5 - Actions specifications
 
 Chapter 4.5.1 - Standard actions concerning the actor's possessions
 
-The specification of the taking inventory action is "Απογραφή του ευρετηρίου των άμεσων αντικειμένων κάποιου: τα πράγματα που φέρει μαζί του, είτε άμεσα είτε σε οποιοδήποτε δοχείο που έχει. Όταν ο παίκτης εκτελεί αυτήν την ενέργεια, εμφανίζεται είτε η λίστα των αντικειμένων του, είτε ένα ειδικό μήνυμα αν δεν φέρει ή φορά τίποτα, κατά τη διάρκεια των κανόνων εκτέλεσης: δεν συμβαίνει τίποτα στο στάδιο της αναφοράς. Το αντίθετο συμβαίνει για άλλους χαρακτήρες που εκτελούν την ενέργεια: δεν συμβαίνει τίποτα κατά την εκτέλεση, αλλά παράγεται μια αναφορά, όπως 'Ο κ. Χ κοιτάζει τα αντικείμενά του.' (εφόσον ο κ. Χ είναι ορατός)."
+The specification of the taking inventory action is "Απογραφή του ευρετηρίου των άμεσων αντικειμένων κάποιου: τα πράγματα που φέρει μαζί του, είτε άμεσα είτε σε οποιοδήποτε κιβώτιο που έχει. Όταν ο παίκτης εκτελεί αυτήν την ενέργεια, εμφανίζεται είτε η λίστα των αντικειμένων του, είτε ένα ειδικό μήνυμα αν δεν φέρει ή φορά τίποτα, κατά τη διάρκεια των κανόνων εκτέλεσης: δεν συμβαίνει τίποτα στο στάδιο της αναφοράς. Το αντίθετο συμβαίνει για άλλους χαρακτήρες που εκτελούν την ενέργεια: δεν συμβαίνει τίποτα κατά την εκτέλεση, αλλά παράγεται μια αναφορά, όπως 'Ο κ. Χ κοιτάζει τα αντικείμενά του.' (εφόσον ο κ. Χ είναι ορατός)."
 
 The specification of the taking action is "Η ανάληψη δράσης είναι ο μόνος τρόπος σύμφωνα με τους 'Βασικούς Κανόνες (Standard Rules)' για να προκληθεί μεταφορά σε κάτι από έναν ηθοποιό. Είναι μια πολύ απλή διαδικασία (το στάδιο εκτέλεσης περιλαμβάνει μόνο τη φράση 'τώρα ο ηθοποιός μεταφέρει το αντικείμενο'), αλλά πολλές επαληθεύσεις πρέπει να γίνουν (σύμφωνα με τους κανόνες 'check') πριν επιτραπεί να πραγματοποιηθεί η δράση αυτή."
 
 The specification of the removing it from action is "Η αφαίρεση δεν είναι πραγματικά μια ενέργεια από μόνη της. Ενώ υπάρχουν πολλοί τρόποι να βάλει κανείς κάτι κάπου (στο πάτωμα, πάνω σε κάτι άλλο, μέσα σε κάτι άλλο, να το δώσει σε κάποιον, κ.λπ.), στο Inform υπάρχει μόνο ένας τρόπος για να πάρει κάποιος κάτι: 'taking action'. Η αφαίρεση υπάρχει μόνο για να παρέχει κατάλληλες απαντήσεις σε αδύνατες αιτήσεις και, σε όλες τις λογικές περιπτώσεις, μετατρέπεται σε πάρσιμο. Για το λόγο αυτό, συνήθως είναι κακή ιδέα να γράφετε κανόνες για την αφαίρεση: αν γράψετε έναν κανόνα όπως 'Αντί να αφαιρέσετε το κλειδί, ...', τότε δεν θα εφαρμοστεί αν ο παίκτης απλά πληκτρολογήσει 'ΠΑΡΕ το κλειδί'. Ο ασφαλής τρόπος να το κάνετε αυτό είναι να γράψετε έναν κανόνα για την ενέργεια 'πάρε', ο οποίος καλύπτει όλες τις δυνατότητες."
 
 [ TODO: Change rule can't drop clothes being worn after translating it ]
-The specification of the dropping action is "Η ενέργεια 'ρίξε' είναι μία από τις πέντε ενέργειες με τις οποίες ο ηθοποιός μπορεί να απαλλαγεί από κάτι που μεταφέρει: οι άλλες είναι η εισαγωγή (σε έναν αποθηκευτικό χώρο), η τοποθέτηση (σε ένα δοχείο), η δωρεά (σε κάποιον άλλον) και η κατανάλωση. Η ρίψη σημαίνει την τοποθέτηση στο πάτωμα του ηθοποιού, το οποίο είναι συνήθως το πάτωμα ενός δωματίου, αλλά μπορεί να είναι και το εσωτερικό ενός κουτιού αν ο ηθοποιός είναι μέσα σε αυτό το κουτί, κ.λπ.
+The specification of the dropping action is "Η ενέργεια 'ρίξε' είναι μία από τις πέντε ενέργειες με τις οποίες ο ηθοποιός μπορεί να απαλλαγεί από κάτι που μεταφέρει: οι άλλες είναι η εισαγωγή (σε έναν αποθηκευτικό χώρο), η τοποθέτηση (σε ένα κιβώτιο), η δωρεά (σε κάποιον άλλον) και η κατανάλωση. Η ρίψη σημαίνει την τοποθέτηση στο πάτωμα του ηθοποιού, το οποίο είναι συνήθως το πάτωμα ενός δωματίου, αλλά μπορεί να είναι και το εσωτερικό ενός κουτιού αν ο ηθοποιός είναι μέσα σε αυτό το κουτί, κ.λπ.
 
 Ο κανόνας 'can't drop clothes being worn' προσπαθεί σιωπηρά να εκτελέσει την ενέργεια 'αφαίρεση' σε οποιοδήποτε ρούχο ρίπτεται: η αφαίρεση αυτού του κανόνα αφαιρεί τόσο αυτήν τη συμπεριφορά όσο και την απαίτηση ότι τα ρούχα δεν μπορούν απλά να ριχτούν.".
 
 The specification of the putting it on action is "Με αυτήν την ενέργεια, ο ηθοποιός τοποθετεί κάτι που κρατάει πάνω σε έναν υποστηρικτή: για παράδειγμα, τοποθετώντας ένα μήλο πάνω σε ένα τραπέζι.".
 
-The specification of the inserting it into action is "Με αυτήν την ενέργεια, ο ηθοποιός τοποθετεί κάτι που κρατάει σε ένα δοχείο: για παράδειγμα, τοποθετώντας ένα νόμισμα σε ένα κουτί συλλογής."
+The specification of the inserting it into action is "Με αυτήν την ενέργεια, ο ηθοποιός τοποθετεί κάτι που κρατάει σε ένα κιβώτιο: για παράδειγμα, τοποθετώντας ένα νόμισμα σε ένα κουτί συλλογής."
 
 [ TODO: Translate carry out ]
 The specification of the eating action is "Η ενέργεια 'φάε' είναι η μοναδική από τις ενέργειες που ενσωματώνονται από προεπιλογή που μπορεί, ουσιαστικά, να καταστρέψει κάτι: ο κανόνας 'carry out' αφαιρεί το αντικείμενο που τρώγεται από το παιχνίδι, και τίποτα στους 'Standard Rules' δεν μπορεί να το ανακτήσει ξανά."
@@ -2054,9 +2087,46 @@ The specification of the getting off action is "Η ενέργεια 'getting off
 
 Chapter 4.5.3 - Standard actions concerning the actor's vision
 
-[ TODO: Continue from here ]
+The specification of the looking action is "Η ενέργεια 'κοίτα' περιγράφει το τρέχον δωμάτιο του παίκτη και οποιαδήποτε ορατά αντικείμενα, αλλά περιπλέκεται από το πρόβλημα της ορατότητας. Το Inform το υπολογίζει διαιρώντας το δωμάτιο σε επίπεδα ορατότητας. Για έναν ηθοποιό στο πάτωμα ενός δωματίου, υπάρχει μόνο ένα τέτοιο επίπεδο: το ίδιο το δωμάτιο. Αλλά ένας ηθοποιός που κάθεται σε μια καρέκλα μέσα σε ένα κιβώτιο συσκευασίας, το οποίο βρίσκεται πάνω σε μια πλατφόρμα, θα είχε τέσσερα επίπεδα ορατότητας: καρέκλα, κιβώτιο, πλατφόρμα, δωμάτιο. Οι κανόνες του 'looking' χρησιμοποιούν μια ειδική φράση, 'ο visibility-holder του X', για να ανεβαίνουν από το ένα επίπεδο στο επόμενο: έτσι, ο visibility-holder του κιβωτίου είναι η πλατφόρμα.
+
+Το 'visibility level count' είναι ο αριθμός των επιπέδων που ο παίκτης μπορεί πραγματικά να δει, και το 'visibility ceiling' είναι το ανώτατο ορατό επίπεδο. Για έναν παίκτη που στέκεται στο πάτωμα ενός φωτισμένου δωματίου, αυτό θα είναι ένας αριθμός 1 με το ceiling να έχει οριστεί στο δωμάτιο. Αλλά ένας παίκτης που κάθεται σε μια καρέκλα μέσα σε ένα κλειστό αδιαφανές κιβώτιο συσκευασίας θα είχε visibility level count 2, και visibility ceiling ίσο με το κιβώτιο. Επιπλέον, πρέπει να υπάρχει φως για να μπορεί να δει κάτι: αν ο παίκτης βρίσκεται στο σκοτάδι, το level count είναι 0 και το ceiling είναι τίποτα.
+
+Τέλος, σημειώστε ότι αρκετές ενέργειες πέρα από το 'κοίτα' παράγουν επίσης περιγραφές δωματίου σε ορισμένες περιπτώσεις. Η πιο συνηθισμένη είναι το 'πήγαινε', αλλά το να βγει κάποιος από ένα κιβώτιο ή να κατεβεί από έναν υποστηρικτή θα δημιουργήσει επίσης μια περιγραφή δωματίου. (Η φράση που χρησιμοποιείται από τους σχετικούς κανόνες είναι 'produce a room description with going spacing conventions', και οι κανόνες 'carry out' ή 'report' για νέες ενέργειες μπορούν επίσης να τη χρησιμοποιήσουν, αν το επιθυμούν. Οι συμβάσεις διαστήματος επηρεάζουν τη διαίρεση των παραγράφων, και σημειώστε ότι η κύρια περιγραφή της παραγράφου μπορεί να παραλειφθεί για έναν χώρο που δεν είναι νεο-επισκεπτόμενος, ανάλογα με τις ρυθμίσεις VERBOSE.) Περιγραφές δωματίου όπως αυτή παράγονται εκτελώντας τους κανόνες 'check', 'carry out' και 'report' του 'looking', αλλά δεν υπόκεινται στους κανόνες 'before', 'instead' ή 'after': συνεπώς, δεν θεωρούνται νέες ενέργειες. Η μεταβλητή 'room-describing action' του 'κοίτα' διατηρεί το όνομα της ενέργειας που προκάλεσε τη δημιουργία μιας περιγραφής δωματίου: αν ο παίκτης πληκτρολόγησε LOOK, αυτή θα έχει την τιμή της ενέργειας 'κοίτα', αλλά αν περιγράφουμε ένα δωμάτιο στο οποίο μόλις φτάσαμε μέσω 'πήγαινε ανατολικά', για παράδειγμα, θα έχει την τιμή της ενέργειας 'πήγαινε'. Αυτό μπορεί να χρησιμοποιηθεί για να προσαρμόσουμε τους κανόνες 'carry out looking' ώστε να χρησιμοποιούνται διαφορετικές μορφές περιγραφής κατά την είσοδο σε ένα δωμάτιο σε σύγκριση με την περιήγηση ενώ ο παίκτης βρίσκεται ήδη εκεί."
+
+The specification of the examining action is "Η πράξη του να κοιτάζει κανείς προσεκτικά κάτι. Σημειώστε ότι το noun μπορεί να είναι είτε μια κατεύθυνση είτε ένα αντικείμενο, γι' αυτό οι Standard Rules περιλαμβάνουν τον 'examine directions rule' για να διαχειρίζονται τις κατευθύνσεις: απλώς λέει 'You see nothing unexpected in that direction.' και σταματά την ενέργεια. (Αν θέλετε να διαχειριστείτε τις κατευθύνσεις διαφορετικά, προσθέστε έναν άλλο κανόνα στη θέση αυτού στους carry out examining rules.)
+
+Ορισμένα αντικείμενα δεν έχουν την ιδιότητα 'description', ή μάλλον, έχουν μόνο ένα κενό κείμενο ως περιγραφή. Είναι πιθανό να ειπωθεί κάτι ενδιαφέρον ούτως ή άλλως (δείτε τους κανόνες για κατευθύνσεις, containers, supporters και devices), αλλά αν όχι, τότε εγκαταλείπουμε με μια τυπική απάντηση. Αυτό γίνεται από τον 'examine undescribed things rule'."
+
+The specification of the looking under action is "Το τυπικό μοντέλο κόσμου του Inform δεν περιλαμβάνει την έννοια των αντικειμένων που βρίσκονται κάτω από άλλα αντικείμενα, επομένως αυτή η ενέργεια παρέχεται μόνο ελάχιστα από τους Standard Rules. Ωστόσο, υπάρχει για παραδοσιακούς λόγους (και επειδή, τελικά, η εντολή 'κοίτα κάτω από το τραπέζι' είναι από αυτές που θα έπρεπε να αναγνωρίζονται, ακόμη κι αν δεν έχουν κάποια χρησιμότητα).
+
+Η ενέργεια αυτή συνήθως είτε πληροφορεί τον παίκτη ότι δεν βρίσκει κάτι ενδιαφέρον είτε αναφέρει ότι κάποιος άλλος κοίταξε κάτω από κάτι.
+
+Ο συνηθισμένος τρόπος να δώσουμε κάποια χρησιμότητα σε αυτήν την ενέργεια είναι να γράψουμε έναν κανόνα όπως 'Instead of looking under the cabinet for the first time: now the player has the silver key; say ...' και ούτω καθεξής."
+
+The specification of the searching action is "Η ενέργεια 'searching' επιτρέπει την εξέταση του περιεχομένου ενός ανοιχτού ή διαφανούς περιέκτη, ή των αντικειμένων που βρίσκονται πάνω σε μια επιφάνεια. Συχνά αυτά αναφέρονται ήδη στις περιγραφές των δωματίων, καθιστώντας την ενέργεια περιττή. Ωστόσο, αυτό δεν ισχύει για κάτι όπως ένα ντουλάπι κουζίνας που θεωρείται μέρος του σκηνικού – αναφέρεται εν συντομία σε μια περιγραφή δωματίου, αλλά δεν δίνεται έμφαση στην ύπαρξή του. Η αναζήτηση σε ένα τέτοιο ντουλάπι, καταγράφοντας το περιεχόμενό του, παρέχει στον παίκτη περισσότερες πληροφορίες από ό,τι η απλή περιγραφή του δωματίου.
+
+Οι συνήθεις 'check' κανόνες περιορίζουν την ενέργεια αυτή σε περιέκτες και επιφάνειες: έτσι, οι Standard Rules δεν επιτρέπουν την αναζήτηση πάνω σε ανθρώπους, για παράδειγμα. Ωστόσο, είναι εύκολο να προστεθούν 'instead' κανόνες ('Instead of searching Dr Watson: ...') ή ακόμη και νέοι 'carry out' κανόνες ('Check searching someone (called the suspect): ...') ώστε να επεκταθεί η τυπική λειτουργία της αναζήτησης."
+
+The specification of the consulting it about action is "Η ενέργεια 'συμβουλεύσου' είναι μια πολύ ευέλικτη και δυνητικά ισχυρή ενέργεια, αλλά μόνο επειδή αφήνει σχεδόν όλη τη δουλειά στον συγγραφέα να την καθορίσει άμεσα. Η ιδέα είναι να ανταποκρίνεται σε εντολές όπως 'διάβασε σχετικά με τον HENRY FITZROY στο βιβλίο ιστορίας', όπου το θέμα θα είναι το απόσπασμα της εντολής HENRY FITZROY και το αντικείμενο θα είναι το βιβλίο.
+
+Τα Standard Rules απλώς αποφεύγουν τέτοιες εντολές λέγοντας ότι ο παίκτης δεν βρίσκει κάτι ενδιαφέρον. Όλες οι ενδιαφέρουσες αποκρίσεις πρέπει να παρέχονται από τον συγγραφέα, χρησιμοποιώντας κανόνες όπως 'Instead of consulting the history book about...'"
+
+
 
 Chapter 4.5.4 - Standard actions which change the state of things
+
+The specification of the locking it with action is "Το 'κλείδωσε' είναι η πράξη της χρήσης ενός αντικειμένου, όπως ένα κλειδί, για να διασφαλιστεί ότι κάτι, όπως μια πόρτα ή ένα κιβώτιο, δεν μπορεί να ανοιχθεί εκτός αν ξεκλειδωθεί πρώτα. (Μόνο κλειστά αντικείμενα μπορούν να κλειδωθούν.)
+
+Το κλείδωμα μπορεί να εκτελεστεί σε οποιοδήποτε είδος αντικειμένου που παρέχει τις δυαδικές ιδιότητες lockable, locked, openable και open. Ο κανόνας 'can't lock without a lock rule' ελέγχει αν το noun παρέχει την ιδιότητα lockable και αν είναι πράγματι κλειδωσιμό. Θεωρείται τότε ότι οι υπόλοιπες ιδιότητες μπορούν να ελεγχθούν με ασφάλεια. Στα Standard Rules, οι κατηγορίες κιβώτιο και πόρτα ικανοποιούν αυτές τις προϋποθέσεις.
+
+Μπορούμε να δημιουργήσουμε ένα νέο είδος στο οποίο οι ενέργειες opening, closing, locking και unlocking θα λειτουργούν ως εξής: 'A briefcase is a kind of thing. A briefcase can be openable. A briefcase can be open. A briefcase can be lockable. A briefcase can be locked. A briefcase is usually openable, lockable, open and unlocked.'
+
+Το Inform ελέγχει αν το κλειδί ταιριάζει χρησιμοποιώντας τον κανόνα 'can't lock without the correct key rule'. Για να ικανοποιηθεί αυτός ο κανόνας, ο ηθοποιός πρέπει να κρατά απευθείας το second noun, και αυτό πρέπει να είναι η τρέχουσα τιμή της ιδιότητας 'matching key' για το noun. (Αυτή η ιδιότητα σπάνια αναφέρεται άμεσα, καθώς ορίζεται αυτόματα με δηλώσεις όπως 'The silver key unlocks the wicket gate.')
+
+Οι Standard Rules παρέχουν τις ενέργειες locking και unlocking σε αρκετά βασικό επίπεδο: μπορούν να επεκταθούν σημαντικά με τη χρήση της επέκτασης Locksmith από την Emily Short, η οποία περιλαμβάνεται σε όλες τις διανομές του Inform."
+
+[ TODO: Continue from here ]
+
 
 Chapter 4.5.5 - Standard actions concerning other people
 
@@ -2179,6 +2249,25 @@ language Greek
 	            τους τις τα  |
 	            των  των  των
 -) in the Preform grammar.
+
+Part 5 - Unindexed sections of translation
+
+Include [preform](-
+language Greek
+
+<s-literal-truth-state> ::=
+	μύθος |
+	αλήθεια
+
+<s-literal-real-number> ::=
+	_ πι |
+	_ e |
+	συν άπειρο |
+	μείον άπειρο |
+	<literal-real-in-digits>
+
+-) in the Preform grammar.
+
 
 Greek Language ends here.
 
