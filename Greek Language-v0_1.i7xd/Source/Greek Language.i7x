@@ -668,7 +668,7 @@ A door translates into Greek as μια πόρτα.
 A container translates into Greek as ένα κιβώτιο.
 A vehicle translates into Greek as ένα όχημα.
 A player's holdall translates into Greek as μια τσάντα του παίκτη.
-A supporter translates into Greek as ένας υποστηρικτής.
+A supporter translates into Greek as ένας στήριγμα.
 A backdrop translates into Greek as ένα παρασκήνιο. The plural of παρασκήνιο is παρασκήνια. [TODO: check translation]
 A person translates into Greek as ένα άτομο.
 A man translates into Greek as άντρας. The plural of άντρας is άντρες.
@@ -685,6 +685,7 @@ A region translates into Greek as μια περιοχή.
 A number translates into Greek as ένας αριθμός.
 A real number translates into Greek as ένας πραγματικός αριθμός.
 A time translates into Greek as μια ώρα.
+[ TODO: Find correct translation for the following, fix it in the documentation as well ]
 A truth state translates into Greek as μια αλήθεια.
 A text translates into Greek as ένα κείμενο.
 A unicode character translates into Greek as ένας χαρακτήρας unicode.
@@ -741,7 +742,7 @@ The specification of πόρτα is "Αντιπροσωπεύει ένα πέρα
 
 The specification of κιβώτιο is "Αντιπροσωπεύει κάτι μέσα στο οποίο μπορούν να τοποθετηθούν φορητά αντικείμενα, όπως ένα ξύλινο σεντούκι ή μια τσάντα. Κάτι με πραγματικά μεγάλο και ακίνητο εσωτερικό χώρο, όπως η Αίθουσα Άλμπερτ, είναι προτιμότερο να θεωρηθεί δωμάτιο αντί για κιβώτιο.".
 
-The specification of υποστηρικτής is "Αντιπροσωπεύει μια επιφάνεια πάνω στην οποία μπορούν να τοποθετηθούν αντικείμενα, όπως ένα τραπέζι.".
+The specification of στήριγμα is "Αντιπροσωπεύει μια επιφάνεια πάνω στην οποία μπορούν να τοποθετηθούν αντικείμενα, όπως ένα τραπέζι.".
 
 The specification of παρασκήνιο is "Αντιπροσωπεύει μια πτυχή του τοπίου ή της αρχιτεκτονικής που εκτείνεται σε περισσότερα από ένα δωμάτια: για παράδειγμα, ένα ρέμα, ο ουρανός ή ένα μακρύ χαλί.".
 
@@ -949,6 +950,37 @@ Wildcards στην Preform:
  - ......: matches any non-empty text in which brackets are used in a balanced way — thus they would match "alpha beta gamma" or "alpha (the Greek letter)", but not "alpha (the" or "Greek letter)".
  - ###: Any single word
 
+ Πώς λειτουργεί το Inform Syntax στα ρήματα;
+
+ Όταν λέμε "The verb to flaunt means to wear", λέμε στο Inform ότι το απαρέμφατο του νέρου ρήματος είναι το "flaunt". Το Inform χρησιμοποιεί:
+ - 5 γραμματικούς χρόνους: ενεστώτα, αόριστο, παρακείμενο, υπερσυντέλικο και μέλλοντα
+ - 3 πρόσωπα
+ - 2 αριθμούς
+ - 2 "senses" (αλήθεια ή ψέμα)
+ - & 2 φωνές (ενεργτικη και παθητική)
+ - απαρέφματο
+ - μετοχή ενεστώτα
+ - μετοχή αορίστου
+
+ Το σύνολο όλων των παραπάνω δημιουργεί ένα δυνητικό σύνολο 123 συνδυασμών του αρχικού ρήματος.
+
+ Η στρατηγική για την ομαδοποίηση των ρημάτων είναι η ακόλουθη:
+
+ 1. Χειρισμός των πολύ ανωμάλων ρημάτων (π.χ είμαι, έχω, πληρώ, κ.ά.)
+ 2. Για όλα τα άλλα ρήματα, προσδιορισμός διαφόρων σετ κλιτών μορφών
+ 3. Προσπάθεια χρήσης μόνο μίας κλίσης για να επίδειξη χρήσης των τύπων, δηλαδή πώς οι διαφορετικοί τύποι λέξεων αντιστοιχούν στους πιθανούς χρόνους, πρόσωπα, αριθμούς κ.ο.κ.
+
+ Παράδειγμα για τα ελληνικά:
+
+ Ρήμα: Κάνω
+
+ 0-1) Βασική μορφή ρήματος: κάνω
+ 2) Μετοχή ενεστώτα: κάνοντας
+ 3) Απαρέμφατο: κάνει
+ 4) "adkoint infinitive": π.χ. "be able to see" - see
+ 5) 3ο ενικό πρόσωπο ενεστώτα: κάνει
+ 6) 3ο ενικό πρόσωπο αορίστου: έκανε
+
 Πώς λειτουργεί η δομή Preform για τα ρήματα στα ελληνικά:
 
 <verb-conjugation-instructions>: Ορίζουμε την κατηγορία κλίσης στην οποία ανήκει κάθε ρήμα. Για παράδειγμα, τα ρήματα λύνω, βάφω, κάνω έχουν την ίδια κλίση, ενώ το ρήμα "είμαι" είναι ανώμαλο ρήμα.
@@ -957,26 +989,22 @@ Wildcards στην Preform:
 
 <gr-"ρήμα ή κατηγορία"-conjugation> ::=
 	2	<μετοχή ενεστώτα> |
-	3	<απαρέμφατο αορίστου>????
+	3	<απαρέμφατο αορίστου>
 	<gr-"ρήμα ή κατηγορία"-tabulation>
-
-[slot 5 we use for the stem of the verb]
 
 Κλίση ρήματος ή κατηγορίας:
 <gr-"ρήμα ή κατηγορία"-tabulation> ::=
 	a1+		<gr-ρήμα-ενεστώτας> |
 	a1-		άρνηση <gr-ρήμα-ενεστώτας> |
-	a2+		<gr-ρήμα-παρατατικός> |
-	a2-		άρνηση <gr-ρήμα-παρατατικός> |
+	a2+		<gr-ρήμα-αόριστος> |
+	a2-		άρνηση <gr-ρήμα-αόριστος> |
 	a3+		<gr-ρήμα-παρακείμενος> 3 |
 	a3- 	άρνηση <gr-ρήμα-παρακείμενος> 3 |
 	a4+		<gr-ρήμα-υπερσυντέλικος> 3 |
 	a4-		άρνηση <gr-ρήμα-υπερσυντέλικος> 3 |
 	a5+		<gr-ρήμα-μέλλοντας> |
 	a5-		άρνηση <gr-ρήμα-μέλλοντας> |
-	a6+		 <gr-ρήμα-αόριστος> |
-	a6-		άρνηση <gr-ρήμα-αόριστος> |
-	[ p* TODO: Figure out what is its purpose ]
+	p* 		παθητική μορφή ρήματος
 
 
 Τέλος, ακολουθεί η κλίση για κάθε χρόνο, π.χ.:
@@ -991,6 +1019,7 @@ Wildcards στην Preform:
 <verb-conjugation-instructions> ::=
 	-είμαι <gr-be-conjugation> |
 	-έχω <gr-have-conjugation> |
+	-κάνω <gr-kano-conjugation> |
 	-μπορώ <gr-can-conjugation> |
 	-λύνω <gr-lyno-conjugation> |
 	-βλέπω <gr-vlepo-conjugation> |
@@ -1029,6 +1058,7 @@ Wildcards στην Preform:
 [ "Έχω" ]
 
 <gr-have-conjugation> ::=
+	2 έχοντας |
     <gr-have-tabulation>
 
 <gr-have-tabulation> ::=
@@ -1036,8 +1066,8 @@ Wildcards στην Preform:
     a1- δεν <gr-have-present> |
     a2+ <gr-have-past> |
     a2- δεν <gr-have-past> |
-    a5+ <gr-have-future> |
-    a5- δεν <gr-have-future>
+    a5+ θα <gr-have-present> |
+    a5- δεν <gr-have-present>
 
 <gr-have-present> ::=
     έχω | έχεις | έχει | έχουμε | έχετε | έχουν
@@ -1045,8 +1075,56 @@ Wildcards στην Preform:
 <gr-have-past> ::=
     είχα | είχες | είχε | είχαμε | είχατε | είχαν
 
-<gr-have-future> ::=
-    θα έχω | θα έχεις | θα έχει | θα έχουμε | θα έχετε | θα έχουν
+
+[ "Κάνω" ]
+
+<gr-kano-conjugation> ::=
+	2	κάνοντας |
+	3	κάνει |
+	<gr-kano-tabulation>
+
+[ ΣΗΜΑΝΤΙΚΟ: The t1 means present tense; t2 means past tense, and so on ]
+
+<gr-kano-tabulation> ::=
+	a1+ <gr-kano-present> |
+	a1- δεν <gr-kano-present> |
+	a2+ <gr-kano-past> |
+	a2- δεν <gr-kano-past> |
+	a3+ (t1 έχω) 3 |
+	a3- δεν (t1 έχω) 3 |
+	a4+ (t2 έχω) 3 |
+	a4- δεν (t2 έχω) 3 |
+	a5+ θα <gr-kano-present> |
+	a5- δεν θα <gr-kano-present>
+	[ p* έγινε από  ]
+
+<gr-kano-present> ::=
+	1 | κάνεις | κάνει | κάνουμε | κάνετε | κάνουν
+
+<gr-kano-past> ::=
+	έκανα | έκανες | έκανε | κάναμε | κάνατε | έκαναν
+
+[ TODO: Continue using the following
+
+Regular English verbs, then, look like so. We will, for the first time, make heavy use of our
+numbered verb forms: for example, for the verb “to take”, they would be “take” (1), “taking” (2), “taken”
+(3), “takes” (5) and “took” (6). We start with the infinitive (“take”) in verb form 1, but (2), (3), (5) and
+(6) are initially blank – we have to make them somehow.
+We do this by giving their definitions not as fixed wording, as we did for the verbs above, but as tries
+which act on the infinitive to produce a wording. For example, <en-trie-present-participle> is a trie which
+performs:
+take --> taking
+We will have to define these tries below. Note that the infinitive can consist of multiple words; if so, the first
+word is run through the tries, and the remaining words are left alone. For example, “grab onto” would be
+inflected to “grabs onto”, “grabbing onto” and so on.
+hregular-verb-conjugationi ::=
+1 2 hen-trie-present-participlei |
+2 3 hen-trie-past-participlei |
+3 5 hen-trie-present-verb-formi |
+4 6 hen-trie-pasti |
+5 hregular-verb-tabulationi
+
+ ]
 
 
 [ "Μπορώ" ]
@@ -1475,16 +1553,26 @@ report other people taking inventory rule response (A) is "[The actor] [adapt th
 [ TODO: Test the following, see French example ]
 can't take yourself rule response (A) is "Δεν [adapt the verb μπορώ in present tense] να [adapt the verb πάρω in present tense] [τον εαυτό μου]".
 [ TODO: Change the following ]
-can't take other people rule response (A) is "[We] [don't] suppose [the noun] [would care] for that.".
-[ TODO: Continue from here ]
+can't take other people rule response (A) is "[Εγώ] [don't] suppose [the noun] [would care] for that.".
+[ TODO: Translate the above segment ]
 
-
+[ TODO: Replace those, check if whole needs adaptation ]
+can't take component parts rule response (A) is "[regarding the noun][Those] φαίνεται να είναι μέρος από [the whole].".
+can't take people's possessions rule response (A) is "[regarding the noun][Those] φαίνεται να ανήκουν σε [the owner].".
+[ TODO: Adapt the verb βγω ]
+can't take what you're inside rule response (A) is "Θα έπρεπε να βγεις από [the noun] πρώτα.".
+can't take what's already taken rule response (A) is "[adapt the verb έχω] ήδη [regarding the noun][those]".
+can't take scenery rule response (A) is "[regarding the noun]Δεν γίνεται να μετακινηθεί.".
+[ TODO: Check grammar on the following ]
+can't take what's fixed in place rule response (A) is "[regarding the noun][adapt the verb είμαι] στερεωμένος/στερεωμένη/στερεωμένο στην θέση του/της.".
+use player's holdall to avoid exceeding carrying capacity rule response (A) is "(βάζοντας [the transferred item] μέσα σε [the current working sack] για να δημιουργηθεί χώρος)[command clarification break]".
+can't exceed carrying capacity rule response (A) is "[Εγώ] [κρατάω] ήδη πάρα πολλά πράγματα.".
 standard report taking rule response (A) is "Πάρθηκε.".
 standard report taking rule response (B) is "[The actor] [adapt the verb παίρνω] [the noun].".
-[ TODO: Continue from here ]
 
 [Removing it from]
-
+[ TODO: Continue from here ]
+can't remove what's not inside rule response (A) is "But [regarding the noun][they] [aren't] there [now].".
 [Dropping]
 can't drop what's already dropped rule response (A) is "[The noun] [adapt the verb είμαι] ήδη [εδώ].".
 [ TODO: Fix the following ]
@@ -2276,3 +2364,41 @@ Greek Language ends here.
 Section: Παρουσίαση
 
 Section: Εγκατάσταση
+
+Section: Συγγραφή της ιστορίας σας στα ελληνικά
+
+Με αυτή την επέκταση, είναι δυνατό (αλλά όχι υποχρεωτικό) να γράψετε μέρος του κώδικά σας στα ελληνικά, δηλαδή την αρχική κατάσταση του κόσμου και τις συνθήκες. Για παράδειγμα:
+
+	κουζίνα είναι ένα δωμάτιο.
+	[ TODO: Add the article ]
+
+[ TODO: Πρέπει είτε να δημιουργηθούν κανόνες για την αναγνώριση του γένους μιας λέξης, ειδάλλως θα πρέπει να ζητείται από τον παίκτη να εισάγει (m), (f), ή (n) (ή αντίστοιχα στα ελληνικά) για να μπορεί να κατανοήσει το Inform το γένος της λέξης]
+
+Ακολουθεί μια λίστα με αντιστοιχία ελληνικών - αγγλικών όρων που αφορούν το συγκεκριμένο extension:
+
+	αντικείμενο -> object
+	δωμάτιο -> room
+	πράγμα -> thing
+	πόρτα -> door
+	δοχείο -> container
+	όχημα -> vehicle
+	τσάντα του παίκτη -> player's holdall
+	στήριγμα -> supporter
+	παρασκήνιο -> backdrop
+	άτομο -> person
+	άντρας -> man
+	γυναίκα -> woman
+	ζώτο -> animal
+	συσκευή -> device
+	κατεύθυνση -> direction
+	περιοχή -> region
+	αριθμός -> number
+	πραγματικός αριθμός -> real number
+	ώρα -> time
+	αλήθεια -> truth state
+	κείμενο -> text
+	χαρακτήρας unicode  -> unicode character
+	απόσπασμα -> snippet
+	αποθηκευμένη ενέργεια -> stored action
+
+
