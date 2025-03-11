@@ -977,7 +977,7 @@ Wildcards στην Preform:
  0-1) Βασική μορφή ρήματος: κάνω
  2) Μετοχή ενεστώτα: κάνοντας
  3) Απαρέμφατο: κάνει
- 4) "adkoint infinitive": π.χ. "be able to see" - see
+ 4) "adjoint infinitive": π.χ. "be able to see" - see
  5) 3ο ενικό πρόσωπο ενεστώτα: κάνει
  6) 3ο ενικό πρόσωπο αορίστου: έκανε
 
@@ -989,7 +989,7 @@ Wildcards στην Preform:
 
 <gr-"ρήμα ή κατηγορία"-conjugation> ::=
 	2	<μετοχή ενεστώτα> |
-	3	<απαρέμφατο αορίστου>
+	3	<απαρέμφατο αορίστου> |
 	<gr-"ρήμα ή κατηγορία"-tabulation>
 
 Κλίση ρήματος ή κατηγορίας:
@@ -1006,6 +1006,8 @@ Wildcards στην Preform:
 	a5-		άρνηση <gr-ρήμα-μέλλοντας> |
 	p* 		παθητική μορφή ρήματος
 
+Ωστόσο, ο παρακείμενος και ο υπερσυντέλικος σχημαντίζονται με το ρήμα έχω, επομένως η άρνηση καθορίζεται από το βοηθητικό ρήμα έχω, και τα a3+, a3- μπορούν να συγχωνευθούν σε a3(αντίστοιχα και σε a4.)
+
 
 Τέλος, ακολουθεί η κλίση για κάθε χρόνο, π.χ.:
 
@@ -1017,24 +1019,64 @@ Wildcards στην Preform:
 [ TODO: Change from imperative to imperfect... ]
 
 <verb-conjugation-instructions> ::=
-	-είμαι <gr-be-conjugation> |
-	-έχω <gr-have-conjugation> |
-	-κάνω <gr-kano-conjugation> |
-	-μπορώ <gr-can-conjugation> |
-	-λύνω <gr-lyno-conjugation> |
-	-βλέπω <gr-vlepo-conjugation> |
-	-δω <gr-na-do-conjugation> |
-	-πάω <gr-na-paw-conjugation> |
-	-κρατάω <gr-kratao-conjugation> |
-	-χτυπάω <gr-xtypao-conjugation> |
-	-παίρνω <gr-pairno-conjugation> |
-	-πάρω <gr-na-paro-conjugation> |
+	είμαι 	<gr-be-conjugation> |
+	έχω 	<gr-have-conjugation> |
+	μπορώ 	<gr-can-conjugation> |
+	μπορώ να ...	<gr-can-auxiliary> |
+	κάνω 	<gr-kano-conjugation> |
+	λύνω 	<gr-lyno-conjugation> |
+	βλέπω 	<gr-vlepo-conjugation> |
+	δω 		<gr-na-do-conjugation> |
+	πάω 	<gr-na-paw-conjugation> |
+	κρατάω 	<gr-kratao-conjugation> |
+	χτυπάω 	<gr-xtypao-conjugation> |
+	παίρνω 	<gr-pairno-conjugation> |
+	πάρω 	<gr-na-paro-conjugation> |
+	...		<gr-regular-verb-conjugation>
 
 	[ TODO: αφήνω ή βάζω, στηρίζω, περιέχω, ανοίγω, κλείνω ]
+
+
+<gr-regular-verb-conjugation> ::=
+	2	<gr-trie-present-participle> |
+	3 	<gr-trie-past-participle> |
+	5	<gr-trie-present-verb-form> |
+	6	<gr-trie-past-verb-form> |
+	<gr-regular-verb-tabulation>
+
+<gr-regular-verb-tabulation> ::=
+	[ TODO: Fill this one ]
+	a1+ <gr-regular-verb-present> |
+	a1- δεν 1 |
+	a2+ <gr-regular-verb-past> |
+	a2- δεν 3 |
+	a3 (t1 έχω) 3 |
+	a4 (t2 έχω) 3 |
+	a5+ θα <gr-regular-verb-future> |
+	a5- δεν θα <gr-regular-verb-future> |
+	[ p* TODO: Προσθήκη της παθητικής φωνής ]
+
+
+
+[ TODO: Complete all the following ]
+<gr-regular-verb-present> ::=
+	1 | κάνεις | κάνει | κάνουμε | κάνετε | κάνουν
+
+<gr-regular-verb-past> ::=
+	έκανα | έκανες | έκανε | κάναμε | κάνατε | έκαναν
+
+<gr-regular-verb-future> ::=
+	θα κάνω | θα κάνεις | θα κάνει | θα κάνουμε | θα κάνετε | θα κάνουν
+
+<gr-trie-present-participle> ::=
+	...		<gr-trie-irregular-present-participle> |
+	...		<gr-trie-regular-a-present-participle> |
+	[ TODO: Continue the above ]
 
 [ "Είμαι" ]
 
 <gr-be-conjugation> ::=
+	2 όντας |
     <gr-be-tabulation>
 
 <gr-be-tabulation> ::=
@@ -1042,18 +1084,14 @@ Wildcards στην Preform:
     a1- δεν <gr-be-present> |
     a2+ <gr-be-past> |
     a2- δεν <gr-be-past> |
-    a5+ <gr-be-future> |
-    a5- δεν <gr-be-future>
+    a5+ θα <gr-be-present> |
+    a5- δεν θα <gr-be-present>
 
 <gr-be-present> ::=
     είμαι | είσαι | είναι | είμαστε | είστε | είναι
 
 <gr-be-past> ::=
     ήμουν | ήσουν | ήταν | ήμασταν | ήσασταν | ήταν
-
-<gr-be-future> ::=
-    θα είμαι | θα είσαι | θα είναι | θα είμαστε | θα είστε | θα είναι
-
 
 [ "Έχω" ]
 
@@ -1076,6 +1114,45 @@ Wildcards στην Preform:
     είχα | είχες | είχε | είχαμε | είχατε | είχαν
 
 
+[ "Μπορώ" ]
+
+<gr-can-conjugation> ::=
+	2	μπορώντας |
+	3	μπορέσει |
+	<gr-can-tabulation>
+
+<gr-can-tabulation> ::=
+    a1+ 	<gr-can-present> |
+    a1- 	δεν <gr-can-present> |
+    a2+ 	<gr-can-past> |
+    a2- 	δεν <gr-can-past> |
+	a3		(t1 έχω) 3 |
+	a4		(t2 έχω) 3 |
+	a5+ 	θα <gr-can-future> |
+    a5- 	δεν θα <gr-can-future>
+
+<gr-can-present> ::=
+    μπορώ | μπορείς | μπορεί | μπορούμε | μπορείτε | μπορούν
+
+<gr-can-past> ::=
+    μπόρεσα | μπόρεσες | μπόρεσε | μπορέσαμε | μπορέσατε | μπόρεσαν
+
+<gr-can-future> ::=
+    μπορέσω | μπορέσεις | μπορέσει | μπορέσουμε | μπορέσετε | μπορέσουν
+
+
+<gr-can-auxiliary> ::=
+	[ TODO: Τι χρειάζεται εδώ; ]
+	<gr-can-auxiliary-tabulation>
+
+<gr-can-auxiliary-tabulation> ::=
+	a1 (t1 μπορώ) να (t1) |
+	a2 (t2 μπορώ) να (t1) |
+	a5 (t5 μπορώ) να (t1)
+	[ TODO: Check / fix the above! ]
+
+[ TODO: Χρειάζεται να δηλωθεί και το πρέπει; ]
+
 [ "Κάνω" ]
 
 <gr-kano-conjugation> ::=
@@ -1090,10 +1167,8 @@ Wildcards στην Preform:
 	a1- δεν <gr-kano-present> |
 	a2+ <gr-kano-past> |
 	a2- δεν <gr-kano-past> |
-	a3+ (t1 έχω) 3 |
-	a3- δεν (t1 έχω) 3 |
-	a4+ (t2 έχω) 3 |
-	a4- δεν (t2 έχω) 3 |
+	a3 (t1 έχω) 3 |
+	a4 (t2 έχω) 3 |
 	a5+ θα <gr-kano-present> |
 	a5- δεν θα <gr-kano-present>
 	[ p* έγινε από  ]
@@ -1125,36 +1200,6 @@ hregular-verb-conjugationi ::=
 5 hregular-verb-tabulationi
 
  ]
-
-
-[ "Μπορώ" ]
-
-<gr-can-conjugation> ::=
-    5       μπορ |
-    6       5 |
-    <gr-can-tabulation>
-
-<gr-can-tabulation> ::=
-    a1+ 	<gr-can-present> |
-    a1- 	δεν <gr-can-present> |
-    a2+ 	<gr-can-past> |
-    a2- 	δεν <gr-can-past> |
-    a4+ 	<gr-can-imperfect> |
-    a4- 	δεν <gr-can-imperfect> |
-	a5+ 	θα <gr-can-future> |
-    a5- 	δεν θα <gr-can-future>
-
-<gr-can-present> ::=
-    μπορώ | μπορείς | μπορεί | μπορούμε | μπορείτε | μπορούν
-
-<gr-can-past> ::=
-    μπορούσα | μπορούσες | μπορούσε | μπορούσαμε | μπορούσατε | μπορούσαν
-
-<gr-can-future> ::=
-    μπορώ | μπορείς | μπορεί | μπορούμε | μπορείτε | μπορούν
-
-<gr-can-imperfect> ::=
-    μπορούσα | μπορούσες | μπορούσε | μπορούσαμε | μπορούσατε | μπορούσαν
 
 
 [ "Λύνω" - 'Α Συζυγία. Παρόμοια κλίνονται τα "κάνω", "βάφω", ... ]
@@ -1729,7 +1774,7 @@ parser error internal rule response (A) is "Δεν κατάλαβα αυτή τ�
 parser error internal rule response (B) is "Κατάλαβα μόνο μέχρι το σημείο που ήθελες να".
 parser error internal rule response (C) is "Κατάλαβα μόνο μέχρι το σημείο που ήθελες να (πας)".
 parser error internal rule response (D) is "Δεν κατάλαβα αυτόν τον αριθμό.".
-parser error internal rule response (E) is "[negate the verb βλέπω] κάτι τέτοιο.".
+parser error internal rule response (E) is "[regarding the player][negate the verb βλέπω] κάτι τέτοιο.".
 parser error internal rule response (F) is "Φαίνεται πως είπες πολύ λίγα!".
 parser error internal rule response (G) is "[negate the verb κρατάω] αυτό!".
 parser error internal rule response (H) is "Δεν μπορείς να χρησιμοποιήσεις πολλαπλά αντικείμενα με αυτό το ρήμα.".
