@@ -180,6 +180,16 @@ To say στον/στο/στην/στη/στο/στους/στις/στα (O - ob
 Include [preform](-
 language Greek
 
+<article-declension> ::=
+	*           <gr-article-declension>
+
+<gr-article-declension> ::=
+	the         ο    η    το  |  [Singular]
+	            τον  την  το
+	the         οι   οι   τα    [Plural]
+	            τους τις τα  |
+
+
 <definite-article-table> ::=
 	ο η το οι οι τα			|
 	τον/το την/τη το τους τις τα
@@ -189,19 +199,6 @@ language Greek
 	ένας μία/μια ένα κάποιοι κάποιες κάποια		|
 	έναν/ένα μία/μια ένα κάποιους κάποιες κάποια
 
-[ <definite-article> ::=
-	/b/ le/l' |				[singular, masculine]
-	/c/ la/l' |				[singular, feminine]
-	/e/ les					[plural, masculine (by default)]
-
-<np-relative-phrase-implicit> ::=
-	/a/ porté/portée/portés/portées |				[replacing "worn" in English]
-	/b/ tenu/tenue/tenus/tenues |			["carried"]
-	/d/ ici					["here"]
-
-<implicit-player-relationship> ::=
-	/a/ porté/portée/portés/portées |
-	/b/ tenu/tenue/tenus/tenues ]
 
 -) in the Preform grammar.
 
@@ -293,33 +290,33 @@ Array LanguageNumbers table
 	'είκοσι εννέα' 29 'τριάντα' 30 'μία' 1
 ;
 ! TODO: Make the following work
-! [ LanguageNumber n f;
-!     if (n == 0) {
-! 		print "μηδέν";
-! 		rfalse;
-! 	}
+[ LanguageNumber n f;
+    if (n == 0) {
+		print "μηδέν";
+		rfalse;
+	}
 
-!     if (n < 0) {
-!         print "μείον ";
-!         n = -n;
-!     }
+    if (n < 0) {
+        print "μείον ";
+        n = -n;
+    }
 
-!     if (n >= 1000) {
-!         if (n / 1000 == 1) {  ! Αν είναι ακριβώς 1000
-!             print "χίλια";
-!         } else {  ! Αν είναι μεγαλύτερο από 1000
-!             LanguageNumber(n / 1000, false);
-!             print " χιλιάδες";
-!         }
-!         n = n % 1000;
-!         if (n) {
-!             print " ";
-!         } else {
-!             return;
-!         }
-!     }
-! ];
--) replacing "Numbers".
+    if (n >= 1000) {
+        if (n / 1000 == 1) {  ! Αν είναι ακριβώς 1000
+            print "χίλια";
+        } else {  ! Αν είναι μεγαλύτερο από 1000
+            LanguageNumber(n / 1000, false);
+            print " χιλιάδες";
+        }
+        n = n % 1000;
+        if (n) {
+            print " ";
+        } else {
+            return;
+        }
+    }
+];
+-) replacing "LanguageNumber".
 
 Part 2.2 - Nouns
 
@@ -584,6 +581,42 @@ To say Μου:
 		say "Τους".
 
 
+To say τον:
+	let the item be the prior named object;
+	if the item is plural-named:
+		if the item is male:
+			say "τους";
+		if the item is female:
+			say "τις";
+		otherwise:
+			say "τα";
+	otherwise:
+		if the item is male:
+			say "τον";
+		if the item is female:
+			say "την";
+		otherwise:
+			say "το".
+
+To say του εαυτού μου:
+	now the prior named object is the player;
+	if the story viewpoint is first person singular:
+		say "του εαυτού μου";
+	else if the story viewpoint is second person singular:
+		say "του εαυτού σου";
+	else if the story viewpoint is third person singular:
+		if the player is female:
+			say "του εαυτού της";
+		otherwise:
+			say "του εαυτού του";
+	else if the story viewpoint is first person plural:
+		say "των εαυτών μας";
+	else if the story viewpoint is second person plural:
+		say "των εαυτών σας";
+	otherwise:
+		say "των εαυτών τους".
+
+
 [ TODO: figure this out ]
 [ To say μου/σου/του/της/τους (O - an object):
 	if O is plural-named:
@@ -600,6 +633,8 @@ Chapter 2.2.2 - Pronouns and possessives for other objects
 
 [ TODO: Translate and continue the following, based on English ]
 
+
+
 To say those:
 	say those in the αιτιατική.
 
@@ -610,16 +645,70 @@ To say Those:
 To say those in (case - grammatical case):
 	if the case is nominative:
 		let the item be the prior named object;
-		if the prior naming context is plural:
-			say "those";
+		if the prior naming context is plural and item is male:
+			say "αυτοί";
+		otherwise if the prior naming context is plural and item is female:
+			say "αυτές";
+		otherwise if the prior naming context is plural and item is neuter:
+			say "αυτά";
 		otherwise if the item is the player:
 			say "[εγώ]";
 		otherwise if the item is a male person and item is not neuter:
-			say "he";
+			say "αυτός";
 		otherwise if the item is a female person and item is not neuter:
-			say "she";
+			say "αυτή";
 		otherwise:
-			say "that";
+			say "αυτό";
+	otherwise:
+		let the item be the prior named object;
+		if the prior naming context is plural and item is male:
+			say "αυτούς";
+		otherwise if the prior naming context is plural and item is female:
+			say "αυτές";
+		otherwise if the prior naming context is plural and item is neuter:
+			say "αυτά";
+		otherwise if the item is the player:
+			say "[εμένα]";
+		otherwise if the item is a male person and item is not neuter:
+			say "αυτόν";
+		otherwise if the item is a female person and item is not neuter:
+			say "αυτή";
+		otherwise:
+			say "αυτό";
+
+To say Those in (case - grammatical case):
+	if the case is nominative:
+		let the item be the prior named object;
+		if the prior naming context is plural and item is male:
+			say "Αυτοί";
+		otherwise if the prior naming context is plural and item is female:
+			say "Αυτές";
+		otherwise if the prior naming context is plural and item is neuter:
+			say "Αυτά";
+		otherwise if the item is the player:
+			say "[Εγώ]";
+		otherwise if the item is a male person and item is not neuter:
+			say "Αυτός";
+		otherwise if the item is a female person and item is not neuter:
+			say "Αυτή";
+		otherwise:
+			say "Αυτό";
+	otherwise:
+		let the item be the prior named object;
+		if the prior naming context is plural and item is male:
+			say "Αυτούς";
+		otherwise if the prior naming context is plural and item is female:
+			say "Αυτές";
+		otherwise if the prior naming context is plural and item is neuter:
+			say "Αυτά";
+		otherwise if the item is the player:
+			say "[Εμένα]";
+		otherwise if the item is a male person and item is not neuter:
+			say "Αυτόν";
+		otherwise if the item is a female person and item is not neuter:
+			say "Αυτή";
+		otherwise:
+			say "Αυτό";
 
 Chapter 2.2.3 - Directions
 
@@ -709,8 +798,8 @@ An external file translates into Greek as ένα εξωτερικό αρχείο
 Grammatical tense translates into Greek as γραμματικός χρόνος.
 Present tense translates into Greek as ο ενεστώτας.
 Future tense translates into Greek as ο μέλλοντας.
-Past tense translates into Greek as ο παρελθοντικός.
-Perfect tense translates into Greek as ο αόριστος.
+Past tense translates into Greek as ο αόριστος.
+Perfect tense translates into Greek as ο παρακείμενος.
 Past perfect tense translates into Greek as ο υπερσυντέλικος.
 
 Narrative viewpoint translates into Greek as αφηγηματική σκοπιά.
@@ -768,6 +857,23 @@ Chapter 2.2.5 - Plurals
 
 Include [preform](-
 language Greek
+
+<grammatical-case-names> ::=
+	nominative | accusative [ TODO: Προσθήκη γενικής? ]
+
+<noun-declension> ::=
+	*    <gr-noun-declension-group>
+	<gr-noun-declension-tables>
+
+<gr-noun-declension-group> ::=
+	*	1
+
+<gr-noun-declension-tables> ::=
+	<gr-noun-declension-uninflected>
+
+<gr-noun-declension-uninflected> ::=
+	0 | 0 |   [Singular | Plural]
+	0 | 0
 
 <singular-noun-to-its-plural> ::=
 	... <gr-trie-plural-uninflected> |
@@ -1466,6 +1572,16 @@ Chapter 2.2.7 - Times of day
 ];
 -) replacing "Time". ]
 
+Include (-
+[ PrintTimeOfDay t h aop;
+	if (t<0) { print "<no time>"; return; }
+	if (t >= TWELVE_HOURS) { aop = "μ.μ."; t = t - TWELVE_HOURS; } else aop = "π.μ.";
+	h = t/ONE_HOUR; if (h==0) h=12;
+	print h, ":";
+	if (t%ONE_HOUR < 10) print "0"; print t%ONE_HOUR, " ", (string) aop;
+];
+-) replacing "PrintTimeOfDay".
+
 Include [preform](-
 language Greek
 
@@ -1678,19 +1794,30 @@ Wildcards στην Preform:
 [ TODO: Change from imperative to imperfect... ]
 
 <verb-conjugation-instructions> ::=
-	είμαι 	<gr-be-conjugation> |
-	έχω 	<gr-have-conjugation> |
-	μπορώ 	<gr-can-conjugation> |
-	μπορώ να ...	<gr-can-auxiliary> |
-	κάνω 	<gr-kano-conjugation> |
-	λύνω 	<gr-lyno-conjugation> |
-	βλέπω 	<gr-vlepo-conjugation> |
-	δω 		<gr-na-do-conjugation> |
-	πάω 	<gr-na-paw-conjugation> |
-	κρατάω 	<gr-kratao-conjugation> |
-	χτυπάω 	<gr-xtypao-conjugation> |
-	παίρνω 	<gr-pairno-conjugation> |
-	πάρω 	<gr-na-paro-conjugation> |
+	είμαι 	<gr-be-conjugation> 		|
+	έχω 	<gr-have-conjugation> 		|
+	μπορώ 	<gr-can-conjugation> 		|
+	μπορώ να ...	<gr-can-auxiliary> 	|
+	πρέπει να	<gr-prepei-auxiliary> 	|
+	κάνω 	<gr-kano-conjugation> 		|
+	αφήνω	<gr-afino-conjugation>		|
+	υποθέτω	<gr-ypotheto-conjugation> 	|
+	βάζω	<gr-vazo-conjugation>		|
+	ανήκω	<gr-aniko-conjugation> 		|
+	λύνω 	<gr-lyno-conjugation> 		|
+	βλέπω 	<gr-vlepo-conjugation> 		|
+	δω 		<gr-na-do-conjugation> 		|
+	πάω 	<gr-na-paw-conjugation> 	|
+	κρατάω 	<gr-kratao-conjugation> 	|
+	χτυπάω 	<gr-xtypao-conjugation> 	|
+	παίρνω 	<gr-pairno-conjugation> 	|
+	πάρω 	<gr-na-paro-conjugation> 	|
+	φτάσω  	<gr-na-ftaso-conjugation> 	|
+	φαίνεται	<gr-fainetai-conjugation> |
+	γίνεται <gr-ginetai-conjugation> 	|
+	βγω		<gr-na-vgo-conjugation> 	|
+	ρίξω	<gr-na-rixo-conjugation> 	|
+	βάλω	<gr-na-valo-conjugation>	|
 	...		<gr-regular-verb-conjugation>
 
 	[ TODO: αφήνω ή βάζω, στηρίζω, περιέχω, ανοίγω, κλείνω ]
@@ -1706,9 +1833,9 @@ Wildcards στην Preform:
 <gr-regular-verb-tabulation> ::=
 	[ TODO: Fill this one ]
 	a1+ <gr-regular-verb-present> |
-	a1- δεν 1 |
+	a1- δεν <gr-regular-verb-present> |
 	a2+ <gr-regular-verb-past> |
-	a2- δεν 3 |
+	a2- δεν <gr-regular-verb-past> |
 	a3 (t1 έχω) 3 |
 	a4 (t2 έχω) 3 |
 	a5+ θα <gr-regular-verb-future> |
@@ -1716,16 +1843,15 @@ Wildcards στην Preform:
 	[ p* TODO: Προσθήκη της παθητικής φωνής ]
 
 
-
 [ TODO: Complete all the following ]
 <gr-regular-verb-present> ::=
-	1 | κάνεις | κάνει | κάνουμε | κάνετε | κάνουν
+	1 | 7+εις | 7+ει | 7+ουμε | 7+ετε | 7+ουν
 
 <gr-regular-verb-past> ::=
-	έκανα | έκανες | έκανε | κάναμε | κάνατε | έκαναν
+	8+α | 8+ες | 8+ε | 9+αμε | 9+ατε | 8+αν
 
 <gr-regular-verb-future> ::=
-	θα κάνω | θα κάνεις | θα κάνει | θα κάνουμε | θα κάνετε | θα κάνουν
+	9+ω | 9+εις | 9+ει | 9+ουμε | 9+ετε | 9+ουν
 
 <gr-trie-present-participle> ::=
 	...		<gr-trie-irregular-present-participle> |
@@ -1810,7 +1936,16 @@ Wildcards στην Preform:
 	a5 (t5 μπορώ) να (t1)
 	[ TODO: Check / fix the above! ]
 
-[ TODO: Χρειάζεται να δηλωθεί και το πρέπει; ]
+
+[ "Πρέπει" ]
+
+<gr-prepei-auxiliary> ::=
+	<gr-prepei-auxiliary-tabulation>
+
+<gr-prepei-auxiliary-tabulation> ::=
+	a1 πρέπει να (t1) |
+	a2 έπρεπε να (t1) |
+	a5 θα πρέπει να (t1)
 
 [ "Κάνω" ]
 
@@ -1837,6 +1972,71 @@ Wildcards στην Preform:
 
 <gr-kano-past> ::=
 	έκανα | έκανες | έκανε | κάναμε | κάνατε | έκαναν
+
+[ "Βάζω" ]
+
+<gr-vazo-conjugation> ::=
+	2 βάζοντας 	|
+	3 βάλει 	|
+	5 βάζει		|
+	6 έβαλε		|
+	7 βάζ		|
+	8 έβαλ		|
+	9 βάλ		|
+	<gr-regular-verb-tabulation>
+
+
+[ "Αφήνω" ]
+
+<gr-afino-conjugation> ::=
+	2 αφήνοντας |
+	3 αφήσει 	|
+	5 αφήνει	|
+	6 άφησε		|
+	7 αφήν		|
+	8 άφησ		|
+	9 αφήσ		|
+	<gr-regular-verb-tabulation>
+
+[ Υποθέτω ]
+
+<gr-ypotheto-conjugation> ::=
+	7 υποθέτ	|
+	8 υπέθεσ	|
+	9 υποθέσ	|
+	2 7+οντας	|
+	3 υποθέσει	|
+	5 7+ει		|
+	6 8+ε		|
+	<gr-regular-verb-tabulation>
+
+[ Ανήκω ]
+
+<gr-aniko-conjugation> ::=
+	7 ανήκ	|
+	8 ανήκ	|
+	9 ανήκ	|
+	5 7+ει	|
+	6 8+ε	|
+	<gr-regular-verb-tabulation>
+
+[ "Φαίνεται" - γ' πρόσωπο μόνο ]
+
+<gr-fainetai-conjugation> ::=
+	<gr-fainetai-tabulation>
+
+<gr-fainetai-tabulation> ::=
+	a1	φαίνεται 	|
+	a2  φαινόταν	|
+	a5	θα φαίνεται
+
+<gr-ginetai-conjugation> ::=
+	<gr-ginetai-tabulation>
+
+<gr-ginetai-tabulation> ::=
+	a1	γίνεται |
+	a2  γινόταν	|
+	a5	θα γίνεται
 
 [ TODO: Continue using the following
 
@@ -1965,7 +2165,7 @@ hregular-verb-conjugationi ::=
     7+ησα | 7+ησες | 7+ησε | 5+ήσαμε | 5+ήσατε | 7+ησαν |
 
 <gr-kratao-future> ::=
-    θα 5+ήσω | θα 5+ήσεις | θα 5+ήσει | θα 5+ήσουμε | θα 5+ήσετε | θα 5+ήσουν
+    5+ήσω | 5+ήσεις | 5+ήσει | 5+ήσουμε | 5+ήσετε | 5+ήσουν
 
 
 <gr-xtypao-conjugation> ::=
@@ -2040,9 +2240,50 @@ hregular-verb-conjugationi ::=
 <gr-na-paro-present> ::=
 	πάρω | πάρεις | πάρει | πάρουμε | πάρετε | πάρουν
 
+<gr-na-ftaso-conjugation> ::=
+	<gr-na-ftaso-tabulation>
+
+<gr-na-ftaso-tabulation> ::=
+	a1+      <gr-na-ftaso-present>
+
+<gr-na-ftaso-present> ::=
+	φτάσω | φτάσεις | φτάσει | φτάσουμε | φτάσετε | φτάσουν
+
+
+[ "Να βγω." ]
+
+<gr-na-vgo-conjugation> ::=
+	<gr-na-vgo-tabulation>
+
+<gr-na-vgo-tabulation> ::=
+	a1+      <gr-na-vgo-present>
+
+<gr-na-vgo-present> ::=
+	βγω | βγεις | βγει | βγούμε | βγείτε | βγουν
+
+<gr-na-rixo-conjugation> ::=
+	<gr-na-rixo-tabulation>
+
+<gr-na-rixo-tabulation> ::=
+	a1+      <gr-na-rixo-present>
+
+<gr-na-rixo-present> ::=
+	ρίξω | ρίξεις | ρίξει | ρίξουμε | ρίξετε | ρίξουν
+
+[ "Βάλω" ]
+
+<gr-na-valo-conjugation> ::=
+	<gr-na-valo-tabulation>
+
+<gr-na-valo-tabulation> ::=
+	a1+      <gr-na-valo-present>
+
+<gr-na-valo-present> ::=
+	βάλω | βάλεις | βάλει | βάλουμε | βάλετε | βάλουν
+
+[ "Ανοίγω" ]
 
 -) in the Preform grammar.
-
 
 Chapter 2.4.2 - Verb substitutions
 
@@ -2105,7 +2346,8 @@ Section 2.4.3.1 - In the Standard Rules
 
 In Greek είμαι is a verb meaning to be.
 In Greek έχω is a verb meaning to have.
-In Greek μπορώ is a verb meaning to be able to.
+In Greek μπορώ is a verb.
+In Greek μπορώ να is a verb meaning to be able to.
 In Greek παρέχω is a verb meaning to provide.
 In Greek περιέχω is a verb meaning to contain.
 [ TODO: Add conjugation for the following:
@@ -2124,6 +2366,16 @@ In Greek πάω is a verb.
 In Greek κρατάω is a verb.
 In Greek παίρνω is a verb.
 In Greek πάρω is a verb.
+In Greek φτάσω is a verb.
+In Greek υποθέτω is a verb.
+In Greek ανήκω is a verb.
+In Greek φαίνεται is a verb.
+In Greek γίνεται is a verb.
+In Greek βγω is a verb.
+In Greek ρίξω is a verb.
+In Greek αφήνω is a verb.
+In Greek βάζω is a verb.
+In Greek βάλω is a verb.
 
 Section 2.4.3.2 - In Rideable Vehicles (for use with Rideable Vehicles by Graham Nelson)
 
@@ -2193,7 +2445,7 @@ Part 2.5 - Miscellaneous substitutions
 
 To say τώρα:
 	if the story tense is present tense, say "τώρα";
-	else say "εκείνη την εποχή".
+	else say "τότε".
 
 To say εδώ:
 	if the story tense is present tense, say "εδώ";
@@ -2201,7 +2453,7 @@ To say εδώ:
 
 To say Τώρα:
 	if the story tense is present tense, say "Τώρα";
-	else say "Εκείνη την εποχή".
+	else say "Τότε".
 
 To say Εδώ:
 	if the story tense is present tense, say "Εδώ";
@@ -2236,58 +2488,71 @@ Section 3.1.1.2 - Printing the locale description
 you-can-also-see rule response (A) is "[Εγώ] ".
 you-can-also-see rule response (B) is "Πάνω σε [the domain], [εγώ] ".
 you-can-also-see rule response (C) is "Μέσα σε [the domain], [εγώ] ".
-you-can-also-see rule response (D) is "[regarding the player][adapt the verb μπορώ] επίσης να [adapt the verb δω in present tense] ".
-you-can-also-see rule response (E) is "[regarding the player][adapt the verb μπορώ] να [adapt the verb δω in present tense] ".
+you-can-also-see rule response (D) is "[Εγώ] [adapt the verb μπορώ] επίσης να [adapt the verb δω in present tense] ".
+you-can-also-see rule response (E) is "[Εγώ] [adapt the verb μπορώ] να [adapt the verb δω in present tense] ".
 you-can-also-see rule response (F) is "".
 
 Section 3.1.1.3 - Printing a locale paragraph about a thing
 
+[ TODO: Change σε/στο ]
 use initial appearance in room descriptions rule response (A) is "Πάνω σε [the item], ".
 describe what's on scenery supporters in room descriptions rule response (A) is "Πάνω σε [the item], ".
+describe what's on mentioned supporters in room descriptions rule response (A) is "Πάνω σε [the item] ".
 
 Section 3.1.1.4 - Standard actions concerning the actor's possessions
 
 [Taking inventory]
-print empty inventory rule response (A) is "[Εγώ] δεν [adapt the verb κρατάω] τίποτα.".
-print standard inventory rule response (A) is "[Εγώ] [adapt the verb κρατάω] :[line break]".
+print empty inventory rule response (A) is "[Εγώ] δεν [adapt the verb κρατάω in present tense] τίποτα.".
+print standard inventory rule response (A) is "[Εγώ] [adapt the verb κρατάω in present tense]:[line break]".
 report other people taking inventory rule response (A) is "[The actor] [adapt the verb βλέπω in present tense] τα υπάρχοντά [μου].".
 
 [Taking]
-
-[ TODO: Test the following, see French example ]
-can't take yourself rule response (A) is "Δεν [adapt the verb μπορώ in present tense] να [adapt the verb πάρω in present tense] [τον εαυτό μου]".
+can't take yourself rule response (A) is "[Εγώ] [negate the verb μπορώ in present tense] να [adapt the verb πάρω in present tense] [τον εαυτό μου]".
 [ TODO: Change the following ]
-can't take other people rule response (A) is "[Εγώ] [don't] suppose [the noun] [would care] for that.".
-[ TODO: Translate the above segment ]
+can't take other people rule response (A) is "[Εγώ] [negate the verb υποθέτω] πως [the noun] θα ενδιαφερόταν για αυτό.".
 
-[ TODO: Replace those, check if whole needs adaptation ]
-can't take component parts rule response (A) is "[regarding the noun][Those] φαίνεται να είναι μέρος από [the whole].".
-can't take people's possessions rule response (A) is "[regarding the noun][Those] φαίνεται να ανήκουν σε [the owner].".
-[ TODO: Adapt the verb βγω ]
-can't take what you're inside rule response (A) is "Θα έπρεπε να βγεις από [the noun] πρώτα.".
-can't take what's already taken rule response (A) is "[adapt the verb έχω] ήδη [regarding the noun][those]".
-can't take scenery rule response (A) is "[regarding the noun]Δεν γίνεται να μετακινηθεί.".
-[ TODO: Check grammar on the following ]
-can't take what's fixed in place rule response (A) is "[regarding the noun][adapt the verb είμαι] στερεωμένος/στερεωμένη/στερεωμένο στην θέση του/της.".
+[ TODO: Replace those]
+can't take component parts rule response (A) is "[regarding the noun][Those] [φαίνεται] να είναι μέρος από [the whole].".
+can't take people's possessions rule response (A) is "[regarding the noun][Those] [φαίνεται] να [adapt the verb ανήκω in present tense] σε [the owner].".
+can't take what you're inside rule response (A) is "[regarding the player]Θα έπρεπε να [adapt the verb βγω in present tense] από [the noun] πρώτα.".
+can't take what's already taken rule response (A) is "[regarding the noun][Those] [τον] [regarding the player][adapt the verb έχω] ήδη [εγώ]".
+can't take scenery rule response (A) is "[regarding the noun][Those] δεν [γίνεται] να μετακινηθεί.".
+can't take what's fixed in place rule response (A) is "[regarding the noun][Those] [adapt the verb είμαι] [if the noun is male]σταθερός[else if the noun is female]σταθερή[otherwise]σταθερό[end if] στην θέση [if the noun is female]της[otherwise]του".
+[ TODO: Change σε/στο ]
 use player's holdall to avoid exceeding carrying capacity rule response (A) is "(βάζοντας [the transferred item] μέσα σε [the current working sack] για να δημιουργηθεί χώρος)[command clarification break]".
 can't exceed carrying capacity rule response (A) is "[Εγώ] [κρατάω] ήδη πάρα πολλά πράγματα.".
 standard report taking rule response (A) is "Πάρθηκε.".
 standard report taking rule response (B) is "[The actor] [adapt the verb παίρνω] [the noun].".
 
 [Removing it from]
-[ TODO: Continue from here ]
-can't remove what's not inside rule response (A) is "But [regarding the noun][they] [aren't] there [now].".
+can't remove what's not inside rule response (A) is "Αλλά [regarding the noun][those] [negate the verb είμαι] εκεί [τώρα].".
+can't remove from people rule response (A) is "[regarding the noun][Those] [φαίνεται] να [adapt the verb ανήκω in present tense ] [if the owner is male]στον[else if the owner is female]στην[otherwise]στο [the owner].".
 [Dropping]
+[ TODO: Γραμματικό φαινόμενο: Θα μου λείπει ]
+can't drop yourself rule response (A) is "[Μου] λείπει η επιδεξιότητα.".
+can't drop body parts rule response (A) is "[Εγώ] [negate the verb μπορώ] να [adapt the verb ρίξω in present tense] μέρος [του εαυτού μου]".
 can't drop what's already dropped rule response (A) is "[The noun] [adapt the verb είμαι] ήδη [εδώ].".
-[ TODO: Fix the following ]
+[ TODO: Γραμματικό φαινόμενο: Θα το έχεις ]
 can't drop what's not held rule response (A) is "[Εγώ] δεν [adapt the verb έχω] [regarding the noun][those].".
+can't drop clothes being worn rule response (A) is "(βγάζοντας πρώτα [the noun])[command clarification break]".
+[ TODO: Adapt στον ]
+can't drop if this exceeds carrying capacity rule response (A) is "[negate the verb έχω from the third person singular] άλλο χώρο [if the receptacle is female]στην[otherwise]στο [the receptacle].".
+can't drop if this exceeds carrying capacity rule response (B) is "[negate the verb έχω from the third person singular] άλλο χώρο [if the receptacle is female]στην[otherwise]στο [the receptacle].".
 
 standard report dropping rule response (A) is "Αφέθηκε.".
-standard report dropping rule response (B) is "[The actor] [put] down [the noun].".
+standard report dropping rule response (B) is "[The actor] [αφήνω] κάτω [the noun].".
 
 [Putting it on]
-can't put something on itself rule response (A) is "[We] [can't put] something on top of itself.".
+can't put something on itself rule response (A) is "[Εγώ] [negate the verb μπορώ] να [adapt the verb βάλω in present tense] κάτι πάνω στον εαυτό του.".
+[ TODO: Adapt σε ]
+can't put onto what's not a supporter rule response (A) is "Με το να βάλεις αντικείμενα πάνω σε [the second noun] δε θα καταφέρεις τίποτα.".
+can't put clothes being worn rule response (A) is "(αφού πρώτα [regarding the noun][τον] βγάλεις)[command clarification break]".
+can't put if this exceeds carrying capacity rule response (A) is "[negate the verb έχω from the third person singular] άλλο χώρο [if the second noun is female]στην[otherwise]στο [the second noun].".
+concise report putting rule response (A) is "Έγινε.".
+[ TODO: Adapt σε ]
+standard report putting rule response (A) is "[The actor] [βάζω] [the noun] πάνω σε [the second noun].".
 
+[ TODO: Continue from here ]
 [Inserting it into]
 
 [Eating]
@@ -2309,6 +2574,8 @@ can't go that way rule response (B) is "[Εγώ] [negate the verb μπορώ for
 Section 3.1.1.6 - Standard actions concerning the actor's vision
 
 [Looking]
+
+darkness name internal rule response (A) is "Σκοτάδι".
 
 [Examining]
 
@@ -2356,6 +2623,7 @@ Section 3.1.1.8 - Standard actions concerning other people
 [Showing it to]
 
 [Waking]
+block waking rule response (A) is "Αυτό μοιάζει άσκοπο.".
 
 [Throwing it at]
 
@@ -2423,23 +2691,90 @@ Section 3.1.1.10 - Standard actions which always do nothing unless rules interve
 
 Section 3.1.1.11 - Accessibility and visibility
 
+adjust light rule response (A) is "[Εδώ] [είμαι] πίσσα σκοτάδι!".
+generate action rule response (A) is "(λαμβάνοτας υπόψη μόνο τα πρώτα 16 αντικείμενα)[command clarification break]".
+generate action rule response (B) is "Τίποτα το αξιοσημείωτο!".
+
+basic accessibility rule response (A) is "Πρέπει να αναφέρεις κάτι πιο συγκεκριμένο.".
+basic visibility rule response (A) is "[Εδώ] [είμαι] πίσσα σκοτάδι, και [regarding the player][negate the verb μπορώ] να [adapt the verb δω in ενεστώτας] τίποτα.".
+
+[ TODO: Adapt ασχοληθεί for plural with if-endif ]
+requested actions require persuasion rule response (A) is "[The noun] [έχω] καλύτερα πράγματα να ασχοληθεί".
+
+carry out requested actions rule response (A) is "[The noun] [negate the verb είμαι] σε θέση να το κάνει αυτό.".
+
+[ TODO: Replace those (even though the result is correct) - add plural - fix it!]
+access through barriers rule response (A) is "[regarding the noun][Those] [negate the verb είμαι] [if the noun is a male person]διαθέσιμος[end if][if the noun is female person]διαθέσιμη[end if][if the noun is neuter]διαθέσιμο[end if].".
+
+[ TODO: Adjust adjective ]
+can't reach inside closed containers rule response (A) is "[The noun] [negate the verb είμαι] ανοιχτό.".
+
+[ TODO: Adapt σε/στο ]
+can't reach inside rooms rule response (A) is "[Εγώ] [negate the verb μπορώ] να [adapt the verb φτάσω in present tense] μέσα σε [the noun].".
+
+[ TODO: Adapt ανοιχτό ]
+can't reach outside closed containers rule response (A) is "[The noun] [negate the verb είμαι] ανοιχτό.".
+
 Section 3.1.1.12 - List writer internal rule
 
+[ TODO: Revise the translation of the following ]
+list writer internal rule response (A) is " (".
+list writer internal rule response (B) is ")".
+list writer internal rule response (C) is " και ".
+list writer internal rule response (D) is "παρέχει φως".
+list writer internal rule response (E) is "κλειστό".
+list writer internal rule response (F) is "άδειο".
+list writer internal rule response (G) is "κλειστό και άδειο".
+list writer internal rule response (H) is "κλειστό και παρέχει φως".
+list writer internal rule response (I) is "άδειο και παρέχει φως".
+list writer internal rule response (J) is "κλειστό, άδειο[if serial comma option is active],[end if] και παρέχει φως".
+list writer internal rule response (K) is "παρέχει φως και φοριέται".
+list writer internal rule response (L) is "φοριέται".
+list writer internal rule response (M) is "ανοιχτό".
+list writer internal rule response (N) is "ανοιχτό αλλά άδειο".
+list writer internal rule response (O) is "κλειστό".
+list writer internal rule response (P) is "κλειστό και κλειδωμένο".
+list writer internal rule response (Q) is "περιέχει".
+
+[ TODO: Plural in the following? ]
+list writer internal rule response (R) is "[if the noun is a male person]στον οποίο[else if the noun is a female person]στην οποία[otherwise]στο οποίο[end if] ".
+list writer internal rule response (S) is ", στην κορυφή [if the noun is a female person]της οποίας[otherwise]του οποίου[end if] ".
+list writer internal rule response (T) is ", [if the noun is a male person]στον οποίο[else if the noun is a female person]στην οποία[otherwise]στο οποίο[end if] ".
+list writer internal rule response (U) is ", μέσα [if the noun is a male person]στον οποίο[else if the noun is a female person]στην οποία[otherwise]στο οποίο[end if] ".
+
+
+list writer internal rule response (V) is "[regarding list writer internals][είμαι]".
+list writer internal rule response (W) is "[regarding list writer internals][negate the verb είμαι] τίποτα".
+list writer internal rule response (X) is "Τίποτα".
+list writer internal rule response (Y) is "τίποτα".
+
 Section 3.1.1.13 - Action processing internal rule
+
+action processing internal rule response (A) is "[bracket]Αυτή η εντολή ζητά να γίνει κάτι εκτός παιχνιδιού, οπότε μπορεί να έχει νόημα μόνο από εσένα σε μένα. Δεν μπορεί να ζητηθεί από [the noun] να γίνει αυτό.[close bracket]".
+action processing internal rule response (B) is "Πρέπει να αναφέρεις ένα αντικείμενο".
+action processing internal rule response (C) is "Δεν μπορείς να αναφέρεις κάποιο αντικείμενο".
+action processing internal rule response (D) is "Πρέπει να παρέχεις ένα ουσιαστικο".
+action processing internal rule response (E) is "Δεν μπορείς να παρέχεις κάποιο ουσιασικό".
+action processing internal rule response (F) is "Πρέπει να αναφέρεις ένα δεύτερο αντικείμενο".
+action processing internal rule response (G) is "Δεν μπορείς να αναφέρεις δεύτερο αντικείμενο".
+action processing internal rule response (H) is "Πρέπει να βάλεις ένα δεύτερο ουσιαστικό".
+action processing internal rule response (I) is "Δεν μπορείς να βάλεις δεύτερο ουσιαστικό".
+action processing internal rule response (J) is "(Μιας και δεν έχει συμβεί κάτι το δραματικό, η λίστα εντολών σου έχει γίνει συντομότερη)".
+action processing internal rule response (K) is "Δεν κατάλαβα αυτή την εντολή".
 
 Section 3.1.1.14 - Parser
 
 parser error internal rule response (A) is "Δεν κατάλαβα αυτή την πρόταση.".
 parser error internal rule response (B) is "Κατάλαβα μόνο μέχρι το σημείο που ήθελες να".
-parser error internal rule response (C) is "Κατάλαβα μόνο μέχρι το σημείο που ήθελες να (πας)".
+parser error internal rule response (C) is "Κατάλαβα μόνο μέχρι το σημείο που ήθελες να πας".
 parser error internal rule response (D) is "Δεν κατάλαβα αυτόν τον αριθμό.".
-parser error internal rule response (E) is "[regarding the player][negate the verb βλέπω] κάτι τέτοιο.".
+parser error internal rule response (E) is "Δεν [regarding the player][βλέπω] κάτι τέτοιο.".
 parser error internal rule response (F) is "Φαίνεται πως είπες πολύ λίγα!".
-parser error internal rule response (G) is "[negate the verb κρατάω] αυτό!".
+parser error internal rule response (G) is "[Εγώ] [negate the verb κρατάω] αυτό!".
 parser error internal rule response (H) is "Δεν μπορείς να χρησιμοποιήσεις πολλαπλά αντικείμενα με αυτό το ρήμα.".
 parser error internal rule response (I) is "Μπορείς να χρησιμοποιήσεις πολλαπλά αντικείμενα μόνο μία φορά σε μία γραμμή.".
 parser error internal rule response (J) is "Δεν είμαι σίγουρος σε τι αναφέρεται το ['][pronoun i6 dictionary word]['].".
-parser error internal rule response (K) is "[negate the verb μπορώ] να [adapt the verb δω in present tense] το ['][pronoun i6 dictionary word]['] ([the noun]) αυτή τη στιγμή.".
+parser error internal rule response (K) is "[Εγώ] [negate the verb μπορώ] να [adapt the verb δω in present tense] το ['][pronoun i6 dictionary word]['] ([the noun]) αυτή τη στιγμή.".
 parser error internal rule response (L) is "Εξαίρεσες κάτι που δεν περιλαμβανόταν έτσι κι αλλιώς!".
 parser error internal rule response (M) is "Μπορείς να το κάνεις αυτό μόνο σε κάτι που είναι έμψυχο.".
 parser error internal rule response (N) is "Αυτό δεν είναι ένα από τα ρήματα που καταλαβαίνω.".
@@ -2451,57 +2786,125 @@ parser error internal rule response (S) is "Για να επαναλάβεις �
 parser error internal rule response (T) is "Δεν μπορείς να ξεκινήσεις την πρόταση με κόμμα.".
 parser error internal rule response (U) is "Φαίνεται ότι θες να μιλήσεις σε κάποιον, αλλά δε μπορώ να καταλάβω σε ποιον.".
 parser error internal rule response (V) is "Δεν μπορείς να μιλήσεις στον/στην/στο [the noun].".
-parser error internal rule response (W) is "Για να μιλήσεις σε κάποιον, δοκίμασε 'κάποιες, γεια σου' ή κάτι παρόμοιο.".
+parser error internal rule response (W) is "Για να μιλήσεις σε κάποιον, δοκίμασε 'κάποιε, γεια σου' ή κάτι παρόμοιο.".
 parser error internal rule response (X) is "Συγγνώμη;".
 
 parser nothing error internal rule response (A) is "Δεν υπάρχει κάτι να κάνεις!".
-parser nothing error internal rule response (B) is "[negate the verb είμαι from the third person plural] καθόλου διαθέσιμα!".
+parser nothing error internal rule response (B) is "Δεν [adapt the verb είμαι from the third person plural] καθόλου διαθέσιμα!".
 parser nothing error internal rule response (C) is "[The noun] [negate the verb έχω] τίποτα.".
-[ TODO: adapt the verb περιέχω in present tense - change those]
-parser nothing error internal rule response (D) is "[regarding the noun][Those] [negate the verb μπορώ] να περιέχουν πράγματα.".
+[ TODO: change those]
+parser nothing error internal rule response (D) is "[regarding the noun][Those] [negate the verb μπορώ] να περι[adapt the verb έχω in present tense] πράγματα.".
 [ TODO: Adapt ανοιχτό και άδειο ]
 parser nothing error internal rule response (E) is "[The noun] [negate the verb είμαι] ανοιχτό.".
 parser nothing error internal rule response (F) is "[The noun] [adapt the verb είμαι] άδειο.".
 
-darkness name internal rule response (A) is "Σκοτάδι".
-
 parser command internal rule response (A) is "Συγνώμη, αυτό δεν μπορεί να διορθωθεί.".
 parser command internal rule response (B) is "Μην το σκέφτεσαι καθόλου.".
 parser command internal rule response (C) is "Το 'Ουπς' μπορεί να διορθώσει μόνο μία λέξη.".
-parser command internal rule response (D) is "Δύσκολα μπορείς να το επαναλάβεις.".
+parser command internal rule response (D) is "Δύσκολα μπορείς να το επαναλάβεις αυτό.".
+
+parser clarification internal rule response (A) is "Ποιον εννοείς, ".
+parser clarification internal rule response (B) is "Ποιο εννοείς, ".
+parser clarification internal rule response (C) is "Συγγνώμη, μπορείς να έχεις μόνο ένα αντικείμενο εδώ. Ποιο ακριβώς;".
+parser clarification internal rule response (D) is "Ποιον θα ήθελες να [parser command so far] [if the noun is not the player][the noun][end if]?".
+parser clarification internal rule response (E) is "Τι θα ήθελες να [parser command so far] [if the noun is not the player][the noun][end if]?".
+parser clarification internal rule response (F) is "αυτά τα πράγματα".
+parser clarification internal rule response (G) is "αυτό".
+parser clarification internal rule response (H) is " ή ".
 
 Section 3.1.1.15 - Yes or no question internal rule
 
 yes or no question internal rule response (A) is "Παρακαλώ απάντησε με ναι ή όχι.".
 
+pick a number internal rule response (A) is "(Παρακαλώ πληκτρολόγησε έναν αριθμό μεταξύ του 1 και του [number understood] και πάτησε enter.)".
+
 Section 3.1.1.16 - Print protagonist internal rule
+
+print protagonist internal rule response (A) is "[Εγώ]".
+[ TODO: Translate the following along with ο εαυτος μου ]
+print protagonist internal rule response (B) is "[ourselves]".
+print protagonist internal rule response (C) is "[our] former self".
 
 Section 3.1.1.17 - Standard implicit taking rule
 
+standard implicit taking rule response (A) is "(αρχικά παίρνεις [the noun])[command clarification break]".
+standard implicit taking rule response (B) is "([the second noun] αφού πάρεις [the noun])[command clarification break]".
+
 Section 3.1.1.18 - Player's obituary
+
+print obituary headline rule response (A) is " Βρήκες τραγικό τέλος ".
+print obituary headline rule response (B) is " Κέρδισες! ".
+print obituary headline rule response (C) is " Τέλος ".
 
 Section 3.1.1.19 - Standard actions which happen out of world
 
 [Undoing (though not technically an action)]
+immediately undo rule response (A) is "Στην παρούσα ιστορία απαγορεύται να χρησιμοποιήσεις 'αναίρεση'".
+immediately undo rule response (B) is "Δεν μπορείς να αναιρέσεις κάτι που δεν έχει γίνει!".
+immediately undo rule response (C) is "Ο διερμηνέας σου δεν υποστηρίζει αναίρεση. Λυπάμαι!".
+immediately undo rule response (D) is "Η 'αναίρεση' απέτυχε. Λυπάμαι πολύ! ".
+immediately undo rule response (E) is "[bracket]Πραγματοποιήθηκε αναίρεση του προηγούμενου γύρου.[close bracket]".
+immediately undo rule response (F) is "Εξαντλήθηκε το περιθώριο αναιρέσεων. Λυπάμαι!".
 
 [Quitting the game]
 quit the game rule response (A) is "Σίγουρα θες να φύγεις από το παιχνίδι; ".
 
 [Saving the game]
+save the game rule response (A) is "Απέτυχε η αποθήκευση.".
+save the game rule response (B) is "Οκ.".
 
 [Restoring the game]
+restore the game rule response (A) is "Απέτυχε η επαναφορά.".
+restore the game rule response (B) is "Οκ.".
 
 [Restarting the game]
+restart the game rule response (A) is "Θέλεις σίγουρα να πραγματοποιήσεις επανεκκίνηση; ".
+restart the game rule response (B) is "Απέτυχε.".
 
 [Verifying the story file]
+verify the story file rule response (A) is "Το αρχείο παιχνιδιού επιβεβαιώθηκε πως είναι άθικτο".
+verify the story file rule response (B) is "Το αρχείο παιχνιδιού δεν επιβεβαιώθηκε πως είναι άθικτο, και ενδεχομένως να είναι κατεστραμμένο.".
 
 [Switching the story transcript on]
+switch the story transcript on rule response (A) is "Η καταγραφή είναι ήδη ενεργοποιημένη.".
+switch the story transcript on rule response (B) is "Έναρξη καταγραφής της ιστορίας:".
+switch the story transcript on rule response (C) is "Αποτυχία έναρξης καταγραφής.".
 
 [Switching the story transcript off]
+switch the story transcript off rule response (A) is "Η καταγραφή είναι ήδη απενεργοποιημένη.".
+switch the story transcript off rule response (B) is "[line break]Τέλος καταγραφής.".
+switch the story transcript off rule response (C) is "Αποτυχία τερματισμού καταγραφής.".
 
 [Requesting the score]
+announce the score rule response (A) is "[if the story has ended]Σε αυτό το παιχνίδι συγκέντρωσες[otherwise]Μέχρι στιγμής έχεις συγκεντρώσει[end if] [score] βαθμούς από τους [maximum score] δυνατούς, σε [if turn count > 1][turn count] γύρους[otherwise] 1 γύρο[end if]".
+announce the score rule response (B) is ", κερδίζοντας τον τίτλο ".
+announce the score rule response (C) is "Δεν υπάρχει σκορ σε αυτή την ιστορία.".
+announce the score rule response (D) is "[bracket]Το σκορ σου μόλις αυξήθηκε κατά [number understood in words] [if number understood is 1]βαθμό[otherwise]βαθμούς[end if].[close bracket]".
+announce the score rule response (E) is "[bracket]Το σκορ σου μόλις μειώθηκε κατά [number understood in words] [if number understood is 1]βαθμό[otherwise]βαθμούς[end if].[close bracket]".
+
+
+[Preferring abbreviated room descriptions, preferring unabbreviated room descriptions, preferring sometimes abbreviated room descriptions]
+standard report preferring abbreviated room descriptions rule response (A) is " είναι τώρα σε λειτουργία 'εξαιρετικά σύντομης' περιγραφής, όπου οι τοποθεσίες περιγράφονται πάντα συνοπτικά (ακόμη και αν δεν τις έχεις επισκεφθεί ποτέ πριν).".
+
+standard report preferring unabbreviated room descriptions rule response (A) is " είναι τώρα σε λειτουργία 'αναλυτικής' περιγραφής, όπου οι τοποθεσίες περιγράφονται πάντα εκτενώς (ακόμη και αν τις έχεις επισκεφθεί ξανά).".
+
+standard report preferring sometimes abbreviated room descriptions rule response (A) is " είναι τώρα σε λειτουργία 'σύντομης' περιγραφής, όπου οι τοποθεσίες που επισκέπτεσαι για πρώτη φορά περιγράφονται εκτενώς, ενώ οι υπόλοιπες συνοπτικά.".
 
 [Switching score notification on/off]
+standard report switching score notification on rule response (A) is "Ειδοποίηση σκορ ενεργή.".
+standard report switching score notification off rule response (A) is "Ειδοποίηση σκορ ανενεργή.".
+
+[Requesting the pronoun meanings]
+announce the pronoun meanings rule response (A) is "Αυτή την στιγμή, ".
+announce the pronoun meanings rule response (B) is "σημαίνει ".
+announce the pronoun meanings rule response (C) is "δεν έχει οριστεί".
+[ TODO: Understand the translation for pronoun in this case ]
+announce the pronoun meanings rule response (D) is "κανένα pronoun δεν είναι γνωστό στο παιχνίδι.".
+announce items from multiple object lists rule response (A) is "[current item from the multiple object list]: [run paragraph on]".
+
+basic tangibility rule response (A) is "Πρέπει να ονομάσεις κάτι πιο ουσιαστικό από [το noun].".
+basic tangibility rule response (B) is "Πρέπει να ονομάσεις κάτι πιο ουσιαστικό από [το second noun].".
+block vaguely going rule response (A) is "Πρέπει να πεις προς ποια κατεύθυνση της πυξίδας θέλεις να πας.".
 
 Part 3.2 - The Final Question
 
@@ -3021,33 +3424,6 @@ language Greek
 	ποτέ |
 	αρχικά
 
-<grammatical-case-names> ::=
-	nominative | accusative [ TODO: Προσθήκη γενικής ]
-
-<noun-declension> ::=
-	*    <gr-noun-declension-group> <gr-noun-declension-tables>
-
-<gr-noun-declension-group> ::=
-	*            1
-
-<gr-noun-declension-tables> ::=
-	<gr-noun-declension-uninflected>
-
-<gr-noun-declension-uninflected> ::=
-	0 | 0 |   [Singular | Plural]
-	0 | 0
-
-
-<article-declension> ::=
-	*           <gr-article-declension>
-
-<gr-article-declension> ::=
-	the         ο    η    το  |  [Singular]
-	            τον  την  το  |
-	            του  της  του  |
-	the         οι   οι   τα  |  [Plural]
-	            τους τις τα  |
-	            των  των  των
 -) in the Preform grammar.
 
 Part 5 - Unindexed sections of translation
