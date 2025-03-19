@@ -560,6 +560,32 @@ To say μου:
 	else if the story viewpoint is third person plural:
 		say "τους".
 
+To say με:
+	now the prior named object is the player;
+	if the story viewpoint is first person singular:
+		say "με";
+	else if the story viewpoint is second person singular:
+		say "σε";
+	else if the story viewpoint is third person singular:
+		if the player is male:
+			say "τον";
+		else if the player is female:
+			say "την";
+		otherwise:
+			say "το";
+	else if the story viewpoint is first person plural:
+		say "μας";
+	else if the story viewpoint is second person plural:
+		say "σας";
+	else if the story viewpoint is third person plural:
+		if the player is male:
+			say "τους";
+		else if the player is female:
+			say "τες";
+		otherwise:
+			say "τα".
+
+
 To say Μου:
 	now the prior named object is the player;
 	if the story viewpoint is first person singular:
@@ -1804,6 +1830,10 @@ Wildcards στην Preform:
 	υποθέτω	<gr-ypotheto-conjugation> 	|
 	βάζω	<gr-vazo-conjugation>		|
 	ανήκω	<gr-aniko-conjugation> 		|
+	τρώω	<gr-troo-conjugation> 		|
+	πηγαίνω	<gr-pigaino-conjugation>	|
+	φτάνω	<gr-ftano-conjugation>		|
+	[TODO: Fix some of the following]
 	λύνω 	<gr-lyno-conjugation> 		|
 	βλέπω 	<gr-vlepo-conjugation> 		|
 	δω 		<gr-na-do-conjugation> 		|
@@ -1818,6 +1848,10 @@ Wildcards στην Preform:
 	βγω		<gr-na-vgo-conjugation> 	|
 	ρίξω	<gr-na-rixo-conjugation> 	|
 	βάλω	<gr-na-valo-conjugation>	|
+	σταθώ	<gr-na-statho-conjugation>	|
+	καθίσω	<gr-na-kathiso-conjugation> |
+	ξαπλώσω	<gr-na-xaploso-conjugation>	|
+	μπω		<gr-na-mpo-conjugation>		|
 	...		<gr-regular-verb-conjugation>
 
 	[ TODO: αφήνω ή βάζω, στηρίζω, περιέχω, ανοίγω, κλείνω ]
@@ -2019,6 +2053,44 @@ Wildcards στην Preform:
 	5 7+ει	|
 	6 8+ε	|
 	<gr-regular-verb-tabulation>
+
+[ "Τρώω" ]
+
+<gr-troo-conjugation> ::=
+	2	τρώγοντας	|
+	3	φάει		|
+	5	τρώει		|
+	6	έφαγε		|
+	7	τρώ			|
+	8	έφαγ		|
+	9	φά			| [Φάαμε αντί για φάγαμε - φάατε]
+	<gr-regular-verb-tabulation>
+
+[ Πηγαίνω ]
+
+<gr-pigaino-conjugation> ::=
+	2	πηγαίνοντας	|
+	3	πάει		|
+	5 	πηγαίνει	|
+	6	πήγε		|
+	7	πηγαίν		|
+	8	πήγ			|
+	9	πά			| [Πάεις αντί για πας]
+	<gr-regular-verb-tabulation>
+
+[ Φτάνω ]
+
+<gr-ftano-conjugation> ::=
+	2	φτάνοντας	|
+	3	φτάσει		|
+	5	φτάνει		|
+	6	εφτασε		|
+	7	φτάν		|
+	8	έφτασ		|
+	9	φτάσ		|
+	<gr-regular-verb-tabulation>
+
+[ "Βλέπω" ]
 
 [ "Φαίνεται" - γ' πρόσωπο μόνο ]
 
@@ -2281,6 +2353,27 @@ hregular-verb-conjugationi ::=
 <gr-na-valo-present> ::=
 	βάλω | βάλεις | βάλει | βάλουμε | βάλετε | βάλουν
 
+<gr-na-statho-conjugation> ::=
+	<gr-na-statho-tabulation>
+
+<gr-na-statho-tabulation> ::=
+	a1+      <gr-na-statho-present>
+
+<gr-na-statho-present> ::=
+	σταθώ | σταθείς | σταθεί | σταθούμε | σταθείτε | σταθούν
+
+<gr-na-kathiso-conjugation> ::=
+	7	καθίσ	|
+	<gr-regular-verb-tabulation>
+
+<gr-na-xaploso-conjugation> ::=
+	7	ξαπλώσ	|
+	<gr-regular-verb-tabulation>
+
+<gr-na-mpo-conjugation> ::=
+	7	μπ	|
+	<gr-regular-verb-tabulation>
+
 [ "Ανοίγω" ]
 
 -) in the Preform grammar.
@@ -2359,6 +2452,9 @@ In Greek περιέχω is a verb meaning to contain.
 In Greek κρατάω is a verb meaning to hold.
 [ In Greek κρύβω is a verb meaning to conceal. ]
 [ In Greek ξεκλειδώνω is a verb meaning to unlock. ]
+In Greek τρώω is a verb meaning to eat.
+In Greek πηγαίνω is a verb meaning to go.
+In Greek φτάνω is a verb meaning to arrive.
 
 In Greek βλέπω is a verb.
 In Greek δω is a verb.
@@ -2376,6 +2472,10 @@ In Greek ρίξω is a verb.
 In Greek αφήνω is a verb.
 In Greek βάζω is a verb.
 In Greek βάλω is a verb.
+In Greek καθίσω is a verb.
+In Greek σταθώ is a verb.
+In Greek μπω is a verb.
+In Greek ξαπλώσω is a verb.
 
 Section 2.4.3.2 - In Rideable Vehicles (for use with Rideable Vehicles by Graham Nelson)
 
@@ -2552,23 +2652,88 @@ concise report putting rule response (A) is "Έγινε.".
 [ TODO: Adapt σε ]
 standard report putting rule response (A) is "[The actor] [βάζω] [the noun] πάνω σε [the second noun].".
 
-[ TODO: Continue from here ]
 [Inserting it into]
+can't insert what's already inserted rule response (A) is "[The noun] [είμαι] ήδη εκεί.".
+can't insert something into itself rule response (A) is "[Εγώ] [negate the verb μπορώ] να [adapt the verb βάλω in present tense] κάτι μέσα στον εαυτό του.".
+can't insert into closed containers rule response (A) is "[The second noun] [είμαι] [if the noun is male]κλειστός[else if the noun is female]κλειστή[otherwise]κλειστό.".
+can't insert into what's not a container rule response (A) is "[regarding the second noun][Those] [negate the verb μπορώ] να περι[adapt the verb έχω in present tense] πράγματα.".
+can't insert clothes being worn rule response (A) is "(αφού πρώτα [regarding the noun][τον] βγάλεις)[command clarification break]".
+can't insert if this exceeds carrying capacity rule response (A) is "[negate the verb έχω from the third person singular] άλλο χώρο [if the second noun is female]στην[otherwise]στο[end if] [the second noun].".
+concise report inserting rule response (A) is "Έγινε.".
+[ TODO: Adapt plural ]
+standard report inserting rule response (A) is "[The actor] [βάζω] [the noun] μέσα [if the second noun is male]στον[else if the second noun is female]στην[otherwise]στο [the second noun].".
 
 [Eating]
+[ Adapt κατάλληλο ]
+can't eat unless edible rule response (A) is "[The noun] [φαίνεται] να μην είναι κατάλληλο για κατανάλωση.".
+can't eat clothing without removing it first rule response (A) is "(αφού πρώτα [regarding the noun][τον] βγάλεις)[command clarification break]".
+can't eat other people's food rule response (A) is "[The owner] ίσως να μην το εκτιμήσει αυτό.".
+standard report eating rule response (A) is "[regarding the actor][τρώω] [the noun]. Όχι και άσχημα.".
+standard report eating rule response (B) is "[The actor] [τρώω] [the noun].".
+
 
 Section 3.1.1.5 - Standard actions which move the actor
 
-[Going , Entering , Exiting , Getting off]
+[Going]
+stand up before going rule response (A) is "(αφού πρώτα σηκωθείς από [the chaise])[command clarification break]".
+can't travel in what's not a vehicle rule response (A) is "[Εγώ] πρέπει να [adapt the verb βγω in present tense] από [the nonvehicle] πρώτα.".
+can't travel in what's not a vehicle rule response (B) is "[Εγώ] πρέπει να [adapt the verb βγω in present tense] από [the nonvehicle] πρώτα.".
+can't go through undescribed doors rule response (A) is "[Εγώ] [negate the verb μπορώ] να [adapt the verb πάω in present tense] προς αυτή την κατεύθυνση.".
+can't go through closed doors rule response (A) is "(αφού πρώτα ανοιχθεί [the door gone through])[command clarification break]".
+
 
 [ Going ]
-
-can't go that way rule response (A) is "[Εγώ] [negate the verb μπορώ for bg] να [adapt the verb πάω in present tense] προς αυτή την κατεύθυνση".
-
-can't go that way rule response (B) is "[Εγώ] [negate the verb μπορώ for bg] να [adapt the verb πάω in present tense] προς τα εκεί".
+can't go that way rule response (A) is "[Εγώ] [negate the verb μπορώ] να [adapt the verb πάω in present tense] προς αυτή την κατεύθυνση".
+can't go that way rule response (B) is "[Εγώ] [negate the verb μπορώ] να [adapt the verb πάω in present tense] προς τα εκεί".
+describe room gone into rule response (A) is "[The actor] [πηγαίνω] πάνω".
+describe room gone into rule response (B) is "[The actor] [πηγαίνω] κάτω".
+[ TODO: Test the following ]
+describe room gone into rule response (C) is "[The actor] [πηγαίνω] [noun]".
+describe room gone into rule response (D) is "[The actor] [φτάνω] από πάνω".
+describe room gone into rule response (E) is "[The actor] [φτάνω] από κάτω".
+describe room gone into rule response (F) is "[The actor] [φτάνω] από [the back way]".
+describe room gone into rule response (G) is "[The actor] [φτάνω]".
+describe room gone into rule response (H) is "[The actor] [φτάνω] στο [the room gone to] από πάνω".
+describe room gone into rule response (I) is "[The actor] [φτάνω] στο [the room gone to] από κάτω".
+describe room gone into rule response (J) is "[The actor] [φτάνω] στο [the room gone to] από [the back way]".
+describe room gone into rule response (K) is "[The actor] [πηγαίνω] μέσα από [the noun]".
+describe room gone into rule response (L) is "[The actor] [φτάνω] από [the noun]".
+describe room gone into rule response (M) is "στο [the vehicle gone by]".
+describe room gone into rule response (N) is "στο [the vehicle gone by]".
+describe room gone into rule response (O) is ", σπρώχνοντας [the thing gone with] προς τα εμπρός, και [εμένα] επίσης μαζί".
+describe room gone into rule response (P) is ", σπρώχνοτας [the thing gone with] προς τα εμπρός".
+describe room gone into rule response (Q) is ", σπρώχνοντας [the thing gone with] μακριά".
+describe room gone into rule response (R) is ", σπρώχνοντας [the thing gone with] προς τα μέσα".
+describe room gone into rule response (S) is ", παίρνοντάς [με] μαζί".
+block vaguely going rule response (A) is "Θα πρέπει να αναφέρεις προς ποια κατεύθυνση θέλεις να μετακινηθείς.".
 
 [Entering]
+[ TODO: Adapt plural ]
+can't enter what's already entered rule response (A) is "Όμως [εγώ] [είμαι] ήδη πάνω [if the noun is male]στον[else if the noun is female]στην[otherwise]στο [the noun].".
+can't enter what's already entered rule response (A) is "Όμως [εγώ] [είμαι] ήδη μέσα [if the noun is male]στον[else if the noun is female]στην[otherwise]στο [the noun].".
+can't enter what's not enterable rule response (A) is "[regarding the noun][Those] [negate the verb είμαι] κάτι στο οποίο [regarding the player][μπορώ] να [adapt the verb σταθώ in present tense].".
+can't enter what's not enterable rule response (B) is "[regarding the noun][Those] [negate the verb είμαι] κάτι στο οποίο [regarding the player][μπορώ] να [adapt the verb καθίσω in present tense] επάνω.".
+can't enter what's not enterable rule response (C) is "[regarding the noun][Those] [negate the verb είμαι] κάτι στο οποίο [regarding the player][μπορώ] να [adapt the verb ξαπλώσω in present tense] επάνω.".
+can't enter what's not enterable rule response (D) is "[regarding the noun][Those] [negate the verb είμαι] κάτι στο οποίο [regarding the player][μπορώ] να [adapt the verb μπω in present tense].".
+[ TODO: Adapt σε ]
+can't enter closed containers rule response (A) is "[Εγώ] δεν [μπορώ] να [adapt the verb μπω in present tense] μέσα στο κλειστό [noun].".
+can't enter if this exceeds carrying capacity rule response (A) is "[negate the verb έχω from the third person singular] άλλο χώρο πάνω [if the noun is male]στον[else if the noun is female]στην[otherwise]στο [the noun].".
+can't enter if this exceeds carrying capacity rule response (B) is "[negate the verb έχω from the third person singular] άλλο χώρο μέσα [if the noun is male]στον[else if the noun is female]στην[otherwise]στο [the noun].".
+can't enter something carried rule response (A) is "[Εγώ] [μπορώ] να [adapt the verb μπω in present tense] μέσα μόνο σε κάτι που [regarding the player][negate the verb κρατάω]".
+implicitly pass through other barriers rule response (A) is "(βγαίνοντας από [the current home])[command clarification break]".
+implicitly pass through other barriers rule response (B) is "(βγαίνοντας έξω από [the current home])[command clarification break]".
+[ TODO: Adapt σε in the 3 following ]
+implicitly pass through other barriers rule response (C) is "(ανεβαίνοντας πάνω [the target])[command clarification break]".
+implicitly pass through other barriers rule response (D) is "(μπαίνοντας μέσα [the target])[command clarification break]".
+implicitly pass through other barriers rule response (E) is "(μπαίνοντας μέσα [the target])[command clarification break]".
 
+[ TODO: Continue from here ]
+standard report entering rule response (A) is "[Εγώ] [get] onto [the noun].".
+standard report entering rule response (B) is "[Εγώ] [get] into [the noun].".
+standard report entering rule response (C) is "[The actor] [get] into [the noun].".
+standard report entering rule response (D) is "[The actor] [get] onto [the noun].".
+
+[Exiting]
 [Getting off]
 
 Section 3.1.1.6 - Standard actions concerning the actor's vision
