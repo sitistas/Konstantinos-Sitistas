@@ -143,38 +143,109 @@ Part 2.1 - Determiners
 
 Chapter 2.1.1 - Articles
 
-To say ο/του/τον/οι/των/τους/η/της/την/τη/τις/το/τα (O - object):
-	say "[the O]".
-
-To say ένας/μία/ένα/ενός/έναν/μίας (O - object):[Το αόριστο άρθρο δεν έχει πληθυντικό στα ελληνικά]
-	say "[a O]".
-
-To say Ο/Του/Τον/Οι/Των/Τους/Η/Της/Την/Τη/Τις/Το/Τα (O - object):
-	say "[The O]".
-
-To say Ένας/Μία/Ένα/Ενός/Έναν/Μίας (O - object):
-	say "[A O]".
-
-To say στον/στο/στην/στη/στο/στους/στις/στα (O - object):
+To say ο (O - object):
 	if O is plural-named:
-		if O is male:
-			say "στους [O]";
+		if O is neuter:
+			say "τα [O]";
+		else:
+			say "οι [O]";
+	else:
+		if O is neuter:
+			say "το [O]";
+		else if O is female:
+			say "η [O]";
+		else:
+			say "ο [O]".
+
+To say Ο (O - object):
+	if O is plural-named:
+		if O is neuter:
+			say "Τα [O]";
+		else:
+			say "Οι [O]";
+	else:
+		if O is neuter:
+			say "Το [O]";
+		else if O is female:
+			say "Η [O]";
+		else:
+			say "Ο [O]".
+
+To say ένας (O - object):
+	if O is plural-named:
+		if O is neuter:
+			say "κάποια [O]";
+		else if O is female:
+			say "κάποιες [O]";
+		else:
+			say "κάποιοι [O]";
+	else:
+		if O is neuter:
+			say "ένα [O]";
+		else if O is female:
+			say "μία [O]";
+		else:
+			say "ένας [O]".
+
+To say Ένας (O - object):
+	if O is plural-named:
+		if O is neuter:
+			say "Κάποια [O]";
+		else if O is female:
+			say "Κάποιες [O]";
+		else:
+			say "Κάποιοι [O]";
+	else:
+		if O is neuter:
+			say "Ένα [O]";
+		else if O is female:
+			say "Μία [O]";
+		else:
+			say "Ένας [O]".
+
+To say στον (O - object):
+	if O is plural-named:
+		if O is neuter:
+			say "στα [O]";
 		else if O is female:
 			say "στις [O]";
 		else:
-			say "στα [O]";
-	else if O is male:
-		if "[O]" starts with a vowel:
-			say "στον [O]";
-		else:
-			say "στο [O]";
-	else if O is female:
-		if "[O]" starts with a vowel:
-			say "στην [O]";
-		else:
-			say "στη [O]";
+			say "στους [O]";
 	else:
-		say "στο [O]".
+		if O is neuter:
+			say "στο [O]";
+		else if O is female:
+			if "[O]" starts with a vowel:
+				say "στην [O]";
+			else:
+				say "στη [O]";
+		else:
+			if "[O]" starts with a vowel:
+				say "στον [O]";
+			else:
+				say "στο [O]".
+
+To say Στον (O - object):
+	if O is plural-named:
+		if O is neuter:
+			say "Στα [O]";
+		else if O is female:
+			say "Στις [O]";
+		else:
+			say "Στους [O]";
+	else:
+		if O is neuter:
+			say "Στο [O]";
+		else if O is female:
+			if "[O]" starts with a vowel:
+				say "Στην [O]";
+			else:
+				say "Στη [O]";
+		else:
+			if "[O]" starts with a vowel:
+				say "Στον [O]";
+			else:
+				say "Στο [O]".
 
 
 Include [preform](-
@@ -185,10 +256,11 @@ language Greek
 
 <gr-article-declension> ::=
 	the         ο    η    το  |  [Singular]
-	            τον  την  το
+				τον  την  το
 	the         οι   οι   τα    [Plural]
-	            τους τις τα  |
+				τους τις τα  |
 
+[1η σειρά: ονομαστική. 2η σειρά: αιτιατική.]
 
 <definite-article-table> ::=
 	ο η το οι οι τα			|
@@ -218,7 +290,7 @@ Constant LanguageContractionForms = 2;
 
 [ LanguageContraction text;
 	if (IsAnA(text->0) || IsAnE(text->0) || IsAnI(text->0) || IsAnO(text->0) || IsAnU(text->0) || text->0 == 'h' or 'H' or 'η' or 'Η' or 'ή' or 'Ή' or 'ω' or 'Ω' or 'ώ' or 'Ώ' or 'κ' or 'Κ' or 'π' or 'Π' or 'τ' or 'Τ' or 'ξ' or 'Ξ' or 'ψ' or 'Ψ') return 1;
-    ! TODO: Να προστεθούν οι δίφθογγοι γκ, μπ, ντ, τσ, τζ
+	! TODO: Να προστεθούν οι δίφθογγοι γκ, μπ, ντ, τσ, τζ
 	return 0;
 ];
 
@@ -244,6 +316,28 @@ Array LanguageGNAsToArticles --> 0 1 2 3 4 5 0 1 2 3 4 5;
 -) replacing "Articles".
 
 Chapter 2.1.2 - Numbers
+
+
+[	This code provides Greek language support for parsing and printing numbers in words, including both cardinal and ordinal forms, as well as gender-specific variations (neuter and feminine, mainly for thousands).
+
+	Key Components:
+	----------------
+	1. Preform Grammar Rules:
+		- <cardinal-number-in-words>: Defines Greek words for numbers 0-12.
+		- <ordinal-number-in-words>: Defines Greek words for ordinal numbers 0-12, with masculine, feminine, and neuter forms.
+
+	2. Arrays for Number Words:
+		- LanguageNumbers: Maps Greek number words to their numeric values for parsing.
+		- GreekUnitsTable, GreekTeensTable, GreekTensTable, GreekHundredsTable: Arrays for neuter forms of units, teens, tens, and hundreds.
+		- GreekHundredsFemTable, GreekTensFemTable, GreekUnitsFemTable, GreekTeensFemTable: Arrays for feminine forms, used mainly for thousands.
+
+	3. LanguageNumber Routine:
+		- Prints the number `n` in Greek words, handling negative numbers, millions, thousands (with feminine gender), hundreds, tens, teens, and units.
+		- The `gender` parameter controls the grammatical gender (0 = neuter, 1 = feminine).
+		- Handles special cases for "εκατό" vs "εκατόν" and correct word forms for each number segment.
+		- Recursively prints higher order numbers (millions, thousands) as needed.
+
+]
 
 Include [preform](-
 language Greek
@@ -288,32 +382,110 @@ Array LanguageNumbers table
     'είκοσι ένα' 21 'είκοσι δύο' 22 'είκοσι τρία' 23 'είκοσι τέσσερα' 24
 	'είκοσι πέντε' 25 'είκοσι έξι' 26 'είκοσι επτά' 27 'είκοσι οκτώ' 28
 	'είκοσι εννέα' 29 'τριάντα' 30 'μία' 1
-;
-! TODO: Make the following work
-[ LanguageNumber n f;
-    if (n == 0) {
-		print "μηδέν";
-		rfalse;
-	}
+	;
 
+Array GreekUnitsTable -->
+    "μηδέν" "ένα" "δύο" "τρία" "τέσσερα" "πέντε" "έξι" "επτά" "οκτώ" "εννέα";
+Array GreekTeensTable -->
+    "δέκα" "έντεκα" "δώδεκα" "δεκατρία" "δεκατέσσερα" "δεκαπέντε" "δεκαέξι" "δεκαεπτά" "δεκαοκτώ" "δεκαεννέα";
+Array GreekTensTable -->
+    "" "" "είκοσι" "τριάντα" "σαράντα" "πενήντα" "εξήντα" "εβδομήντα" "ογδόντα" "ενενήντα";
+Array GreekHundredsTable -->
+    "" "εκατό" "διακόσια" "τριακόσια" "τετρακόσια" "πεντακόσια" "εξακόσια" "επτακόσια" "οκτακόσια" "εννιακόσια";
+Array GreekHundredsFemTable -->
+	"" "εκατόν" "διακόσιες" "τριακόσιες" "τετρακόσιες" "πεντακόσιες" "εξακόσιες" "επτακόσιες" "οκτακόσιες" "εννιακόσιες";
+Array GreekTensFemTable -->
+	"" "" "είκοσι" "τριάντα" "σαράντα" "πενήντα" "εξήντα" "εβδομήντα" "ογδόντα" "ενενήντα";
+Array GreekUnitsFemTable -->
+	"" "μία" "δύο" "τρεις" "τέσσερις" "πέντε" "έξι" "επτά" "οκτώ" "εννέα";
+Array GreekTeensFemTable -->
+	"δέκα" "έντεκα" "δώδεκα" "δεκατρείς" "δεκατέσσερις" "δεκαπέντε" "δεκαέξι" "δεκαεπτά" "δεκαοκτώ" "δεκαεννέα";
+
+[ LanguageNumber n forbid_s gender;
+    ! gender: 0=ουδέτερο, 1=θηλυκό (μόνο για χιλιάδες)
     if (n < 0) {
         print "μείον ";
         n = -n;
     }
-
+    if (n == 0) {
+        print (string) GreekUnitsTable-->0;
+        return;
+    }
+    ! Εκατομμύρια
+    if (n >= 1000000) {
+        if (n/1000000 == 1) {
+            print "ένα εκατομμύριο";
+        } else {
+            LanguageNumber(n/1000000, false, 0);
+            print " εκατομμύρια";
+        }
+        n = n % 1000000;
+        if (n > 0) print " ";
+        else return;
+    }
+    ! Χιλιάδες (θηλυκό)
     if (n >= 1000) {
-        if (n / 1000 == 1) {  ! Αν είναι ακριβώς 1000
+        if (n/1000 == 1) {
             print "χίλια";
-        } else {  ! Αν είναι μεγαλύτερο από 1000
-            LanguageNumber(n / 1000, false);
+        } else {
+            LanguageNumber(n/1000, false, 1); ! gender=1 για χιλιάδες
             print " χιλιάδες";
         }
         n = n % 1000;
-        if (n) {
-            print " ";
+        if (n > 0) print " ";
+        else return;
+    }
+    ! Εκατοντάδες
+    if (n >= 100) {
+        if (gender == 1) {
+            print (string) GreekHundredsFemTable-->(n/100);
         } else {
-            return;
+            if (n/100 == 1) {
+				if (n % 100 == 0) {
+					print "εκατό";
+				} else {
+					print "εκατόν";
+				}
+			} else {
+				print (string) GreekHundredsTable-->(n/100);
+			}
         }
+        n = n % 100;
+        if (n > 0) print " ";
+        else return;
+    }
+    ! Δεκάδες και μονάδες
+    if (n >= 20) {
+        if (gender == 1) {
+            print (string) GreekTensFemTable-->(n/10);
+        } else {
+            print (string) GreekTensTable-->(n/10);
+        }
+        if (n % 10 > 0) {
+            print " ";
+            if (gender == 1) {
+                print (string) GreekUnitsFemTable-->(n%10);
+            } else {
+                print (string) GreekUnitsTable-->(n%10);
+            }
+        }
+        return;
+    }
+    if (n >= 10) {
+        if (gender == 1) {
+            print (string) GreekTeensFemTable-->(n-10);
+        } else {
+            print (string) GreekTeensTable-->(n-10);
+        }
+        return;
+    }
+    if (n > 0) {
+        if (gender == 1) {
+            print (string) GreekUnitsFemTable-->n;
+        } else {
+            print (string) GreekUnitsTable-->n;
+        }
+        return;
     }
 ];
 -) replacing "LanguageNumber".
@@ -610,19 +782,19 @@ To say Μου:
 To say τον:
 	let the item be the prior named object;
 	if the item is plural-named:
-		if the item is male:
-			say "τους";
-		if the item is female:
+		if the item is neuter:
+			say "τα";
+		else if the item is female:
 			say "τις";
 		otherwise:
-			say "τα";
+			say "τους";
 	otherwise:
-		if the item is male:
-			say "τον";
-		if the item is female:
+		if the item is neuter:
+			say "το";
+		else if the item is female:
 			say "την";
 		otherwise:
-			say "το".
+			say "τον".
 
 To say του εαυτού μου:
 	now the prior named object is the player;
@@ -642,6 +814,59 @@ To say του εαυτού μου:
 	otherwise:
 		say "των εαυτών τους".
 
+[ To say ο:
+	let the item be the prior named object;
+	if the item is the player:
+		say "[εγώ]";
+	otherwise:
+		if the item is plural-named:
+			if the item is neuter:
+				say "τα";
+			otherwise:
+				say "οι";
+		otherwise:
+			if the item is male:
+				say "ο";
+			else if the item is female:
+				say "η";
+			otherwise:
+				say "το".
+
+To say Ο:
+	let the item be the prior named object;
+	if the item is the player:
+		say "[Εγώ]";
+	otherwise:
+		if the item is plural-named:
+			if the item is neuter:
+				say "Τα";
+			otherwise:
+				say "Οι";
+		otherwise:
+			if the item is male:
+				say "Ο";
+			else if the item is female:
+				say "Η";
+			otherwise:
+				say "Το". ]
+
+To say ένας:
+	let the item be the prior named object;
+	if the item is male:
+		say "ένας";
+	else if the item is female:
+		say "μία";
+	otherwise:
+		say "ένα".
+
+To say Ένας:
+	let the item be the prior named object;
+	if the item is male:
+		say "Ένας";
+	else if the item is female:
+		say "Μία";
+	otherwise:
+		say "Ένα".
 
 [ TODO: figure this out ]
 [ To say μου/σου/του/της/τους (O - an object):
@@ -1590,11 +1815,11 @@ Chapter 2.2.7 - Times of day
 [ TODO: Understand if the following is still relevant ]
 [ Include (-
 [ LanguageTimeOfDay hours mins i;
-    i = hours%12;
-    if (i == 0) i = 12;
-    if (i < 10) print " ";
-    print i, ":", mins/10, mins%10;
-    if ((hours/12) > 0) print " μ.μ."; else print " π.μ.";
+	i = hours%12;
+	if (i == 0) i = 12;
+	if (i < 10) print " ";
+	print i, ":", mins/10, mins%10;
+	if ((hours/12) > 0) print " μ.μ."; else print " π.μ.";
 ];
 -) replacing "Time". ]
 
@@ -1813,7 +2038,7 @@ Wildcards στην Preform:
 Τέλος, ακολουθεί η κλίση για κάθε χρόνο, π.χ.:
 
 <gr-be-present> ::=
-    είμαι | είσαι | είναι | είμαστε | είστε | είναι
+	είμαι | είσαι | είναι | είμαστε | είστε | είναι
 
 ]
 
@@ -1896,41 +2121,41 @@ Wildcards στην Preform:
 
 <gr-be-conjugation> ::=
 	2 όντας |
-    <gr-be-tabulation>
+	<gr-be-tabulation>
 
 <gr-be-tabulation> ::=
-    a1+ <gr-be-present> |
-    a1- δεν <gr-be-present> |
-    a2+ <gr-be-past> |
-    a2- δεν <gr-be-past> |
-    a5+ θα <gr-be-present> |
-    a5- δεν θα <gr-be-present>
+	a1+ <gr-be-present> |
+	a1- δεν <gr-be-present> |
+	a2+ <gr-be-past> |
+	a2- δεν <gr-be-past> |
+	a5+ θα <gr-be-present> |
+	a5- δεν θα <gr-be-present>
 
 <gr-be-present> ::=
-    είμαι | είσαι | είναι | είμαστε | είστε | είναι
+	είμαι | είσαι | είναι | είμαστε | είστε | είναι
 
 <gr-be-past> ::=
-    ήμουν | ήσουν | ήταν | ήμασταν | ήσασταν | ήταν
+	ήμουν | ήσουν | ήταν | ήμασταν | ήσασταν | ήταν
 
 [ "Έχω" ]
 
 <gr-have-conjugation> ::=
 	2 έχοντας |
-    <gr-have-tabulation>
+	<gr-have-tabulation>
 
 <gr-have-tabulation> ::=
-    a1+ <gr-have-present> |
-    a1- δεν <gr-have-present> |
-    a2+ <gr-have-past> |
-    a2- δεν <gr-have-past> |
-    a5+ θα <gr-have-present> |
-    a5- δεν <gr-have-present>
+	a1+ <gr-have-present> |
+	a1- δεν <gr-have-present> |
+	a2+ <gr-have-past> |
+	a2- δεν <gr-have-past> |
+	a5+ θα <gr-have-present> |
+	a5- δεν <gr-have-present>
 
 <gr-have-present> ::=
-    έχω | έχεις | έχει | έχουμε | έχετε | έχουν
+	έχω | έχεις | έχει | έχουμε | έχετε | έχουν
 
 <gr-have-past> ::=
-    είχα | είχες | είχε | είχαμε | είχατε | είχαν
+	είχα | είχες | είχε | είχαμε | είχατε | είχαν
 
 
 [ "Μπορώ" ]
@@ -1941,23 +2166,23 @@ Wildcards στην Preform:
 	<gr-can-tabulation>
 
 <gr-can-tabulation> ::=
-    a1+ 	<gr-can-present> |
-    a1- 	δεν <gr-can-present> |
-    a2+ 	<gr-can-past> |
-    a2- 	δεν <gr-can-past> |
+	a1+ 	<gr-can-present> |
+	a1- 	δεν <gr-can-present> |
+	a2+ 	<gr-can-past> |
+	a2- 	δεν <gr-can-past> |
 	a3		(t1 έχω) 3 |
 	a4		(t2 έχω) 3 |
 	a5+ 	θα <gr-can-future> |
-    a5- 	δεν θα <gr-can-future>
+	a5- 	δεν θα <gr-can-future>
 
 <gr-can-present> ::=
-    μπορώ | μπορείς | μπορεί | μπορούμε | μπορείτε | μπορούν
+	μπορώ | μπορείς | μπορεί | μπορούμε | μπορείτε | μπορούν
 
 <gr-can-past> ::=
-    μπόρεσα | μπόρεσες | μπόρεσε | μπορέσαμε | μπορέσατε | μπόρεσαν
+	μπόρεσα | μπόρεσες | μπόρεσε | μπορέσαμε | μπορέσατε | μπόρεσαν
 
 <gr-can-future> ::=
-    μπορέσω | μπορέσεις | μπορέσει | μπορέσουμε | μπορέσετε | μπορέσουν
+	μπορέσω | μπορέσεις | μπορέσει | μπορέσουμε | μπορέσετε | μπορέσουν
 
 
 <gr-can-auxiliary> ::=
@@ -2136,76 +2361,76 @@ hregular-verb-conjugationi ::=
 [ "Λύνω" - 'Α Συζυγία. Παρόμοια κλίνονται τα "κάνω", "βάφω", ... ]
 
 <gr-lyno-conjugation> ::=
-    5       λύν |
-    6       λυσ |
-    <gr-lyno-tabulation>
+	5       λύν |
+	6       λυσ |
+	<gr-lyno-tabulation>
 
 <gr-lyno-tabulation> ::=
-    a1+ <gr-lyno-present> |
-    a1- δεν <gr-lyno-present> |
-    a2+ <gr-lyno-past> |
-    a2- δεν <gr-lyno-past> |
-    a3+ <gr-lyno-future> |
-    a3- δεν <gr-lyno-future> |
-    a4+ <gr-lyno-subjunctive> |
-    a4- να μην <gr-lyno-subjunctive> |
-    a5+ <gr-lyno-imperative> |
-    a5- μην <gr-lyno-imperative> |
-    a6+ <gr-lyno-aorist> |
-    a6- δεν <gr-lyno-aorist> |
+	a1+ <gr-lyno-present> |
+	a1- δεν <gr-lyno-present> |
+	a2+ <gr-lyno-past> |
+	a2- δεν <gr-lyno-past> |
+	a3+ <gr-lyno-future> |
+	a3- δεν <gr-lyno-future> |
+	a4+ <gr-lyno-subjunctive> |
+	a4- να μην <gr-lyno-subjunctive> |
+	a5+ <gr-lyno-imperative> |
+	a5- μην <gr-lyno-imperative> |
+	a6+ <gr-lyno-aorist> |
+	a6- δεν <gr-lyno-aorist> |
 	a7+ θα <gr-lyno-present> |
 	a7- δεν θα <gr-lyno-present> |
-    a8+ <gr-lyno-infinitive>
+	a8+ <gr-lyno-infinitive>
 
 <gr-lyno-present> ::=
 	5+ω | 5+εις | 5+ει | 5+ουμε | 5+ετε | 5+ουν
 
 <gr-lyno-past> ::=
-    έλυνα | έλυνες | έλυνε | λύναμε | λύνατε | έλυναν
+	έλυνα | έλυνες | έλυνε | λύναμε | λύνατε | έλυναν
 
 <gr-lyno-future> ::=
-    θα λύσω | θα λύσεις | θα λύσει | θα λύσουμε | θα λύσετε | θα λύσουν
+	θα λύσω | θα λύσεις | θα λύσει | θα λύσουμε | θα λύσετε | θα λύσουν
 
 <gr-lyno-subjunctive> ::=
-    να λύσω | να λύσεις | να λύσει | να λύσουμε | να λύσετε | να λύσουν
+	να λύσω | να λύσεις | να λύσει | να λύσουμε | να λύσετε | να λύσουν
 
 <gr-lyno-imperative> ::=
-    λύσε | λύστε
+	λύσε | λύστε
 
 <gr-lyno-aorist> ::=
-    έλυσα | έλυσες | έλυσε | λύσαμε | λύσατε | έλυσαν
+	έλυσα | έλυσες | έλυσε | λύσαμε | λύσατε | έλυσαν
 
 <gr-lyno-infinitive> ::=
-    λύσει
+	λύσει
 
 [ "Βλέπω" ]
 
 <gr-vlepo-conjugation> ::=
-    5       βλέπ |
-    6       5 |
-    7       είδ |
-    8       5 |
-    <gr-vlepo-tabulation>
+	5       βλέπ |
+	6       5 |
+	7       είδ |
+	8       5 |
+	<gr-vlepo-tabulation>
 
 <gr-vlepo-tabulation> ::=
-    a1+      <gr-vlepo-present> |
-    a1-      δεν <gr-vlepo-present> |
-    a2+      <gr-vlepo-past> |
-    a2-      δεν <gr-vlepo-past> |
+	a1+      <gr-vlepo-present> |
+	a1-      δεν <gr-vlepo-present> |
+	a2+      <gr-vlepo-past> |
+	a2-      δεν <gr-vlepo-past> |
 	[ TODO: Λείπουν a4, a3 ]
-    a5+      <gr-vlepo-future> |
-    a5-      δεν <gr-vlepo-future> |
-    a6+      <gr-vlepo-imperfect> |
-    a6-      δεν <gr-vlepo-imperfect> |
+	a5+      <gr-vlepo-future> |
+	a5-      δεν <gr-vlepo-future> |
+	a6+      <gr-vlepo-imperfect> |
+	a6-      δεν <gr-vlepo-imperfect> |
 
 <gr-vlepo-present> ::=
-    βλέπω | βλέπεις | βλέπει | βλέπουμε | βλέπετε | βλέπουν
+	βλέπω | βλέπεις | βλέπει | βλέπουμε | βλέπετε | βλέπουν
 
 <gr-vlepo-past> ::=
-    είδα | είδες | είδε | είδαμε | είδατε | είδαν
+	είδα | είδες | είδε | είδαμε | είδατε | είδαν
 
 <gr-vlepo-future> ::=
-    θα δω | θα δεις | θα δει | θα δούμε | θα δείτε | θα δουν
+	θα δω | θα δεις | θα δει | θα δούμε | θα δείτε | θα δουν
 
 <gr-vlepo-imperfect> ::=
 	έβλεπα | έβλεπες | έβλεπε | βλέπαμε | βλέπατε | έβλεπαν
@@ -2215,62 +2440,62 @@ hregular-verb-conjugationi ::=
 <gr-kratao-conjugation> ::=
 	2		κρατώντας |
 	3		κρατήσει |
-    5       κρατ |
-    7       κράτ |
-    <gr-kratao-tabulation>
+	5       κρατ |
+	7       κράτ |
+	<gr-kratao-tabulation>
 
 <gr-kratao-tabulation> ::=
-    a1+      <gr-kratao-present> |
-    a1-      δεν <gr-kratao-present> |
-    a2+      <gr-kratao-past> |
-    a2-      δεν <gr-kratao-past> |
+	a1+      <gr-kratao-present> |
+	a1-      δεν <gr-kratao-present> |
+	a2+      <gr-kratao-past> |
+	a2-      δεν <gr-kratao-past> |
 	a3		 (t1 έχω) 3 |
 	a4		 (t2 έχω) 3 |
-    a5+      θα <gr-kratao-future> |
-    a5-      δεν θα <gr-kratao-future> |
+	a5+      θα <gr-kratao-future> |
+	a5-      δεν θα <gr-kratao-future> |
 
 
 <gr-kratao-present> ::=
-     5+άω | 5+άς | 5+άει | 5+άμε | 5+άτε | 5+ούν |
+	 5+άω | 5+άς | 5+άει | 5+άμε | 5+άτε | 5+ούν |
 
 <gr-kratao-past> ::=
-    7+ησα | 7+ησες | 7+ησε | 5+ήσαμε | 5+ήσατε | 7+ησαν |
+	7+ησα | 7+ησες | 7+ησε | 5+ήσαμε | 5+ήσατε | 7+ησαν |
 
 <gr-kratao-future> ::=
-    5+ήσω | 5+ήσεις | 5+ήσει | 5+ήσουμε | 5+ήσετε | 5+ήσουν
+	5+ήσω | 5+ήσεις | 5+ήσει | 5+ήσουμε | 5+ήσετε | 5+ήσουν
 
 
 <gr-xtypao-conjugation> ::=
-    5       χτυπ |
-    7       χτύπ |
-    <gr-kratao-tabulation>
+	5       χτυπ |
+	7       χτύπ |
+	<gr-kratao-tabulation>
 
 
 [ "Παίρνω" ]
 
 <gr-pairno-conjugation> ::=
-    5       παίρν |
-    6		πάρ |
-    7       πήρ |
+	5       παίρν |
+	6		πάρ |
+	7       πήρ |
 	8		έπαιρν |
-    <gr-pairno-tabulation>
+	<gr-pairno-tabulation>
 
 <gr-pairno-tabulation> ::=
-    a1+      <gr-lyno-present> |
-    a1-      δεν <gr-lyno-present> |
-    a2+      <gr-pairno-past> |
-    a2-      δεν <gr-pairno-past> |
+	a1+      <gr-lyno-present> |
+	a1-      δεν <gr-lyno-present> |
+	a2+      <gr-pairno-past> |
+	a2-      δεν <gr-pairno-past> |
 	[ TODO: Λείπουν a4, a3 ]
-    a5+      <gr-pairno-future> |
-    a5-      δεν <gr-pairno-future> |
-    a6+      <gr-pairno-imperfect> |
-    a6-      δεν <gr-pairno-imperfect> |
+	a5+      <gr-pairno-future> |
+	a5-      δεν <gr-pairno-future> |
+	a6+      <gr-pairno-imperfect> |
+	a6-      δεν <gr-pairno-imperfect> |
 
 <gr-pairno-past> ::=
-    πήρα | πήρες | πήρε | πήραμε | πήρατε | πήραν
+	πήρα | πήρες | πήρε | πήραμε | πήρατε | πήραν
 
 <gr-pairno-future> ::=
-    θα πάρω | θα πάρεις | θα πάρει | θα πάρουμε | θα πάρετε | θα πάρουν
+	θα πάρω | θα πάρεις | θα πάρει | θα πάρουμε | θα πάρετε | θα πάρουν
 
 <gr-pairno-imperfect> ::=
 	έπαιρνα | έπαιρνες | έπαιρνε | παίρναμε | παίρνατε | έπαιρναν
@@ -2517,16 +2742,16 @@ In Greek είμαι κάτω από is a verb meaning to be below.
 In Greek είμαι μέσα από is a verb meaning to be through.
 
 [ TODO: Fix these for the following: new verbs can only be defined in terms of existing relations, all of
-    which have names ending 'relation': thus '...implies the possession
-    relation' is an example of a valid definition, this being one of the
-    relations built into Inform. ]
+	which have names ending 'relation': thus '...implies the possession
+	relation' is an example of a valid definition, this being one of the
+	relations built into Inform. ]
 [ In Greek είμαι βόρεια από τον is a verb meaning the mapping north relation. ]
 [ In Greek είμαι βόρεια από την is a verb meaning the mapping north relation.
 In Greek είμαι βόρεια από το is a verb meaning the mapping north relation. ]
-
+[
 In Greek είμαι ανατολικά από is a verb mapping την ανατολή relation.
 In Greek είμαι δυτικά από is a verb mapping την δύση relation.
-
+]
 [ Παραθετικά επιρρημάτων ]
 
 [ TODO: Check if the following works correctly. ]
@@ -2585,7 +2810,7 @@ standard respond to final question rule response (A) is "Παρακαλώ επί
 
 Section 3.1.1.2 - Printing the locale description
 
-you-can-also-see rule response (A) is "[Εγώ] ".
+you-can-also-see rule response (A) is "".
 you-can-also-see rule response (B) is "Πάνω σε [the domain], [εγώ] ".
 you-can-also-see rule response (C) is "Μέσα σε [the domain], [εγώ] ".
 you-can-also-see rule response (D) is "[Εγώ] [adapt the verb μπορώ] επίσης να [adapt the verb δω in present tense] ".
@@ -3066,9 +3291,9 @@ announce the pronoun meanings rule response (C) is "δεν έχει οριστε
 [ TODO: Understand the translation for pronoun in this case ]
 announce the pronoun meanings rule response (D) is "κανένα pronoun δεν είναι γνωστό στο παιχνίδι.".
 announce items from multiple object lists rule response (A) is "[current item from the multiple object list]: [run paragraph on]".
-
-basic tangibility rule response (A) is "Πρέπει να ονομάσεις κάτι πιο ουσιαστικό από [το noun].".
-basic tangibility rule response (B) is "Πρέπει να ονομάσεις κάτι πιο ουσιαστικό από [το second noun].".
+[TODO: Αλλαγή σε αιτιατική ]
+basic tangibility rule response (A) is "Πρέπει να ονομάσεις κάτι πιο ουσιαστικό από [ο noun].".
+basic tangibility rule response (B) is "Πρέπει να ονομάσεις κάτι πιο ουσιαστικό από [ο second noun].".
 block vaguely going rule response (A) is "Πρέπει να πεις προς ποια κατεύθυνση της πυξίδας θέλεις να πας.".
 
 Part 3.2 - The Final Question
@@ -3099,18 +3324,18 @@ Part 4.1 - Pronouns and possessives in commands
 Include (-
 Array LanguagePronouns table
 
-    ! word        possible GNAs                   connected
-    !             to follow:                      to:
-    !             a     i
-    !             s  p  s  p
-    !             mfnmfnmfnmfn
+	! word        possible GNAs                   connected
+	!             to follow:                      to:
+	!             a     i
+	!             s  p  s  p
+	!             mfnmfnmfnmfn
 
-    'αυτός'     $$100000100000                    NULL
-    'αυτή'      $$010000010000                    NULL
-    'αυτό'      $$001000001000                    NULL
-    'αυτοί'     $$000100000100                    NULL
-    'αυτές'     $$000010000010                    NULL
-    'αυτά'      $$000001000001                    NULL;
+	'αυτός'     $$100000100000                    NULL
+	'αυτή'      $$010000010000                    NULL
+	'αυτό'      $$001000001000                    NULL
+	'αυτοί'     $$000100000100                    NULL
+	'αυτές'     $$000010000010                    NULL
+	'αυτά'      $$000001000001                    NULL;
 -) replacing "Pronouns".
 
 Include(-
@@ -3123,45 +3348,45 @@ Array LanguageDescriptors table
   !             s  p  s  p
   !             mfnmfnmfnmfn
 
-    'μου'     $$111111111111    POSSESS_PK      0
-    'this'    $$111111111111    POSSESS_PK      0
-    'this'    $$111111111111    POSSESS_PK      0
-    'this'    $$111111111111    POSSESS_PK      0
-    'these'   $$000111000111    POSSESS_PK      0
-    'that'    $$111111111111    POSSESS_PK      1
-    'those'   $$000111000111    POSSESS_PK      1
-    'his'     $$111111111111    POSSESS_PK      'him'
-    'her'     $$111111111111    POSSESS_PK      'her'
-    'their'   $$111111111111    POSSESS_PK      'them'
-    'its'     $$111111111111    POSSESS_PK      'it'
-    'ο'       $$100000100000    DEFART_PK       NULL
-    'του'     $$101000101000    DEFART_PK       NULL
-    'τον'     $$100000100000    DEFART_PK       NULL
-    'στον'    $$100000100000    DEFART_PK       NULL
-    'η'       $$010000010000    DEFART_PK       NULL
-    'της'     $$010000010000    DEFART_PK       NULL
-    'την'     $$010000010000    DEFART_PK       NULL
-    'στην'    $$010000010000    DEFART_PK       NULL
-    'το'      $$001000001000    DEFART_PK       NULL
-    'στο'     $$001000001000    DEFART_PK       NULL
-    'οι'      $$000110000110    DEFART_PK       NULL
-    'των'     $$000111000111    DEFART_PK       NULL
-    'τους'    $$000100000100    DEFART_PK       NULL
-    'στους'   $$000100000100    DEFART_PK       NULL
-    'τις'     $$000010000010    DEFART_PK       NULL
-    'στις'    $$000010000010    DEFART_PK       NULL
-    'τα'      $$000001000001    DEFART_PK       NULL
-    'στα'     $$000001000001    DEFART_PK       NULL
-    'ένας'    $$100000100000    INDEFART_PK     NULL
-    'ενός'    $$101000101000    INDEFART_PK     NULL
-    'έναν'    $$100000100000    INDEFART_PK     NULL
-    'μία'     $$010000010000    INDEFART_PK     NULL
-    'μίας'    $$010000010000    INDEFART_PK     NULL
-    'ένα'     $$001000001000    INDEFART_PK     NULL
-    ! Το κάποιος/α/ο... βγάζει complexity error οπότε το αγνοούμε προς το παρόν
-    'lit'     $$111111111111    LIGHTED_PK      NULL
-    'lighted' $$111111111111    LIGHTED_PK      NULL
-    'unlit'   $$111111111111    UNLIGHTED_PK    NULL;
+	'μου'     $$111111111111    POSSESS_PK      0
+	'this'    $$111111111111    POSSESS_PK      0
+	'this'    $$111111111111    POSSESS_PK      0
+	'this'    $$111111111111    POSSESS_PK      0
+	'these'   $$000111000111    POSSESS_PK      0
+	'that'    $$111111111111    POSSESS_PK      1
+	'those'   $$000111000111    POSSESS_PK      1
+	'his'     $$111111111111    POSSESS_PK      'him'
+	'her'     $$111111111111    POSSESS_PK      'her'
+	'their'   $$111111111111    POSSESS_PK      'them'
+	'its'     $$111111111111    POSSESS_PK      'it'
+	'ο'       $$100000100000    DEFART_PK       NULL
+	'του'     $$101000101000    DEFART_PK       NULL
+	'τον'     $$100000100000    DEFART_PK       NULL
+	'στον'    $$100000100000    DEFART_PK       NULL
+	'η'       $$010000010000    DEFART_PK       NULL
+	'της'     $$010000010000    DEFART_PK       NULL
+	'την'     $$010000010000    DEFART_PK       NULL
+	'στην'    $$010000010000    DEFART_PK       NULL
+	'το'      $$001000001000    DEFART_PK       NULL
+	'στο'     $$001000001000    DEFART_PK       NULL
+	'οι'      $$000110000110    DEFART_PK       NULL
+	'των'     $$000111000111    DEFART_PK       NULL
+	'τους'    $$000100000100    DEFART_PK       NULL
+	'στους'   $$000100000100    DEFART_PK       NULL
+	'τις'     $$000010000010    DEFART_PK       NULL
+	'στις'    $$000010000010    DEFART_PK       NULL
+	'τα'      $$000001000001    DEFART_PK       NULL
+	'στα'     $$000001000001    DEFART_PK       NULL
+	'ένας'    $$100000100000    INDEFART_PK     NULL
+	'ενός'    $$101000101000    INDEFART_PK     NULL
+	'έναν'    $$100000100000    INDEFART_PK     NULL
+	'μία'     $$010000010000    INDEFART_PK     NULL
+	'μίας'    $$010000010000    INDEFART_PK     NULL
+	'ένα'     $$001000001000    INDEFART_PK     NULL
+	! Το κάποιος/α/ο... βγάζει complexity error οπότε το αγνοούμε προς το παρόν
+	'lit'     $$111111111111    LIGHTED_PK      NULL
+	'lighted' $$111111111111    LIGHTED_PK      NULL
+	'unlit'   $$111111111111    UNLIGHTED_PK    NULL;
 -) replacing "Descriptors".
 
 Part 4.2 - Understand grammar
