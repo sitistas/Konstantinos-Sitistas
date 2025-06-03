@@ -203,6 +203,39 @@ To say Ένας (O - object):
 		else:
 			say "Ένας [O]".
 
+To say έναν (O - object):
+	if O is plural-named:
+		if O is neuter:
+			say "κάποια [O]";
+		else if O is female:
+			say "κάποιες [O]";
+		else:
+			say "κάποιους [O]";
+	else:
+		if O is neuter:
+			say "ένα [O]";
+		else if O is female:
+			say "μία [O]";
+		else:
+			say "έναν [O]".
+
+To say Έναν (O - object):
+	if O is plural-named:
+		if O is neuter:
+			say "Κάποια [O]";
+		else if O is female:
+			say "Κάποιες [O]";
+		else:
+			say "Κάποιους [O]";
+	else:
+		if O is neuter:
+			say "Ένα [O]";
+		else if O is female:
+			say "Μία [O]";
+		else:
+			say "Έναν [O]".
+
+[ TODO: Fix σε+τον ]
 To say στον (O - object):
 	if O is plural-named:
 		if O is neuter:
@@ -375,23 +408,23 @@ language Greek
 
 Include (-
 Array LanguageNumbers table
-    'ένα' 1 'δύο' 2 'τρία' 3 'τέσσερα' 4 'πέντε' 5
-    'έξι' 6 'επτά' 7 'οκτώ' 8 'εννέα' 9 'δέκα' 10
-    'έντεκα' 11 'δώδεκα' 12 'δεκατρία' 13 'δεκατέσσερα' 14 'δεκαπέντε' 15
-    'δεκαέξι' 16 'δεκαεπτά' 17 'δεκαοκτώ' 18 'δεκαεννέα' 19 'είκοσι' 20
-    'είκοσι ένα' 21 'είκοσι δύο' 22 'είκοσι τρία' 23 'είκοσι τέσσερα' 24
+	'ένα' 1 'δύο' 2 'τρία' 3 'τέσσερα' 4 'πέντε' 5
+	'έξι' 6 'επτά' 7 'οκτώ' 8 'εννέα' 9 'δέκα' 10
+	'έντεκα' 11 'δώδεκα' 12 'δεκατρία' 13 'δεκατέσσερα' 14 'δεκαπέντε' 15
+	'δεκαέξι' 16 'δεκαεπτά' 17 'δεκαοκτώ' 18 'δεκαεννέα' 19 'είκοσι' 20
+	'είκοσι ένα' 21 'είκοσι δύο' 22 'είκοσι τρία' 23 'είκοσι τέσσερα' 24
 	'είκοσι πέντε' 25 'είκοσι έξι' 26 'είκοσι επτά' 27 'είκοσι οκτώ' 28
 	'είκοσι εννέα' 29 'τριάντα' 30 'μία' 1
 	;
 
 Array GreekUnitsTable -->
-    "μηδέν" "ένα" "δύο" "τρία" "τέσσερα" "πέντε" "έξι" "επτά" "οκτώ" "εννέα";
+	"μηδέν" "ένα" "δύο" "τρία" "τέσσερα" "πέντε" "έξι" "επτά" "οκτώ" "εννέα";
 Array GreekTeensTable -->
-    "δέκα" "έντεκα" "δώδεκα" "δεκατρία" "δεκατέσσερα" "δεκαπέντε" "δεκαέξι" "δεκαεπτά" "δεκαοκτώ" "δεκαεννέα";
+	"δέκα" "έντεκα" "δώδεκα" "δεκατρία" "δεκατέσσερα" "δεκαπέντε" "δεκαέξι" "δεκαεπτά" "δεκαοκτώ" "δεκαεννέα";
 Array GreekTensTable -->
-    "" "" "είκοσι" "τριάντα" "σαράντα" "πενήντα" "εξήντα" "εβδομήντα" "ογδόντα" "ενενήντα";
+	"" "" "είκοσι" "τριάντα" "σαράντα" "πενήντα" "εξήντα" "εβδομήντα" "ογδόντα" "ενενήντα";
 Array GreekHundredsTable -->
-    "" "εκατό" "διακόσια" "τριακόσια" "τετρακόσια" "πεντακόσια" "εξακόσια" "επτακόσια" "οκτακόσια" "εννιακόσια";
+	"" "εκατό" "διακόσια" "τριακόσια" "τετρακόσια" "πεντακόσια" "εξακόσια" "επτακόσια" "οκτακόσια" "εννιακόσια";
 Array GreekHundredsFemTable -->
 	"" "εκατόν" "διακόσιες" "τριακόσιες" "τετρακόσιες" "πεντακόσιες" "εξακόσιες" "επτακόσιες" "οκτακόσιες" "εννιακόσιες";
 Array GreekTensFemTable -->
@@ -402,45 +435,45 @@ Array GreekTeensFemTable -->
 	"δέκα" "έντεκα" "δώδεκα" "δεκατρείς" "δεκατέσσερις" "δεκαπέντε" "δεκαέξι" "δεκαεπτά" "δεκαοκτώ" "δεκαεννέα";
 
 [ LanguageNumber n forbid_s gender;
-    ! gender: 0=ουδέτερο, 1=θηλυκό (μόνο για χιλιάδες)
-    if (n < 0) {
-        print "μείον ";
-        n = -n;
-    }
-    if (n == 0) {
-        print (string) GreekUnitsTable-->0;
-        return;
-    }
-    ! Εκατομμύρια
-    if (n >= 1000000) {
-        if (n/1000000 == 1) {
-            print "ένα εκατομμύριο";
-        } else {
-            LanguageNumber(n/1000000, false, 0);
-            print " εκατομμύρια";
-        }
-        n = n % 1000000;
-        if (n > 0) print " ";
-        else return;
-    }
-    ! Χιλιάδες (θηλυκό)
-    if (n >= 1000) {
-        if (n/1000 == 1) {
-            print "χίλια";
-        } else {
-            LanguageNumber(n/1000, false, 1); ! gender=1 για χιλιάδες
-            print " χιλιάδες";
-        }
-        n = n % 1000;
-        if (n > 0) print " ";
-        else return;
-    }
-    ! Εκατοντάδες
-    if (n >= 100) {
-        if (gender == 1) {
-            print (string) GreekHundredsFemTable-->(n/100);
-        } else {
-            if (n/100 == 1) {
+	! gender: 0=ουδέτερο, 1=θηλυκό (μόνο για χιλιάδες)
+	if (n < 0) {
+		print "μείον ";
+		n = -n;
+	}
+	if (n == 0) {
+		print (string) GreekUnitsTable-->0;
+		return;
+	}
+	! Εκατομμύρια
+	if (n >= 1000000) {
+		if (n/1000000 == 1) {
+			print "ένα εκατομμύριο";
+		} else {
+			LanguageNumber(n/1000000, false, 0);
+			print " εκατομμύρια";
+		}
+		n = n % 1000000;
+		if (n > 0) print " ";
+		else return;
+	}
+	! Χιλιάδες (θηλυκό)
+	if (n >= 1000) {
+		if (n/1000 == 1) {
+			print "χίλια";
+		} else {
+			LanguageNumber(n/1000, false, 1); ! gender=1 για χιλιάδες
+			print " χιλιάδες";
+		}
+		n = n % 1000;
+		if (n > 0) print " ";
+		else return;
+	}
+	! Εκατοντάδες
+	if (n >= 100) {
+		if (gender == 1) {
+			print (string) GreekHundredsFemTable-->(n/100);
+		} else {
+			if (n/100 == 1) {
 				if (n % 100 == 0) {
 					print "εκατό";
 				} else {
@@ -449,44 +482,44 @@ Array GreekTeensFemTable -->
 			} else {
 				print (string) GreekHundredsTable-->(n/100);
 			}
-        }
-        n = n % 100;
-        if (n > 0) print " ";
-        else return;
-    }
-    ! Δεκάδες και μονάδες
-    if (n >= 20) {
-        if (gender == 1) {
-            print (string) GreekTensFemTable-->(n/10);
-        } else {
-            print (string) GreekTensTable-->(n/10);
-        }
-        if (n % 10 > 0) {
-            print " ";
-            if (gender == 1) {
-                print (string) GreekUnitsFemTable-->(n%10);
-            } else {
-                print (string) GreekUnitsTable-->(n%10);
-            }
-        }
-        return;
-    }
-    if (n >= 10) {
-        if (gender == 1) {
-            print (string) GreekTeensFemTable-->(n-10);
-        } else {
-            print (string) GreekTeensTable-->(n-10);
-        }
-        return;
-    }
-    if (n > 0) {
-        if (gender == 1) {
-            print (string) GreekUnitsFemTable-->n;
-        } else {
-            print (string) GreekUnitsTable-->n;
-        }
-        return;
-    }
+		}
+		n = n % 100;
+		if (n > 0) print " ";
+		else return;
+	}
+	! Δεκάδες και μονάδες
+	if (n >= 20) {
+		if (gender == 1) {
+			print (string) GreekTensFemTable-->(n/10);
+		} else {
+			print (string) GreekTensTable-->(n/10);
+		}
+		if (n % 10 > 0) {
+			print " ";
+			if (gender == 1) {
+				print (string) GreekUnitsFemTable-->(n%10);
+			} else {
+				print (string) GreekUnitsTable-->(n%10);
+			}
+		}
+		return;
+	}
+	if (n >= 10) {
+		if (gender == 1) {
+			print (string) GreekTeensFemTable-->(n-10);
+		} else {
+			print (string) GreekTeensTable-->(n-10);
+		}
+		return;
+	}
+	if (n > 0) {
+		if (gender == 1) {
+			print (string) GreekUnitsFemTable-->n;
+		} else {
+			print (string) GreekUnitsTable-->n;
+		}
+		return;
+	}
 ];
 -) replacing "LanguageNumber".
 
@@ -886,43 +919,43 @@ Chapter 2.2.2 - Pronouns and possessives for other objects
 
 
 
-To say those:
+[ To say those:
 	say those in the αιτιατική.
 
 To say Those:
-	say Those in the ονομαστική.
+	say Those in the ονομαστική. ]
 
 
 To say those in (case - grammatical case):
 	if the case is nominative:
 		let the item be the prior named object;
-		if the prior naming context is plural and item is male:
-			say "αυτοί";
+		if the prior naming context is plural and item is neuter:
+			say "αυτά";
 		otherwise if the prior naming context is plural and item is female:
 			say "αυτές";
-		otherwise if the prior naming context is plural and item is neuter:
-			say "αυτά";
+		otherwise if the prior naming context is plural and item is male:
+			say "αυτοί";
 		otherwise if the item is the player:
 			say "[εγώ]";
-		otherwise if the item is a male person and item is not neuter:
+		otherwise if the item is male and item is not neuter:
 			say "αυτός";
-		otherwise if the item is a female person and item is not neuter:
+		otherwise if the item is female and item is not neuter:
 			say "αυτή";
 		otherwise:
 			say "αυτό";
 	otherwise:
 		let the item be the prior named object;
-		if the prior naming context is plural and item is male:
-			say "αυτούς";
+		if the prior naming context is plural and item is neuter:
+			say "αυτά";
 		otherwise if the prior naming context is plural and item is female:
 			say "αυτές";
-		otherwise if the prior naming context is plural and item is neuter:
-			say "αυτά";
+		otherwise if the prior naming context is plural and item is male:
+			say "αυτοί";
 		otherwise if the item is the player:
 			say "[εμένα]";
-		otherwise if the item is a male person and item is not neuter:
+		otherwise if the item is male and item is not neuter:
 			say "αυτόν";
-		otherwise if the item is a female person and item is not neuter:
+		otherwise if the item is female and item is not neuter:
 			say "αυτή";
 		otherwise:
 			say "αυτό";
@@ -938,9 +971,9 @@ To say Those in (case - grammatical case):
 			say "Αυτά";
 		otherwise if the item is the player:
 			say "[Εγώ]";
-		otherwise if the item is a male person and item is not neuter:
+		otherwise if the item is male and item is not neuter:
 			say "Αυτός";
-		otherwise if the item is a female person and item is not neuter:
+		otherwise if the item is female and item is not neuter:
 			say "Αυτή";
 		otherwise:
 			say "Αυτό";
@@ -954,9 +987,9 @@ To say Those in (case - grammatical case):
 			say "Αυτά";
 		otherwise if the item is the player:
 			say "[Εμένα]";
-		otherwise if the item is a male person and item is not neuter:
+		otherwise if the item is male and item is not neuter:
 			say "Αυτόν";
-		otherwise if the item is a female person and item is not neuter:
+		otherwise if the item is female and item is not neuter:
 			say "Αυτή";
 		otherwise:
 			say "Αυτό";
@@ -970,10 +1003,10 @@ Understand "ανατολή" as East.
 Understand "δύση" as West. ]
 
 
-North translates into Greek as ο βοράς.
-South translates into Greek as η νότος.
-East translates into Greek as η ανατολή.
-West translates into Greek as η δύση.
+North translates into Greek as βοράς.
+South translates into Greek as νότος.
+East translates into Greek as ανατολή.
+West translates into Greek as δύση.
 Northeast translates into Greek as βορειοανατολικά.
 Southwest translates into Greek as νοτιοδυτικά.
 Southeast translates into Greek as νοτιοανατολικά.
@@ -994,77 +1027,74 @@ Understand "βδ" as βορειοδυτικά.
 Understand "μ" or "μεσα" or "εσωτερικά" or "εσωτερικα" as μέσα.
 Understand "εξωτερικά" as έξω.
 
-[TODO: Figure that out
-Understand "Η περιγραφή [του]" as The description of.]
-
 Chapter 2.2.4 - Kinds
 
 Section 2.2.4.1 - In the Standard Rules
 
-An object translates into Greek as ένα αντικείμενο.
-A room translates into Greek as ένα δωμάτιο.
-A thing translates into Greek as ένα πράγμα.
-A door translates into Greek as μια πόρτα.
-A container translates into Greek as ένα κιβώτιο.
-A vehicle translates into Greek as ένα όχημα.
-A player's holdall translates into Greek as μια τσάντα του παίκτη.
-A supporter translates into Greek as ένας στήριγμα.
-A backdrop translates into Greek as ένα παρασκήνιο. The plural of παρασκήνιο is παρασκήνια. [TODO: check translation]
-A person translates into Greek as ένα άτομο.
-A man translates into Greek as άντρας. The plural of άντρας is άντρες.
+An object translates into Greek as αντικείμενο.
+A room translates into Greek as δωμάτιο.
+A thing translates into Greek as πράγμα.
+A door translates into Greek as πόρτα.
+A container translates into Greek as κιβώτιο.
+A vehicle translates into Greek as όχημα.
+A player's holdall translates into Greek as τσάντα του παίκτη.
+A supporter translates into Greek as στήριγμα.
+A backdrop translates into Greek as παρασκήνιο. The plural of παρασκήνιο is παρασκήνια. [TODO: check translation]
+A person translates into Greek as άτομο.
+A man translates into Greek as άντρας.
 [ TODO: Ask Graham if the indefinite article is needed. If I use it as:  A man translates into Greek as άντρας. I receive: printed plural name: "άντρες"
 
 If I use it as: A man translates into Greek as **ένας** άντρας. then I receive: printed plural name: "ένας άντρες" (which is incorrect)]
 
-A woman translates into Greek as μια γυναίκα.
-An animal translates into Greek as ένα ζώο.
-A device translates into Greek as μια συσκευή.
-A direction translates into Greek as μια κατεύθυνση.
-A region translates into Greek as μια περιοχή.
+A woman translates into Greek as γυναίκα.
+An animal translates into Greek as ζώο.
+A device translates into Greek as συσκευή.
+A direction translates into Greek as κατεύθυνση.
+A region translates into Greek as περιοχή.
 
-A number translates into Greek as ένας αριθμός.
-A real number translates into Greek as ένας πραγματικός αριθμός.
-A time translates into Greek as μια ώρα.
+A number translates into Greek as αριθμός.
+A real number translates into Greek as πραγματικός αριθμός.
+A time translates into Greek as ώρα.
 [ TODO: Find correct translation for the following, fix it in the documentation as well ]
-A truth state translates into Greek as μια αλήθεια.
-A text translates into Greek as ένα κείμενο.
-A unicode character translates into Greek as ένας χαρακτήρας unicode.
-A snippet translates into Greek as ένα απόσπασμα.
-A stored action translates into Greek as μια αποθηκευμένη ενέργεια.
-A scene translates into Greek as μια σκηνή.
-A command parser error translates into Greek as ένα σφάλμα αναλυτή εντολών.
-A use option translates into Greek as μια επιλογή χρήσης.
-A response translates into Greek as μια απάντηση.
-A verb translates into Greek as ένα ρήμα.
-A table name translates into Greek as ένα όνομα πίνακα.
-An equation name translates into Greek as ένα όνομα εξίσωσης.
-A rulebook outcome translates into Greek as ένα αποτέλεσμα κανόνων.
-An action name translates into Greek as ένα όνομα ενέργειας.
-A figure name translates into Greek as ένα όνομα μορφής.
-A sound name translates into Greek as ένα όνομα ήχου.
-An external file translates into Greek as ένα εξωτερικό αρχείο.
+A truth state translates into Greek as αλήθεια.
+A text translates into Greek as κείμενο.
+A unicode character translates into Greek as χαρακτήρας unicode.
+A snippet translates into Greek as απόσπασμα.
+A stored action translates into Greek as αποθηκευμένη ενέργεια.
+A scene translates into Greek as σκηνή.
+A command parser error translates into Greek as σφάλμα αναλυτή εντολών.
+A use option translates into Greek as επιλογή χρήσης.
+A response translates into Greek as απάντηση.
+A verb translates into Greek as ρήμα.
+A table name translates into Greek as όνομα πίνακα.
+An equation name translates into Greek as όνομα εξίσωσης.
+A rulebook outcome translates into Greek as αποτέλεσμα κανόνων.
+An action name translates into Greek as όνομα ενέργειας.
+A figure name translates into Greek as όνομα μορφής.
+A sound name translates into Greek as όνομα ήχου.
+An external file translates into Greek as εξωτερικό αρχείο.
 
 [ TODO: Test and check the following tenses ]
 [ TODO: Ask Graham about the tenses ]
 Grammatical tense translates into Greek as γραμματικός χρόνος.
-Present tense translates into Greek as ο ενεστώτας.
-Future tense translates into Greek as ο μέλλοντας.
-Past tense translates into Greek as ο αόριστος.
-Perfect tense translates into Greek as ο παρακείμενος.
-Past perfect tense translates into Greek as ο υπερσυντέλικος.
+Present tense translates into Greek as ενεστώτας.
+Future tense translates into Greek as μέλλοντας.
+Past tense translates into Greek as αόριστος.
+Perfect tense translates into Greek as παρακείμενος.
+Past perfect tense translates into Greek as υπερσυντέλικος.
 
 Narrative viewpoint translates into Greek as αφηγηματική σκοπιά.
-First person singular translates into Greek as το πρώτο ενικό πρόσωπο.
-Second person singular translates into Greek as το δεύτερο ενικό πρόσωπο.
-Third person singular translates into Greek as το τρίτο ενικό πρόσωπο.
-First person plural translates into Greek as το πρώτο πληθυντικό πρόσωπο.
-Second person plural translates into Greek as το δεύτερο πληθυντικό πρόσωπο.
-Third person plural translates into Greek as το τρίτο πληθυντικό πρόσωπο.
+First person singular translates into Greek as πρώτο ενικό πρόσωπο.
+Second person singular translates into Greek as δεύτερο ενικό πρόσωπο.
+Third person singular translates into Greek as τρίτο ενικό πρόσωπο.
+First person plural translates into Greek as πρώτο πληθυντικό πρόσωπο.
+Second person plural translates into Greek as δεύτερο πληθυντικό πρόσωπο.
+Third person plural translates into Greek as τρίτο πληθυντικό πρόσωπο.
 
 Grammatical gender translates into Greek as γραμματικό γένος.
-Masculine gender translates into Greek as το αρσενικό γένος.
-Feminine gender translates into Greek as το θηλυκό γένος.
-Neuter gender translates into Greek as το ουδέτερο γένος.
+Masculine gender translates into Greek as αρσενικό γένος.
+Feminine gender translates into Greek as θηλυκό γένος.
+Neuter gender translates into Greek as ουδέτερο γένος.
 
 
 [ Translation of the index descriptions ]
@@ -1113,8 +1143,7 @@ language Greek
 	nominative | accusative [ TODO: Προσθήκη γενικής? ]
 
 <noun-declension> ::=
-	*    <gr-noun-declension-group>
-	<gr-noun-declension-tables>
+	*    <gr-noun-declension-group> <gr-noun-declension-tables>
 
 <gr-noun-declension-group> ::=
 	*	1
@@ -1128,8 +1157,8 @@ language Greek
 
 <singular-noun-to-its-plural> ::=
 	... <gr-trie-plural-uninflected> |
+	... <gr-trie-plural-exceptions> |
 	...	<gr-trie-plural-pronouns> |
-	... <gr-plural-exceptions> |
 	... <gr-plural-by-ending> |
 	... <gr-plural-default>
 
@@ -1777,39 +1806,92 @@ language Greek
 
 
 <gr-trie-plural-pronouns> ::=
-	εγώ			εμείς |
-	εσύ			εσείς |
-	αυτός		αυτοί |
-	αυτή		αυτές |
-	αυτό		αυτά |
-	εμένα		εμάς |
-	εσένα		εσάς |
-	αυτόν		αυτούς |
-	αυτήν		αυτές |
-	αυτό		αυτά |
+	εγώ			εμείς 	|
+	εσύ			εσείς 	|
+	αυτός		αυτοί 	|
+	αυτή		αυτές 	|
+	αυτό		αυτά 	|
+	εμένα		εμάς 	|
+	εσένα		εσάς 	|
+	αυτόν		αυτούς 	|
+	αυτήν		αυτές 	|
+	αυτό		αυτά 	|
 	εκείνος		εκείνοι |
 	εκείνη		εκείνες |
 	εκείνο		εκείνα
 
 
-<gr-plural-exceptions> ::=
-	μυς			0 |
-	πρέσβης		πρέσβεις |
-	πρύτανης	πρυτάνεις |
+<gr-trie-plural-exceptions> ::=
+[ Σε αυτή την κατηγορία, ανήκουν και κάποια ιδιόκλιτα ουσιαστικά ]
+	μυς			0 			|
+	πρέσβης		πρέσβεις 	|
+	πρύτανης	πρυτάνεις	|
+	δύναμη		δυνάμεις	|
+	σκέψη		σκέψεις		|
+	γάλα		γάλατα		|
+	οξύ			οξέα		|
+	δόρυ		δόρατα		|
+	ύδωρ		ύδατα		|
+	φως			φώτα		|
+	πυρ			πυρά		|
+	κρέας		κρέατα		|
+	ήπαρ		ήπατα		|
+	τέρας		τέρατα		|
+
 
 <gr-plural-by-ending> ::=
-	βόλος		βόλοι | 		[βόλος --> βόλοι]
-[	*ας			2ες |			[χάρακας --> χάρακες] [TODO: Add ψαράς --> ψαράδες]
-	*ης			1ες	|		[επιβάτης --> επιβάτες]
-	*ΗΣ			1ΕΣ	|		[επιβάτης --> επιβάτες]
-	*ής			1ές			[μαθητής --> μαθητές] ]
+	[ TODO: Πρέπει να διαχωριστιούν τα ισοσύλλαβα και ανισόσύλλαβα ουσιαστικά, ώστε να μην υπάρχουν προβλήματα με την κλίση τους. ]
+	[ TODO: Πρέπει να γίνει διαχωρισμός μεταξύ αρσενικών - θηλυκών - ουδέτερων ουσιαστικών με κατάληξη -ος, καθώς και των ανισοσύλλαων ουδετέρων που τελειώνουν σε -ς, όπως τέρας]
+	[ Ισοσύλλαβα ]
+	*ας			2ες	|		[πατέρας --> πατέρες]
+	*ής			2ές	|		[μαθητής --> μαθητές]
+	*ης			2ες	|		[επιβάτης --> επιβάτες]
+	*ος			2οι | 		[βόλος --> βόλοι]
+	*ός			2οί | 		[βαθμός --> βαθμοί]
+	[ Ανισόσύλλαβα ]
+	*άς			2άδες | 	[ψαράς --> ψαράδες]
+	*ας			2άδες | 	[ρήγας --> ρηγάδες]
+	*ής			2ήδες | 	[καφετζής --> καφετζήδες]
+	*ης			2ηδες | 	[βαρκάρης --> βαρκάρηδες]
+	*ές			2έδες | 	[καφές --> καφέδες]
+	*ούς		3ούδες | 	[παππούς --> παππούδες]
+	*έας		3είς | 		[κουρέας --> κουρείς]
+	[Θηλυκά]
+	[Ισοσύλλαβα]
+	*α			1ες | 		[λάμπα --> λάμπες]
+	*ά			1ές | 		[σπηλιά --> σπηλιές]
+	*η			1ες |		[γνώμη --> γνώμες]
+	*ή			1ές | 		[συσκευή --> συσκευές]
+	*ός			2οί | 		[κιβωτός --> κιβωτοί]
+	*ος			2οι | 		[μέθοδος --> μέθοδοι]
+	[Τα θηλυκά ουσιαστικά σε -ω δεν έχουν πληθυντικό, αριθμό, π.χ. πειθώ]
+	[Ανισόσύλλαβα]
+	*η			1εις |		[γνώση --> γνώσεις]
+	*ά			1άδες |		[μαμά --> μαμάδες]
+	*ού			2ούδες |	[αλεπού --> αλεπούδες]
+	[ Ουδέτερα ]
+	[Ισοσύλλαβα]
+	*ο			1α |		[δέντρο --> δέντρα]
+	*ό			1ά |		[φυτό --> φυτά]
+	*ί			1ιά |		[παιδί --> παιδιά]
+	*ι			1ια |		[σπίτι --> σπίτια]
+	*ος			2η |		[δάσος --> δάση]
+	[ Ανισόσύλλαβα ]
+	*μα			2ματα | 		[πρόβλημα --> προβλήματα]
+	*ιμο		3ίματα |		[γράψιμο --> γραψίματα]
+	*ς			1τα |		[τέρας --> τέρατα]
+	*ν			1ντα |		[ον --> όντα]
+	*ρ			1ρά |		[πυρ --> πυρά]
+	*ρ		 	1τα			[ήπαρ --> ήπατα: Υπάρχει conflict με την προηγούμενη γραμμή]
 
-[ <gr-plural-default> ::=
-	*			0ς ]
+<gr-plural-default> ::=
+	*			0ς
 
 -) in the Preform grammar.
 
 Chapter 2.2.6 - Cases
+
+[ Δεν υπάρχει κάποια πηγή για το πώς γίνεται ο χειρισμός των πτώσεων στην Inform 7, οπότε αυτό το κομμάτι έχει παραλειφθεί.]
 
 Chapter 2.2.7 - Times of day
 [ TODO: Understand if the following is still relevant ]
@@ -1868,48 +1950,88 @@ Include [preform](-
 language Greek
 
 [ TODO: Change all the following cases to greek, similar to nouns, and add neuter ]
-
+[ Στα επίθετα, χρησιμοποιούμε ως βάση το ουδέτερο ενικό, και στη συνέχεια βάσει αυτού σχηματίζουμε τα άλλα 2 γένη. ]
 <adjective-to-plural> ::=
-	*                0
+	*ο				1α	|	[ελεύθερο --> ελεύθερα]
+	*ό				1ά	|	[γλυκό --> γλυκά]
+	*ύ				1ιά	|	[βαρύ --> βαριά]
+	*ύ				1έα	|	[βραχύ --> βραχέα: TODO: Conflict με το από πάνω]
+	*ί				1ιά	|	[χρυσαφί --> χρυσαφιά]
+	*ές				2ή	|	[διεθνές --> διεθνη]
+	*ες				2η	|	[σύνηθες --> συνήθη]
+	*όν				0τα	|	[από --> απόντα]
+	*ον				0τα	|	[ενδιαφέρον --> ενδιαφέροντα]
+	*ον				0α	|	[μετριόφρον --> μετριόφρονα: TODO: Conflict με το από πάνω]
+	*				0		[Για να καλυφθούν τυχόν εξαιρέσεις]
 
 <adjective-to-masculine-singular> ::=
-	*                0
+	*άδικο			5άς	|	[υπναράδικο --> υπναράς]
+	*ήδικο			5ής	|	[μερακλήδικο --> μερακλής]
+	*ικο			3ης	|	[μικρούλικο --> μικρούλης]
+	*ο				0ς	|	[ελεύθερο --> ελεύθερος, νέο --> νέος]
+	*ό				0ς	|	[γλυκό --> γλυκός]
+	*ύ				0ς	|	[βαρύ --> βαρύς, βραχύ --> βραχύς]
+	*ί				1ής	|	[χρυσαφί --> χρυσαφής]
+	*ές				2ής	|	[διεθνές --> διεθνής]
+	*ες				2ης	|	[σύνηθες --> συνήθης]
+	*ον				2ων	|	[ενδιαφέρον --> ενδιαφέρων]
+	*όν				2ών	|	[απόν --> απών]
+	*				0		[Για να καλυφθούν τυχόν εξαιρέσεις]
 
 <adjective-to-feminine-singular> ::=
-	*                0
+	*άδικο			5ού		|	[υπναράδικο --> υπναρού]
+	*ήδικο			5ού		|	[μερακλήδικο --> μερακλού]
+	*ικο			3α		|	[μικρούλικο --> μικρούλα]
+	*ο				1α		|	[νέο --> νέα]
+	*ο				1η		|	[ελεύθερο --> ελεύθερος: TODO: Conflict]
+	*ό				1ιά		|	[γλυκό --> γλυκιά]
+	*ύ				1ιά		|	[βαρύ --> βαριά]
+	*ύ				1εία	|	[βραχύ --> βραχεία: TODO: Conflict]
+	*ί				1ιά		|	[χρυσαφί --> χρυσαφιά]
+	*ές				2ής		|	[διεθνές --> διεθνής]
+	*ες				2ης		|	[σύνηθες --> συνήθης]
+	*ον				2ουσα	|	[ενδιαφέρον --> ενδιαφέρουσα]
+	*όν				2ούσα	|	[απόν --> απούσα]
+	*ον				2ων		|	[μετριόφρον --> μετριόφρων: TODO: Conflict]
+	*				0			[Για να καλυφθούν τυχόν εξαιρέσεις]
 
 <adjective-to-masculine-plural> ::=
-	*                0
+	*άδικο			5άδες	|	[υπναράδικο --> υπναράδες]
+	*ήδικο			5ήδες	|	[μερακλήδικο --> μερακλήδες]
+	*ικο			3ηδες	|	[μικρούλικο --> μικρούληδες]
+	*ο				0ι		|	[ελεύθερο --> ελεύθεροι, νέο --> νέοι]
+	*ό				1οί		|	[γλυκό --> γλυκοί]
+	*ύ				1ιοί	|	[βαρύ --> βαριοί]
+	*ύ				1είς	|	[βραχύ --> βραχείς: TODO: Conflict]
+	*ί				1ιοί	|	[χρυσαφί --> χρυσαφιοί]
+	*ον				0τες	|	[ενδιαφέρον --> ενδιαφέροντες]
+	*όν				0τες	|	[απόν --> απόντες]
+	*				0			[Για να καλυφθούν τυχόν εξαιρέσεις]
 
 <adjective-to-feminine-plural> ::=
-	*                0
+	*άδικο			5ούδες	|	[υπναράδικο --> υπναρούδες]
+	*ήδικο			5ούδες	|	[μερακλήδικο --> μερακλούδες]
+	*ικο			3ες		|	[μικρούλικο --> μικρούλες]
+	*ο				1ες		|	[νέο --> νέες]
+	*ό				1ές		|	[γλυκό --> γλυκές]
+	*ύ				1ιές	|	[βαρύ --> βαριές]
+	*ύ				1είες	|	[βραχύ --> βραχείες: TODO: Conflict]
+	*ί				1ιές	|	[χρυσαφί --> χρυσαφιές]
+	*ές				2είς	|	[διεθνές --> διεθνείς]
+	*ες				2εις	|	[σύνηθες --> συνήθεις]
+	*ον				2ουσες	|	[ενδιαφέρον --> ενδιαφέρουσες]
+	*όν				2ούσες	|	[απόν --> απούσες]
+	*ον				2ονες	|	[μετριόφρον --> μετριόφρονες: TODO: Conflict]
+	*				0			[Για να καλυφθούν τυχόν εξαιρέσεις]
 
 <adjective-to-comparative> ::=
-	καλός                                 καλύτερος |
-	well                                  better |
-	bad                                   worse |
-	far                                   farther |
-	*e                                    1er |
-	*<bcdfghkmlnprstvwxyz>y               1ier |
-	*<aeiou><aeiou><bcdfghkmlnprstvxyz>   0er |
-	*<aeiou><bcdfghkmlnprstvxyz>          0+er |
-	*                                     0er
+	*		πιο+0
 
 <adjective-to-superlative> ::=
-	good                                  best |
-	well                                  best |
-	bad                                   worst |
-	far                                   farthest |
-	*e                                    1est |
-	*<bcdfghkmlnprstvwxyz>y               1iest |
-	*<aeiou><aeiou><bcdfghkmlnprstvxyz>   0est |
-	*<aeiou><bcdfghkmlnprstvxyz>          0+est |
-	*                                     0est
+	*		πιο+0
 
 <adjective-to-quiddity> ::=
-	*ong                            3ength |
-	*<bcdfghkmlnprstvwxyz>y         1iness |
-	*                               0ness
+	*		0
 -) in the Preform grammar.
 
 Chapter 2.3.2 - New adjectives
@@ -2758,7 +2880,7 @@ In Greek είμαι δυτικά από is a verb mapping την δύση relati
 In Greek είμαι μεγαλύτερος/μεγαλύτερη/μεγαλύτερο από is a verb meaning to be greater than.
 [ In Greek είμαι μεγαλύτερη από is a verb meaning to be greater than.
 In Greek είμαι μεγαλύτερο από is a verb meaning to be greater than. ]
-In Greek είμαι μικρότερος/μικρότερη/μικρότερο από is a verb meaning to be less than.
+In Greek είμαι μικρότερος από is a verb meaning to be less than.
 In Greek είμαι το πολύ is a verb meaning to be at most.
 In Greek είμαι το λιγότερο is a verb meaning to be at least.
 In Greek είμαι τουλάχιστον is a verb meaning to be at least.
@@ -3831,6 +3953,18 @@ language Greek
 	συν άπειρο |
 	μείον άπειρο |
 	<literal-real-in-digits>
+
+<notable-naming-properties> ::=
+	αόριστο άρθρο |
+	plural-named |
+	proper-named |
+	εμφανιζόμενο άρθρο |
+	όνομα στον πληθυντικό |
+	publicly-named |
+	privately-named |
+	adaptive text viewpoint |
+	ουδέτερο |
+	θηλυκό
 
 -) in the Preform grammar.
 
