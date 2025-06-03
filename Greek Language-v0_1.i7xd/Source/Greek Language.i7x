@@ -1949,7 +1949,6 @@ using tries:
 Include [preform](-
 language Greek
 
-[ TODO: Change all the following cases to greek, similar to nouns, and add neuter ]
 [ Στα επίθετα, χρησιμοποιούμε ως βάση το ουδέτερο ενικό, και στη συνέχεια βάσει αυτού σχηματίζουμε τα άλλα 2 γένη. ]
 <adjective-to-plural> ::=
 	*ο				1α	|	[ελεύθερο --> ελεύθερα]
@@ -2036,7 +2035,11 @@ language Greek
 
 Chapter 2.3.2 - New adjectives
 
-[ In Greek αναμμένος is an adjective. ]
+A πράγμα can be φορετό.
+The φορετό property translates into I6 as "clothing".
+
+[ In Greek αναμμένος is an adjective.
+In Greek μεγάλος is an adjective.]
 
 Part 2.4 - Verbs
 
@@ -2098,9 +2101,9 @@ Wildcards στην Preform:
  - ......: matches any non-empty text in which brackets are used in a balanced way — thus they would match "alpha beta gamma" or "alpha (the Greek letter)", but not "alpha (the" or "Greek letter)".
  - ###: Any single word
 
- Πώς λειτουργεί το Inform Syntax στα ρήματα;
+ Πώς λειτουργεί η Preform Syntax στα ρήματα;
 
- Όταν λέμε "The verb to flaunt means to wear", λέμε στο Inform ότι το απαρέμφατο του νέρου ρήματος είναι το "flaunt". Το Inform χρησιμοποιεί:
+ Όταν λέμε "The verb to flaunt means to wear", λέμε στην Inform ότι το απαρέμφατο του νέρου ρήματος είναι το "flaunt". Η Inform χρησιμοποιεί:
  - 5 γραμματικούς χρόνους: ενεστώτα, αόριστο, παρακείμενο, υπερσυντέλικο και μέλλοντα
  - 3 πρόσωπα
  - 2 αριθμούς
@@ -2125,7 +2128,7 @@ Wildcards στην Preform:
  0-1) Βασική μορφή ρήματος: κάνω
  2) Μετοχή ενεστώτα: κάνοντας
  3) Απαρέμφατο: κάνει
- 4) "adjoint infinitive": π.χ. "be able to see" - see
+ 4) "adjoint infinitive": π.χ. "be able to κάνει" - κάνει
  5) 3ο ενικό πρόσωπο ενεστώτα: κάνει
  6) 3ο ενικό πρόσωπο αορίστου: έκανε
 
@@ -2205,21 +2208,21 @@ Wildcards στην Preform:
 
 
 <gr-regular-verb-conjugation> ::=
-	2	<gr-trie-present-participle> |
-	3 	<gr-trie-past-participle> |
-	5	<gr-trie-present-verb-form> |
-	6	<gr-trie-past-verb-form> |
+	2	<gr-trie-present-participle> 	|
+	3 	<gr-trie-past-participle> 		|
+	5	<gr-trie-present-verb-form> 	|
+	6	<gr-trie-past-verb-form> 		|
 	<gr-regular-verb-tabulation>
 
 <gr-regular-verb-tabulation> ::=
 	[ TODO: Fill this one ]
-	a1+ <gr-regular-verb-present> |
-	a1- δεν <gr-regular-verb-present> |
-	a2+ <gr-regular-verb-past> |
-	a2- δεν <gr-regular-verb-past> |
-	a3 (t1 έχω) 3 |
-	a4 (t2 έχω) 3 |
-	a5+ θα <gr-regular-verb-future> |
+	a1+ <gr-regular-verb-present> 		|
+	a1- δεν <gr-regular-verb-present> 	|
+	a2+ <gr-regular-verb-past> 			|
+	a2- δεν <gr-regular-verb-past> 		|
+	a3 (t1 έχω) 3 						|
+	a4 (t2 έχω) 3 						|
+	a5+ θα <gr-regular-verb-future> 	|
 	a5- δεν θα <gr-regular-verb-future> |
 	[ p* TODO: Προσθήκη της παθητικής φωνής ]
 
