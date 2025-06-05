@@ -1,4 +1,4 @@
-Version 0.1 of Greek Language by Konstantinos Sitistas begins here.
+Version 0.1 of Greek Language (for Glulx only) by Konstantinos Sitistas begins here.
 
 "To make Greek the language of play."
 
@@ -81,7 +81,7 @@ The story genre is usually "Ιστορία". ]
 
 Part 1.2 - Other Tricks
 
-Carry out looking (this is the greek room description heading rule):
+[ Carry out looking (this is the greek room description heading rule):
 	say bold type;
 	if the visibility level count is 0:
 		begin the printing the name of a dark room activity;
@@ -104,7 +104,7 @@ Carry out looking (this is the greek room description heading rule):
 	say line break;
 	say run paragraph on with special look spacing.
 
-The greek room description heading rule is listed instead of the room description heading rule in the carry out looking rules.
+The greek room description heading rule is listed instead of the room description heading rule in the carry out looking rules.]
 
 To johan mode (T - text):
 	let X be the number of words in T;
@@ -264,7 +264,7 @@ language Greek
 
 <gr-article-declension> ::=
 	the         ο    η    το  |  [Singular]
-				τον  την  το
+				τον/το  την/τη  το
 	the         οι   οι   τα    [Plural]
 				τους τις τα  |
 
@@ -978,7 +978,7 @@ Understand "ανατολή" as East.
 Understand "δύση" as West. ]
 
 
-North translates into Greek as βοράς.
+North translates into Greek as βορράς.
 South translates into Greek as νότος.
 East translates into Greek as ανατολή.
 West translates into Greek as δύση.
@@ -992,7 +992,7 @@ Up translates into Greek as πάνω.
 Down translates into Greek as κάτω.
 
 Understand "ανατολικά" or "ανατολικα" or "α" or "ανατολική" as ανατολή.
-Understand "βόρεια" or "βορεια" or "β" as βοράς.
+Understand "βόρεια" or "βορεια" or "β" as βορράς.
 Understand "δυτικά" or "δυτικα" or "δ" as δύση.
 Understand "νότια" or "νοτια" or "νό" as νότος.
 Understand "να" as νοτιοανατολικά.
@@ -1115,20 +1115,41 @@ Include [preform](-
 language Greek
 
 <grammatical-case-names> ::=
-	nominative | accusative [ TODO: Προσθήκη γενικής? ]
+    nominative | accusative
 
 <noun-declension> ::=
-	*    <gr-noun-declension-group> <gr-noun-declension-tables>
+    * <gr-noun-declension-group> <gr-noun-declension-tables>
 
 <gr-noun-declension-group> ::=
-	*	1
+    *ος     1 |  [Αρσενικά σε -ος]
+    *ας     2 |  [Αρσενικά σε -ας]
+    *ης     3 |  [Αρσενικά σε -ης]
+    * 		4    [Προεπιλογή]
 
+[Η αντιστοίχιση γίνεται με βάση τη σειρά: η 1η γραμμή αντιστοιχεί στην ομάδα 1, η 2η στην ομάδα 2, κ.ο.κ.]
 <gr-noun-declension-tables> ::=
-	<gr-noun-declension-uninflected>
+    <gr-declension-os> |
+    <gr-declension-as> |
+    <gr-declension-is> |
+    <gr-declension-uninflected>
 
-<gr-noun-declension-uninflected> ::=
-	0 | 0 |   [Singular | Plural]
-	0 | 0
+[Κανόνες: Ονομ.Εν. | Αιτ.Εν. | Ονομ.Πληθ. | Αιτ.Πληθ.]
+
+[Για -ος: π.χ. όλμος -> όλμο | όλμοι | όλμους]
+<gr-declension-os> ::=
+    0 | 2ο | 2οι | 2ους
+
+[Για -ας: π.χ. άντρας -> άντρα | άντρες | άντρες]
+<gr-declension-as> ::=
+    0 | 2α | 2ες | 2ες
+
+[Για -ης: π.χ. μαθητής -> μαθητή | μαθητές | μαθητές]
+<gr-declension-is> ::=
+    0 | 2ή | 2ές | 2ές
+
+[Για άκλιτα]
+<gr-declension-uninflected> ::=
+    0 | 0 | 0 | 0
 
 <singular-noun-to-its-plural> ::=
 	... <gr-trie-plural-uninflected> |
@@ -1821,7 +1842,7 @@ language Greek
 	*ας			2ες	|		[πατέρας --> πατέρες]
 	*ής			2ές	|		[μαθητής --> μαθητές]
 	*ης			2ες	|		[επιβάτης --> επιβάτες]
-	*ος			2οι | 		[βόλος --> βόλοι]
+	[*ος			2οι | 		[βόλος --> βόλοι]]
 	*ός			2οί | 		[βαθμός --> βαθμοί]
 	[ Ανισόσύλλαβα ]
 	*άς			2άδες | 	[ψαράς --> ψαράδες]
@@ -2006,6 +2027,10 @@ language Greek
 
 <adjective-to-quiddity> ::=
 	*		0
+
+<comparative-construction> ::=
+	... από
+
 -) in the Preform grammar.
 
 Chapter 2.3.2 - New adjectives
@@ -3255,7 +3280,7 @@ action processing internal rule response (K) is "Δεν κατάλαβα αυτ�
 Section 3.1.1.14 - Parser
 
 parser error internal rule response (A) is "Δεν κατάλαβα αυτή την πρόταση.".
-parser error internal rule response (B) is "Κατάλαβα μόνο μέχρι το σημείο που ήθελες να".
+parser error internal rule response (B) is "Κατάλαβα μόνο μέχρι το σημείο: ".
 parser error internal rule response (C) is "Κατάλαβα μόνο μέχρι το σημείο που ήθελες να πας".
 parser error internal rule response (D) is "Δεν κατάλαβα αυτόν τον αριθμό.".
 parser error internal rule response (E) is "Δεν [regarding the player][βλέπω] κάτι τέτοιο.".
@@ -3506,16 +3531,16 @@ Array LanguageDescriptors table
   !             mfnmfnmfnmfn
 
 	'μου'     $$111111111111    POSSESS_PK      0
-	'this'    $$111111111111    POSSESS_PK      0
-	'this'    $$111111111111    POSSESS_PK      0
-	'this'    $$111111111111    POSSESS_PK      0
-	'these'   $$000111000111    POSSESS_PK      0
-	'that'    $$111111111111    POSSESS_PK      1
-	'those'   $$000111000111    POSSESS_PK      1
-	'his'     $$111111111111    POSSESS_PK      'him'
-	'her'     $$111111111111    POSSESS_PK      'her'
-	'their'   $$111111111111    POSSESS_PK      'them'
-	'its'     $$111111111111    POSSESS_PK      'it'
+	'αυτός'   $$100000100000    POSSESS_PK      0
+	'αυτή'    $$010000010000    POSSESS_PK      0
+	'αυτό'    $$001000001000    POSSESS_PK      0
+	'αυτοί'   $$000100000100    POSSESS_PK      0
+	'αυτές'   $$000010000010    POSSESS_PK      0
+	'αυτά'    $$000001000001    POSSESS_PK      0
+	'αυτού'   $$111111111111    POSSESS_PK      'him'
+	'αυτής'   $$111111111111    POSSESS_PK      'her'
+	'αυτών'   $$111111111111    POSSESS_PK      'them'
+	'αυτού'   $$111111111111    POSSESS_PK      'it'
 	'ο'       $$100000100000    DEFART_PK       NULL
 	'του'     $$101000101000    DEFART_PK       NULL
 	'τον'     $$100000100000    DEFART_PK       NULL
@@ -3523,6 +3548,7 @@ Array LanguageDescriptors table
 	'η'       $$010000010000    DEFART_PK       NULL
 	'της'     $$010000010000    DEFART_PK       NULL
 	'την'     $$010000010000    DEFART_PK       NULL
+	'τη'      $$010000010000    DEFART_PK       NULL
 	'στην'    $$010000010000    DEFART_PK       NULL
 	'το'      $$001000001000    DEFART_PK       NULL
 	'στο'     $$001000001000    DEFART_PK       NULL
@@ -3541,9 +3567,25 @@ Array LanguageDescriptors table
 	'μίας'    $$010000010000    INDEFART_PK     NULL
 	'ένα'     $$001000001000    INDEFART_PK     NULL
 	! Το κάποιος/α/ο... βγάζει complexity error οπότε το αγνοούμε προς το παρόν
-	'lit'     $$111111111111    LIGHTED_PK      NULL
-	'lighted' $$111111111111    LIGHTED_PK      NULL
-	'unlit'   $$111111111111    UNLIGHTED_PK    NULL;
+	'αναμμένος'  $$100000100000    LIGHTED_PK      NULL
+	'αναμμένη'   $$010000010000    LIGHTED_PK      NULL
+	'αναμμένο'   $$001000001000    LIGHTED_PK      NULL
+	'αναμμένοι'  $$000100000100    LIGHTED_PK      NULL
+	'αναμμένες'  $$000010000010    LIGHTED_PK      NULL
+	'αναμμένα'   $$000001000001    LIGHTED_PK      NULL
+	'φωτισμένος' $$100000100000    LIGHTED_PK      NULL
+	'φωτισμένη'  $$010000010000    LIGHTED_PK      NULL
+	'φωτισμένο'  $$001000001000    LIGHTED_PK      NULL
+	'φωτισμένοι' $$000100000100    LIGHTED_PK      NULL
+	'φωτισμένες' $$000010000010    LIGHTED_PK      NULL
+	'φωτισμένα'  $$000001000001    LIGHTED_PK      NULL
+	'σβησμένος'  $$100000100000    UNLIGHTED_PK   NULL
+	'σβησμένη'   $$010000010000    UNLIGHTED_PK   NULL
+	'σβησμένο'   $$001000001000    UNLIGHTED_PK   NULL
+	'σβησμένοι'  $$000100000100    UNLIGHTED_PK   NULL
+	'σβησμένες'  $$000010000010    UNLIGHTED_PK   NULL
+	'σβησμένα'   $$000001000001    UNLIGHTED_PK   NULL;
+
 -) replacing "Descriptors".
 
 Part 4.2 - Understand grammar
@@ -3603,10 +3645,9 @@ Understand the command "κατέβα" and "κατεβα" as "βγες".
 Chapter 4.2.4 - Standard actions concerning the actor's vision
 
 Understand "κοίτα" as looking.
-Understand the command "κοιτα", "δες", "δεσ" as "κοίτα".
 
-Understand "εξέτασε [something]" as examining.
-Understand the command "εξετασε", "τσέκαρε", "τσεκαρε" as "εξέτασε".
+Understand "κοίτα [something]", "δες [something]" and "εξέτασε [something]" as examining.
+Understand the command "κοιτα", "δεσ", "εξετασε", "εξέτασέ", "τσέκαρε", "τσεκαρε" as "εξέτασε".
 Understand the command "ξ" as "εξέτασε".
 
 Understand "δες κάτω από [something]" and "εξέτασε κάτω από [something]" as looking under.
@@ -4041,6 +4082,10 @@ language Greek
 	adaptive text viewpoint |
 	ουδέτερο |
 	θηλυκό
+
+<extension-end-marker-sentence> ::=
+	... ξεκινά εδώ |
+	... τελειώνει εδώ
 
 -) in the Preform grammar.
 
