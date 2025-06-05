@@ -112,31 +112,6 @@ To johan mode (T - text):
 	repeat with counter running from 2 to X:
 		say " [word number counter in T]".
 
-Section 3 - Greek People (in place of Section 11 - People in Standard Rules by Graham Nelson)
-
-A person can be female or male. A person is usually male.
-A person can be neuter. A person is usually not neuter.
-
-A person has a number called carrying capacity.
-The carrying capacity of a person is usually 100.
-
-A person can be transparent. A person is always transparent.
-
-The yourself is an undescribed person. The yourself is proper-named.
-
-The yourself is privately-named.
-
-Understand "your former self" or "my former self" or "former self" or
-	"former" as yourself when the player is not yourself.
-
-Understand "ο πρώην εαυτός σου" or "ο πρώην εαυτός μου" or "πρώην εαυτός" or "πρώην" as yourself when the player is not yourself.
-
-[The description of yourself is usually "As good-looking as ever."]
-
-The description of yourself is usually "Στις ομορφιές σου όπως πάντα"
-
-The yourself object is accessible to Inter as "selfobj".
-
 Volume 2 - Language
 
 Part 2.1 - Determiners
@@ -3423,9 +3398,66 @@ block vaguely going rule response (A) is "Πρέπει να πεις προς π
 
 Part 3.2 - The Final Question
 
+Table of Final Question Options (replaced)
+final question wording	only if victorious	topic	final response rule	final response activity
+"ΞΕΚΙΝΗΣΕ ΑΠΟ ΤΗΝ ΑΡΧΗ"	false	"ξεκίνα/επανεκκίνηση"	immediately restart the VM rule	--
+"ΦΟΡΤΩΣΕ μια αποθηκευμένη παρτίδα"	false	"φόρτωσε"	immediately restore saved game rule	--
+"διάβασε μερικές ΕΝΔΙΑΦΕΡΟΥΣΕΣ ΠΡΟΤΑΣΕΙΣ"	true	"προτάσεις/πρόταση"	--	amusing a victorious player
+"ΕΞΟΔΟΣ"	false	"έξοδος"	immediately quit rule	--
+"ΑΝΑΙΡΕΣΗ της τελευταίας εντολής"	false	"αναίρεση/undo"	immediately undo rule	--
+
 Part 3.3 - Description of the player
 
+Section 3.3.1 - People (in place of Section 11 - People in Standard Rules by Graham Nelson)
+
+A person can be female or male. A person is usually male.
+A person can be neuter. A person is usually not neuter.
+
+A person has a number called carrying capacity.
+The carrying capacity of a person is usually 100.
+
+A person can be transparent. A person is always transparent.
+
+The yourself is an undescribed person. The yourself is proper-named.
+
+The yourself is privately-named.
+Understand "your former self" or "my former self" or "former self" or
+	"former" as yourself when the player is not yourself.
+
+Understand "ο πρώην εαυτός σου" or "ο πρώην εαυτός μου" or "πρώην εαυτός" or "πρώην" as yourself when the player is not yourself.
+
+The description of yourself is usually "Στις ομορφιές σου όπως πάντα"
+
+The yourself object is accessible to Inter as "selfobj".
+
 Part 3.4 - The banner
+
+Include (-
+[ Banner i serial;
+   BeginActivity(PRINTING_BANNER_TEXT_ACT);
+   if (ForActivity(PRINTING_BANNER_TEXT_ACT) == false) {
+	   	VM_Style(HEADER_VMSTY);
+		TEXT_TY_Say(Story);
+		VM_Style(NORMAL_VMSTY);
+		new_line;
+		print "Ένα Διαδραστικό Μυθιστόρημα";
+		if (WorldModelKit`STORY_AUTHOR_GIVEN) {
+			print " ", (address) BY__WD, " ";
+			TEXT_TY_Say(Story_Author);
+		}
+		new_line;
+		print VM_ReleaseNumber(), "η έκδοση / Σειριακός Αριθμός: ";
+		serial = VM_SerialNumber();
+		for (i=0 : i<6 : i++) print (char) serial->i;
+		print " / Inform 7 έκδοση ", (PrintI6Text) I7_VERSION_NUMBER;
+		#Ifdef DEBUG;
+		print " / D";
+		#Endif; ! DEBUG
+		new_line;
+	}
+	EndActivity(PRINTING_BANNER_TEXT_ACT);
+];
+-) replacing "Banner".
 
 Part 3.5 - The bibliographical data
 
@@ -3746,15 +3778,73 @@ Part 4.3 - Additional language-specific actions
 Chapter 4.3.1 - InGoing
 
 InGoing is an action applying to nothing.
-Understand "entrer" as InGoing.
+Understand "μπες" as InGoing.
+
+Check an actor InGoing:
+	convert to the going action on inside.
+
+The specification of the InGoing action is "Αυτή η ενέργεια δεν είναι πραγματική: σε κάθε περίπτωση μετατρέπεται στην ενέργεια 'πήγαινε μέσα' και υπάρχει μόνο για να μπορεί ο παίκτης να πληκτρολογήσει το ρήμα 'μπες' αντί για το όνομα της κατεύθυνσης. Για αυτόν τον λόγο, συνήθως δεν είναι καλή ιδέα να γράφετε κανόνες για αυτή την ενέργεια: αν γράψετε έναν κανόνα όπως 'Instead of InGoing, ...', δεν θα εφαρμοστεί αν ο παίκτης πληκτρολογήσει απλώς 'πήγαινε μέσα' ή 'μέσα'. Η καλύτερη πρακτική είναι να γράφετε κανόνες για την ενέργεια 'πήγαινε μέσα'."
 
 Chapter 4.3.2 - OutGoing
 
+OutGoing is an action applying to one thing.
+Understand "βγες από τον/τη/την/το/τους/τις/τα [something]" as OutGoing.
+
+Check an actor OutGoing (this is the standard check outgoing rule):
+	if the actor is not in the noun:
+		if the actor is the player, say "Μα [εγώ] [negate the verb είμαι] μέσα στο [the noun]!" (A);
+		stop the action;
+	else if the actor is in the noun:
+		convert to the exiting action on nothing;
+
 Chapter 4.3.3 - DownGoing
+
+DownGoing is an action applying to nothing.
+Understand "κατέβα" as DownGoing.
+
+The specification of the DownGoing action is "Αυτή η ενέργεια δεν είναι πραγματική: σε κάθε περίπτωση μετατρέπεται στην ενέργεια 'κατέβα από' αν ο παίκτης βρίσκεται πάνω σε υποστηρικτή και στην ενέργεια 'πήγαινε κάτω' διαφορετικά. Υπάρχει μόνο για να μπορεί ο παίκτης να πληκτρολογήσει το ρήμα 'κατέβα'. Για αυτόν τον λόγο, συνήθως δεν είναι καλή ιδέα να γράφετε κανόνες για αυτή την ενέργεια: αν γράψετε έναν κανόνα όπως 'Instead of DownGoing, ...', δεν θα εφαρμοστεί αν ο παίκτης πληκτρολογήσει απλώς 'κατέβα από την πλατφόρμα' ή 'κάτω' για παράδειγμα. Η καλύτερη πρακτική είναι να γράφετε κανόνες για την ενέργεια 'πήγαινε κάτω' ή 'κατέβα από', ανάλογα με την περίπτωση."
+
+Section 4.3.3.1 - Without Rideable Vehicles (for use without Rideable Vehicles by Graham Nelson)
+
+Check an actor DownGoing:
+	if the actor is on a supporter (called S):
+		convert to the getting off action on S;
+	else:
+		convert to the going action on down.
+
+Section 4.3.3.2 - With Rideable Vehicles (for use with Rideable Vehicles by Graham Nelson)
+
+[Επιτρέπει τη μετατροπή της ενέργειας σε «κατέβα από» αν ο παίκτης είναι πάνω σε ζώο ή όχημα που ιππεύεται.]
+Check an actor DownGoing:
+	if the actor is on a supporter (called S):
+		convert to the getting off action on S;
+	else if the actor is carried by a rideable vehicle or the actor is carried by a rideable animal:
+		convert to the dismounting action on nothing;
+	else:
+		convert to the going action on down.
 
 Chapter 4.3.4 - UpGoing
 
+UpGoing is an action applying to nothing.
+Understand "ανέβα" as UpGoing.
+
+Check an actor UpGoing:
+	convert to the going action on up.
+
+The specification of the UpGoing action is "Αυτή η ενέργεια δεν είναι πραγματική: σε κάθε περίπτωση μετατρέπεται στην ενέργεια 'πήγαινε πάνω' και υπάρχει μόνο για να μπορεί ο παίκτης να πληκτρολογήσει το ρήμα 'ανέβα' αντί για το όνομα της κατεύθυνσης. Για αυτόν τον λόγο, συνήθως δεν είναι καλή ιδέα να γράφετε κανόνες για αυτή την ενέργεια: αν γράψετε έναν κανόνα όπως 'Instead of UpGoing, ...', δεν θα εφαρμοστεί αν ο παίκτης πληκτρολογήσει απλώς 'πήγαινε πάνω' ή 'πάνω'. Η καλύτερη πρακτική είναι να γράφετε κανόνες για την ενέργεια 'πήγαινε πάνω'."
+
 Chapter 4.3.5 - UpStanding
+
+UpStanding is an action applying to nothing.
+
+Understand "όρθιος" or "σήκω" as UpStanding.
+
+Check an actor UpStanding (this is the standard check upstanding rule):
+	if the actor is in the location:
+		if the actor is the player, say "Αχρείαστο." (A);
+		stop the action;
+	else:
+		convert to the exiting action on nothing.
 
 Part 4.4 - Clarifying the parser's choice of something
 
@@ -3901,34 +3991,6 @@ Constant RESTORE__WD    = 'επαναφορά';
 
 Part 4.7 - Informese translation of commands
 
-Include (-
-[ IsAnA c;
-	! αά + κεφαλαία
-	if ((c == 'α' or 'Α' or 'ά' or 'Ά') || (c == 'a' or 'A') || (c > 191 && c < 199) || (c > 223 && c < 231)) return true;
-	return false;
-];
-[ IsAnE c;
-	! εέ + κεφαλαία
-	if ((c == 'ε' or 'Ε' or 'έ' or 'Έ') || (c == 'e' or 'E') || (c > 199 && c < 204) || (c > 231 && c < 236)) return true;
-	return false;
-];
-[ IsAnI c;
-	! ιί + κεφαλαία
-	if ((c == 'ι' or 'Ι' or 'ί' or 'Ί') || (c == 'i' or 'I') || (c > 203 && c < 208) || (c > 235 && c < 240)) return true;
-	return false;
-];
-[ IsAnO c;
-	! οό + κεφαλαία
-	if ((c == 'ο' or 'Ο' or 'ό' or 'Ό') || (c == 'o' or 'O') || (c > 209 && c < 215) || (c == 216 or 248 or 338 or 339) || (c > 241 && c < 247)) return true;
-	return false;
-];
-[ IsAnU c;
-	! υύ + κεφαλαία
-	if ((c == 'υ' or 'Υ' or 'ύ' or 'Ύ') || (c == 'u' or 'U') || (c > 216 && c < 221) || (c > 248 && c < 253)) return true;
-	return false;
-];
--)
-
 Include [preform](-
 language Greek
 
@@ -3942,6 +4004,17 @@ language Greek
 -) in the Preform grammar.
 
 Part 5 - Unindexed sections of translation
+
+
+Understand "βοήθεια" as requesting help.
+
+Requesting help is an action applying to nothing.
+Understand "βοηθεια", "κόλλησα", "κολλησα" or "help" as requesting help.
+
+Carry out requesting help:
+	say "[line break]Αν χρειάζεσαι βοήθεια με βασικές εντολές, δοκίμασε λέξεις όπως Κοίτα, Εξέτασε, Πάρε, Ευρετήριο ή Πήγαινε βόρεια.[paragraph break]Μπορείς να αλληλεπιδράσεις με αντικείμενα χρησιμοποιώντας ρήματα όπως Άνοιξε, Διάβασε, φάε κ.ά.[paragraph break]Αν κολλήσεις, δοκίμασε να εξετάσεις το περιβάλλον σου.[line break]".
+
+
 
 Include [preform](-
 language Greek
@@ -3970,6 +4043,34 @@ language Greek
 	θηλυκό
 
 -) in the Preform grammar.
+
+Include (-
+[ IsAnA c;
+	! αά + κεφαλαία
+	if ((c == 'α' or 'Α' or 'ά' or 'Ά') || (c == 'a' or 'A') || (c > 191 && c < 199) || (c > 223 && c < 231)) return true;
+	return false;
+];
+[ IsAnE c;
+	! εέ + κεφαλαία
+	if ((c == 'ε' or 'Ε' or 'έ' or 'Έ') || (c == 'e' or 'E') || (c > 199 && c < 204) || (c > 231 && c < 236)) return true;
+	return false;
+];
+[ IsAnI c;
+	! ιί + κεφαλαία
+	if ((c == 'ι' or 'Ι' or 'ί' or 'Ί') || (c == 'i' or 'I') || (c > 203 && c < 208) || (c > 235 && c < 240)) return true;
+	return false;
+];
+[ IsAnO c;
+	! οό + κεφαλαία
+	if ((c == 'ο' or 'Ο' or 'ό' or 'Ό') || (c == 'o' or 'O') || (c > 209 && c < 215) || (c == 216 or 248 or 338 or 339) || (c > 241 && c < 247)) return true;
+	return false;
+];
+[ IsAnU c;
+	! υύ + κεφαλαία
+	if ((c == 'υ' or 'Υ' or 'ύ' or 'Ύ') || (c == 'u' or 'U') || (c > 216 && c < 221) || (c > 248 && c < 253)) return true;
+	return false;
+];
+-)
 
 [ Include [preform](-
 language Greek
