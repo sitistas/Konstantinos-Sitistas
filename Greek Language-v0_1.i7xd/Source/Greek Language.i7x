@@ -1115,7 +1115,7 @@ Include [preform](-
 language Greek
 
 <grammatical-case-names> ::=
-    nominative | accusative
+    nominative | genitive | accusative
 
 <noun-declension> ::=
     * <gr-noun-declension-group> <gr-noun-declension-tables>
@@ -1137,19 +1137,19 @@ language Greek
 
 [Για -ος: π.χ. όλμος -> όλμο | όλμοι | όλμους]
 <gr-declension-os> ::=
-    0 | 2ο | 2οι | 2ους
+    0 | 2ου | 2ο | 2οι | 2ων | 2ους
 
 [Για -ας: π.χ. άντρας -> άντρα | άντρες | άντρες]
 <gr-declension-as> ::=
-    0 | 2α | 2ες | 2ες
+    0 | 2α | 2α | 2ες | 2ων | 2ες
 
 [Για -ης: π.χ. μαθητής -> μαθητή | μαθητές | μαθητές]
 <gr-declension-is> ::=
-    0 | 2ή | 2ές | 2ές
+    0 | 2ή | 2ή | 2ές | 2ών | 2ές
 
 [Για άκλιτα]
 <gr-declension-uninflected> ::=
-    0 | 0 | 0 | 0
+    0 | 0 | 0 | 0 | 0 | 0
 
 <singular-noun-to-its-plural> ::=
 	... <gr-trie-plural-uninflected> |
@@ -2183,6 +2183,8 @@ Wildcards στην Preform:
 	τρώω	<gr-troo-conjugation> 		|
 	πηγαίνω	<gr-pigaino-conjugation>	|
 	φτάνω	<gr-ftano-conjugation>		|
+	ανοίγω 	<gr-anoigo-conjugation> 	|
+	ανάβω	<gr-anavo-conjugation> 		|
 	[TODO: Fix some of the following]
 	λύνω 	<gr-lyno-conjugation> 		|
 	βλέπω 	<gr-vlepo-conjugation> 		|
@@ -2394,6 +2396,20 @@ Wildcards στην Preform:
 	6 8+ε		|
 	<gr-regular-verb-tabulation>
 
+[ "Ανάβω" ]
+
+<gr-anavo-conjugation> ::=
+	2 ανάβοντας	|
+	3 ανάψει	|
+	5 ανάβει	|
+	6 άναψε		|
+	7 ανάβ		|
+	8 άναψ		|
+	9 άναψ		|
+	<gr-regular-verb-tabulation>
+
+[ "Ανήκω" ]
+
 [ Ανήκω ]
 
 <gr-aniko-conjugation> ::=
@@ -2439,6 +2455,20 @@ Wildcards στην Preform:
 	8	έφτασ		|
 	9	φτάσ		|
 	<gr-regular-verb-tabulation>
+
+[ "Ανοίγω" ]
+
+<gr-anoigo-conjugation> ::=
+	2	ανοίγοντας	|
+	3	ανοίξει		|
+	5	ανοίγει		|
+	6	άνοιξε		|
+	7	ανοίγ		|
+	8	άνοιξ		|
+	9	άνοιξ		|
+	<gr-regular-verb-tabulation>
+
+[ "Πάω" ]
 
 [ "Βλέπω" ]
 
@@ -2806,6 +2836,8 @@ In Greek τρώω is a verb meaning to eat.
 In Greek πηγαίνω is a verb meaning to go.
 In Greek φτάνω is a verb meaning to arrive.
 
+In Greek ανοίγω is a verb meaning to open.
+In Greek ανάβω is a verb.
 In Greek βλέπω is a verb.
 In Greek δω is a verb.
 In Greek πάω is a verb.
@@ -2856,9 +2888,12 @@ In Greek είμαι εντός is a verb meaning to be in.
 line 9197/9201: Error:  No such constant as "call_U27/28"]
 [ In Greek είμαι πάνω στον/στη/στο is a is a verb meaning to be on. ]
 
-In Greek είμαι μέρος του is a verb meaning to be part of.
-In Greek είμαι μέρος της is a verb meaning to be part of.
-In Greek είμαι μέρος των is a verb meaning to be part of.
+In Greek είμαι μέρος από τον is a verb meaning to be part of.
+In Greek είμαι μέρος από την is a verb meaning to be part of.
+In Greek είμαι μέρος από το is a verb meaning to be part of.
+In Greek είναι μέρος από τον is a verb meaning to be part of.
+In Greek είναι μέρος από την is a verb meaning to be part of.
+In Greek είναι μέρος από το is a verb meaning to be part of.
 [ TODO: Add wear? (In French être vêtu de is a verb meaning to wear.) ]
 [ In Greek είμαι δίπλα σε is a verb meaning to be adjacent to. ]
 [ TODO: Resolve error for the above: line 9311: Error:  No such constant as "call_U31" ]
@@ -2946,7 +2981,7 @@ Section 3.1.1.3 - Printing a locale paragraph about a thing
 
 [ TODO: Change σε/στο ]
 use initial appearance in room descriptions rule response (A) is "Πάνω σε [the item], ".
-describe what's on scenery supporters in room descriptions rule response (A) is "Πάνω σε [the item], ".
+describe what's on scenery supporters in room descriptions rule response (A) is "Πάνω [στον platform], ".
 describe what's on mentioned supporters in room descriptions rule response (A) is "Πάνω σε [the item] ".
 
 Section 3.1.1.4 - Standard actions concerning the actor's possessions
@@ -3107,16 +3142,17 @@ Section 3.1.1.7 - Standard actions which change the state of things
 [Unlocking it with]
 
 [Switching on]
+standard report switching on rule response (A) is "[if the actor is the player][Εγώ][else][The actor] [end if][ανάβω] [the noun].".
+
 
 [Switching off]
 
 [Opening]
 
-[ TODO: add conjugation for ανοίγω ]
-reveal any newly visible interior rule response (A) is "[Εγώ] ανοίγεις [the noun], αποκαλύπτοντας ".
-standard report opening rule response (A) is "[Εγώ] ανοίγεις [the noun].".
-standard report opening rule response (B) is "[The actor] ανοίγεις [the noun].".
-standard report opening rule response (C) is "[The noun] ανοίγει.".
+reveal any newly visible interior rule response (A) is "[Εγώ] [ανοίγω] [the noun], αποκαλύπτοντας ".
+standard report opening rule response (A) is "[Εγώ] [ανοίγω] [the noun].".
+standard report opening rule response (B) is "[The actor] [ανοίγω] [the noun].".
+standard report opening rule response (C) is "[The noun] [ανοίγω].".
 
 [Closing]
 
@@ -3425,11 +3461,11 @@ Part 3.2 - The Final Question
 
 Table of Final Question Options (replaced)
 final question wording	only if victorious	topic	final response rule	final response activity
-"ΞΕΚΙΝΗΣΕ ΑΠΟ ΤΗΝ ΑΡΧΗ"	false	"ξεκίνα/επανεκκίνηση"	immediately restart the VM rule	--
-"ΦΟΡΤΩΣΕ μια αποθηκευμένη παρτίδα"	false	"φόρτωσε"	immediately restore saved game rule	--
-"διάβασε μερικές ΕΝΔΙΑΦΕΡΟΥΣΕΣ ΠΡΟΤΑΣΕΙΣ"	true	"προτάσεις/πρόταση"	--	amusing a victorious player
-"ΕΞΟΔΟΣ"	false	"έξοδος"	immediately quit rule	--
-"ΑΝΑΙΡΕΣΗ της τελευταίας εντολής"	false	"αναίρεση/undo"	immediately undo rule	--
+"ξεκινήσεις από την αρχή"	false	"ξεκίνα/επανεκκίνηση/ξεκινα/επανεκκινηση"	immediately restart the VM rule	--
+"φορτώσεις μια αποθηκευμένη παρτίδα"	false	"φόρτωσε/φορτωσε"	immediately restore saved game rule	--
+"διαβάσεις μερικές ΕΝΔΙΑΦΕΡΟΥΣΕΣ ΠΡΟΤΑΣΕΙΣ"	true	"προτάσεις/πρόταση/προτασεις/προταση"	--	amusing a victorious player
+"να πραγματοποιήσεις έξοδο"	false	"έξοδος/εξοδος"	immediately quit rule	--
+"αναίρεση της τελευταίας εντολής; (απάντησε με ΞΕΚΙΝΑ, ΦΟΡΤΩΣΕ, ΠΡΟΤΑΣΕΙΣ, ΕΞΟΔΟΣ, ΑΝΑΙΡΕΣΗ)"	false	"αναίρεση/undo/αναιρεση"	immediately undo rule	--
 
 Part 3.3 - Description of the player
 
@@ -3437,13 +3473,17 @@ Section 3.3.1 - People (in place of Section 11 - People in Standard Rules by Gra
 
 A person can be female or male. A person is usually male.
 A person can be neuter. A person is usually not neuter.
+A person is never proper-named.
+
+[TODO: Find a way to make this work the kind person]
+The indefinite article of a person is usually "την".
 
 A person has a number called carrying capacity.
 The carrying capacity of a person is usually 100.
 
 A person can be transparent. A person is always transparent.
 
-The yourself is an undescribed person. The yourself is proper-named.
+The yourself is an undescribed person.
 
 The yourself is privately-named.
 Understand "your former self" or "my former self" or "former self" or
@@ -4032,7 +4072,7 @@ Constant RESTORE__WD    = 'επαναφορά';
 
 Part 4.7 - Informese translation of commands
 
-Include [preform](-
+[ Include [preform](-
 language Greek
 
 <certainty> ::=
@@ -4042,7 +4082,7 @@ language Greek
 	ποτέ |
 	αρχικά
 
--) in the Preform grammar.
+-) in the Preform grammar. ]
 
 Part 5 - Unindexed sections of translation
 
@@ -4055,7 +4095,7 @@ Understand "βοηθεια", "κόλλησα", "κολλησα" or "help" as req
 Carry out requesting help:
 	say "[line break]Αν χρειάζεσαι βοήθεια με βασικές εντολές, δοκίμασε λέξεις όπως Κοίτα, Εξέτασε, Πάρε, Ευρετήριο ή Πήγαινε βόρεια.[paragraph break]Μπορείς να αλληλεπιδράσεις με αντικείμενα χρησιμοποιώντας ρήματα όπως Άνοιξε, Διάβασε, φάε κ.ά.[paragraph break]Αν κολλήσεις, δοκίμασε να εξετάσεις το περιβάλλον σου.[line break]".
 
-
+[
 
 Include [preform](-
 language Greek
@@ -4088,6 +4128,7 @@ language Greek
 	... τελειώνει εδώ
 
 -) in the Preform grammar.
+]
 
 Include (-
 [ IsAnA c;
