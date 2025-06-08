@@ -351,32 +351,32 @@ Include [preform](-
 language Greek
 
 <cardinal-number-in-words> ::=
-	μηδέν |
-	ένα |
-	δύο |
-	τρία |
+	μηδέν 	|
+	ένα 	|
+	δύο 	|
+	τρία 	|
 	τέσσερα |
-	πέντε |
-	έξι |
-	επτά |
-	οκτώ |
-	εννέα |
-	δέκα |
-	έντεκα |
+	πέντε 	|
+	έξι 	|
+	επτά 	|
+	οκτώ 	|
+	εννέα 	|
+	δέκα 	|
+	έντεκα 	|
 	δώδεκα
 
 <ordinal-number-in-words> ::=
 	μηδενικός/μηδενική/μηδενικό |
-	πρώτος/πρώτη/πρώτο |
-	δεύτερος/δεύτερη/δεύτερο |
-	τρίτος/τρίτη/τρίτο |
-	τέταρτος/τέταρτη/τέταρτο |
-	πέμπτος/πέμπτη/πέμπτο |
-	έκτος/έκτη/έκτο |
-	έβδομος/έβδομη/έβδομο |
-	όγδοος/όγδοη/όγδοο |
-	ένατος/ένατη/ένατο |
-	δέκατος/δέκατη/δέκατο |
+	πρώτος/πρώτη/πρώτο 			|
+	δεύτερος/δεύτερη/δεύτερο 	|
+	τρίτος/τρίτη/τρίτο 			|
+	τέταρτος/τέταρτη/τέταρτο 	|
+	πέμπτος/πέμπτη/πέμπτο 		|
+	έκτος/έκτη/έκτο 			|
+	έβδομος/έβδομη/έβδομο 		|
+	όγδοος/όγδοη/όγδοο 			|
+	ένατος/ένατη/ένατο 			|
+	δέκατος/δέκατη/δέκατο 		|
 	ενδέκατος/ενδέκατη/ενδέκατο |
 	δωδέκατος/δωδέκατη/δωδέκατο
 -) in the Preform grammar.
@@ -2410,8 +2410,6 @@ Wildcards στην Preform:
 
 [ "Ανήκω" ]
 
-[ Ανήκω ]
-
 <gr-aniko-conjugation> ::=
 	7 ανήκ	|
 	8 ανήκ	|
@@ -2429,10 +2427,29 @@ Wildcards στην Preform:
 	6	έφαγε		|
 	7	τρώ			|
 	8	έφαγ		|
-	9	φά			| [Φάαμε αντί για φάγαμε - φάατε]
-	<gr-regular-verb-tabulation>
+	9	φά			|
+	<gr-troo-verb-tabulation>
 
-[ Πηγαίνω ]
+<gr-troo-verb-tabulation> ::=
+	a1+ 	<gr-troo-present> |
+	a1- 	δεν <gr-troo-present> |
+	a2+ 	<gr-troo-past> |
+	a2- 	δεν <gr-troo-past> |
+	a3 		(t1 έχω) 3 |
+	a4 		(t2 έχω) 3 |
+	a5+ 	θα <gr-troo-future> |
+	a5- 	δεν θα <gr-troo-future>
+
+<gr-troo-present> ::=
+	τρώω | τρως | τρώει | τρώμε | τρώτε | τρώνε
+
+<gr-troo-past> ::=
+	έφαγα | έφαγες | έφαγε | φάγαμε | φάγατε | έφαγαν
+
+<gr-troo-future> ::=
+	θα φάω | θα φας | θα φάει | θα φάμε | θα φάτε | θα φάνε
+
+[ "Πηγαίνω" ]
 
 <gr-pigaino-conjugation> ::=
 	2	πηγαίνοντας	|
@@ -2444,7 +2461,7 @@ Wildcards στην Preform:
 	9	πά			| [Πάεις αντί για πας]
 	<gr-regular-verb-tabulation>
 
-[ Φτάνω ]
+[ "Φτάνω" ]
 
 <gr-ftano-conjugation> ::=
 	2	φτάνοντας	|
@@ -2975,7 +2992,7 @@ you-can-also-see rule response (B) is "Πάνω σε [the domain], [εγώ] ".
 you-can-also-see rule response (C) is "Μέσα σε [the domain], [εγώ] ".
 you-can-also-see rule response (D) is "[Εγώ] [adapt the verb μπορώ] επίσης να [adapt the verb δω in present tense] ".
 you-can-also-see rule response (E) is "[Εγώ] [adapt the verb μπορώ] να [adapt the verb δω in present tense] ".
-you-can-also-see rule response (F) is "".
+you-can-also-see rule response (F) is " [εδώ]".
 
 Section 3.1.1.3 - Printing a locale paragraph about a thing
 
@@ -3086,7 +3103,7 @@ describe room gone into rule response (L) is "[The actor] [φτάνω] από [t
 describe room gone into rule response (M) is "στο [the vehicle gone by]".
 describe room gone into rule response (N) is "στο [the vehicle gone by]".
 describe room gone into rule response (O) is ", σπρώχνοντας [the thing gone with] προς τα εμπρός, και [εμένα] επίσης μαζί".
-describe room gone into rule response (P) is ", σπρώχνοτας [the thing gone with] προς τα εμπρός".
+describe room gone into rule response (P) is ", σπρώχνοντας [the thing gone with] προς τα εμπρός".
 describe room gone into rule response (Q) is ", σπρώχνοντας [the thing gone with] μακριά".
 describe room gone into rule response (R) is ", σπρώχνοντας [the thing gone with] προς τα μέσα".
 describe room gone into rule response (S) is ", παίρνοντάς [με] μαζί".
@@ -3095,7 +3112,7 @@ block vaguely going rule response (A) is "Θα πρέπει να αναφέρε�
 [Entering]
 [ TODO: Adapt plural ]
 can't enter what's already entered rule response (A) is "Όμως [εγώ] [είμαι] ήδη πάνω [if the noun is male]στον[else if the noun is female]στην[otherwise]στο [the noun].".
-can't enter what's already entered rule response (A) is "Όμως [εγώ] [είμαι] ήδη μέσα [if the noun is male]στον[else if the noun is female]στην[otherwise]στο [the noun].".
+can't enter what's already entered rule response (B) is "Όμως [εγώ] [είμαι] ήδη μέσα [if the noun is male]στον[else if the noun is female]στην[otherwise]στο [the noun].".
 can't enter what's not enterable rule response (A) is "[regarding the noun][Those] [negate the verb είμαι] κάτι στο οποίο [regarding the player][μπορώ] να [adapt the verb σταθώ in present tense].".
 can't enter what's not enterable rule response (B) is "[regarding the noun][Those] [negate the verb είμαι] κάτι στο οποίο [regarding the player][μπορώ] να [adapt the verb καθίσω in present tense] επάνω.".
 can't enter what's not enterable rule response (C) is "[regarding the noun][Those] [negate the verb είμαι] κάτι στο οποίο [regarding the player][μπορώ] να [adapt the verb ξαπλώσω in present tense] επάνω.".
@@ -3142,7 +3159,7 @@ Section 3.1.1.7 - Standard actions which change the state of things
 [Unlocking it with]
 
 [Switching on]
-standard report switching on rule response (A) is "[if the actor is the player][Εγώ][else][The actor] [end if][ανάβω] [the noun].".
+standard report switching on rule response (A) is "[if the actor is the player][Εγώ][else][The actor][end if] [ανάβω] [the noun].".
 
 
 [Switching off]
@@ -3243,7 +3260,7 @@ Section 3.1.1.10 - Standard actions which always do nothing unless rules interve
 Section 3.1.1.11 - Accessibility and visibility
 
 adjust light rule response (A) is "[Εδώ] [είμαι] πίσσα σκοτάδι!".
-generate action rule response (A) is "(λαμβάνοτας υπόψη μόνο τα πρώτα 16 αντικείμενα)[command clarification break]".
+generate action rule response (A) is "(λαμβάνοντας υπόψη μόνο τα πρώτα 16 αντικείμενα)[command clarification break]".
 generate action rule response (B) is "Τίποτα το αξιοσημείωτο!".
 
 basic accessibility rule response (A) is "Πρέπει να αναφέρεις κάτι πιο συγκεκριμένο.".
@@ -3304,8 +3321,8 @@ Section 3.1.1.13 - Action processing internal rule
 action processing internal rule response (A) is "[bracket]Αυτή η εντολή ζητά να γίνει κάτι εκτός παιχνιδιού, οπότε μπορεί να έχει νόημα μόνο από εσένα σε μένα. Δεν μπορεί να ζητηθεί από [the noun] να γίνει αυτό.[close bracket]".
 action processing internal rule response (B) is "Πρέπει να αναφέρεις ένα αντικείμενο".
 action processing internal rule response (C) is "Δεν μπορείς να αναφέρεις κάποιο αντικείμενο".
-action processing internal rule response (D) is "Πρέπει να παρέχεις ένα ουσιαστικο".
-action processing internal rule response (E) is "Δεν μπορείς να παρέχεις κάποιο ουσιασικό".
+action processing internal rule response (D) is "Πρέπει να παρέχεις ένα ουσιαστικό".
+action processing internal rule response (E) is "Δεν μπορείς να παρέχεις κάποιο ουσιαστικό".
 action processing internal rule response (F) is "Πρέπει να αναφέρεις ένα δεύτερο αντικείμενο".
 action processing internal rule response (G) is "Δεν μπορείς να αναφέρεις δεύτερο αντικείμενο".
 action processing internal rule response (H) is "Πρέπει να βάλεις ένα δεύτερο ουσιαστικό".
@@ -3390,7 +3407,7 @@ print obituary headline rule response (C) is " Τέλος ".
 Section 3.1.1.19 - Standard actions which happen out of world
 
 [Undoing (though not technically an action)]
-immediately undo rule response (A) is "Στην παρούσα ιστορία απαγορεύται να χρησιμοποιήσεις 'αναίρεση'".
+immediately undo rule response (A) is "Στην παρούσα ιστορία απαγορεύεται να χρησιμοποιήσεις 'αναίρεση'".
 immediately undo rule response (B) is "Δεν μπορείς να αναιρέσεις κάτι που δεν έχει γίνει!".
 immediately undo rule response (C) is "Ο διερμηνέας σου δεν υποστηρίζει αναίρεση. Λυπάμαι!".
 immediately undo rule response (D) is "Η 'αναίρεση' απέτυχε. Λυπάμαι πολύ! ".
