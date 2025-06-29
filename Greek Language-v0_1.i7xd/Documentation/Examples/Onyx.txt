@@ -1,0 +1,46 @@
+Example: * Onyx
+Location: Descriptions
+RecipeLocation: Testing
+Index: Checking for missed properties
+Description: Here we have a little sample story based on Slavic folk tales. To try out this story, click the Go! button above. Then type TEST ME and press return to try out the actions of the story
+
+    {*}"Onyx" (in Greek)
+
+    The Πυκνό Δάσος είναι ένα δωμάτιο. "Βρίσκεσαι χαμένος σε ένα πυκνό δάσος. Τα δέντρα φυτρώνουν τόσο κοντά το ένα στο άλλο που δεν μπορείς να δεις τον ήλιο ή τον ουρανό, και κανένα χορτάρι ή μικρό φυτό δεν ευδοκιμεί στο έδαφος."
+
+    [Try changing the words inside the quote marks to give the room a new description.]
+
+
+    Baba Yaga's Κήπος is west of the Πυκνό Δάσος. "Σε αυτόν τον κήπο φυτρώνουν φυτά που τρώνε έντομα και φυτά που τρώνε πουλιά. Περιορίζεται από έναν φράχτη από κόκαλα, και τα πεζοδρόμια είναι φτιαγμένα από επιγονατίδες ενός γίγαντα.
+
+    Στο κέντρο του κήπου βρίσκεται η καλύβα της Baba Yaga, η οποία περπατάει πάνω σε πόδια κότας. Προς το παρόν, η καλύβα είναι καθισμένη στο έδαφος."
+
+    [You can add more plants to Baba's Κήπος by writing something like 'A carnivorous plant is in Baba Yaga's Κήπος.']
+
+
+    Baba Yaga's Καλύβα is inside from Baba Yaga's Κήπος. "Από εδώ μέσα, δεν υπάρχει καμία απόδειξη για την κοτοπουλένια φύση της καλύβας, εκτός από το ότι η ταπετσαρία είναι φτιαγμένη από κιτρινόλευκα φτερά."
+
+    A gigantic όλμος (m) is in Baba Yaga's Καλύβα. "Μια γωνία της καλύβας καταλαμβάνεται από το γιγάντιο όλμο, αρκετά μεγάλο για να σταθείς μέσα." It is an enterable vehicle. The description of the gigantic όλμος is "Η Baba Yaga πετάει μέσα σε αυτόν όποτε βιάζεται υπερβολικά για να κάνει την καλύβα της να περπατήσει."
+
+    Baba Yaga is a γυναίκα in Baba Yaga's Καλύβα. "Η Baba Yaga κάθεται στο τραπέζι εργασίας της, ράβοντας σύμβολα σε μια μαγική πετσέτα." The description of Baba Yaga is "Τα δόντια της είναι φτιαγμένα από σίδερο και τα μάτια της μπορούν να δουν στο σκοτάδι. Αν και είναι μεγάλη σε ηλικία, τα δάχτυλά της είναι ευέλικτα, και δεν έχει ξεχάσει τίποτα από όσα έχει δει ποτέ."
+
+    Instead of entering the όλμος in the presence of Baba Yaga:
+        say "«Ωχ, δε θα το έκανα αυτό, Ανόητε Ιβάν», λέει η Baba Yaga. «Εκεί που θα σε πήγαινε, δεν είσαι έτοιμος να πας.»"
+
+    Baba Yaga is carrying a μαγική πετσέτα (f). The description of the μαγική πετσέτα is "Αν κρίνουμε από το ξόρκι που είναι υφασμένο στα κρόσσια της, αυτή είναι μια πετσέτα που μπορεί να μετατραπεί σε γέφυρα πάνω από οποιοδήποτε ποτάμι ή χαράδρα."
+
+    The description of the player is "Ορισμένοι σε αποκαλούν Ανόητο Ιβάν, αλλά δεν δίνεις σημασία στην αγένεια τους."
+
+    The player is carrying a μαγική μπάλα (f). The description of the μαγική μπάλα is "Όποτε την ρίχνεις, κυλάει προς την κατεύθυνση που πρέπει να πας."
+
+    After dropping the μπάλα:
+        if an unvisited room (called target location) is adjacent to the location:
+            let way be the best route from the location to the target location;
+            say "Κυλάει προκλητικά προς [the way]. Την ξαναπιάνεις πριν προλάβει να απομακρυνθεί πολύ από σένα.";
+        else:
+            say "Η μπάλα κυλάει αβέβαια τριγύρω και μετά επιστρέφει για να καθίσει στα πόδια σου με τέτοια απολογητική διάθεση που αναγκάζεσαι να την ξανασηκώσεις.";
+        now the player carries the μπάλα.
+
+    Understand "olmo" as όλμος.
+
+    Test me with "κοίτα / ευρετήριο / εξέτασε την μπάλα / ρίξε την μπάλα / δυτικά / εξέτασέ με / μέσα / δες την baba / εξέτασε την πετσέτα / ρίξε την μπάλα / δες τον όλμος / μπες στον όλμος".
