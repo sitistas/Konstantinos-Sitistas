@@ -2,6 +2,8 @@
 
 The "Greek Language" extension is designed to enable the use of Greek language in Inform 7 stories, mainly as the language of play, but also for the language of syntax.
 
+Η επέκταση "Greek Language" έχει σχεδιαστεί για να επιτρέπει τη χρήση της ελληνικής γλώσσας στις ιστορίες της Inform 7, κυρίως ως γλώσσα του παιχνιδιού, αλλά και ως γλώσσα σύνταξης.
+
 _Compatibility_: Glulx only, for Inform 7 versions 10.2.0 and later, however special instructions are provided to run the app on terminal due to the potential incompatibility of Greek characters with the Inform 7 IDE.
 
 ### Contact Information - Στοιχεία Επικοινωνίας
@@ -14,10 +16,197 @@ Contact kon.sitistas@gmail.com with any bugs, suggestions, or contributions, or 
 
 ## Installation - Εγκατάσταση
 
-To install the "Greek Language" extension, follow these steps:
 
-1. Download the extension file (Greek Language.i7x) from the official repository.
-2. Open your Inform 7 project.
-3. Go to the "Extensions" menu and select "Manage Extensions".
-4. Click on "Add Extension" and choose the downloaded file.
-5. Follow the prompts to complete the installation.
+### English
+
+To install the "Greek Language" extension, you need to run Inform 7 version 10.2.0 or later. Currently, this version has not yet been released and you need to build the Inform app from source. The extension is compatible with Glulx only.
+
+1. Build the Inform app from source, following the instructions in the [Inform 7 GitHub repository](https://github.com/ganelson/inform?tab=readme-ov-file#repositories)
+2. Clone the "Konstantinos Sitistas" extension repository from GitHub inside the `inform/inform7/Internal/Extensions/` directory:
+    ```bash
+    cd inform/inform7/Internal/Extensions/
+    git clone https://github.com/sitistas/Konstantinos-Sitistas.git
+    ```
+3. Run the Inform app using the terminal with the following commands:
+    ```bash
+    inform\inform7\Tangled\inform7 <helloworld.i7>
+    inform\inform6\Tangled\inform6 -Gw <helloworld>.i6
+    ```
+   This command will create a `<helloworld>.ulx` file, that can be run with a Glulx interpreter.
+
+### Ελληνικά
+
+Για να εγκαταστήσετε την επέκταση "Greek Language", πρέπει να τρέξετε την έκδοση 10.2.0 ή νεότερη της Inform 7. Αυτή τη στιγμή, αυτή η έκδοση δεν έχει κυκλοφορήσει ακόμα και πρέπει να δημιουργήσετε την εφαρμογή Inform από τον πηγαίο κώδικα. Η επέκταση είναι συμβατή μόνο με Glulx.
+
+1. Δημιουργήστε την εφαρμογή Inform από τον πηγαίο κώδικα, ακολουθώντας τις οδηγίες στο [GitHub repository της Inform 7](https://github.com/ganelson/inform?tab=readme-ov-file#repositories)
+2. Κλωνοποιήστε το αποθετήριο της επέκτασης "Konstantinos Sitistas" από το GitHub μέσα στον κατάλογο `inform/inform7/Internal/Extensions/`:
+    ```bash
+    cd inform/inform7/Internal/Extensions/
+    git clone https://github.com/sitistas/Konstantinos-Sitistas.git
+    ```
+3. Εκτελέστε την εφαρμογή Inform χρησιμοποιώντας το τερματικό με τις παρακάτω εντολές:
+    ```bash
+    inform\inform7\Tangled\inform7 <helloworld.i7>
+    inform\inform6\Tangled\inform6 -Gw <helloworld>.i6
+    ```
+   Αυτή η εντολή θα δημιουργήσει ένα αρχείο `<helloworld>.ulx`, το οποίο μπορεί να εκτελεστεί με έναν ερμηνευτή Glulx.
+
+
+## Παραδείγματα χρήσης
+
+Αν δεν θέλετε να διαβάσετε τις ακόλουθες οδηγίες, μπορείτε να δείτε τα παραδείγματα που περιλαμβάνονται στην επέκταση. Αυτά βρίσκονται στον φάκελο [Examples](Examples), και περιλαμβάνουν διάφορα σενάρια που δείχνουν πώς να χρησιμοποιήσετε την επέκταση για να δημιουργήσετε διαδραστική μυθοπλασία στα ελληνικά.
+
+Οι ιστορίες ξεκινούν μετά το σύμβολο `{*}`, οπότε αρκεί να αντιγράψετε το περιεχόμενο του αρχείου από το σημείο αυτό και μετά, και να το επικολλήσετε στο πηγαίο σας κώδικα.
+
+## Χρήση της Επέκτασης
+
+Τώρα είστε έτοιμοι να δημιουργήσετε διαδραστική μυθοπλασία στα ελληνικά. Το μόνο που έχετε να κάνετε είναι να γράψετε "(in Greek)" στο τέλος της πρώτης γραμμής του πηγαίου σας κώδικα (της γραμμής που καθορίζει τον τίτλο του παιχνιδιού και το όνομα του συγγραφέα).
+
+Με αυτή την επέκταση, είναι δυνατό (αλλά όχι υποχρεωτικό) να γράψετε μέρος του κώδικά σας στα ελληνικά, δηλαδή την αρχική κατάσταση του κόσμου και τις συνθήκες.
+
+Για παράδειγμα:
+
+```inform7
+"Η ιστορία μου" by Konstantinos Sitistas (in Greek)
+
+Η κουζίνα is a δωμάτιο.
+
+Το μήλο is a πράγμα in κουζίνα.
+```
+
+Δεν χρειάζεται να γράψετε την πρόταση `Include Greek Language by Konstantinos Sitistas.` στο πηγαίο σας κώδικα, καθώς η επέκταση θα συμπεριληφθεί αυτόματα αν την έχετε τοποθετήσει σωστά στον φάκελο `inform/inform7/Internal/Extensions/Konstantinos Sitistas/`.
+
+## Εντολές που υποστηρίζονται - αντιστοιχία με τους αγγλικούς όρους του Inform 7
+
+### Βασικές εντολές
+
+| Αγγλικός Όρος | Ελληνικός Όρος |
+|----------------|-----------------|
+| listen to | άκουσε/άκου |
+| switch on | άναψε |
+| open | άνοιξε |
+| put ... μέσα σε ... | βάλε ... μέσα σε ...|
+| put ... on ... | βάλε ... πάνω σε ...|
+| take off | βγάλε |
+| exit | βγες |
+| turn | γύρισε |
+| tie | δέσε |
+| examine | εξέτασε |
+| burn | κάψε |
+| lock | κλείδωσε |
+| close | κλείσε |
+| sleep | κοιμήσου |
+| cut | κόψε |
+| wave | κυμάτισε |
+| enter | μπες |
+| smell | μύρισε |
+| (un)lock ... with ... | (ξε)κλείδωσε ... με ... |
+| wake up | ξύπνα |
+| take | πάρε |
+| wait | περίμενε |
+| jump | πήδα |
+| drink | πιες |
+| drop | ρίξε |
+| switch off | σβήσε |
+| climb | σκαρφάλωσε |
+| push | σπρώξε |
+| pull | τράβα |
+| eat | φάε |
+| wear | φόρεσε |
+
+### Βασικές εντολές εκτός του κόσμου του παιχνιδιού
+
+| Αγγλικός Όρος | Ελληνικός Όρος |
+|----------------|-----------------|
+| quit | τέλος |
+| save | αποθήκευση |
+| restore | επαναφορά |
+| restart | επανεκκίνηση |
+
+### Συντομογραφίες για βασικές εντολές
+
+| Συντομογραφία | Εντολή |
+|----------------|-----------------|
+| α | ανατολή |
+| β | βοράς |
+| βα | βορειοανατολικά |
+| βδ | βορειοδυτικά |
+| δ | δύση |
+| ε | ευρετήριο |
+| ζ | περίμενε |
+| κ | κοίτα |
+| μ | μέσα |
+| ν | ναι |
+| να | νοτιοανατολικά |
+| νδ | νοτιοδυτικά |
+| νό | νότος |
+| ξ | εξέτασε |
+| ο | όχι |
+| π | πάρε |
+| ρ | ρίξε |
+| τ | τράβα |
+| φ | φάε |
+| χ | χτύπα |
+
+## Συγγραφή στην ελληνική γλώσσα
+
+Για την αναγνώριση του σωστού γραμματικού γένους των ουσιαστικών, ο συγγραφέας πρέπει να εισάγει δίπλα από τον πρώτο ορισμό του ουσιαστικού το (m), (f), ή (n) (m - αρσενικό, f - θηλυκό, n - ουδέτερο).
+
+Για παράδειγμα:
+
+```inform7
+The player κρατάει a πορτοκάλι (n), a Bic στιλό (n), and a χαρτοπετσέτα (f). The description of the πορτοκάλι is "Είναι ένα μικρό, σκληρό, σκληρό πράγμα από την αίθουσα φαγητού, πιθανώς με πολλά κουκούτσια και χωρίς χυμό."
+```
+
+Ακολουθεί μια λίστα με αντιστοιχία ελληνικών - αγγλικών όρων που αφορούν το συγκεκριμένο extension:
+
+	αντικείμενο -> object
+	δωμάτιο -> room
+	πράγμα -> thing
+	πόρτα -> door
+	δοχείο -> container
+	όχημα -> vehicle
+	τσάντα του παίκτη -> player's holdall
+	στήριγμα -> supporter
+	παρασκήνιο -> backdrop
+	άτομο -> person
+	άντρας -> man
+	γυναίκα -> woman
+	ζώτο -> animal
+	συσκευή -> device
+	κατεύθυνση -> direction
+	περιοχή -> region
+	αριθμός -> number
+	πραγματικός αριθμός -> real number
+	ώρα -> time
+	αλήθεια -> truth state
+	κείμενο -> text
+	χαρακτήρας unicode  -> unicode character
+	απόσπασμα -> snippet
+	αποθηκευμένη ενέργεια -> stored action
+
+Οι περισσότεροι από τους παραπάνω όρους μπορούν να χρησιμοποιηθούν αντί των αντιστοίχων αγγλικών όρων, ωστόσο ενδέχεται να υπάρχουν κάποιες περιπτώσεις όπου δεν θα λειτουργούν όπως αναμένεται.
+
+### Χρήση adaptive text
+
+Εάν η οπτική γωνία αλλάζει κατά τη διάρκεια του παιχνιδιού, είναι σημαντικό να γράφετε τα κείμενά σας με τέτοιο τρόπο ώστε οι αντωνυμίες που αναφέρονται στον παίκτη να αλλάζουν δυναμικά. Για να το κάνετε αυτό, η επέκταση παρέχει αυτές τις αντικαταστάσεις κειμένου:
+
+- `[εγώ]`, για το υποκείμενο: "εγώ", "εσύ", "αυτός"...
+- `[εμένα]`, για το: "εμένα", "εσένα", "αυτόν"...
+- `[δικό μου]`, για το κτητικό: "δικό μου", "δικό σου", "δικό του"...
+- `[τον εαυτό μου]`, για το: "τον εαυτό μου", "τον εαυτό σου", "τον εαυτό του"...
+- `[μου]`, για το: "μου", "σου", "του"...
+- `[με]`, για το: "με", "σε", "τον"...
+- `[τον]`, για το αντικείμενο: "τον", "την", "το"...
+- `[ένας]`, για το άρθρο: "ένας", "μία", "ένα"...
+
+
+
+
+
+## Γνωστά προβλήματα
+
+- Η επέκταση δεν υποστηρίζει ακόμα τις ονομασίες με πρώτο γράμμα κεφαλαίο, όπως για παράδειγμα: `Μαρία is a γυναίκα.` Για να αποφύγετε αυτό το πρόβλημα, χρησιμοποιήστε μικρά γράμματα για τα ονόματα των αντικειμένων και των χαρακτήρων σας, όπως: `μαρία is a γυναίκα.`, και έπειτα προσθέστε την εντολή `Understand "Μαρία" as μαρία.`. Έτσι, θα είναι αποδεκτά και τα δύο ονόματα, και θα μπορείτε να χρησιμοποιείτε το όνομα με το κεφαλαίο γράμμα κατά την εκτέλεση του παιχνιδιού.
+- Αντί για τις λέξεις στον/στην/στην/στο, χρησιμοποιήστε τις λέξεις σε/σε/σε. Για παράδειγμα, αντί για `βάλε το μήλο στον πίνακα`, χρησιμοποιήστε `βάλε το μήλο σε τον πίνακα`.
+- Κατά τον ορισμό χώρων, προτιμήστε να μην χρησιμοποιείτε άρθρα πριν την ονομασία του χώρου. Για παράδειγμα, αντί για `η κουζίνα is a δωμάτιο.`, χρησιμοποιήστε `κουζίνα is a δωμάτιο.`. Δεν υπάρχει μέχρι στιγμής ακριβής αντιστοιχία μεταξύ του ελληνικού και του αγγλικού οριστικού άρθρου, και έτσι ο χώρος αντί να εμφανίζεται ως "κουζίνα", εμφανίζεται ως "η κουζίνα". Ωστόσο, αν θέλετε να χρησιμοποιήσετε το οριστικό άρθρο, μπορείτε να το προσθέσετε στο κείμενο της περιγραφής του χώρου, όπως: `The description of κουζίνα is "Η κουζίνα είναι ένα δωμάτιο με πολλά εργαλεία μαγειρικής."`.
+

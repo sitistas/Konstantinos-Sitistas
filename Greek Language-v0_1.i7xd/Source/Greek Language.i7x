@@ -3660,6 +3660,7 @@ Understand the command "π", "παρε", "κράτησε", "σήκωσε", "άρ
 Understand "αφαίρεσε [things inside] από [something]", "αφαιρεσε [things inside] από [something]", "πάρε [things inside] από [something]", "παρε [things inside] από [something]" as removing it from.
 
 Understand "ρίξε [things preferably held]", "ριξε [things preferably held]", "άφησε [things preferably held]", "άσε [things preferably held]", "αφησε [things preferably held]", "ασε [things preferably held]" as dropping.
+Understand the command "ρ" as "ρίξε".
 
 [ TODO: Add στον, στην, στο... ]
 Understand "βάλε [other things] πάνω σε [something]" as putting it on.
@@ -3673,7 +3674,7 @@ Understand "πέταξε [something preferably held] σε/προς [something]" 
 Understand the command "τοποθέτησε", "τοποθετησε", "βαλε" as "βάλε".
 
 Understand "φάε [something preferably held]" as eating.
-Understand the command "φαε" as "φάε".
+Understand the command "φ", "φαε" as "φάε".
 
 Chapter 4.2.3 - Standard actions which move the actor
 
@@ -3760,7 +3761,7 @@ Understand "ξύπνα [someone]" or "σήκωσε [someone] " as waking.
 
 Understand "επιθέσου σε [something]" as attacking.
 Understand "χτύπα [something]" as attacking.
-Understand the commands "χτύπησε", "πολέμησε", "βασάνισε", "κατάστρεψε", "σπάσε", "ράγισε", "δολοφόνησε", "σκότωσε", "γρονθοκόπησε" as "χτύπα".
+Understand the commands "χ", "χτύπησε", "πολέμησε", "βασάνισε", "κατάστρεψε", "σπάσε", "ράγισε", "δολοφόνησε", "σκότωσε", "γρονθοκόπησε" as "χτύπα".
 
 Understand "φίλησε [someone]" as kissing.
 Understand the commands "φίλα" and "αγκάλιασε" as "φίλησε".
@@ -3784,7 +3785,7 @@ Understand the command "ακούμπα", "πίεσε", "πάτα", "νιώσε" 
 Understand "κυμάτισε [something]" as waving.
 
 Understand "τράβηξε [something]" as pulling.
-Understand the command "τράβα", "σύρε" as "τράβηξε".
+Understand the command "τ", "τραβα", "τράβα", "σύρε", "συρε" as "τράβηξε".
 
 Understand "σπρώξε [something]" as pushing.
 Understand "σπρώξε [something] [direction]" or "σπρώξε [something] προς [direction]" as pushing it to.
@@ -4192,47 +4193,5 @@ language Greek
 
 
 Greek Language ends here.
-
----- DOCUMENTATION ----
-
-Section: Παρουσίαση
-
-Section: Εγκατάσταση
-
-Section: Συγγραφή της ιστορίας σας στα ελληνικά
-
-Με αυτή την επέκταση, είναι δυνατό (αλλά όχι υποχρεωτικό) να γράψετε μέρος του κώδικά σας στα ελληνικά, δηλαδή την αρχική κατάσταση του κόσμου και τις συνθήκες. Για παράδειγμα:
-
-	κουζίνα είναι ένα δωμάτιο.
-	[ TODO: Add the article ]
-
-[ TODO: Πρέπει είτε να δημιουργηθούν κανόνες για την αναγνώριση του γένους μιας λέξης, ειδάλλως θα πρέπει να ζητείται από τον παίκτη να εισάγει (m), (f), ή (n) (ή αντίστοιχα στα ελληνικά) για να μπορεί να κατανοήσει το Inform το γένος της λέξης]
-
-Ακολουθεί μια λίστα με αντιστοιχία ελληνικών - αγγλικών όρων που αφορούν το συγκεκριμένο extension:
-
-	αντικείμενο -> object
-	δωμάτιο -> room
-	πράγμα -> thing
-	πόρτα -> door
-	δοχείο -> container
-	όχημα -> vehicle
-	τσάντα του παίκτη -> player's holdall
-	στήριγμα -> supporter
-	παρασκήνιο -> backdrop
-	άτομο -> person
-	άντρας -> man
-	γυναίκα -> woman
-	ζώτο -> animal
-	συσκευή -> device
-	κατεύθυνση -> direction
-	περιοχή -> region
-	αριθμός -> number
-	πραγματικός αριθμός -> real number
-	ώρα -> time
-	αλήθεια -> truth state
-	κείμενο -> text
-	χαρακτήρας unicode  -> unicode character
-	απόσπασμα -> snippet
-	αποθηκευμένη ενέργεια -> stored action
 
 
